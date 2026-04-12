@@ -1,0 +1,26 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:SchedaVisite.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SchedaVisite.Views.SidebarUserControl"
+             x:DataType="vm:SidebarUserControlViewModel"
+             >
+    <ScrollViewer>
+        <Border BorderBrush="Black"
+                BorderThickness="2"
+        >
+            <ItemsControl ItemsSource="{Binding VerticalMenu}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Border BorderBrush="Green"
+                                BorderThickness="2">
+                            <Button HorizontalAlignment="Stretch" Background="Transparent" FontWeight="Bold" Content="{Binding}"/>
+                        </Border>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Border>
+    </ScrollViewer>
+</UserControl>

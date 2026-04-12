@@ -1,0 +1,51 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:SchedaVisite.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SchedaVisite.Views.HeaderUserControl"
+             x:DataType="vm:VisitUserControlViewModel"
+             >
+    <Border BorderBrush="Black"
+            BorderThickness="2"
+    >
+        <Grid
+            Background="Green">
+            
+            <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right">
+                <Button 
+                    
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top"
+                    Background="Transparent" 
+                    BorderThickness="0" 
+                    Command="{Binding BackToWelcome}">
+                    <Image Source="avares://SchedaVisite/Assets/home.png"
+                           Width="40" Height="40" />
+                </Button>
+                <Button 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top"
+                    Background="Transparent" 
+                    BorderThickness="0" 
+                    Command="{Binding SaveVisit}">
+                    <Image Source="avares://SchedaVisite/Assets/save.png"
+                           Width="40" Height="40" />
+                </Button>
+            </StackPanel>
+
+            
+            <TextBlock Grid.Row="0" Padding="10" >
+                <Run FontWeight="Bold" Text="Codice Paziente " />
+                <Run Text="{Binding CurrentVisit.PatientCode}" />
+                <LineBreak />
+                <Run FontWeight="Bold" Text="Data Visita " />
+                <Run Text="{Binding CurrentVisit.Timestamp}" />
+                <LineBreak />
+                <Run FontWeight="Bold" Text="Numero Visita " />
+                <Run Text="{Binding CurrentVisit.Number}" />
+            </TextBlock>
+        </Grid>
+    </Border>
+</UserControl>
