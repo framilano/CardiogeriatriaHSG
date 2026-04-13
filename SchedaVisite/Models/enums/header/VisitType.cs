@@ -1,8 +1,6 @@
 using System.Collections.Generic;
-using System.ComponentModel;
-using SchedaVisite.Models.enums;
 
-namespace SchedaVisite.Models.enums;
+namespace SchedaVisite.Models.enums.header;
 
 public static class VisitType
 {

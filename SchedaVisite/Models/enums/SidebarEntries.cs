@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace SchedaVisite.Models.enums;
 
-public static class MenuEntries
+public static class SidebarEntries
 {
     public static List<string> getAllMenuEntries()
     {

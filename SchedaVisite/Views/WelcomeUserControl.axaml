@@ -35,9 +35,9 @@
                     <DataTemplate>
                         <Button Margin="5" 
                                 HorizontalAlignment="Center" 
-                                Content="{Binding Timestamp}" 
+                                Content="{Binding Timestamp, StringFormat='\{0:dd/MM/yyyy HH:mm}'}"
                                 Command="{Binding $parent[views:WelcomeUserControl].((vm:WelcomeUserControlViewModel)DataContext).LoadExistingVisitCommand}"
-                                CommandParameter="{Binding Timestamp}"
+                                CommandParameter="{Binding}"
                                 />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

@@ -1,0 +1,32 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:visitContent="clr-namespace:SchedaVisite.ViewModels.VisitContent"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="SchedaVisite.Views.VisitContent.AnagraficaUserControl"
+             x:DataType="visitContent:AnagraficaUserControlViewModel"
+             >
+    <Grid
+        ColumnDefinitions="*, *">
+        <Border BorderBrush="Black"
+                BorderThickness="2"
+                Grid.Column="0">
+            <StackPanel Orientation="Vertical" Spacing="8">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontWeight="Bold" Padding="10" Text="Data di nascita " VerticalAlignment="Center"/>
+                    <DatePicker SelectedDateChanged="OnDateOfBirthChanged" SelectedDate="{Binding CurrentPatient.DateOfBirth}"></DatePicker>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontWeight="Bold" Padding="10" Text="Genere " VerticalAlignment="Center"/>
+                    <ComboBox SelectionChanged="OnGenderChanged" ItemsSource="{Binding GenderTypesValues}" SelectedItem="{Binding CurrentPatient.Gender}"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <Border BorderBrush="Black"
+                BorderThickness="2"
+                Grid.Column="1">
+            <TextBlock Name="ColumnBDescription"></TextBlock>
+        </Border>
+    </Grid>
+</UserControl>

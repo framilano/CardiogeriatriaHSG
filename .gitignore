@@ -211,3 +211,5 @@ FakesAssemblies/
 
 # JetBrains Rider
 *.sln.iml
+*.docx#
+*.pptx#

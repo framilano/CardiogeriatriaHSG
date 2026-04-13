@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
@@ -10,8 +11,11 @@ public class VisitRepository(AppDb db) : DbContext
     public List<Visit> FindByPatientCode(string code) =>
         db.Visits.Where(v => v.Patient.PatientCode == code).ToList();
 
-    public Visit? FindByPatientCodeAndTimestamp(string patientcode, string timestamp) =>
-        db.Visits.FirstOrDefault(v => v.Patient.PatientCode == patientcode && v.Timestamp == timestamp);
+    public Visit? FindByVisitCode(string visitCode) =>
+        db.Visits.FirstOrDefault(v => v.VisitCode == visitCode);
+    
+    public Visit? FindByTimestampAndPatientCode(DateTimeOffset timestamp, string patientCode) =>
+        db.Visits.FirstOrDefault(v => v.PatientCode == patientCode && v.Timestamp == timestamp);
 
     public void AddVisit(Visit v)
     {

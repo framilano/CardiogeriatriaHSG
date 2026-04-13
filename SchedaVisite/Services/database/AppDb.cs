@@ -10,16 +10,18 @@ public class AppDb(DbContextOptions<AppDb> options) : DbContext(options)
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        // Composite key per Visit
-        modelBuilder.Entity<Visit>()
-            .HasKey(v => new { v.PatientCode, v.Timestamp });
-        
+        //PATIENT PROPERTIES
         modelBuilder.Entity<Patient>()
             .HasKey(p => p.PatientCode);
         
+        //VISIT PROPERTIES
+        modelBuilder.Entity<Visit>()
+            .HasKey(v => new { v.VisitCode });
         modelBuilder.Entity<Visit>()
             .HasOne(v => v.Patient)
             .WithMany(p => p.Visits)
             .HasForeignKey(v => v.PatientCode);
+        modelBuilder.Entity<Visit>()
+            .HasIndex(v => v.PatientCode);  //Defining INDEX on PatientCode
     }
 }

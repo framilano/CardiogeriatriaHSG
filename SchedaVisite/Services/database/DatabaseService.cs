@@ -49,9 +49,13 @@ public class DatabaseService
         _patientRepository.AddPatient(patient);
     }
     
+    public void UpdatePatient(Patient patient)
+    {
+        _patientRepository.UpdatePatient(patient);
+    }
+    
     //************* VISIT APIS *************
-
-
+    
     public List<Visit> RetrieveVisitsByPatientCode(string patientCode)
     {
         Console.WriteLine($"Retrieving visits for patient code: {patientCode}...");
@@ -62,31 +66,31 @@ public class DatabaseService
         Console.WriteLine($"Retrieved {visits.Count} visits for patient code: " + patientCode);
         return visits;
     }
-
-    public Visit? RetrieveVisitByTimestampAndPatientCode(string patientCode, string timestamp)
+    
+    public Visit? RetrieveVisitByVisitCode(string visitCode)
     {
-        Console.WriteLine("Retrieving visit for patient code: " + patientCode + " and timestamp: " + timestamp);
-        var visit = _visitRepository.FindByPatientCodeAndTimestamp(patientCode, timestamp);
+        Console.WriteLine($"Retrieving visit with code {visitCode}...");
+        var visit = _visitRepository.FindByVisitCode(visitCode);
         if (visit == null)
         {
-            Console.WriteLine("No visit for patient code: " + patientCode + " and timestamp: " + timestamp);
+            Console.WriteLine($"Visit with code {visitCode} not found");
             return null;
         }
-        Console.WriteLine("Retrieved visit for patient code: " + patientCode + " and timestamp: " + timestamp);
+        Console.WriteLine($"Retrieved visit with code {visitCode}");
         return visit; 
     }
 
     public void SaveVisit(Visit visit)
     {
-        Console.WriteLine("Saving visit for patient code: " + visit.PatientCode + " and timestamp: " + visit.Timestamp);
+        Console.WriteLine($"Saving visit {visit.VisitCode} for patient code: {visit.PatientCode}...");
         _visitRepository.AddVisit(visit);
-        Console.WriteLine("Saved visit for patient code: " + visit.PatientCode + " and timestamp: " + visit.Timestamp);
+        Console.WriteLine($"Saved visit {visit.VisitCode} for patient code: {visit.PatientCode}");
     }
 
     public void UpdateVisit(Visit visit)
     {
-        Console.WriteLine("Updating visit for patient code: " + visit.PatientCode + " and timestamp: " + visit.Timestamp);
+        Console.WriteLine($"Updating visit {visit.VisitCode} for patient code: {visit.PatientCode}...");
         _visitRepository.UpdateVisit(visit);
-        Console.WriteLine("Updating visit for patient code: " + visit.PatientCode + " and timestamp: " + visit.Timestamp);
+        Console.WriteLine($"Updated visit {visit.VisitCode} for patient code: {visit.PatientCode}");
     }
 }

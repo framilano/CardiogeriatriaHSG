@@ -10,6 +10,13 @@ public partial class SidebarUserControl : UserControl
     public SidebarUserControl()
     {
         InitializeComponent();
+        Loaded += (_, _) =>
+        {
+            // At this point, ItemsControl has created all item containers
+            AddHighlight(this
+                .GetVisualDescendants()
+                .OfType<Button>().First(b => Equals(b.Tag, "MenuEntry")));
+        };
     }
     
     private void AddHighlight(Button buttonToHighlight)

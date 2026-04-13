@@ -6,18 +6,7 @@
         x:Class="SchedaVisite.Views.MainWindow"
         Title="Cardiogeriatria HSG"
         x:DataType="viewmodels:MainWindowViewModel"
-        xmlns:views="clr-namespace:SchedaVisite.Views"
         xmlns:viewmodels="clr-namespace:SchedaVisite.ViewModels">
-    
-    <Window.DataTemplates>
-        <DataTemplate DataType="{x:Type viewmodels:WelcomeUserControlViewModel}">
-            <views:WelcomeUserControl/>
-        </DataTemplate>
-
-        <DataTemplate DataType="{x:Type viewmodels:VisitUserControlViewModel}">
-            <views:VisitUserControl/>
-        </DataTemplate>
-    </Window.DataTemplates>
 
     <ContentControl Content="{Binding CurrentPage}" />
 </Window>

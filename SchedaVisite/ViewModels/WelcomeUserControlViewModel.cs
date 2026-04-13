@@ -50,30 +50,40 @@ public partial class WelcomeUserControlViewModel : ObservableObject
         else
         {
             ErrorMessage = $"{UserCodeTextBox} ha {visits.Count} visite associate";
-            visits.Sort((v1, v2) => string.Compare(v2.Timestamp, v1.Timestamp, StringComparison.Ordinal));
-            LastVisitsList =  visits;
+            visits.Sort((v1, v2) => string.Compare(v2.Timestamp.ToString(), v1.Timestamp.ToString(), StringComparison.Ordinal));
             LastVisitsListVisibility = true;
+            LastVisitsList =  visits;
         }
     }
     
     [RelayCommand]
-    public void LoadExistingVisit(string timestamp)
+    public void LoadExistingVisit(Visit visit)
     {
-        var visit = _databaseService.RetrieveVisitByTimestampAndPatientCode(UserCodeTextBox, timestamp);
-        _main.NavigateToVisit(_databaseService, visit);
+        var patient = _databaseService.RetrievePatientByCode(UserCodeTextBox);
+        _main.NavigateToVisit(_databaseService, visit, patient);
     }
     
     [RelayCommand]
     public void CreateNewVisit()
     {
-        var timestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm");
-        var visit = _databaseService.RetrieveVisitByTimestampAndPatientCode(UserCodeTextBox, timestamp) ?? new Visit
+        var uuid = Guid.NewGuid().ToString();
+        var now = DateTimeOffset.Now;
+        var visit = new Visit
         {
+            VisitCode = uuid,
             PatientCode = UserCodeTextBox,
-            Timestamp = timestamp,
-            Number = LastVisitsList.Count
+            Timestamp = now,
+            Number = LastVisitsList.Count,
+            Type = "Hf"
         };
 
-        _main.NavigateToVisit(_databaseService, visit);
+        var patient = _databaseService.RetrievePatientByCode(UserCodeTextBox) ?? new Patient
+        {
+            PatientCode = UserCodeTextBox,
+            Gender = "F",
+            DateOfBirth = new DateTime(1970, 1, 1)
+        };
+
+        _main.NavigateToVisit(_databaseService, visit, patient);
     }
 }

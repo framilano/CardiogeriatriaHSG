@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:SchedaVisite.ViewModels"
              xmlns:views="clr-namespace:SchedaVisite.Views"
+             xmlns:viewmodels="clr-namespace:SchedaVisite.ViewModels.VisitContent"
+             xmlns:visitContent="clr-namespace:SchedaVisite.Views.VisitContent"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SchedaVisite.Views.VisitUserControl"
              x:DataType="viewModels:VisitUserControlViewModel"
@@ -21,16 +23,7 @@
         <views:HeaderUserControl Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3"/>
         <views:SidebarUserControl Grid.Row="1" Grid.Column="0" />
         
-        <Border BorderBrush="Black"
-                BorderThickness="2"
-                Grid.Row="1" Grid.Column="1">
-            <TextBlock>COLONNA A</TextBlock>
-        </Border>
-        <Border BorderBrush="Black"
-                BorderThickness="2"
-                Grid.Row="1" Grid.Column="2">
-            <TextBox>COLONNA B</TextBox>
-        </Border>
+        <ContentControl Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" Content="{Binding CurrentContent}" />
         
         <views:FooterUserControl Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="3" />
     </Grid>
