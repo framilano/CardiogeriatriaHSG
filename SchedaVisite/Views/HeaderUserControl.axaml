@@ -10,7 +10,7 @@
     <Border BorderBrush="Black"
             BorderThickness="2"
     >
-        <Grid
+        <Grid RowDefinitions="Auto, Auto"
             Background="Green">
             
             <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right">
@@ -46,6 +46,16 @@
                 <Run FontWeight="Bold" Text="Numero Visita " />
                 <Run Text="{Binding CurrentVisit.Number}" />
             </TextBlock>
+            <StackPanel Grid.Row="1" Orientation="Vertical" Spacing="8">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontWeight="Bold" Padding="10" Text="Tipo Visita:" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding VisitTypeValues}" SelectedItem="{Binding CurrentVisit.Type}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontWeight="Bold" Padding="10" Text="Telemedicina:" VerticalAlignment="Center"/>
+                    <CheckBox IsChecked="{Binding CurrentVisit.Telemedicina}"></CheckBox>
+                </StackPanel>
+            </StackPanel>
         </Grid>
     </Border>
 </UserControl>

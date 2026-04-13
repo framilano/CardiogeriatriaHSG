@@ -3,21 +3,29 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:vm="clr-namespace:SchedaVisite.ViewModels"
+             xmlns:views="clr-namespace:SchedaVisite.Views"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SchedaVisite.Views.SidebarUserControl"
-             x:DataType="vm:SidebarUserControlViewModel"
+             x:DataType="vm:VisitUserControlViewModel"
              >
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/SidebarUserControlStyle.axaml"/>
+    </UserControl.Styles>
+    
     <ScrollViewer>
         <Border BorderBrush="Black"
                 BorderThickness="2"
         >
-            <ItemsControl ItemsSource="{Binding VerticalMenu}">
+            <ItemsControl ItemsSource="{Binding MenuEntriesValues}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Border BorderBrush="Green"
-                                BorderThickness="2">
-                            <Button HorizontalAlignment="Stretch" Background="Transparent" FontWeight="Bold" Content="{Binding}"/>
-                        </Border>
+                        <Button Tag="MenuEntry" 
+                                Classes="NotSelectedMenuButton"
+                                Command="{Binding $parent[views:VisitUserControl].((vm:VisitUserControlViewModel)DataContext).MenuEntrySelectedCommand}"
+                                CommandParameter="{Binding}"
+                                Click="OnButtonClick"
+                                Content="{Binding }"
+                        />
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>

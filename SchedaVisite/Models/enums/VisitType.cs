@@ -1,24 +1,19 @@
 using System.Collections.Generic;
+using System.ComponentModel;
+using SchedaVisite.Models.enums;
 
 namespace SchedaVisite.Models.enums;
 
-public enum VisitType
+public static class VisitType
 {
-    Hf,
-    Amiloidosi,
-    CgaPerProcedura,
-    Cardiopalliative
-}
-
-public static class VisitTypeExtensions
-{
-    private static readonly Dictionary<VisitType, string> _labels = new()
+    public static List<string> getAllVisitTypes()
     {
-        { VisitType.Hf, "HF" },
-        { VisitType.Amiloidosi, "Amiloidosi" },
-        { VisitType.CgaPerProcedura, "CGA per procedura" },
-        { VisitType.Cardiopalliative, "Cardiopalliative" }
-    };
-
-    public static string ToLabel(this VisitType status) => _labels[status];
+        return new List<string>
+        {
+            "Hf",
+            "Amiloidosi",
+            "Cga Per Procedura",
+            "Cardiopalliative"
+        };
+    }
 }

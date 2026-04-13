@@ -9,5 +9,6 @@ public class Visit
     public string PatientCode { get; set; }
     public string Timestamp { get; set; }
     public int Number { get; set; }
-    public VisitType Type { get; set; }
+    public string Type { get; set; }
+    public bool Telemedicina { get; set; }
 }

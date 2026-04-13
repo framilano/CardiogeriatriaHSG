@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using SchedaVisite.Models;
 using SchedaVisite.Services.database;
 
@@ -55,12 +56,14 @@ public partial class WelcomeUserControlViewModel : ObservableObject
         }
     }
     
+    [RelayCommand]
     public void LoadExistingVisit(string timestamp)
     {
         var visit = _databaseService.RetrieveVisitByTimestampAndPatientCode(UserCodeTextBox, timestamp);
         _main.NavigateToVisit(_databaseService, visit);
     }
     
+    [RelayCommand]
     public void CreateNewVisit()
     {
         var timestamp = DateTime.Now.ToString("yyyy-MM-ddTHH:mm");

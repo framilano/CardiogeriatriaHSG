@@ -1,11 +1,12 @@
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
-namespace SchedaVisite.ViewModels;
+namespace SchedaVisite.Models.enums;
 
-public class SidebarUserControlViewModel
+public static class MenuEntries
 {
-    public ObservableCollection<string> VerticalMenu { get; } =
-        new()
+    public static List<string> getAllMenuEntries()
+    {
+        return new List<string>
         {
             "Anagrafica", 
             "Anamnesi geriatrica", 
@@ -18,4 +19,5 @@ public class SidebarUserControlViewModel
             "Terapia fine visita",
             "Consigli"
         };
+    }
 }
