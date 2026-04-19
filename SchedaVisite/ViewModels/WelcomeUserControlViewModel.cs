@@ -74,7 +74,8 @@ public partial class WelcomeUserControlViewModel : ObservableObject
             PatientCode = UserCodeTextBox,
             Timestamp = now,
             Number = LastVisitsList.Count,
-            Type = "Hf"
+            Type = "Cardiogeriatrica",
+            SubType = "Hf"
         };
 
         var patient = _databaseService.RetrievePatientByCode(UserCodeTextBox) ?? new Patient

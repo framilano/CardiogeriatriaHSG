@@ -37,6 +37,8 @@ public partial class VisitUserControlViewModel : ViewModelBase
     
     //All the VisitTypeValues available in Header
     public IEnumerable<string> VisitTypesValues => VisitType.getAllVisitTypes();
+    //All the VisitSubTypeValues available in Header
+    public IEnumerable<string> VisitSubTypesValues => VisitSubType.getAllVisitSubTypes();
     
     public required Visit CurrentVisit { get; set; }
     public required Patient CurrentPatient { get; set; }

@@ -8,10 +8,8 @@ public static class VisitType
     {
         return new List<string>
         {
-            "Hf",
-            "Amiloidosi",
-            "Cga Per Procedura",
-            "Cardiopalliative"
+            "Cardiogeriatrica",
+            "Cardiologica"
         };
     }
 }

@@ -10,5 +10,7 @@ public class Visit
     public DateTimeOffset Timestamp { get; set; }
     public int Number { get; set; }
     public string Type { get; set; }
+
+    public string SubType { get; set; }
     public bool Telemedicina { get; set; } = false;
 }

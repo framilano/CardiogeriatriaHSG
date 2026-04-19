@@ -52,6 +52,10 @@
                     <ComboBox ItemsSource="{Binding VisitTypesValues}" SelectedItem="{Binding CurrentVisit.Type}"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
+                    <TextBlock FontWeight="Bold" Padding="10" Text="Sottotipo Visita:" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding VisitSubTypesValues}" SelectedItem="{Binding CurrentVisit.SubType}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
                     <TextBlock FontWeight="Bold" Padding="10" Text="Telemedicina:" VerticalAlignment="Center"/>
                     <CheckBox IsChecked="{Binding CurrentVisit.Telemedicina}"></CheckBox>
                 </StackPanel>
