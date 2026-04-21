@@ -26,7 +26,7 @@
         <Border BorderBrush="Black"
                 BorderThickness="2"
                 Grid.Column="1">
-            <TextBlock Name="ColumnBDescription"></TextBlock>
+            <TextBlock Padding="8" TextWrapping="Wrap" Name="ColumnBDescription"></TextBlock>
         </Border>
     </Grid>
 </UserControl>

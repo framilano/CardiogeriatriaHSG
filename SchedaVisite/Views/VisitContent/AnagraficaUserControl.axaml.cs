@@ -1,9 +1,7 @@
 using System;
 using System.Text;
-using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
-using SchedaVisite.Models.enums.anagrafica;
 using SchedaVisite.ViewModels.VisitContent;
 
 namespace SchedaVisite.Views.VisitContent;

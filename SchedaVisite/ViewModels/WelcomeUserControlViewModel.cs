@@ -75,7 +75,26 @@ public partial class WelcomeUserControlViewModel : ObservableObject
             Timestamp = now,
             Number = LastVisitsList.Count,
             Type = "Cardiogeriatrica",
-            SubType = "Hf"
+            SubType = "Hf",
+            Telemedicina = false,
+            AssistanceAlone = false,
+            AssistanceSpouse = false,
+            AssistanceFamilyMembers = false,
+            CareTaker = false,
+            WalkingType = "Autonoma senza ausili",
+            MotorSkill = "Esce solo",
+            Falls = "0",
+            CognitiveDeficit = "Nessuno",
+            Bpsd = false,
+            HearingImpairment = false,
+            VisualImpairment = false,
+            Nights = "Riposate",
+            WeightLoss = "No",
+            Appetite = "Conservato",
+            Dysphagia = "No",
+            NutrionalProblems = false,
+            Constipation = false,
+            Disability = false
         };
 
         var patient = _databaseService.RetrievePatientByCode(UserCodeTextBox) ?? new Patient

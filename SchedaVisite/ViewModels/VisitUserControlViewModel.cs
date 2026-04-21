@@ -55,6 +55,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
         CurrentContent = menuEntry switch
         {
             "Anagrafica" => new AnagraficaUserControl { DataContext = new AnagraficaUserControlViewModel(CurrentVisit, CurrentPatient) },
+            "Anamnesi geriatrica" => new AnamnesiGeriatricaUserControl() { DataContext = new AnamnesiGeriatricaUserControlViewModel(CurrentVisit, CurrentPatient) },
             _ => CurrentContent
         };
     }
