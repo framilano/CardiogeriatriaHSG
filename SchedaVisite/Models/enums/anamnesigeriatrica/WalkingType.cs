@@ -9,10 +9,10 @@ public class WalkingType
         return
         [
             "Autonoma senza ausili",
-            "Bastone",
-            "Walker",
+            "Con Bastone",
+            "Con Walker",
             "Con assistenza",
-            "Solo passaggi posturali"
+            "Con solo passaggi posturali"
         ];
     }
 }
