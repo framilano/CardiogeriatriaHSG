@@ -15,11 +15,11 @@
             <StackPanel Orientation="Vertical" Spacing="8">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontWeight="Bold" Padding="10" Text="Data di nascita " VerticalAlignment="Center"/>
-                    <DatePicker SelectedDateChanged="OnDateOfBirthChanged" SelectedDate="{Binding CurrentPatient.DateOfBirth}"></DatePicker>
+                    <DatePicker Tag="DateOfBirth" SelectedDateChanged="OnColumnADatePickerChanged" SelectedDate="{Binding CurrentPatient.DateOfBirth}"></DatePicker>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock FontWeight="Bold" Padding="10" Text="Genere " VerticalAlignment="Center"/>
-                    <ComboBox SelectionChanged="OnGenderChanged" ItemsSource="{Binding GenderTypesValues}" SelectedItem="{Binding CurrentPatient.Gender}"/>
+                    <ComboBox Tag="Gender" SelectionChanged="OnColumnAGenderChanged" ItemsSource="{Binding GenderTypesValues}" SelectedItem="{Binding CurrentPatient.Gender}"/>
                 </StackPanel>
             </StackPanel>
         </Border>

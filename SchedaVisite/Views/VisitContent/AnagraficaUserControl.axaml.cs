@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using SchedaVisite.Models;
 using SchedaVisite.ViewModels.VisitContent;
 
 namespace SchedaVisite.Views.VisitContent;
@@ -12,43 +13,64 @@ public partial class AnagraficaUserControl : UserControl
     {
         InitializeComponent();
         _columnBDescription = this.Find<TextBlock>("ColumnBDescription");
+        DataContextChanged += (_, __) =>
+        {
+            if (DataContext is not AnagraficaUserControlViewModel vm) return;
+            _currentVisit = vm.CurrentVisit!;
+            _currentPatient = vm.CurrentPatient!;
+        };
     }
     
-    private TextBlock? _columnBDescription;
+    private Visit? _currentVisit;
+    private Patient? _currentPatient;
 
-    public void OnGenderChanged(object? sender, RoutedEventArgs routedEventArgs)
+    private string _registrySentence;
+    private readonly TextBlock? _columnBDescription;
+
+    public void OnColumnADatePickerChanged(object? sender, DatePickerSelectedValueChangedEventArgs datePickerSelectedValueChangedEventArgs)
     {
-        var anagraficaUserControlViewModel = DataContext as AnagraficaUserControlViewModel;
-
-        var gender = ((ComboBox)sender!).SelectedValue.ToString();
-        var dateOfBirth = anagraficaUserControlViewModel.CurrentPatient.DateOfBirth;
-        _updateColumnBDescription(gender, dateOfBirth);
+        var datePicker = (DatePicker)sender!;
+        _currentPatient!.DateOfBirth = (DateTimeOffset)datePicker.SelectedDate!;
+        UpdateRegistrySentence();
     }
 
-    private void OnDateOfBirthChanged(object? sender,
-        DatePickerSelectedValueChangedEventArgs datePickerSelectedValueChangedEventArgs)
+    
+    public void OnColumnAGenderChanged(object? sender, RoutedEventArgs routedEventArgs)
     {
-        var anagraficaUserControlViewModel = DataContext as AnagraficaUserControlViewModel;
-
-        var dateOfBirth = ((DatePicker)sender!).SelectedDate.Value;
-        var gender = anagraficaUserControlViewModel.CurrentPatient.Gender;
-        _updateColumnBDescription(gender, dateOfBirth);
+        var gender = (ComboBox)sender!;
+        _currentPatient!.Gender = gender.SelectedValue!.ToString();
+        UpdateRegistrySentence();
     }
-
-    private void _updateColumnBDescription(string gender, DateTimeOffset dateOfBirth)
+    
+    private void UpdateRegistrySentence()
     {
-        var vm = DataContext as AnagraficaUserControlViewModel;
+        var registrySentenceBuilder = new StringBuilder();
         
-        var visitDate = vm.CurrentVisit.Timestamp;
+        var visitDate = _currentVisit!.Timestamp;
         
-        var stringBuilder = new StringBuilder();
-
-        stringBuilder.Append(gender == "M" ? "Uomo di " : "Donna di ");
-        var age = visitDate.Year - dateOfBirth.Year;
-        if (dateOfBirth > visitDate.AddYears(-age))
+        registrySentenceBuilder.Append(_currentPatient!.Gender == "M" ? "Uomo di " : "Donna di ");
+        var age = visitDate.Year - _currentPatient!.DateOfBirth.Year;
+        if (_currentPatient!.DateOfBirth > visitDate.AddYears(-age))
             age--;
-        stringBuilder.Append(age + " anni.");
+        registrySentenceBuilder.Append(age + " anni");
         
-        _columnBDescription.Text = stringBuilder.ToString();
+        registrySentenceBuilder.Append('.');
+        registrySentenceBuilder.Append('\n');
+        _registrySentence = registrySentenceBuilder.ToString();
+        UpdateColumnBDescription();
+    }
+
+    public void LoadAnagraficaContent(Visit currentVisit, Patient currentPatient)
+    {
+        _currentVisit = currentVisit;
+        _currentPatient = currentPatient;
+        UpdateRegistrySentence();
+    }
+
+    private void UpdateColumnBDescription()
+    {
+        var columnBDescriptionStringBuilder = new StringBuilder();
+        columnBDescriptionStringBuilder.Append(_registrySentence);
+        _columnBDescription!.Text = columnBDescriptionStringBuilder.ToString();
     }
 }

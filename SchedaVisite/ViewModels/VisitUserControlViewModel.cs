@@ -56,6 +56,8 @@ public partial class VisitUserControlViewModel : ViewModelBase
         {
             "Anagrafica" => new AnagraficaUserControl { DataContext = new AnagraficaUserControlViewModel(CurrentVisit, CurrentPatient) },
             "Anamnesi geriatrica" => new AnamnesiGeriatricaUserControl() { DataContext = new AnamnesiGeriatricaUserControlViewModel(CurrentVisit, CurrentPatient) },
+            "Referto" => new RefertoUserControl() { DataContext = new RefertoUserControlViewModel(CurrentVisit, CurrentPatient) },
+
             _ => CurrentContent
         };
     }

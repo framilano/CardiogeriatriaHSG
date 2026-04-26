@@ -23,6 +23,7 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     }
 
     private Visit? _currentVisit;
+    private readonly TextBlock? _columnBDescription;
 
     private string _assistanceSentence;
     private string _walkingSentence;
@@ -271,6 +272,19 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         UpdateColumnBDescription();
     }
     
+    public void LoadAnamnesiGeriatricaContent(Visit currentVisit, Patient currentPatient)
+    {
+        _currentVisit = currentVisit;
+        UpdateAssistanceSentence();
+        UpdateWalkingSentence();
+        UpdateFallsSentence();
+        UpdateCognitiveDeficitSentence();
+        UpdateBpsdSentence();
+        UpdateNightsSentence();
+        UpdateConstipationSentence();
+        UpdateDisabilitySentence();
+    }
+
     private void UpdateColumnBDescription()
     {
         var columnBDescriptionStringBuilder = new StringBuilder();
@@ -287,6 +301,4 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
 
         _columnBDescription!.Text = columnBDescriptionStringBuilder.ToString();
     }
-    
-    private TextBlock? _columnBDescription;
 }

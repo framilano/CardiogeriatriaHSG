@@ -17,7 +17,8 @@ public static class SidebarEntries
             "CGA", 
             "Conclusioni", 
             "Terapia fine visita",
-            "Consigli"
+            "Consigli",
+            "Referto"
         };
     }
 }
