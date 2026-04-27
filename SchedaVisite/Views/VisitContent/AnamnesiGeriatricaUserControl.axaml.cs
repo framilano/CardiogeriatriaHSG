@@ -1,7 +1,7 @@
-using System;
 using System.Text;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Threading;
 using SchedaVisite.Models;
 using SchedaVisite.ViewModels.VisitContent;
 
@@ -18,6 +18,7 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
             if (DataContext is AnamnesiGeriatricaUserControlViewModel vm)
             {
                 _currentVisit = vm.CurrentVisit!;
+                LoadAnamnesiGeriatricaContent(_currentVisit);
             }
         };
     }
@@ -123,6 +124,8 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
                 UpdateDisabilitySentence();
                 break;
         }
+        
+        UpdateColumnBDescription();
     }
 
     private void UpdateAssistanceSentence()
@@ -136,8 +139,6 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         assistanceSentenceBuilder.Append('.');
         assistanceSentenceBuilder.Append('\n');
         _assistanceSentence = assistanceSentenceBuilder.ToString();
-
-        UpdateColumnBDescription();
     }
     
     private void UpdateWalkingSentence()
@@ -150,7 +151,6 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         walkingSentenceBuilder.Append('.');
         walkingSentenceBuilder.Append('\n');
         _walkingSentence = walkingSentenceBuilder.ToString();
-        UpdateColumnBDescription();
     }
     
     private void UpdateFallsSentence()
@@ -164,7 +164,6 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         fallsSentenceBuilder.Append('.');
         fallsSentenceBuilder.Append('\n');
         _fallsSentence = fallsSentenceBuilder.ToString();
-        UpdateColumnBDescription();
     }
     
     private void UpdateCognitiveDeficitSentence()
@@ -177,7 +176,6 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         cognitiveDeficitSentenceBuilder.Append('.');
         cognitiveDeficitSentenceBuilder.Append('\n');
         _cognitiveDeficitSentence = cognitiveDeficitSentenceBuilder.ToString();
-        UpdateColumnBDescription();
     }
 
     private void UpdateBpsdSentence()
@@ -189,7 +187,6 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         bpsdSentenceBuilder.Append('.');
         bpsdSentenceBuilder.Append('\n');
         _bpsdSentence = bpsdSentenceBuilder.ToString();
-        UpdateColumnBDescription();
     }
     
     private void UpdateImpairmentSentence()
@@ -202,7 +199,6 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         impairmentSentenceBuilder.Append('.');
         impairmentSentenceBuilder.Append('\n');
         _impairmentSentence = impairmentSentenceBuilder.ToString();
-        UpdateColumnBDescription();
     }
     
     private void UpdateNightsSentence()
@@ -213,7 +209,6 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         nightsSentenceBuilder.Append('.');
         nightsSentenceBuilder.Append('\n');
         _nightsSentence = nightsSentenceBuilder.ToString();
-        UpdateColumnBDescription();
     }
     
     private void UpdateWeightLossSentence()
@@ -242,7 +237,6 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         weightLossSentenceBuilder.Append('.');
         weightLossSentenceBuilder.Append('\n');
         _weightLossSentence = weightLossSentenceBuilder.ToString();
-        UpdateColumnBDescription();
     }
 
     private void UpdateConstipationSentence()
@@ -256,7 +250,6 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         constipationSentenceBuilder.Append('.');
         constipationSentenceBuilder.Append('\n');
         _constipationSentence = constipationSentenceBuilder.ToString();
-        UpdateColumnBDescription();
     }
 
     private void UpdateDisabilitySentence()
@@ -269,10 +262,9 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         disabilitySentenceBuilder.Append('.');
         disabilitySentenceBuilder.Append('\n');
         _disabilitySentence = disabilitySentenceBuilder.ToString();
-        UpdateColumnBDescription();
     }
     
-    public void LoadAnamnesiGeriatricaContent(Visit currentVisit, Patient currentPatient)
+    public void LoadAnamnesiGeriatricaContent(Visit currentVisit)
     {
         _currentVisit = currentVisit;
         UpdateAssistanceSentence();
@@ -280,9 +272,13 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         UpdateFallsSentence();
         UpdateCognitiveDeficitSentence();
         UpdateBpsdSentence();
+        UpdateImpairmentSentence();
         UpdateNightsSentence();
+        UpdateWeightLossSentence();
         UpdateConstipationSentence();
         UpdateDisabilitySentence();
+        
+        UpdateColumnBDescription();
     }
 
     private void UpdateColumnBDescription()
@@ -299,6 +295,6 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         columnBDescriptionStringBuilder.Append(_constipationSentence);
         columnBDescriptionStringBuilder.Append(_disabilitySentence);
 
-        _columnBDescription!.Text = columnBDescriptionStringBuilder.ToString();
+        Dispatcher.UIThread.Post(() => { _columnBDescription!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
 }

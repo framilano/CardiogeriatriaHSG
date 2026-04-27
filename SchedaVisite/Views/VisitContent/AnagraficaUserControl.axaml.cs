@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Threading;
 using SchedaVisite.Models;
 using SchedaVisite.ViewModels.VisitContent;
 
@@ -16,8 +17,9 @@ public partial class AnagraficaUserControl : UserControl
         DataContextChanged += (_, __) =>
         {
             if (DataContext is not AnagraficaUserControlViewModel vm) return;
-            _currentVisit = vm.CurrentVisit!;
-            _currentPatient = vm.CurrentPatient!;
+            _currentVisit = vm.CurrentVisit;
+            _currentPatient = vm.CurrentPatient;
+            LoadAnagraficaContent(_currentVisit, _currentPatient);
         };
     }
     
@@ -52,7 +54,7 @@ public partial class AnagraficaUserControl : UserControl
         var age = visitDate.Year - _currentPatient!.DateOfBirth.Year;
         if (_currentPatient!.DateOfBirth > visitDate.AddYears(-age))
             age--;
-        registrySentenceBuilder.Append(age + " anni");
+        registrySentenceBuilder.Append(age + " anni al momento della visita");
         
         registrySentenceBuilder.Append('.');
         registrySentenceBuilder.Append('\n');
@@ -71,6 +73,6 @@ public partial class AnagraficaUserControl : UserControl
     {
         var columnBDescriptionStringBuilder = new StringBuilder();
         columnBDescriptionStringBuilder.Append(_registrySentence);
-        _columnBDescription!.Text = columnBDescriptionStringBuilder.ToString();
+        Dispatcher.UIThread.Post(() => { _columnBDescription!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
 }

@@ -1,4 +1,5 @@
 ﻿using Avalonia.Controls;
+using Avalonia.Threading;
 using SchedaVisite.Models;
 using SchedaVisite.ViewModels;
 using SchedaVisite.ViewModels.VisitContent;
@@ -22,9 +23,10 @@ public partial class RefertoUserControl : UserControl
             _columnDescription!.Text = anagraficaUserControl.ColumnBDescription.Text;
             
             var anamnesiGeriatrica = new AnamnesiGeriatricaUserControl();
-            anamnesiGeriatrica.LoadAnamnesiGeriatricaContent(currentVisit, currentPatient);
-            _columnDescription!.Text = anagraficaUserControl.ColumnBDescription.Text +
-                                       anamnesiGeriatrica.ColumnBDescription.Text;
+            anamnesiGeriatrica.LoadAnamnesiGeriatricaContent(currentVisit);
+            Dispatcher.UIThread.Post(() => { _columnDescription!.Text = anagraficaUserControl.ColumnBDescription.Text +
+                                                                        anamnesiGeriatrica.ColumnBDescription.Text; 
+            });
         };
     }
     
