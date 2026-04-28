@@ -89,7 +89,6 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
                     _currentVisit!.WalkingType = null;
                     WalkingTypeComboBox.IsVisible = false;
                     WalkingTypeTextBlock.IsVisible = false;
-
                 }
                 //UpdateWalkingSentence();
                 break;
