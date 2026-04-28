@@ -29,15 +29,15 @@
                                 <CheckBox Tag="CareTaker" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.CareTaker}"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Deambulazione " VerticalAlignment="Center"/>
-                                <ComboBox Tag="WalkingType" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding WalkingTypesValues}" SelectedItem="{Binding CurrentVisit.WalkingType}"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal">
                                 <TextBlock FontWeight="Bold" Padding="10" Text="Motricità " VerticalAlignment="Center"/>
                                 <ComboBox Tag="MotorSkill" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding MotorSkillsValues}" SelectedItem="{Binding CurrentVisit.MotorSkill}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Cadute in 6 mesi " VerticalAlignment="Center"/>
+                                <TextBlock Name="WalkingTypeTextBlock" FontWeight="Bold" Padding="10" Text="Deambulazione " VerticalAlignment="Center"/>
+                                <ComboBox Name="WalkingTypeComboBox" Tag="WalkingType" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding WalkingTypesValues}" SelectedItem="{Binding CurrentVisit.WalkingType}"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock  FontWeight="Bold" Padding="10" Text="Cadute in 6 mesi " VerticalAlignment="Center"/>
                                 <ComboBox Tag="Falls" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding FallsValuesValues}" SelectedItem="{Binding CurrentVisit.Falls}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">

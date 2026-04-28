@@ -1,8 +1,10 @@
+using System;
 using System.Text;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using SchedaVisite.Models;
+using SchedaVisite.Models.enums.anamnesigeriatrica;
 using SchedaVisite.ViewModels.VisitContent;
 
 namespace SchedaVisite.Views.VisitContent;
@@ -15,13 +17,15 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         _columnBDescription = this.Find<TextBlock>("ColumnBDescription");
         DataContextChanged += (_, __) =>
         {
-            if (DataContext is AnamnesiGeriatricaUserControlViewModel vm)
+            if (DataContext is AnamnesiGeriatricaUserControlViewModel viewModel)
             {
-                _currentVisit = vm.CurrentVisit!;
+                _currentVisit = viewModel.CurrentVisit!;
                 LoadAnamnesiGeriatricaContent(_currentVisit);
             }
         };
     }
+
+    private AnamnesiGeriatricaUserControlViewModel _anamViewModel;
 
     private Visit? _currentVisit;
     private readonly TextBlock? _columnBDescription;
@@ -71,13 +75,27 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
                 _currentVisit!.CareTaker = value == "True";
                 UpdateAssistanceSentence();
                 break;
-            case "WalkingType":
-                _currentVisit!.WalkingType = value!;
-                UpdateWalkingSentence();
-                break;
             case "MotorSkill":
                 _currentVisit!.MotorSkill = value!;
-                UpdateWalkingSentence();
+                if (_currentVisit!.MotorSkill is not "Solo letto-poltrona")
+                {
+                    _currentVisit.WalkingType ??= "Autonoma senza ausili";
+                    WalkingTypeComboBox.SelectedItem = _currentVisit!.WalkingType;  //Forcing selected item value for spawned values
+                    WalkingTypeComboBox.IsVisible = true;
+                    WalkingTypeTextBlock.IsVisible = true;
+                }
+                else
+                {
+                    _currentVisit!.WalkingType = null;
+                    WalkingTypeComboBox.IsVisible = false;
+                    WalkingTypeTextBlock.IsVisible = false;
+
+                }
+                //UpdateWalkingSentence();
+                break;
+            case "WalkingType":
+                _currentVisit!.WalkingType = value!;
+                //UpdateWalkingSentence();
                 break;
             case "Falls":
                 _currentVisit!.Falls = value!;
@@ -127,7 +145,7 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         
         UpdateColumnBDescription();
     }
-
+    
     private void UpdateAssistanceSentence()
     {
         var assistanceSentenceBuilder = new StringBuilder();
@@ -192,10 +210,10 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     private void UpdateImpairmentSentence()
     {
         var impairmentSentenceBuilder = new StringBuilder();
-        if (_currentVisit!.HearingImpairment) impairmentSentenceBuilder.Append("Affetto da Ipoacusia e ");
-        else  impairmentSentenceBuilder.Append("Non affetto da Ipoacusia e ");
-        if (_currentVisit!.VisualImpairment) impairmentSentenceBuilder.Append("affetto da Ipovisus");
-        else  impairmentSentenceBuilder.Append("non affetto da Ipovisus");
+        if (_currentVisit!.HearingImpairment) impairmentSentenceBuilder.Append("Affetto da ipoacusia e ");
+        else  impairmentSentenceBuilder.Append("Non affetto da ipoacusia e ");
+        if (_currentVisit!.VisualImpairment) impairmentSentenceBuilder.Append("affetto da ipovisus");
+        else  impairmentSentenceBuilder.Append("non affetto da ipovisus");
         impairmentSentenceBuilder.Append('.');
         impairmentSentenceBuilder.Append('\n');
         _impairmentSentence = impairmentSentenceBuilder.ToString();
@@ -268,7 +286,7 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     {
         _currentVisit = currentVisit;
         UpdateAssistanceSentence();
-        UpdateWalkingSentence();
+        //UpdateWalkingSentence();
         UpdateFallsSentence();
         UpdateCognitiveDeficitSentence();
         UpdateBpsdSentence();

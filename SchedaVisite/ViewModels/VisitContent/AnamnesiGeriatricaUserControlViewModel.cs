@@ -1,11 +1,12 @@
+using System;
 using System.Collections.Generic;
+using CommunityToolkit.Mvvm.ComponentModel;
 using SchedaVisite.Models;
-using SchedaVisite.Models.enums.anagrafica;
 using SchedaVisite.Models.enums.anamnesigeriatrica;
 
 namespace SchedaVisite.ViewModels.VisitContent;
 
-public class AnamnesiGeriatricaUserControlViewModel : ViewModelBase
+public partial class AnamnesiGeriatricaUserControlViewModel : ObservableObject
 {
     //CONSTRUCTORS
     public AnamnesiGeriatricaUserControlViewModel(Visit currentVisit, Patient currentPatient)
@@ -15,7 +16,6 @@ public class AnamnesiGeriatricaUserControlViewModel : ViewModelBase
     }
     
     public Visit CurrentVisit { get; set; }
-    
     public Patient CurrentPatient { get; set; }
     
     public IEnumerable<string> AppetitesValues => Appetite.getAllAppetites();

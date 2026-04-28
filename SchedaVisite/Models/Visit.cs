@@ -15,22 +15,22 @@ public class Visit
     public bool Telemedicina { get; set; }
     
     //Anamnesi Geriatrica
-    public bool AssistanceAlone { get; set; }
-    public bool AssistanceSpouse { get; set; }
-    public bool AssistanceFamilyMembers { get; set; }
-    public bool CareTaker { get; set; }
-    public string WalkingType { get; set; }
-    public string MotorSkill { get; set; }
-    public string Falls { get; set; }
-    public string CognitiveDeficit { get; set; }
-    public bool Bpsd { get; set; }
-    public bool HearingImpairment { get; set; }
-    public bool VisualImpairment { get; set; }
-    public string Nights { get; set; }
-    public string WeightLoss { get; set; }
-    public string Appetite { get; set; }
-    public string Dysphagia { get; set; }
-    public bool NutrionalProblems { get; set; }
-    public bool Constipation { get; set; }
-    public bool Disability { get; set; }
+    public required bool AssistanceAlone { get; set; }
+    public required bool AssistanceSpouse { get; set; }
+    public required bool AssistanceFamilyMembers { get; set; }
+    public required bool CareTaker { get; set; }
+    public required string MotorSkill { get; set; }
+    public string? WalkingType { get; set; }
+    public required string Falls { get; set; }
+    public required string CognitiveDeficit { get; set; }
+    public required bool Bpsd { get; set; }
+    public required bool HearingImpairment { get; set; }
+    public required bool VisualImpairment { get; set; }
+    public required string Nights { get; set; }
+    public required string WeightLoss { get; set; }
+    public required string Appetite { get; set; }
+    public required string Dysphagia { get; set; }
+    public required bool NutrionalProblems { get; set; }
+    public required bool Constipation { get; set; }
+    public required bool Disability { get; set; }
 }
