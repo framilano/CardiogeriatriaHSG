@@ -28,10 +28,6 @@ namespace SchedaVisite.Migrations
                     b.Property<string>("Gender")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("TEXT");
-
                     b.HasKey("PatientCode");
 
                     b.ToTable("Patients");

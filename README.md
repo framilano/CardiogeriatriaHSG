@@ -20,5 +20,5 @@ dotnet ef migrations add AnamnesiGeriatrica
 
 ### To rollback to a previous migration, use the following command:
 ```
-dotnet ef migrations remove AnamnesiGeriatrica
+dotnet ef migrations remove
 ```

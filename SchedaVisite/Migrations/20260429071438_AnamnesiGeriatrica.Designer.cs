@@ -11,7 +11,7 @@ using SchedaVisite.Services.database;
 namespace SchedaVisite.Migrations
 {
     [DbContext(typeof(AppDb))]
-    [Migration("20260429070251_AnamnesiGeriatrica")]
+    [Migration("20260429071438_AnamnesiGeriatrica")]
     partial class AnamnesiGeriatrica
     {
         /// <inheritdoc />
