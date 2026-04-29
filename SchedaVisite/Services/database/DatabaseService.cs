@@ -25,7 +25,7 @@ public class DatabaseService
         var db = new AppDb(options);
 
         // Crea database + tabelle se non esistono
-        db.Database.EnsureCreated();
+        db.Database.Migrate();
 
         // Repository che usano lo stesso DbContext
         _patientRepository = new PatientRepository(db);

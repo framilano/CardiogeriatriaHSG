@@ -6,7 +6,7 @@ using SchedaVisite.Models;
 
 namespace SchedaVisite.Services.database;
 
-public class VisitRepository(AppDb db) : DbContext
+public class VisitRepository(AppDb db)
 {
     public List<Visit> FindByPatientCode(string code) =>
         db.Visits.Where(v => v.Patient.PatientCode == code).ToList();

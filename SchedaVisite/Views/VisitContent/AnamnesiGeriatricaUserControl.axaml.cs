@@ -90,11 +90,11 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
                     WalkingTypeComboBox.IsVisible = false;
                     WalkingTypeTextBlock.IsVisible = false;
                 }
-                //UpdateWalkingSentence();
+                UpdateWalkingSentence();
                 break;
             case "WalkingType":
                 _currentVisit!.WalkingType = value!;
-                //UpdateWalkingSentence();
+                UpdateWalkingSentence();
                 break;
             case "Falls":
                 _currentVisit!.Falls = value!;
@@ -161,10 +161,25 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     private void UpdateWalkingSentence()
     {
         var walkingSentenceBuilder = new StringBuilder();
-        walkingSentenceBuilder.Append("Deambulazione ");
-        walkingSentenceBuilder.Append(_currentVisit!.WalkingType.ToLower());
+        switch (_currentVisit!.MotorSkill)
+        {
+            case "Solo letto-poltrona":
+                walkingSentenceBuilder.Append("Vita di risparmio, spostamenti solo letto-poltrona");
+                walkingSentenceBuilder.Append('.');
+                walkingSentenceBuilder.Append('\n');
+                _walkingSentence = walkingSentenceBuilder.ToString();
+                return;
+            case "Esce solo":
+                walkingSentenceBuilder.Append("Esce di casa ");
+                break;
+            default:
+                walkingSentenceBuilder.Append("Autonomo entro le mura domestiche ");
+                break;
+        }
+
         walkingSentenceBuilder.Append(" e ");
-        walkingSentenceBuilder.Append(_currentVisit!.MotorSkill.ToLower());
+        walkingSentenceBuilder.Append("deambulazione ");
+        walkingSentenceBuilder.Append(_currentVisit!.WalkingType.ToLower());
         walkingSentenceBuilder.Append('.');
         walkingSentenceBuilder.Append('\n');
         _walkingSentence = walkingSentenceBuilder.ToString();
@@ -285,7 +300,7 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     {
         _currentVisit = currentVisit;
         UpdateAssistanceSentence();
-        //UpdateWalkingSentence();
+        UpdateWalkingSentence();
         UpdateFallsSentence();
         UpdateCognitiveDeficitSentence();
         UpdateBpsdSentence();

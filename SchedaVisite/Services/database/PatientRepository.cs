@@ -4,7 +4,7 @@ using SchedaVisite.Models;
 
 namespace SchedaVisite.Services.database;
 
-public class PatientRepository(AppDb db) : DbContext
+public class PatientRepository(AppDb db)
 {
     public Patient? FindByPatientCode(string code) =>
         db.Patients.FirstOrDefault(v => v.PatientCode == code);
