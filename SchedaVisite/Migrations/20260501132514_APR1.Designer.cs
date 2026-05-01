@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchedaVisite.Services.database;
 
@@ -10,9 +11,11 @@ using SchedaVisite.Services.database;
 namespace SchedaVisite.Migrations
 {
     [DbContext(typeof(AppDb))]
-    partial class AppDbModelSnapshot : ModelSnapshot
+    [Migration("20260501132514_APR1")]
+    partial class APR1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.7");
@@ -36,21 +39,6 @@ namespace SchedaVisite.Migrations
             modelBuilder.Entity("SchedaVisite.Models.Visit", b =>
                 {
                     b.Property<string>("VisitCode")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("Amyloidosis")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTimeOffset?>("AmyloidosisDiagnosisDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool?>("AmyloidosisDmt")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<DateTimeOffset?>("AmyloidosisTherapyStartDate")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("AmyloidosisType")
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("Anemia")
@@ -175,18 +163,6 @@ namespace SchedaVisite.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("Schizophrenia")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("SevereValvularDiseaseIao")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("SevereValvularDiseaseIm")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("SevereValvularDiseaseSao")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("SevereValvularDiseaseSm")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("SubType")

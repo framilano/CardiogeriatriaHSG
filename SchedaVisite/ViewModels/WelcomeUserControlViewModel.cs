@@ -115,7 +115,19 @@ public partial class WelcomeUserControlViewModel : ObservableObject
             OxygenTherapyLast6Months = false,
             HospitalizationLast6Months = false,
             HeparinUseLast6Months = false,
-            Bradycardia = false
+            Bradycardia = false,
+            ArterialHypertension = false,
+            SevereValvularDiseaseSm = false,
+            SevereValvularDiseaseIm = false,
+            SevereValvularDiseaseIao = false,
+            SevereValvularDiseaseSao = false,
+            Amyloidosis = false,
+            AmyloidosisType = null,
+            AmyloidosisDiagnosisDate = null,
+            AmyloidosisDmt = false,
+            AmyloidosisTherapyStartDate = null,
+            Dementia = false,
+            DementiaType = "Neurodegenerativa"
         };
 
         var patient = _databaseService.RetrievePatientByCode(UserCodeTextBox) ?? new Patient

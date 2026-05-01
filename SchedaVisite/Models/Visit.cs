@@ -54,5 +54,19 @@ public class Visit
     public required bool HospitalizationLast6Months { get; set; }
     public required bool HeparinUseLast6Months { get; set; }
     public required bool Bradycardia { get; set; }
+    public required bool ArterialHypertension { get; set; }
 
+    public required bool SevereValvularDiseaseSm { get; set; }
+    public required bool SevereValvularDiseaseIm { get; set; }
+    public required bool SevereValvularDiseaseIao { get; set; }
+    public required bool SevereValvularDiseaseSao { get; set; }
+
+    public required bool Amyloidosis { get; set; }
+    public string? AmyloidosisType { get; set; }
+    public DateTimeOffset? AmyloidosisDiagnosisDate { get; set; }
+    public bool? AmyloidosisDmt { get; set; }
+    public DateTimeOffset? AmyloidosisTherapyStartDate { get; set; }
+
+    public bool Dementia { get; set; }
+    public string? DementiaType { get; set; }
 }
