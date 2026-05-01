@@ -77,6 +77,7 @@ public partial class WelcomeUserControlViewModel : ObservableObject
             Type = "Cardiogeriatrica",
             SubType = "Hf",
             Telemedicina = false,
+            //AnamnesiGeriatrica
             AssistanceAlone = false,
             AssistanceSpouse = false,
             AssistanceFamilyMembers = false,
@@ -94,7 +95,27 @@ public partial class WelcomeUserControlViewModel : ObservableObject
             Dysphagia = "No",
             NutrionalProblems = false,
             Constipation = false,
-            Disability = false
+            Disability = false,
+            //APR
+            IschemicHeartDisease = false,
+            HeartFailure = false,
+            AtrialFibrillation = false,
+            CerebrovascularDisease = false,
+            Neoplasm = false,
+            ChronicObstructivePulmonaryDisease = false,
+            ChronicKidneyDisease = false,
+            PeripheralVascularDisease = false,
+            Diabetes = false,
+            ChronicSkinUlcers = false,
+            Parkinson = false,
+            Schizophrenia = false,
+            NeuromuscularDisorders = false,
+            HipFracture = false,
+            Anemia = false,
+            OxygenTherapyLast6Months = false,
+            HospitalizationLast6Months = false,
+            HeparinUseLast6Months = false,
+            Bradycardia = false
         };
 
         var patient = _databaseService.RetrievePatientByCode(UserCodeTextBox) ?? new Patient

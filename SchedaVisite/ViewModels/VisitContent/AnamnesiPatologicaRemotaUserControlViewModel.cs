@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using System.Collections.Generic;
 using SchedaVisite.Models;
 using SchedaVisite.Models.enums.anamnesigeriatrica;
 
 namespace SchedaVisite.ViewModels.VisitContent;
 
-public partial class AnamnesiGeriatricaUserControlViewModel : ViewModelBase
+public class AnamnesiPatologicaRemotaUserControlViewModel: ViewModelBase
 {
     //CONSTRUCTORS
-    public AnamnesiGeriatricaUserControlViewModel(Visit currentVisit, Patient currentPatient)
+    public AnamnesiPatologicaRemotaUserControlViewModel(Visit currentVisit, Patient currentPatient)
     {
         CurrentVisit = currentVisit;
         CurrentPatient = currentPatient;

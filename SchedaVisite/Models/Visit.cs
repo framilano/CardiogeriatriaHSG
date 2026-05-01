@@ -33,4 +33,26 @@ public class Visit
     public required bool NutrionalProblems { get; set; }
     public required bool Constipation { get; set; }
     public required bool Disability { get; set; }
+    
+    //APR
+    public required bool IschemicHeartDisease { get; set; }
+    public required bool HeartFailure { get; set; }
+    public required bool AtrialFibrillation { get; set; }
+    public required bool CerebrovascularDisease { get; set; }
+    public required bool Neoplasm { get; set; }
+    public required bool ChronicObstructivePulmonaryDisease { get; set; }
+    public required bool ChronicKidneyDisease { get; set; }
+    public required bool PeripheralVascularDisease { get; set; }
+    public required bool Diabetes { get; set; }
+    public required bool ChronicSkinUlcers { get; set; }
+    public required bool Parkinson { get; set; }
+    public required bool Schizophrenia { get; set; }
+    public required bool NeuromuscularDisorders { get; set; }
+    public required bool HipFracture { get; set; }
+    public required bool Anemia { get; set; }
+    public required bool OxygenTherapyLast6Months { get; set; }
+    public required bool HospitalizationLast6Months { get; set; }
+    public required bool HeparinUseLast6Months { get; set; }
+    public required bool Bradycardia { get; set; }
+
 }

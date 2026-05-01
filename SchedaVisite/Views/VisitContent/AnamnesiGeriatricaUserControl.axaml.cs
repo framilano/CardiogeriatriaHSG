@@ -1,10 +1,8 @@
-using System;
 using System.Text;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using SchedaVisite.Models;
-using SchedaVisite.Models.enums.anamnesigeriatrica;
 using SchedaVisite.ViewModels.VisitContent;
 
 namespace SchedaVisite.Views.VisitContent;
