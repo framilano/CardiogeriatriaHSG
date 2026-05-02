@@ -127,7 +127,7 @@ public partial class WelcomeUserControlViewModel : ObservableObject
             AmyloidosisDmt = false,
             AmyloidosisTherapyStartDate = null,
             Dementia = false,
-            DementiaType = "Neurodegenerativa"
+            DementiaType = "Neurodegenerativa",
         };
 
         var patient = _databaseService.RetrievePatientByCode(UserCodeTextBox) ?? new Patient

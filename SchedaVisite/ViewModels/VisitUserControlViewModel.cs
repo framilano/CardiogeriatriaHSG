@@ -49,15 +49,15 @@ public partial class VisitUserControlViewModel : ViewModelBase
     //METHODS
     
     [RelayCommand]
-    public void MenuEntrySelected(string menuEntry)
+    private void MenuEntrySelected(string menuEntry)
     {
         SelectedMenuEntry = menuEntry;
         CurrentContent = menuEntry switch
         {
             "Anagrafica" => new AnagraficaUserControl { DataContext = new AnagraficaUserControlViewModel(CurrentVisit, CurrentPatient) },
-            "Anamnesi geriatrica" => new AnamnesiGeriatricaUserControl() { DataContext = new AnamnesiGeriatricaUserControlViewModel(CurrentVisit, CurrentPatient) },
+            "Anamnesi geriatrica" => new AnamnesiGeriatricaUserControl() { DataContext = new AnamnesiGeriatricaUserControlViewModel(CurrentVisit) },
             "Referto" => new RefertoUserControl() { DataContext = new RefertoUserControlViewModel(CurrentVisit, CurrentPatient) },
-            "APR" => new AnamnesiPatologicaRemotaUserControl() { DataContext = new AnamnesiPatologicaRemotaUserControlViewModel(CurrentVisit, CurrentPatient) },
+            "APR" => new AnamnesiPatologicaRemotaUserControl() { DataContext = new AnamnesiPatologicaRemotaUserControlViewModel(CurrentVisit) },
 
             _ => CurrentContent
         };

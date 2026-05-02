@@ -19,7 +19,7 @@
                         <StackPanel Orientation="Vertical" Spacing="8">
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Cardiopatia Ischemica "/>
-                                <CheckBox Tag="IschemicHeartDisease" IsChecked="{Binding CurrentVisit.IschemicHeartDisease}"/>
+                                <CheckBox Name="IschemicHeartDisease" Tag="IschemicHeartDisease" IsChecked="{Binding CurrentVisit.IschemicHeartDisease}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Insufficienza Cardiaca "/>
@@ -142,22 +142,20 @@
                         </StackPanel>
                     </ScrollViewer>
                 </Border>
-                <ScrollViewer Grid.Column="1">
-                    <Border Classes="ColumnBorder">
-                        
-                        <TextBox Text="{Binding ColumnBDescription}" Classes="ColumnBText" Name="ColumnBDescription">
-                            <TextBox.InnerRightContent>
-                                <Button 
-                                    HorizontalAlignment="Right" 
-                                    VerticalAlignment="Top"
-                                    Classes="TransparentButton"
-                                    Command="{Binding InferColumnBValues}">
-                                    <Image Source="avares://SchedaVisite/Assets/linux.png"
-                                           Width="40" Height="40" />
-                                </Button>
-                            </TextBox.InnerRightContent>
-                        </TextBox>
-                    </Border>
-                </ScrollViewer>
+                 <Border Grid.Column="1" Classes="ColumnBorder">
+                     <Grid>
+                         <ScrollViewer VerticalScrollBarVisibility="Auto">
+                             <TextBox Text="{Binding ColumnBDescription}" Classes="ColumnBText" Name="ColumnBDescription"/>
+                         </ScrollViewer>
+                         <Button 
+                             HorizontalAlignment="Right" 
+                             VerticalAlignment="Top"
+                             Margin="0,4,4,0"
+                             Classes="TransparentButton"
+                             Command="{Binding InferColumnBValues}">
+                             <Image Source="avares://SchedaVisite/Assets/linux.png" Width="40" Height="40" />
+                         </Button>
+                     </Grid>
+                 </Border>
             </Grid>
 </UserControl>

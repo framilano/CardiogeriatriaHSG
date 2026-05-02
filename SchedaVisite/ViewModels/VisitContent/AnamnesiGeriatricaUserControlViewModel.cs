@@ -4,24 +4,18 @@ using SchedaVisite.Models.enums.anamnesigeriatrica;
 
 namespace SchedaVisite.ViewModels.VisitContent;
 
-public class AnamnesiGeriatricaUserControlViewModel : ViewModelBase
+public class AnamnesiGeriatricaUserControlViewModel(Visit currentVisit) : ViewModelBase
 {
     //CONSTRUCTORS
-    public AnamnesiGeriatricaUserControlViewModel(Visit currentVisit, Patient currentPatient)
-    {
-        CurrentVisit = currentVisit;
-        CurrentPatient = currentPatient;
-    }
-    
-    public Visit CurrentVisit { get; set; }
-    public Patient CurrentPatient { get; set; }
-    
-    public IEnumerable<string> AppetitesValues => Appetite.getAllAppetites();
-    public IEnumerable<string> CognitiveDeficitsValues => CognitiveDeficit.getAllCognitiveDeficits();
-    public IEnumerable<string> DysphagiasValues => Dysphagia.getAllDysphagias();
-    public IEnumerable<string> FallsValuesValues => Falls.getAllFalls();
-    public IEnumerable<string> MotorSkillsValues => MotorSkill.getAllMotorSkills();
-    public IEnumerable<string> NightsValues => Nights.getAllNights();
-    public IEnumerable<string> WalkingTypesValues => WalkingType.getAllWalkingTypes();
-    public IEnumerable<string> WeightLossesValues => WeightLoss.getAllWeightLosses();
+
+    public Visit CurrentVisit { get; set; } = currentVisit;
+
+    public static IEnumerable<string> AppetitesValues => Appetite.getAllAppetites();
+    public static IEnumerable<string> CognitiveDeficitsValues => CognitiveDeficit.getAllCognitiveDeficits();
+    public static IEnumerable<string> DysphagiasValues => Dysphagia.getAllDysphagias();
+    public static IEnumerable<string> FallsValuesValues => Falls.getAllFalls();
+    public static IEnumerable<string> MotorSkillsValues => MotorSkill.getAllMotorSkills();
+    public static IEnumerable<string> NightsValues => Nights.getAllNights();
+    public static IEnumerable<string> WalkingTypesValues => WalkingType.getAllWalkingTypes();
+    public static IEnumerable<string> WeightLossesValues => WeightLoss.getAllWeightLosses();
 }

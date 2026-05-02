@@ -17,7 +17,8 @@
     
     <Style Selector="TextBox.ColumnBText">
         <Setter Property="TextWrapping" Value="Wrap"/>
-        <Setter Property="Padding" Value="10"/>
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="Padding" Value="10 10 50 10"/>
     </Style>
     
     <Style Selector="TextBox.TransparentButton">

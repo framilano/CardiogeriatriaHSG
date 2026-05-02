@@ -5,18 +5,13 @@ using SchedaVisite.Models.enums.anagrafica;
 
 namespace SchedaVisite.ViewModels.VisitContent;
 
-public class AnagraficaUserControlViewModel : ViewModelBase
+public class AnagraficaUserControlViewModel(Visit currentVisit, Patient currentPatient) : ViewModelBase
 {
     //CONSTRUCTORS
-    public AnagraficaUserControlViewModel(Visit currentVisit, Patient currentPatient)
-    {
-        CurrentVisit = currentVisit;
-        CurrentPatient = currentPatient;
-    }
-    
-    public Visit CurrentVisit { get; set; }
-    
-    public Patient CurrentPatient { get; set; }
-    
+
+    public Visit CurrentVisit { get; set; } = currentVisit;
+
+    public Patient CurrentPatient { get; set; } = currentPatient;
+
     public IEnumerable<string> GenderTypesValues => GenderTypes.GetAllGenderTypes();
 }

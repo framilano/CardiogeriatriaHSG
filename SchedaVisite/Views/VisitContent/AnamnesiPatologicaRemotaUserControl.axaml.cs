@@ -46,22 +46,18 @@ public partial class AnamnesiPatologicaRemotaUserControl : UserControl
                 if (_currentVisit!.Amyloidosis)
                 {
                     _currentVisit.AmyloidosisType ??= "ATTR-WT";
-                    AmyloidosisTypeComboBox.SelectedItem = _currentVisit!.AmyloidosisType;  //Forcing selected item value for spawned values
                     AmyloidosisTypeComboBox.IsVisible = true;
                     AmyloidosisTypeTextBlock.IsVisible = true;
                     
                     _currentVisit.AmyloidosisDiagnosisDate ??= now;
-                    AmyloidosisDiagnosisDateDatePicker.SelectedDate = _currentVisit!.AmyloidosisDiagnosisDate;
                     AmyloidosisDiagnosisDateDatePicker.IsVisible = true;
                     AmyloidosisDiagnosisDateTextBlock.IsVisible = true;
                     
                     _currentVisit.AmyloidosisDmt ??= false;
-                    AmyloidosisDmtCheckBox.IsChecked = _currentVisit!.AmyloidosisDmt;
                     AmyloidosisDmtTextBlock.IsVisible = true;
                     AmyloidosisDmtCheckBox.IsVisible = true;
                     
                     _currentVisit.AmyloidosisTherapyStartDate ??= now;
-                    AmyloidosisTherapyStartDateDatePicker.SelectedDate = _currentVisit!.AmyloidosisTherapyStartDate;
                     AmyloidosisTherapyStartDateDatePicker.IsVisible = true;
                     AmyloidosisTherapyStartDateTextBlock.IsVisible = true;
                 }
@@ -89,7 +85,6 @@ public partial class AnamnesiPatologicaRemotaUserControl : UserControl
                 if (_currentVisit!.Dementia)
                 {
                     _currentVisit.DementiaType ??= "Neurodegenerativa";
-                    DementiaTypeComboBox.SelectedItem = _currentVisit!.DementiaType;
                     DementiaTypeComboBox.IsVisible = true;
                     DementiaTypeTextBlock.IsVisible = true;
                 }

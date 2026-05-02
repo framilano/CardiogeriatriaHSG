@@ -1,8 +1,9 @@
 using System;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace SchedaVisite.Models;
 
-public class Visit
+public partial class Visit: ObservableObject
 {
     public string? VisitCode { get; set; }
     public Patient Patient  { get; set; }
@@ -20,7 +21,7 @@ public class Visit
     public required bool AssistanceFamilyMembers { get; set; }
     public required bool CareTaker { get; set; }
     public required string MotorSkill { get; set; }
-    public string? WalkingType { get; set; }
+    [ObservableProperty] public string? _walkingType;
     public required string Falls { get; set; }
     public required string CognitiveDeficit { get; set; }
     public required bool Bpsd { get; set; }
@@ -35,26 +36,26 @@ public class Visit
     public required bool Disability { get; set; }
     
     //APR
-    public required bool IschemicHeartDisease { get; set; }
-    public required bool HeartFailure { get; set; }
-    public required bool AtrialFibrillation { get; set; }
-    public required bool CerebrovascularDisease { get; set; }
-    public required bool Neoplasm { get; set; }
-    public required bool ChronicObstructivePulmonaryDisease { get; set; }
-    public required bool ChronicKidneyDisease { get; set; }
-    public required bool PeripheralVascularDisease { get; set; }
-    public required bool Diabetes { get; set; }
-    public required bool ChronicSkinUlcers { get; set; }
-    public required bool Parkinson { get; set; }
-    public required bool Schizophrenia { get; set; }
-    public required bool NeuromuscularDisorders { get; set; }
-    public required bool HipFracture { get; set; }
-    public required bool Anemia { get; set; }
-    public required bool OxygenTherapyLast6Months { get; set; }
-    public required bool HospitalizationLast6Months { get; set; }
-    public required bool HeparinUseLast6Months { get; set; }
-    public required bool Bradycardia { get; set; }
-    public required bool ArterialHypertension { get; set; }
+    [ObservableProperty] private bool _ischemicHeartDisease;
+    [ObservableProperty] private bool _heartFailure;
+    [ObservableProperty] private bool _atrialFibrillation;
+    [ObservableProperty] private bool _cerebrovascularDisease;
+    [ObservableProperty] private bool _neoplasm;
+    [ObservableProperty] private bool _chronicObstructivePulmonaryDisease;
+    [ObservableProperty] private bool _chronicKidneyDisease;
+    [ObservableProperty] private bool _peripheralVascularDisease;
+    [ObservableProperty] private bool _diabetes;
+    [ObservableProperty] private bool _chronicSkinUlcers;
+    [ObservableProperty] private bool _parkinson;
+    [ObservableProperty] private bool _schizophrenia;
+    [ObservableProperty] private bool _neuromuscularDisorders;
+    [ObservableProperty] private bool _hipFracture;
+    [ObservableProperty] private bool _anemia;
+    [ObservableProperty] private bool _oxygenTherapyLast6Months;
+    [ObservableProperty] private bool _hospitalizationLast6Months;
+    [ObservableProperty] private bool _heparinUseLast6Months;
+    [ObservableProperty] private bool _bradycardia;
+    [ObservableProperty] private bool _arterialHypertension;
 
     public required bool SevereValvularDiseaseSm { get; set; }
     public required bool SevereValvularDiseaseIm { get; set; }
@@ -62,11 +63,11 @@ public class Visit
     public required bool SevereValvularDiseaseSao { get; set; }
 
     public required bool Amyloidosis { get; set; }
-    public string? AmyloidosisType { get; set; }
-    public DateTimeOffset? AmyloidosisDiagnosisDate { get; set; }
-    public bool? AmyloidosisDmt { get; set; }
-    public DateTimeOffset? AmyloidosisTherapyStartDate { get; set; }
+    [ObservableProperty] private string? _amyloidosisType;
+    [ObservableProperty] private DateTimeOffset? _amyloidosisDiagnosisDate;
+    [ObservableProperty] private bool? _amyloidosisDmt;
+    [ObservableProperty] private DateTimeOffset? _amyloidosisTherapyStartDate;
 
     public bool Dementia { get; set; }
-    public string? DementiaType { get; set; }
+    [ObservableProperty] private string? _dementiaType;
 }
