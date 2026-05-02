@@ -183,6 +183,9 @@ namespace SchedaVisite.Migrations
                     b.Property<bool>("SevereValvularDiseaseIm")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("SevereValvularDiseaseItr")
+                        .HasColumnType("INTEGER");
+
                     b.Property<bool>("SevereValvularDiseaseSao")
                         .HasColumnType("INTEGER");
 
@@ -220,6 +223,19 @@ namespace SchedaVisite.Migrations
                     b.ToTable("Visits");
                 });
 
+            modelBuilder.Entity("SchedaVisite.Models.VisitPersistedTexts", b =>
+                {
+                    b.Property<string>("VisitCode")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AprText")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("VisitCode");
+
+                    b.ToTable("VisitsPersistedTexts");
+                });
+
             modelBuilder.Entity("SchedaVisite.Models.Visit", b =>
                 {
                     b.HasOne("SchedaVisite.Models.Patient", "Patient")
@@ -228,12 +244,26 @@ namespace SchedaVisite.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SchedaVisite.Models.VisitPersistedTexts", "VisitPersistedTexts")
+                        .WithOne("Visit")
+                        .HasForeignKey("SchedaVisite.Models.Visit", "VisitCode")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Patient");
+
+                    b.Navigation("VisitPersistedTexts");
                 });
 
             modelBuilder.Entity("SchedaVisite.Models.Patient", b =>
                 {
                     b.Navigation("Visits");
+                });
+
+            modelBuilder.Entity("SchedaVisite.Models.VisitPersistedTexts", b =>
+                {
+                    b.Navigation("Visit")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

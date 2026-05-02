@@ -11,8 +11,8 @@ using SchedaVisite.Services.database;
 namespace SchedaVisite.Migrations
 {
     [DbContext(typeof(AppDb))]
-    [Migration("20260429071438_AnamnesiGeriatrica")]
-    partial class AnamnesiGeriatrica
+    [Migration("20260502165146_APR0")]
+    partial class APR0
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -41,9 +41,30 @@ namespace SchedaVisite.Migrations
                     b.Property<string>("VisitCode")
                         .HasColumnType("TEXT");
 
+                    b.Property<bool>("Amyloidosis")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset?>("AmyloidosisDiagnosisDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool?>("AmyloidosisDmt")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<DateTimeOffset?>("AmyloidosisTherapyStartDate")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AmyloidosisType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("Anemia")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("Appetite")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("ArterialHypertension")
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("AssistanceAlone")
                         .HasColumnType("INTEGER");
@@ -54,10 +75,28 @@ namespace SchedaVisite.Migrations
                     b.Property<bool>("AssistanceSpouse")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("AtrialFibrillation")
+                        .HasColumnType("INTEGER");
+
                     b.Property<bool>("Bpsd")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("Bradycardia")
+                        .HasColumnType("INTEGER");
+
                     b.Property<bool>("CareTaker")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("CerebrovascularDisease")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("ChronicKidneyDisease")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("ChronicObstructivePulmonaryDisease")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("ChronicSkinUlcers")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("CognitiveDeficit")
@@ -65,6 +104,15 @@ namespace SchedaVisite.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("Constipation")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Dementia")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("DementiaType")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("Diabetes")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("Disability")
@@ -81,9 +129,30 @@ namespace SchedaVisite.Migrations
                     b.Property<bool>("HearingImpairment")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("HeartFailure")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("HeparinUseLast6Months")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("HipFracture")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("HospitalizationLast6Months")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("IschemicHeartDisease")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("MotorSkill")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("Neoplasm")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("NeuromuscularDisorders")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Nights")
                         .IsRequired()
@@ -95,9 +164,36 @@ namespace SchedaVisite.Migrations
                     b.Property<bool>("NutrionalProblems")
                         .HasColumnType("INTEGER");
 
+                    b.Property<bool>("OxygenTherapyLast6Months")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Parkinson")
+                        .HasColumnType("INTEGER");
+
                     b.Property<string>("PatientCode")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<bool>("PeripheralVascularDisease")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("Schizophrenia")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("SevereValvularDiseaseIao")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("SevereValvularDiseaseIm")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("SevereValvularDiseaseItr")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("SevereValvularDiseaseSao")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<bool>("SevereValvularDiseaseSm")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("SubType")
                         .IsRequired()
@@ -130,6 +226,19 @@ namespace SchedaVisite.Migrations
                     b.ToTable("Visits");
                 });
 
+            modelBuilder.Entity("SchedaVisite.Models.VisitPersistedTexts", b =>
+                {
+                    b.Property<string>("VisitCode")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("AprText")
+                        .HasColumnType("TEXT");
+
+                    b.HasKey("VisitCode");
+
+                    b.ToTable("VisitsPersistedTexts");
+                });
+
             modelBuilder.Entity("SchedaVisite.Models.Visit", b =>
                 {
                     b.HasOne("SchedaVisite.Models.Patient", "Patient")
@@ -138,12 +247,26 @@ namespace SchedaVisite.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("SchedaVisite.Models.VisitPersistedTexts", "VisitPersistedTexts")
+                        .WithOne("Visit")
+                        .HasForeignKey("SchedaVisite.Models.Visit", "VisitCode")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.Navigation("Patient");
+
+                    b.Navigation("VisitPersistedTexts");
                 });
 
             modelBuilder.Entity("SchedaVisite.Models.Patient", b =>
                 {
                     b.Navigation("Visits");
+                });
+
+            modelBuilder.Entity("SchedaVisite.Models.VisitPersistedTexts", b =>
+                {
+                    b.Navigation("Visit")
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

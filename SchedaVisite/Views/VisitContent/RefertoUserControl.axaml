@@ -6,12 +6,27 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SchedaVisite.Views.VisitContent.RefertoUserControl"
              x:DataType="visitContent:RefertoUserControlViewModel"
-             >
+             FontSize="25">
     <UserControl.Styles>
         <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
     </UserControl.Styles>
     
-    <Border Classes="ColumnBorder">
-        <TextBlock Classes="ColumnBText" Name="ColumnDescription"></TextBlock>
-    </Border>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Border Classes="ColumnBorder">
+            <SelectableTextBlock Classes="ColumnBSelectableTextBlock">
+                <Run FontWeight="Bold" Text="Anagrafica" />
+                <LineBreak/>
+                <Run Name="AnagraficaContent"/>
+                <LineBreak/>
+                <Run FontWeight="Bold" Text="Anamnesi Geriatrica" />
+                <LineBreak/>
+                <Run Name="AnamnesiGeriatricaContent"/>
+                <LineBreak/>
+                <Run FontWeight="Bold" Text="Anamnesi Patologica Remota" />
+                <LineBreak/>
+                <Run Name="AnamnesiPatologicaRemotaContent"/>
+                <LineBreak/>
+            </SelectableTextBlock>
+         </Border>
+    </ScrollViewer>
 </UserControl>

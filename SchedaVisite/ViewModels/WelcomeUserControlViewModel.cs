@@ -24,7 +24,7 @@ public partial class WelcomeUserControlViewModel : ObservableObject
     [ObservableProperty] private string? _errorMessage;
     [ObservableProperty] private bool? _createVisitBtnVisibility = false;
     [ObservableProperty] private bool? _lastVisitsListVisibility;
-    [ObservableProperty] private List<Visit> _lastVisitsList;
+    [ObservableProperty] private List<Visit>? _lastVisitsList;
 
     partial void OnUserCodeTextBoxChanged(string value) { SearchUser(); }
     
@@ -121,6 +121,7 @@ public partial class WelcomeUserControlViewModel : ObservableObject
             SevereValvularDiseaseIm = false,
             SevereValvularDiseaseIao = false,
             SevereValvularDiseaseSao = false,
+            SevereValvularDiseaseItr = false,
             Amyloidosis = false,
             AmyloidosisType = null,
             AmyloidosisDiagnosisDate = null,
@@ -129,6 +130,8 @@ public partial class WelcomeUserControlViewModel : ObservableObject
             Dementia = false,
             DementiaType = "Neurodegenerativa",
         };
+
+        visit.VisitPersistedTexts = new VisitPersistedTexts(visit.VisitCode);
 
         var patient = _databaseService.RetrievePatientByCode(UserCodeTextBox) ?? new Patient
         {

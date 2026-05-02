@@ -39,7 +39,7 @@ public partial class SidebarUserControl : UserControl
     public void OnButtonClick(object? sender, RoutedEventArgs routedEventArgs)
     {
         var btn = sender as Button;
-        AddHighlight(btn);
+        AddHighlight(btn!);
         //Console.WriteLine("I clicked on " + btn.Content);
     }
 }

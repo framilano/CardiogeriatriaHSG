@@ -6,8 +6,6 @@ namespace SchedaVisite.ViewModels.VisitContent;
 
 public class AnamnesiGeriatricaUserControlViewModel(Visit currentVisit) : ViewModelBase
 {
-    //CONSTRUCTORS
-
     public Visit CurrentVisit { get; set; } = currentVisit;
 
     public static IEnumerable<string> AppetitesValues => Appetite.getAllAppetites();

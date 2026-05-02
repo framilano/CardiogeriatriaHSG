@@ -93,4 +93,12 @@ public class DatabaseService
         _visitRepository.UpdateVisit(visit);
         Console.WriteLine($"Updated visit {visit.VisitCode} for patient code: {visit.PatientCode}");
     }
+    
+    //************* VISIT PERSISTED TEXTS APIS *************
+    public void LoadVisitPersistedTextsByVisit(Visit visit)
+    {
+        Console.WriteLine($"Loading persisted texts for visit {visit.VisitCode}");
+        _visitRepository.LoadVisitPersistedTextsByVisit(visit);
+        Console.WriteLine($"Loaded persisted texts for visit {visit.VisitCode}");
+    }
 }

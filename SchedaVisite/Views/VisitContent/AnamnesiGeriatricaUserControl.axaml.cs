@@ -22,22 +22,20 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
             }
         };
     }
-
-    private AnamnesiGeriatricaUserControlViewModel _anamViewModel;
-
+    
     private Visit? _currentVisit;
     private readonly TextBlock? _columnBDescription;
 
-    private string _assistanceSentence;
-    private string _walkingSentence;
-    private string _fallsSentence;
-    private string _cognitiveDeficitSentence;
-    private string _bpsdSentence;
-    private string _impairmentSentence;
-    private string _nightsSentence;
-    private string _weightLossSentence;
-    private string _constipationSentence;
-    private string _disabilitySentence;
+    private string? _assistanceSentence;
+    private string? _walkingSentence;
+    private string? _fallsSentence;
+    private string? _cognitiveDeficitSentence;
+    private string? _bpsdSentence;
+    private string? _impairmentSentence;
+    private string? _nightsSentence;
+    private string? _weightLossSentence;
+    private string? _constipationSentence;
+    private string? _disabilitySentence;
 
     public void OnColumnAChanged(object? sender, RoutedEventArgs routedEventArgs)
     {

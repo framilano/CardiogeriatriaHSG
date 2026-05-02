@@ -106,6 +106,8 @@
                                 <CheckBox  Tag="SevereValvularDiseaseIao" IsChecked="{Binding CurrentVisit.SevereValvularDiseaseIao}"/>
                                 <TextBlock Padding="10" Text="SAO"/>
                                 <CheckBox  Tag="SevereValvularDiseaseSao" IsChecked="{Binding CurrentVisit.SevereValvularDiseaseSao}"/>
+                                <TextBlock Padding="10" Text="ITR"/>
+                                <CheckBox  Tag="SevereValvularDiseaseItr" IsChecked="{Binding CurrentVisit.SevereValvularDiseaseItr}"/>
                             </StackPanel>
                            
                             <!-- AMILOIDOSI -->
@@ -145,7 +147,11 @@
                  <Border Grid.Column="1" Classes="ColumnBorder">
                      <Grid>
                          <ScrollViewer VerticalScrollBarVisibility="Auto">
-                             <TextBox Text="{Binding ColumnBDescription}" Classes="ColumnBText" Name="ColumnBDescription"/>
+                             <TextBox
+                                 Text="{Binding CurrentVisit.VisitPersistedTexts.AprText}"
+                                 Classes="ColumnBTextBox"
+                                 Name="ColumnBDescription"
+                             />
                          </ScrollViewer>
                          <Button 
                              HorizontalAlignment="Right" 

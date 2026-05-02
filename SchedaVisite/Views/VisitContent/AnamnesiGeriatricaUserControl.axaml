@@ -91,7 +91,7 @@
                 </Border>
                 <ScrollViewer Grid.Column="1">
                     <Border Classes="ColumnBorder">
-                        <TextBlock Classes="ColumnBText" Name="ColumnBDescription"></TextBlock>
+                        <TextBlock Classes="ColumnBTextBlock" Name="ColumnBDescription"></TextBlock>
                     </Border>
                 </ScrollViewer>
             </Grid>

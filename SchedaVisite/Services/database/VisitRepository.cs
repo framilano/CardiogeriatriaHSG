@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
 using SchedaVisite.Models;
 
 namespace SchedaVisite.Services.database;
@@ -28,4 +27,7 @@ public class VisitRepository(AppDb db)
         db.Visits.Update(v);
         db.SaveChanges();
     }
+
+    public void LoadVisitPersistedTextsByVisit(Visit visit) => 
+        db.Entry(visit).Reference(v => v.VisitPersistedTexts).Load();
 }

@@ -29,7 +29,7 @@
         </Border>
         <Border Classes="ColumnBorder"
                 Grid.Column="1">
-            <TextBlock Classes="ColumnBText" Name="ColumnBDescription"></TextBlock>
+            <TextBlock Classes="ColumnBTextBlock" Name="ColumnBDescription"></TextBlock>
         </Border>
     </Grid>
 </UserControl>

@@ -15,10 +15,20 @@
         <Setter Property="BorderThickness" Value="2"/>
     </Style>
     
-    <Style Selector="TextBox.ColumnBText">
+    <Style Selector="TextBox.ColumnBTextBox">
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="AcceptsReturn" Value="True"/>
         <Setter Property="Padding" Value="10 10 50 10"/>
+    </Style>
+    
+    <Style Selector="TextBlock.ColumnBTextBlock">
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Padding" Value="10"/>
+    </Style>
+    
+    <Style Selector="SelectableTextBlock.ColumnBSelectableTextBlock">
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="Padding" Value="10"/>
     </Style>
     
     <Style Selector="TextBox.TransparentButton">

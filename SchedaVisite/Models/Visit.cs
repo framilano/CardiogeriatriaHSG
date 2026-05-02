@@ -14,6 +14,8 @@ public partial class Visit: ObservableObject
 
     public string SubType { get; set; }
     public bool Telemedicina { get; set; }
+
+    [ObservableProperty] public VisitPersistedTexts? _visitPersistedTexts;
     
     //Anamnesi Geriatrica
     public required bool AssistanceAlone { get; set; }
@@ -57,11 +59,12 @@ public partial class Visit: ObservableObject
     [ObservableProperty] private bool _bradycardia;
     [ObservableProperty] private bool _arterialHypertension;
 
-    public required bool SevereValvularDiseaseSm { get; set; }
-    public required bool SevereValvularDiseaseIm { get; set; }
-    public required bool SevereValvularDiseaseIao { get; set; }
-    public required bool SevereValvularDiseaseSao { get; set; }
-
+    [ObservableProperty] private bool _severeValvularDiseaseSm;
+    [ObservableProperty] private bool _severeValvularDiseaseIm;
+    [ObservableProperty] private bool _severeValvularDiseaseIao;
+    [ObservableProperty] private bool _severeValvularDiseaseSao;
+    [ObservableProperty] private bool _severeValvularDiseaseItr;
+    
     public required bool Amyloidosis { get; set; }
     [ObservableProperty] private string? _amyloidosisType;
     [ObservableProperty] private DateTimeOffset? _amyloidosisDiagnosisDate;
