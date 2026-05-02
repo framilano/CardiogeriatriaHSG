@@ -6,143 +6,157 @@
              xmlns:visitContent="clr-namespace:SchedaVisite.ViewModels.VisitContent"
              x:Class="SchedaVisite.Views.VisitContent.AnamnesiPatologicaRemotaUserControl"
              x:DataType="visitContent:AnamnesiPatologicaRemotaUserControlViewModel">
+    
+            <UserControl.Styles>
+                <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
+            </UserControl.Styles>
+    
              <Grid
                 ColumnDefinitions="Auto, *">
-                <Border BorderBrush="Black"
-                        BorderThickness="2"
-                        Grid.Column="0">
+                        <Border Classes="ColumnBorder"
+                                Grid.Column="0">
                     <ScrollViewer>
                         <StackPanel Orientation="Vertical" Spacing="8">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Cardiopatia Ischemica " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Cardiopatia Ischemica "/>
                                 <CheckBox Tag="IschemicHeartDisease" IsChecked="{Binding CurrentVisit.IschemicHeartDisease}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Insufficienza Cardiaca " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Insufficienza Cardiaca "/>
                                 <CheckBox Tag="HeartFailure" IsChecked="{Binding CurrentVisit.HeartFailure}"/>
                             </StackPanel><StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Fibrillazione Atriale " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Fibrillazione Atriale "/>
                                 <CheckBox Tag="AtrialFibrillation" IsChecked="{Binding CurrentVisit.AtrialFibrillation}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Malattia Cerebrovascolare " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Malattia Cerebrovascolare "/>
                                 <CheckBox Tag="CerebrovascularDisease" IsChecked="{Binding CurrentVisit.CerebrovascularDisease}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Neoplasia  " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Neoplasia  "/>
                                 <CheckBox Tag="Neoplasm" IsChecked="{Binding CurrentVisit.Neoplasm}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="BPCO " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="BPCO "/>
                                 <CheckBox Tag="ChronicObstructivePulmonaryDisease" IsChecked="{Binding CurrentVisit.ChronicObstructivePulmonaryDisease}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Malattia Renale Cronica " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Malattia Renale Cronica "/>
                                 <CheckBox Tag="ChronicKidneyDisease" IsChecked="{Binding CurrentVisit.ChronicKidneyDisease}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Malattia Vascolare Periferica " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Malattia Vascolare Periferica "/>
                                 <CheckBox Tag="PeripheralVascularDisease" IsChecked="{Binding CurrentVisit.PeripheralVascularDisease}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Diabete " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Diabete "/>
                                 <CheckBox Tag="Diabetes" IsChecked="{Binding CurrentVisit.Diabetes}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Ulcere Croniche Cutanee" VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Ulcere Croniche Cutanee"/>
                                 <CheckBox Tag="ChronicSkinUlcers" IsChecked="{Binding CurrentVisit.ChronicSkinUlcers}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Parkinson " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Parkinson "/>
                                 <CheckBox Tag="Parkinson" IsChecked="{Binding CurrentVisit.Parkinson}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Schizofrenia o altre neurologiche " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Schizofrenia o altre neurologiche "/>
                                 <CheckBox Tag="Schizophrenia" IsChecked="{Binding CurrentVisit.Schizophrenia}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Paraplegia  " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Paraplegia  "/>
                                 <CheckBox Tag="NeuromuscularDisorders" IsChecked="{Binding CurrentVisit.NeuromuscularDisorders}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Frattura dell’anca " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Frattura dell’anca "/>
                                 <CheckBox Tag="HipFracture" IsChecked="{Binding CurrentVisit.HipFracture}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Anemia " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Anemia "/>
                                 <CheckBox Tag="Anemia" IsChecked="{Binding CurrentVisit.Anemia}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Ossigeno negli ultimi 6 mesi " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Ossigeno negli ultimi 6 mesi "/>
                                 <CheckBox Tag="OxygenTherapyLast6Months" IsChecked="{Binding CurrentVisit.OxygenTherapyLast6Months}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Ospedalizzazione ultimi 6 mesi " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Ospedalizzazione ultimi 6 mesi "/>
                                 <CheckBox Tag="HospitalizationLast6Months" IsChecked="{Binding CurrentVisit.HospitalizationLast6Months}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Eparina negli ultimi 6 mesi " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Eparina negli ultimi 6 mesi "/>
                                 <CheckBox Tag="HeparinUseLast6Months" IsChecked="{Binding CurrentVisit.HeparinUseLast6Months}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Bradicardia " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Bradicardia "/>
                                 <CheckBox Tag="Bradycardia" IsChecked="{Binding CurrentVisit.Bradycardia}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Ipertensione Arteriosa " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Ipertensione Arteriosa "/>
                                 <CheckBox Tag="ArterialHypertension" IsChecked="{Binding CurrentVisit.ArterialHypertension}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Valvulopatia severa " VerticalAlignment="Center"/>
-                                <TextBlock Padding="10" Text="SM" VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Valvulopatia severa "/>
+                                <TextBlock Padding="10" Text="SM"/>
                                 <CheckBox  Tag="SevereValvularDiseaseSm" IsChecked="{Binding CurrentVisit.SevereValvularDiseaseSm}"/>
-                                <TextBlock Padding="10" Text="IM" VerticalAlignment="Center"/>
+                                <TextBlock Padding="10" Text="IM"/>
                                 <CheckBox  Tag="SevereValvularDiseaseIm" IsChecked="{Binding CurrentVisit.SevereValvularDiseaseIm}"/>
-                                <TextBlock Padding="10" Text="IAO" VerticalAlignment="Center"/>
+                                <TextBlock Padding="10" Text="IAO"/>
                                 <CheckBox  Tag="SevereValvularDiseaseIao" IsChecked="{Binding CurrentVisit.SevereValvularDiseaseIao}"/>
-                                <TextBlock Padding="10" Text="SAO" VerticalAlignment="Center"/>
+                                <TextBlock Padding="10" Text="SAO"/>
                                 <CheckBox  Tag="SevereValvularDiseaseSao" IsChecked="{Binding CurrentVisit.SevereValvularDiseaseSao}"/>
                             </StackPanel>
                            
                             <!-- AMILOIDOSI -->
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Amiloidosi " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Amiloidosi "/>
                                 <CheckBox Tag="Amyloidosis" IsCheckedChanged="OnColumnAChanged" Loaded="OnColumnAChanged" IsChecked="{Binding CurrentVisit.Amyloidosis}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Name="AmyloidosisTypeTextBlock" FontWeight="Bold" Padding="10" Text="Tipo Amiloidosi " VerticalAlignment="Center"/>
+                                <TextBlock Name="AmyloidosisTypeTextBlock" Classes="GenericFieldLabel" Text="Tipo Amiloidosi "/>
                                 <ComboBox Name="AmyloidosisTypeComboBox" Tag="AmyloidosisType" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding AmyloidosisTypesValues}" SelectedItem="{Binding CurrentVisit.AmyloidosisType}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Name="AmyloidosisDiagnosisDateTextBlock" FontWeight="Bold" Padding="10" Text="Data diagnosi " VerticalAlignment="Center"/>
-                                <DatePicker Name="AmyloidosisDiagnosisDateDatePicker" Tag="AmyloidosisType" SelectedDate="{Binding CurrentVisit.AmyloidosisDiagnosisDate}"></DatePicker>
+                                <TextBlock Name="AmyloidosisDiagnosisDateTextBlock" Classes="GenericFieldLabel" Text="Data diagnosi "/>
+                                <DatePicker Name="AmyloidosisDiagnosisDateDatePicker" Tag="AmyloidosisType" SelectedDate="{Binding CurrentVisit.AmyloidosisDiagnosisDate}" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Name="AmyloidosisDmtTextBlock" FontWeight="Bold" Padding="10" Text="In terapia con DMT " VerticalAlignment="Center"/>
+                                <TextBlock Name="AmyloidosisDmtTextBlock" Classes="GenericFieldLabel" Text="In terapia con DMT "/>
                                 <CheckBox Name="AmyloidosisDmtCheckBox" Tag="AmyloidosisDmt" IsChecked="{Binding CurrentVisit.AmyloidosisDmt}" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Name="AmyloidosisTherapyStartDateTextBlock" FontWeight="Bold" Padding="10" Text="Data di avvio della terapia " VerticalAlignment="Center"/>
-                                <DatePicker Name="AmyloidosisTherapyStartDateDatePicker" Tag="AmyloidosisType" SelectedDate="{Binding CurrentVisit.AmyloidosisTherapyStartDate}"></DatePicker>
+                                <TextBlock Name="AmyloidosisTherapyStartDateTextBlock" Classes="GenericFieldLabel" Text="Data di avvio della terapia "/>
+                                <DatePicker Name="AmyloidosisTherapyStartDateDatePicker" Tag="AmyloidosisType" SelectedDate="{Binding CurrentVisit.AmyloidosisTherapyStartDate}" />
                             </StackPanel>
                             
                             <!-- DEMENTIA -->
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Deficit cognitivo " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Deficit cognitivo "/>
                                 <CheckBox Tag="Dementia" IsCheckedChanged="OnColumnAChanged" Loaded="OnColumnAChanged" IsChecked="{Binding CurrentVisit.Dementia}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Name="DementiaTypeTextBlock" FontWeight="Bold" Padding="10" Text="Tipo di demenza " VerticalAlignment="Center"/>
+                                <TextBlock Name="DementiaTypeTextBlock" Classes="GenericFieldLabel" Text="Tipo di demenza "/>
                                 <ComboBox Name="DementiaTypeComboBox" Tag="DementiaType" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding DementiaTypesValues}" SelectedItem="{Binding CurrentVisit.DementiaType}"/>
                             </StackPanel>
                         </StackPanel>
                     </ScrollViewer>
                 </Border>
                 <ScrollViewer Grid.Column="1">
-                    <Border BorderBrush="Black"
-                            BorderThickness="2"
-                            >
-                        <TextBox Padding="8" TextWrapping="Wrap" Name="ColumnBDescription"></TextBox>
+                    <Border Classes="ColumnBorder">
+                        
+                        <TextBox Text="{Binding ColumnBDescription}" Classes="ColumnBText" Name="ColumnBDescription">
+                            <TextBox.InnerRightContent>
+                                <Button 
+                                    HorizontalAlignment="Right" 
+                                    VerticalAlignment="Top"
+                                    Classes="TransparentButton"
+                                    Command="{Binding InferColumnBValues}">
+                                    <Image Source="avares://SchedaVisite/Assets/linux.png"
+                                           Width="40" Height="40" />
+                                </Button>
+                            </TextBox.InnerRightContent>
+                        </TextBox>
                     </Border>
                 </ScrollViewer>
             </Grid>

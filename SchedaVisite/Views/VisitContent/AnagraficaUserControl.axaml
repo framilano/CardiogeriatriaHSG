@@ -7,26 +7,29 @@
              x:Class="SchedaVisite.Views.VisitContent.AnagraficaUserControl"
              x:DataType="visitContent:AnagraficaUserControlViewModel"
              >
+    
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
+    </UserControl.Styles>
+    
     <Grid
         ColumnDefinitions="*, *">
-        <Border BorderBrush="Black"
-                BorderThickness="2"
+        <Border Classes="ColumnBorder"
                 Grid.Column="0">
             <StackPanel Orientation="Vertical" Spacing="8">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock FontWeight="Bold" Padding="10" Text="Data di nascita " VerticalAlignment="Center"/>
+                    <TextBlock Classes="GenericFieldLabel" Text="Data di nascita "/>
                     <DatePicker Tag="DateOfBirth" SelectedDateChanged="OnColumnADatePickerChanged" SelectedDate="{Binding CurrentPatient.DateOfBirth}"></DatePicker>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock FontWeight="Bold" Padding="10" Text="Genere " VerticalAlignment="Center"/>
+                    <TextBlock Classes="GenericFieldLabel" Text="Genere "/>
                     <ComboBox Tag="Gender" SelectionChanged="OnColumnAGenderChanged" ItemsSource="{Binding GenderTypesValues}" SelectedItem="{Binding CurrentPatient.Gender}"/>
                 </StackPanel>
             </StackPanel>
         </Border>
-        <Border BorderBrush="Black"
-                BorderThickness="2"
+        <Border Classes="ColumnBorder"
                 Grid.Column="1">
-            <TextBlock Padding="8" TextWrapping="Wrap" Name="ColumnBDescription"></TextBlock>
+            <TextBlock Classes="ColumnBText" Name="ColumnBDescription"></TextBlock>
         </Border>
     </Grid>
 </UserControl>

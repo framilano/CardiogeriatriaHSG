@@ -8,90 +8,90 @@
              x:DataType="visitContent:AnamnesiGeriatricaUserControlViewModel"
              FontSize="25"
              >
-          <Grid
+            <UserControl.Styles>
+                <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
+            </UserControl.Styles>
+            <Grid
                 ColumnDefinitions="Auto, *">
-                <Border BorderBrush="Black"
-                        BorderThickness="2"
-                        Grid.Column="0">
+                        <Border Classes="ColumnBorder"
+                                Grid.Column="0">
                     <ScrollViewer>
                         <StackPanel Orientation="Vertical" Spacing="8">
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Assistenza " VerticalAlignment="Center"/>
-                                <TextBlock Padding="10" Text="Da solo" VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Assistenza " />
+                                <TextBlock Padding="10" Text="Da solo" />
                                 <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="AssistanceAlone" IsChecked="{Binding CurrentVisit.AssistanceAlone}"></CheckBox>
-                                <TextBlock Padding="10" Text="Con coniuge" VerticalAlignment="Center"/>
+                                <TextBlock Padding="10" Text="Con coniuge" />
                                 <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="AssistanceSpouse" IsChecked="{Binding CurrentVisit.AssistanceSpouse}"></CheckBox>
-                                <TextBlock Padding="10" Text="Con familiari" VerticalAlignment="Center"/>
+                                <TextBlock Padding="10" Text="Con familiari" />
                                 <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="AssistanceFamilyMembers" IsChecked="{Binding CurrentVisit.AssistanceFamilyMembers}"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Badante " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Badante " />
                                 <CheckBox Tag="CareTaker" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.CareTaker}"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Motricità " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Motricità " />
                                 <ComboBox Tag="MotorSkill" Loaded="OnColumnAChanged" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding MotorSkillsValues}" SelectedItem="{Binding CurrentVisit.MotorSkill}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Name="WalkingTypeTextBlock" FontWeight="Bold" Padding="10" Text="Deambulazione " VerticalAlignment="Center"/>
+                                <TextBlock Name="WalkingTypeTextBlock" Classes="GenericFieldLabel" Text="Deambulazione " />
                                 <ComboBox Name="WalkingTypeComboBox" Tag="WalkingType" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding WalkingTypesValues}" SelectedItem="{Binding CurrentVisit.WalkingType}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Cadute in 6 mesi " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Cadute in 6 mesi " />
                                 <ComboBox Tag="Falls" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding FallsValuesValues}" SelectedItem="{Binding CurrentVisit.Falls}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Deficit Cognitivo " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Deficit Cognitivo " />
                                 <ComboBox Tag="CognitiveDeficit" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding CognitiveDeficitsValues}" SelectedItem="{Binding CurrentVisit.CognitiveDeficit}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="BPSD " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="BPSD " />
                                 <CheckBox Tag="Bpsd" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.Bpsd}"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Deficit Uditivo " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Deficit Uditivo " />
                                 <CheckBox Tag="HearingImpairment" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.HearingImpairment}"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Deficit Visivo " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Deficit Visivo " />
                                 <CheckBox Tag="VisualImpairment" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisualImpairment}"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Notti " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Notti " />
                                 <ComboBox Tag="Nights" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding NightsValues}" SelectedItem="{Binding CurrentVisit.Nights}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Calo ponderale negli ultimi tre mesi " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Calo ponderale negli ultimi tre mesi " />
                                 <ComboBox Tag="WeightLoss" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding WeightLossesValues}" SelectedItem="{Binding CurrentVisit.WeightLoss}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Appetito " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Appetito " />
                                 <ComboBox Tag="Appetite" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding AppetitesValues}" SelectedItem="{Binding CurrentVisit.Appetite}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Disfagia " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Disfagia " />
                                 <ComboBox Tag="Dysphagia" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding DysphagiasValues}" SelectedItem="{Binding CurrentVisit.Dysphagia}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Problemi nutrizionali " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Problemi nutrizionali " />
                                 <CheckBox Tag="NutrionalProblems" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.NutrionalProblems}"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Stipsi " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Stipsi " />
                                 <CheckBox Tag="Constipation" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.Constipation}"></CheckBox>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock FontWeight="Bold" Padding="10" Text="Invalidità " VerticalAlignment="Center"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Invalidità " />
                                 <CheckBox Tag="Disability" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.Disability}"></CheckBox>
                             </StackPanel>
                         </StackPanel>
                     </ScrollViewer>
                 </Border>
                 <ScrollViewer Grid.Column="1">
-                    <Border BorderBrush="Black"
-                            BorderThickness="2"
-                            >
-                        <TextBlock Padding="8" TextWrapping="Wrap" Name="ColumnBDescription"></TextBlock>
+                    <Border Classes="ColumnBorder">
+                        <TextBlock Classes="ColumnBText" Name="ColumnBDescription"></TextBlock>
                     </Border>
                 </ScrollViewer>
             </Grid>

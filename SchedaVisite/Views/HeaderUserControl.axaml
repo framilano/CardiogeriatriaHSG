@@ -15,7 +15,6 @@
             
             <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right">
                 <Button 
-                    
                     HorizontalAlignment="Right" 
                     VerticalAlignment="Top"
                     Background="Transparent" 

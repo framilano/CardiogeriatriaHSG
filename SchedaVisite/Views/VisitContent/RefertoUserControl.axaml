@@ -7,9 +7,11 @@
              x:Class="SchedaVisite.Views.VisitContent.RefertoUserControl"
              x:DataType="visitContent:RefertoUserControlViewModel"
              >
-    <Border BorderBrush="Black"
-            BorderThickness="2"
-            >
-        <TextBlock Padding="8" TextWrapping="Wrap" Name="ColumnDescription"></TextBlock>
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
+    </UserControl.Styles>
+    
+    <Border Classes="ColumnBorder">
+        <TextBlock Classes="ColumnBText" Name="ColumnDescription"></TextBlock>
     </Border>
 </UserControl>
