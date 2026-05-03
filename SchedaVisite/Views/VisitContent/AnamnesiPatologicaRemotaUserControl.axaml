@@ -159,7 +159,7 @@
                              Margin="0,4,4,0"
                              Classes="TransparentButton"
                              Command="{Binding InferColumnBValues}">
-                             <Image Source="avares://SchedaVisite/Assets/linux.png" Width="40" Height="40" />
+                             <Image Source="avares://SchedaVisite/Assets/inverted-linux.png" Width="50" Height="50" />
                          </Button>
                      </Grid>
                  </Border>

@@ -7,7 +7,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="SchedaVisite.Views.WelcomeUserControl"
              x:DataType="vm:WelcomeUserControlViewModel"
-             Background="Green"
+             Background="#6d1a61"
              FontSize="35">
     
     <Design.DataContext>

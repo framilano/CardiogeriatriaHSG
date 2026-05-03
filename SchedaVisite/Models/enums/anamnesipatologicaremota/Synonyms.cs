@@ -19,4 +19,13 @@ public static class AnamnesiPatologicaRemotaSynonyms
     public static List<string> getNeuromuscularDisordersSynonyms() { return ["paraplegia ", "atassia", "distonia", "miopatia"]; }
     public static List<string> getHipFractureSynonyms() { return ["frattura dell’anca", "frattura del femore", "pta"]; }
     public static List<string> getAnemiaSynonyms() { return ["anemia"]; }
+    public static List<string> getBradycardiaSynonyms() { return ["bradicardia", "bav"]; }
+    public static List<string> getArterialHypertensionSynonyms() { return ["ipertensione arteriosa"]; }
+    public static List<string> getSevereValvularDiseaseSmSynonyms() { return ["sm", "stenosi mitralica"]; }
+    public static List<string> getSevereValvularDiseaseImSynonyms() { return ["im", "insufficienza mitralica"]; }
+    public static List<string> getSevereValvularDiseaseIaoSynonyms() { return ["iao", "insufficienza aortica"]; }
+    public static List<string> getSevereValvularDiseaseSaoSynonyms() { return ["sao", "stenosi aortica"]; }
+    public static List<string> getSevereValvularDiseaseItrSynonyms() { return ["itr", "insufficienza tricuspidalica"]; }
+    public static List<string> getDementiaSynonyms() { return ["deficit cognitivo", "demenza", "decadimento cognitivo", "disturbo cognitivo"]; }
+    
 }

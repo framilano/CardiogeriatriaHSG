@@ -50,5 +50,21 @@ public partial class AnamnesiPatologicaRemotaUserControlViewModel(Visit currentV
         { CurrentVisit.HipFracture = true; }
         if (AnamnesiPatologicaRemotaSynonyms.getAnemiaSynonyms().Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", RegexOptions.IgnoreCase)))
         { CurrentVisit.Anemia = true; }
+        if (AnamnesiPatologicaRemotaSynonyms.getBradycardiaSynonyms().Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", RegexOptions.IgnoreCase)))
+        { CurrentVisit.Bradycardia = true; }
+        if (AnamnesiPatologicaRemotaSynonyms.getArterialHypertensionSynonyms().Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", RegexOptions.IgnoreCase)))
+        { CurrentVisit.ArterialHypertension = true; }
+        if (AnamnesiPatologicaRemotaSynonyms.getSevereValvularDiseaseSmSynonyms().Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", RegexOptions.IgnoreCase)))
+        { CurrentVisit.SevereValvularDiseaseSm = true; }
+        if (AnamnesiPatologicaRemotaSynonyms.getSevereValvularDiseaseImSynonyms().Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", RegexOptions.IgnoreCase)))
+        { CurrentVisit.SevereValvularDiseaseIm = true; }
+        if (AnamnesiPatologicaRemotaSynonyms.getSevereValvularDiseaseIaoSynonyms().Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", RegexOptions.IgnoreCase)))
+        { CurrentVisit.SevereValvularDiseaseIao = true; }
+        if (AnamnesiPatologicaRemotaSynonyms.getSevereValvularDiseaseSaoSynonyms().Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", RegexOptions.IgnoreCase)))
+        { CurrentVisit.SevereValvularDiseaseSao = true; }
+        if (AnamnesiPatologicaRemotaSynonyms.getSevereValvularDiseaseItrSynonyms().Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", RegexOptions.IgnoreCase)))
+        { CurrentVisit.SevereValvularDiseaseItr = true; }
+        if (AnamnesiPatologicaRemotaSynonyms.getDementiaSynonyms().Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", RegexOptions.IgnoreCase)))
+        { CurrentVisit.Dementia = true; }
     }
 }

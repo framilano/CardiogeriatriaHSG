@@ -12,10 +12,10 @@
         <StyleInclude Source="/Styles/SidebarUserControlStyle.axaml"/>
     </UserControl.Styles>
     
-    <ScrollViewer>
-        <Border BorderBrush="Black"
-                BorderThickness="2"
-        >
+    <Border BorderBrush="#6d1a61"
+            BorderThickness="2"
+    >
+        <ScrollViewer>
             <ItemsControl ItemsSource="{Binding MenuEntriesValues}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
@@ -29,6 +29,6 @@
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>
             </ItemsControl>
-        </Border>
-    </ScrollViewer>
+        </ScrollViewer>
+    </Border>
 </UserControl>

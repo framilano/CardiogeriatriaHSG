@@ -11,7 +11,7 @@
             BorderThickness="2"
     >
         <Grid RowDefinitions="Auto, Auto"
-            Background="Green">
+            Background="#6d1a61">
             
             <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Right">
                 <Button 
