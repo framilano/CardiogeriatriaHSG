@@ -3,10 +3,10 @@
 ### Building
 ```
 #Windows
-dotnet publish -c Release -r win-x64 --self-contained true
+dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true -p:PublishTrimmed=false --self-contained true
 
 #Linux
-dotnet publish -c Release -r linux-x64 --self-contained true
+dotnet publish -c Release -r linux-x64 -p:PublishSingleFile=true -p:PublishTrimmed=false --self-contained true
 ```
 
 ### DB Migrations

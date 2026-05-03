@@ -5,7 +5,8 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:visitContent="clr-namespace:SchedaVisite.ViewModels.VisitContent"
              x:Class="SchedaVisite.Views.VisitContent.AnamnesiPatologicaRemotaUserControl"
-             x:DataType="visitContent:AnamnesiPatologicaRemotaUserControlViewModel">
+             x:DataType="visitContent:AnamnesiPatologicaRemotaUserControlViewModel"
+             FontSize="25">
     
             <UserControl.Styles>
                 <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
