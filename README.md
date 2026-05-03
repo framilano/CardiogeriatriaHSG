@@ -7,6 +7,9 @@ dotnet publish -c Release -r win-x64 -p:PublishSingleFile=true -p:PublishTrimmed
 
 #Linux
 dotnet publish -c Release -r linux-x64 -p:PublishSingleFile=true -p:PublishTrimmed=false --self-contained true
+
+#MacOs (arm64)
+dotnet publish -c Release -r osx-arm64 -p:PublishSingleFile=true -p:PublishTrimmed=false --self-contained true
 ```
 
 ### DB Migrations
