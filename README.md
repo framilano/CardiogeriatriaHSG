@@ -1,8 +1,5 @@
 # CardiogeriatriaHSG
 
-### TODO
-- Handle APR
-
 ### Building
 ```
 #Windows
