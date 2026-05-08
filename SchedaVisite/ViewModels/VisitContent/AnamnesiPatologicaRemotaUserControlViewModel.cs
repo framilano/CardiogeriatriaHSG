@@ -24,7 +24,7 @@ public partial class AnamnesiPatologicaRemotaUserControlViewModel(Visit currentV
         { CurrentVisit.IschemicHeartDisease = true; }
         if (AnamnesiPatologicaRemotaSynonyms.HeartFailureSynonyms.Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", RegexOptions.IgnoreCase)))
         { CurrentVisit.HeartFailure = true; }
-        if (AnamnesiPatologicaRemotaSynonyms.AtrialFibrillationSynonyms.Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", RegexOptions.IgnoreCase)))
+        if (AnamnesiPatologicaRemotaSynonyms.AtrialFibrillationSynonyms.Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", AnamnesiPatologicaRemotaSynonyms.CaseSensitiveFields.Contains(word) ? RegexOptions.None : RegexOptions.IgnoreCase)))
         { CurrentVisit.AtrialFibrillation = true; }
         if (AnamnesiPatologicaRemotaSynonyms.CerebrovascularDiseaseSynonyms.Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", RegexOptions.IgnoreCase)))
         { CurrentVisit.CerebrovascularDisease = true; }
@@ -64,6 +64,8 @@ public partial class AnamnesiPatologicaRemotaUserControlViewModel(Visit currentV
         { CurrentVisit.SevereValvularDiseaseSao = true; }
         if (AnamnesiPatologicaRemotaSynonyms.SevereValvularDiseaseItrSynonyms.Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", RegexOptions.IgnoreCase)))
         { CurrentVisit.SevereValvularDiseaseItr = true; }
+        if (AnamnesiPatologicaRemotaSynonyms.AmyloidosisSynonyms.Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", RegexOptions.IgnoreCase)))
+        { CurrentVisit.Amyloidosis = true; }
         if (AnamnesiPatologicaRemotaSynonyms.DementiaSynonyms.Any(word => Regex.IsMatch(CurrentVisit.VisitPersistedTexts.AprText, $@"\b{Regex.Escape(word)}\b", RegexOptions.IgnoreCase)))
         { CurrentVisit.Dementia = true; }
     }

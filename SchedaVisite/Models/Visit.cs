@@ -64,13 +64,13 @@ public partial class Visit: ObservableObject
     [ObservableProperty] private bool _severeValvularDiseaseIao;
     [ObservableProperty] private bool _severeValvularDiseaseSao;
     [ObservableProperty] private bool _severeValvularDiseaseItr;
-    
-    public required bool Amyloidosis { get; set; }
+
+    [ObservableProperty] private bool _amyloidosis;
     [ObservableProperty] private string? _amyloidosisType;
     [ObservableProperty] private DateTimeOffset? _amyloidosisDiagnosisDate;
     [ObservableProperty] private bool? _amyloidosisDmt;
     [ObservableProperty] private DateTimeOffset? _amyloidosisTherapyStartDate;
 
-    public bool Dementia { get; set; }
+    [ObservableProperty] private bool _dementia;
     [ObservableProperty] private string? _dementiaType;
 }

@@ -26,8 +26,9 @@ public static class AnamnesiPatologicaRemotaSynonyms
     public static readonly List<string> SevereValvularDiseaseIaoSynonyms = ["iao", "insufficienza aortica"];
     public static readonly List<string> SevereValvularDiseaseSaoSynonyms = ["sao", "stenosi aortica"];
     public static readonly List<string> SevereValvularDiseaseItrSynonyms = ["itr", "insufficienza tricuspidalica"];
-    public static readonly List<string> DementiaSynonyms = ["deficit cognitivo", "demenza", "decadimento cognitivo", "disturbo cognitivo"];
+    public static readonly List<string> AmyloidosisSynonyms = ["amiloidosi"];
 
-
+    public static readonly List<string> DementiaSynonyms = ["deficit cognitivo", "demenza", "decadimento cognitivo", "disturbo cognitivo"," disturbo neurocognitivo", "mci", "lbd", "alzheimer"];
+    
     public static readonly List<string> CaseSensitiveFields = ["FA"];
 }
