@@ -262,8 +262,7 @@ namespace SchedaVisite.Migrations
 
             modelBuilder.Entity("SchedaVisite.Models.VisitPersistedTexts", b =>
                 {
-                    b.Navigation("Visit")
-                        .IsRequired();
+                    b.Navigation("Visit");
                 });
 #pragma warning restore 612, 618
         }

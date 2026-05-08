@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Text;
 using SchedaVisite.Models;
 using SchedaVisite.Models.enums.anagrafica;
 
@@ -11,5 +10,5 @@ public class AnagraficaUserControlViewModel(Visit currentVisit, Patient currentP
 
     public Patient CurrentPatient { get; set; } = currentPatient;
 
-    public IEnumerable<string> GenderTypesValues => GenderTypes.GetAllGenderTypes();
+    public IEnumerable<string> GenderTypesValues => Gender.GenderTypes;
 }

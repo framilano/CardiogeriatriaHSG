@@ -11,8 +11,8 @@ using SchedaVisite.Services.database;
 namespace SchedaVisite.Migrations
 {
     [DbContext(typeof(AppDb))]
-    [Migration("20260502165146_APR0")]
-    partial class APR0
+    [Migration("20260508204227_APR4")]
+    partial class APR4
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -265,8 +265,7 @@ namespace SchedaVisite.Migrations
 
             modelBuilder.Entity("SchedaVisite.Models.VisitPersistedTexts", b =>
                 {
-                    b.Navigation("Visit")
-                        .IsRequired();
+                    b.Navigation("Visit");
                 });
 #pragma warning restore 612, 618
         }

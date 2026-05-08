@@ -2,16 +2,7 @@
 
 namespace SchedaVisite.Models.enums.anamnesipatologicaremota;
 
-public class DementiaType
+public static class DementiaType
 {
-    public static List<string> getAllDementiaTypes()
-    {
-        return
-        [
-            "Neurodegenerativa",
-            "Vascolare",
-            "Mista",
-            "Altro"
-        ];
-    }
+    public static readonly List<string> DementiaTypes = ["Neurodegenerativa", "Vascolare", "Mista", "Altro"];
 }

@@ -2,15 +2,7 @@
 
 namespace SchedaVisite.Models.enums.anamnesigeriatrica;
 
-public class CognitiveDeficit
+public static class CognitiveDeficit
 {
-    public static List<string> getAllCognitiveDeficits()
-    {
-        return
-        [
-            "Nessuno",
-            "Iniziali",
-            "Noti"
-        ];
-    }
+    public static readonly List<string> CognitiveDeficits = ["Nessuno", "Iniziali", "Noti"];
 }

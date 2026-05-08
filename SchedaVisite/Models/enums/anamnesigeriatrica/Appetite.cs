@@ -2,15 +2,7 @@
 
 namespace SchedaVisite.Models.enums.anamnesigeriatrica;
 
-public class Appetite
+public static class Appetite
 {
-    public static List<string> getAllAppetites()
-    {
-        return
-        [
-            "Conservato",
-            "Lievemente ridotto",
-            "Ridotto"
-        ];
-    }
+    public static readonly List<string> Appetites = [ "Conservato", "Lievemente ridotto", "Ridotto"];
 }

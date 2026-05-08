@@ -8,12 +8,12 @@ public class AnamnesiGeriatricaUserControlViewModel(Visit currentVisit) : ViewMo
 {
     public Visit CurrentVisit { get; set; } = currentVisit;
 
-    public static IEnumerable<string> AppetitesValues => Appetite.getAllAppetites();
-    public static IEnumerable<string> CognitiveDeficitsValues => CognitiveDeficit.getAllCognitiveDeficits();
-    public static IEnumerable<string> DysphagiasValues => Dysphagia.getAllDysphagias();
-    public static IEnumerable<string> FallsValuesValues => Falls.getAllFalls();
-    public static IEnumerable<string> MotorSkillsValues => MotorSkill.getAllMotorSkills();
-    public static IEnumerable<string> NightsValues => Nights.getAllNights();
-    public static IEnumerable<string> WalkingTypesValues => WalkingType.getAllWalkingTypes();
-    public static IEnumerable<string> WeightLossesValues => WeightLoss.getAllWeightLosses();
+    public static IEnumerable<string> AppetitesValues => Appetite.Appetites;
+    public static IEnumerable<string> CognitiveDeficitsValues => CognitiveDeficit.CognitiveDeficits;
+    public static IEnumerable<string> DysphagiasValues => Dysphagia.DysphagiaTypes;
+    public static IEnumerable<string> FallsValuesValues => Falls.FallTypes;
+    public static IEnumerable<string> MotorSkillsValues => MotorSkill.MotorSkillTypes;
+    public static IEnumerable<string> NightsValues => Nights.NightTypes;
+    public static IEnumerable<string> WalkingTypesValues => WalkingType.WalkingTypes;
+    public static IEnumerable<string> WeightLossesValues => WeightLoss.WeightLossTypes;
 }

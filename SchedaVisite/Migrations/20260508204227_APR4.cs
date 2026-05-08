@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SchedaVisite.Migrations
 {
     /// <inheritdoc />
-    public partial class APR0 : Migration
+    public partial class APR4 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

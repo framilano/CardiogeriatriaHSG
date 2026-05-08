@@ -2,15 +2,11 @@
 
 namespace SchedaVisite.Models.enums.anamnesigeriatrica;
 
-public class Nights
+public static class Nights
 {
-    public static List<string> getAllNights()
-    {
-        return
-        [
-            "Riposate",
-            "Con ipnoinducenti",
-            "Poco riposate"
-        ];
-    }
+    public static readonly List<string> NightTypes = [
+        "Riposate",
+        "Con ipnoinducenti",
+        "Poco riposate"
+    ];
 }
