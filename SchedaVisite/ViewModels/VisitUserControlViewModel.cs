@@ -32,15 +32,15 @@ public partial class VisitUserControlViewModel : ViewModelBase
     private readonly DatabaseService _databaseService;
     
     //List of all avaiable Sidebar entries
-    public IEnumerable<string> MenuEntriesValues => SidebarEntries.getAllMenuEntries();
+    public IEnumerable<string> MenuEntriesValues => SidebarEntries.MenuEntries;
     
     //The selected sidebar entry
     public string SelectedMenuEntry { get; set; } = "Anagrafica";
     
     //All the VisitTypeValues available in Header
-    public IEnumerable<string> VisitTypesValues => VisitType.getAllVisitTypes();
+    public IEnumerable<string> VisitTypesValues => VisitType.VisitTypes;
     //All the VisitSubTypeValues available in Header
-    public IEnumerable<string> VisitSubTypesValues => VisitSubType.getAllVisitSubTypes();
+    public IEnumerable<string> VisitSubTypesValues => VisitSubType.VisitSubTypes;
     
     public required Visit CurrentVisit { get; set; }
     public required Patient CurrentPatient { get; set; }

@@ -4,12 +4,9 @@ namespace SchedaVisite.Models.enums.header;
 
 public static class VisitType
 {
-    public static List<string> getAllVisitTypes()
-    {
-        return new List<string>
-        {
-            "Cardiogeriatrica",
-            "Cardiologica"
-        };
-    }
+    public static readonly List<string> VisitTypes =
+    [
+        "Cardiogeriatrica",
+        "Cardiologica"
+    ];
 }
