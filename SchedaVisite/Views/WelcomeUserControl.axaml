@@ -35,7 +35,7 @@
                     <DataTemplate>
                         <Button Margin="5" 
                                 HorizontalAlignment="Center" 
-                                Content="{Binding Timestamp, StringFormat='\{0:dd/MM/yyyy HH:mm}'}"
+                                Content="{Binding Timestamp, StringFormat='\{0:dd/MM/yyyy HH:mm}', Mode=OneWay}"
                                 Command="{Binding $parent[views:WelcomeUserControl].((vm:WelcomeUserControlViewModel)DataContext).LoadExistingVisitCommand}"
                                 CommandParameter="{Binding}"
                                 />
