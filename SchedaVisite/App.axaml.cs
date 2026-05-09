@@ -19,8 +19,8 @@ public partial class App : Application
     {
         AvaloniaXamlLoader.Load(this);
     }
-    
-    public DatabaseService DatabaseService { get; set; } = null;
+
+    private DatabaseService? DatabaseService { get; set; }
 
     public override void OnFrameworkInitializationCompleted()
     {

@@ -1,15 +1,14 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace SchedaVisite.Models;
 
-public class Patient
+public partial class Patient : ObservableObject
 {
-    public string? PatientCode { get; set; }
-    public string? Gender { get; set; }
+    [ObservableProperty] private string? _gender;
+    [ObservableProperty] private DateTimeOffset? _dateOfBirth;
     
-    public DateTimeOffset DateOfBirth { get; set; }
-    
-    public List<Visit>? Visits { get; set; }
+    public string? PatientCode;
+    public List<Visit>? Visits;
 }

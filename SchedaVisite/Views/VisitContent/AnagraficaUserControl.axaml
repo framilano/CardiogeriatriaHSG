@@ -23,7 +23,7 @@
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Classes="GenericFieldLabel" Text="Genere "/>
-                    <ComboBox Tag="Gender" SelectionChanged="OnColumnAGenderChanged" ItemsSource="{Binding GenderTypesValues}" SelectedItem="{Binding CurrentPatient.Gender}"/>
+                    <ComboBox Tag="Gender" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding GenderTypesValues}" SelectedItem="{Binding CurrentPatient.Gender}"/>
                 </StackPanel>
             </StackPanel>
         </Border>

@@ -11,8 +11,8 @@ using SchedaVisite.Services.database;
 namespace SchedaVisite.Migrations
 {
     [DbContext(typeof(AppDb))]
-    [Migration("20260508210818_APR4")]
-    partial class APR4
+    [Migration("20260509095058_APR0")]
+    partial class APR0
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -25,7 +25,7 @@ namespace SchedaVisite.Migrations
                     b.Property<string>("PatientCode")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTimeOffset>("DateOfBirth")
+                    b.Property<DateTimeOffset?>("DateOfBirth")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Gender")
@@ -60,7 +60,6 @@ namespace SchedaVisite.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Appetite")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("ArterialHypertension")
@@ -100,7 +99,6 @@ namespace SchedaVisite.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("CognitiveDeficit")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("Constipation")
@@ -119,11 +117,9 @@ namespace SchedaVisite.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Dysphagia")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Falls")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("HearingImpairment")
@@ -145,7 +141,6 @@ namespace SchedaVisite.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("MotorSkill")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("Neoplasm")
@@ -155,7 +150,6 @@ namespace SchedaVisite.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("Nights")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<int>("Number")
@@ -171,7 +165,6 @@ namespace SchedaVisite.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("PatientCode")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("PeripheralVascularDisease")
@@ -196,7 +189,6 @@ namespace SchedaVisite.Migrations
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("SubType")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("Telemedicina")
@@ -206,7 +198,6 @@ namespace SchedaVisite.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Type")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<bool>("VisualImpairment")
@@ -216,7 +207,6 @@ namespace SchedaVisite.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("WeightLoss")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("VisitCode");
@@ -243,9 +233,7 @@ namespace SchedaVisite.Migrations
                 {
                     b.HasOne("SchedaVisite.Models.Patient", "Patient")
                         .WithMany("Visits")
-                        .HasForeignKey("PatientCode")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PatientCode");
 
                     b.HasOne("SchedaVisite.Models.VisitPersistedTexts", "VisitPersistedTexts")
                         .WithOne("Visit")

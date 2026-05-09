@@ -64,18 +64,25 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 CurrentContent = new AnamnesiGeriatricaUserControl { DataContext = new AnamnesiGeriatricaUserControlViewModel(CurrentVisit) };
                 break;
             case "Referto":
-                sw = Stopwatch.StartNew();
                 //Why this null check? Before new visits created with empty VPT will attempt to load an object that doesn't exists effectively nullifying the existing object
-                if (CurrentVisit.VisitPersistedTexts is null) _databaseService.LoadVisitPersistedTextsByVisit(CurrentVisit);
-                Console.WriteLine($"It took {sw.ElapsedMilliseconds}ms to retrieve visit persisted texts");
-                sw.Stop();
+                if (CurrentVisit.VisitPersistedTexts is null)
+                {
+                    sw = Stopwatch.StartNew();
+                    _databaseService.LoadVisitPersistedTextsByVisit(CurrentVisit);
+                    sw.Stop(); 
+                    Console.WriteLine($"It took {sw.ElapsedMilliseconds}ms to retrieve visit persisted texts");
+                }
                 CurrentContent = new RefertoUserControl() { DataContext = new RefertoUserControlViewModel(CurrentVisit, CurrentPatient) };
                 break;
             case "APR":
-                sw = Stopwatch.StartNew();
-                if (CurrentVisit.VisitPersistedTexts is null) _databaseService.LoadVisitPersistedTextsByVisit(CurrentVisit);
-                Console.WriteLine($"It took {sw.ElapsedMilliseconds}ms to retrieve visit persisted texts");
-                sw.Stop();                CurrentContent = new AnamnesiPatologicaRemotaUserControl() { DataContext = new AnamnesiPatologicaRemotaUserControlViewModel(CurrentVisit) };
+                if (CurrentVisit.VisitPersistedTexts is null)
+                {
+                    sw = Stopwatch.StartNew();
+                    _databaseService.LoadVisitPersistedTextsByVisit(CurrentVisit);
+                    sw.Stop(); 
+                    Console.WriteLine($"It took {sw.ElapsedMilliseconds}ms to retrieve visit persisted texts");
+                }
+                CurrentContent = new AnamnesiPatologicaRemotaUserControl() { DataContext = new AnamnesiPatologicaRemotaUserControlViewModel(CurrentVisit) };
                 break;
         }
     }

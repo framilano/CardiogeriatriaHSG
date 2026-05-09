@@ -125,10 +125,10 @@ public partial class WelcomeUserControlViewModel : ObservableObject
             Amyloidosis = false,
             AmyloidosisType = null,
             AmyloidosisDiagnosisDate = null,
-            AmyloidosisDmt = false,
+            AmyloidosisDmt = null,
             AmyloidosisTherapyStartDate = null,
             Dementia = false,
-            DementiaType = "Neurodegenerativa",
+            DementiaType = null,
         };
 
         visit.VisitPersistedTexts = new VisitPersistedTexts(visit.VisitCode);

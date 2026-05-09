@@ -5,37 +5,39 @@ namespace SchedaVisite.Models;
 
 public partial class Visit: ObservableObject
 {
+    //Dati fissi a inizializzazione
+    public VisitPersistedTexts? VisitPersistedTexts { get; set; }
     public string? VisitCode { get; set; }
-    public Patient Patient  { get; set; }
-    public string PatientCode { get; set; }
+    public Patient? Patient { get; set; }
+    public string? PatientCode { get; set; }
     public DateTimeOffset Timestamp { get; set; }
     public int Number { get; set; }
-    public string Type { get; set; }
+    
+    //Dati Visita
+    [ObservableProperty] private string? _type;
+    [ObservableProperty] private string? _subType;
+    [ObservableProperty] private bool _telemedicina;
 
-    public string SubType { get; set; }
-    public bool Telemedicina { get; set; }
-
-    [ObservableProperty] public VisitPersistedTexts? _visitPersistedTexts;
     
     //Anamnesi Geriatrica
-    public required bool AssistanceAlone { get; set; }
-    public required bool AssistanceSpouse { get; set; }
-    public required bool AssistanceFamilyMembers { get; set; }
-    public required bool CareTaker { get; set; }
-    public required string MotorSkill { get; set; }
-    [ObservableProperty] public string? _walkingType;
-    public required string Falls { get; set; }
-    public required string CognitiveDeficit { get; set; }
-    public required bool Bpsd { get; set; }
-    public required bool HearingImpairment { get; set; }
-    public required bool VisualImpairment { get; set; }
-    public required string Nights { get; set; }
-    public required string WeightLoss { get; set; }
-    public required string Appetite { get; set; }
-    public required string Dysphagia { get; set; }
-    public required bool NutrionalProblems { get; set; }
-    public required bool Constipation { get; set; }
-    public required bool Disability { get; set; }
+    [ObservableProperty] private bool _assistanceAlone;
+    [ObservableProperty] private bool _assistanceSpouse;
+    [ObservableProperty] private bool _assistanceFamilyMembers;
+    [ObservableProperty] private bool _careTaker;
+    [ObservableProperty] private string? _motorSkill;
+    [ObservableProperty] private string? _walkingType;
+    [ObservableProperty] private string? _falls;
+    [ObservableProperty] private string? _cognitiveDeficit;
+    [ObservableProperty] private bool _bpsd;
+    [ObservableProperty] private bool _hearingImpairment;
+    [ObservableProperty] private bool _visualImpairment;
+    [ObservableProperty] private string? _nights;
+    [ObservableProperty] private string? _weightLoss;
+    [ObservableProperty] private string? _appetite;
+    [ObservableProperty] private string? _dysphagia;
+    [ObservableProperty] private bool _nutrionalProblems;
+    [ObservableProperty] private bool _constipation;
+    [ObservableProperty] private bool _disability;
     
     //APR
     [ObservableProperty] private bool _ischemicHeartDisease;

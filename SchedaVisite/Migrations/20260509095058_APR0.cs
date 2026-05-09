@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace SchedaVisite.Migrations
 {
     /// <inheritdoc />
-    public partial class APR4 : Migration
+    public partial class APR0 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -17,7 +17,7 @@ namespace SchedaVisite.Migrations
                 {
                     PatientCode = table.Column<string>(type: "TEXT", nullable: false),
                     Gender = table.Column<string>(type: "TEXT", nullable: true),
-                    DateOfBirth = table.Column<DateTimeOffset>(type: "TEXT", nullable: false)
+                    DateOfBirth = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -41,32 +41,30 @@ namespace SchedaVisite.Migrations
                 columns: table => new
                 {
                     VisitCode = table.Column<string>(type: "TEXT", nullable: false),
-                    PatientCode = table.Column<string>(type: "TEXT", nullable: false),
+                    PatientCode = table.Column<string>(type: "TEXT", nullable: true),
                     Timestamp = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
                     Number = table.Column<int>(type: "INTEGER", nullable: false),
-                    Type = table.Column<string>(type: "TEXT", nullable: false),
-                    SubType = table.Column<string>(type: "TEXT", nullable: false),
+                    Type = table.Column<string>(type: "TEXT", nullable: true),
+                    SubType = table.Column<string>(type: "TEXT", nullable: true),
                     Telemedicina = table.Column<bool>(type: "INTEGER", nullable: false),
                     AssistanceAlone = table.Column<bool>(type: "INTEGER", nullable: false),
                     AssistanceSpouse = table.Column<bool>(type: "INTEGER", nullable: false),
                     AssistanceFamilyMembers = table.Column<bool>(type: "INTEGER", nullable: false),
                     CareTaker = table.Column<bool>(type: "INTEGER", nullable: false),
-                    MotorSkill = table.Column<string>(type: "TEXT", nullable: false),
-                    Falls = table.Column<string>(type: "TEXT", nullable: false),
-                    CognitiveDeficit = table.Column<string>(type: "TEXT", nullable: false),
+                    MotorSkill = table.Column<string>(type: "TEXT", nullable: true),
+                    WalkingType = table.Column<string>(type: "TEXT", nullable: true),
+                    Falls = table.Column<string>(type: "TEXT", nullable: true),
+                    CognitiveDeficit = table.Column<string>(type: "TEXT", nullable: true),
                     Bpsd = table.Column<bool>(type: "INTEGER", nullable: false),
                     HearingImpairment = table.Column<bool>(type: "INTEGER", nullable: false),
                     VisualImpairment = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Nights = table.Column<string>(type: "TEXT", nullable: false),
-                    WeightLoss = table.Column<string>(type: "TEXT", nullable: false),
-                    Appetite = table.Column<string>(type: "TEXT", nullable: false),
-                    Dysphagia = table.Column<string>(type: "TEXT", nullable: false),
+                    Nights = table.Column<string>(type: "TEXT", nullable: true),
+                    WeightLoss = table.Column<string>(type: "TEXT", nullable: true),
+                    Appetite = table.Column<string>(type: "TEXT", nullable: true),
+                    Dysphagia = table.Column<string>(type: "TEXT", nullable: true),
                     NutrionalProblems = table.Column<bool>(type: "INTEGER", nullable: false),
                     Constipation = table.Column<bool>(type: "INTEGER", nullable: false),
                     Disability = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Amyloidosis = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Dementia = table.Column<bool>(type: "INTEGER", nullable: false),
-                    WalkingType = table.Column<string>(type: "TEXT", nullable: true),
                     IschemicHeartDisease = table.Column<bool>(type: "INTEGER", nullable: false),
                     HeartFailure = table.Column<bool>(type: "INTEGER", nullable: false),
                     AtrialFibrillation = table.Column<bool>(type: "INTEGER", nullable: false),
@@ -92,10 +90,12 @@ namespace SchedaVisite.Migrations
                     SevereValvularDiseaseIao = table.Column<bool>(type: "INTEGER", nullable: false),
                     SevereValvularDiseaseSao = table.Column<bool>(type: "INTEGER", nullable: false),
                     SevereValvularDiseaseItr = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Amyloidosis = table.Column<bool>(type: "INTEGER", nullable: false),
                     AmyloidosisType = table.Column<string>(type: "TEXT", nullable: true),
                     AmyloidosisDiagnosisDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
                     AmyloidosisDmt = table.Column<bool>(type: "INTEGER", nullable: true),
                     AmyloidosisTherapyStartDate = table.Column<DateTimeOffset>(type: "TEXT", nullable: true),
+                    Dementia = table.Column<bool>(type: "INTEGER", nullable: false),
                     DementiaType = table.Column<string>(type: "TEXT", nullable: true)
                 },
                 constraints: table =>
@@ -105,8 +105,7 @@ namespace SchedaVisite.Migrations
                         name: "FK_Visits_Patients_PatientCode",
                         column: x => x.PatientCode,
                         principalTable: "Patients",
-                        principalColumn: "PatientCode",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "PatientCode");
                     table.ForeignKey(
                         name: "FK_Visits_VisitsPersistedTexts_VisitCode",
                         column: x => x.VisitCode,
