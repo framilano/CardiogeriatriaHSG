@@ -11,7 +11,7 @@ using SchedaVisite.Services.database;
 namespace SchedaVisite.Migrations
 {
     [DbContext(typeof(AppDb))]
-    [Migration("20260509095058_APR0")]
+    [Migration("20260509110723_APR0")]
     partial class APR0
     {
         /// <inheritdoc />
