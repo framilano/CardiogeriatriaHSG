@@ -13,11 +13,11 @@ public static class AnamnesiPatologicaRemotaSynonyms
     public static readonly List<string> ChronicKidneyDiseaseSynonyms = ["malattia renale cronica", "insufficienza renale cronica", "irc", "mrc"];
     public static readonly List<string> PeripheralVascularDiseaseSynonyms = ["malattia vascolare periferica", "AOCP", "pad", "ischemia acuta arto inferiore"];
     public static readonly List<string> DiabetesSynonyms = ["diabete", "dm"];
-    public static readonly List<string> ChronicSkinUlcersSynonyms = ["ulcere croniche cutanee", "ulcera cronica", "ulcera", "ulcere"];
-    public static readonly List<string> ParkinsonSynonyms = ["parkinson", "parkinsonismo"];
+    public static readonly List<string> ChronicSkinUlcersSynonyms = [@"\bulcer\w*\b"];
+    public static readonly List<string> ParkinsonSynonyms = [@"\bparkinson\w*\b"];
     public static readonly List<string> SchizophreniaSynonyms = ["schizofrenia"];
     public static readonly List<string> NeuromuscularDisordersSynonyms = ["paraplegia ", "atassia", "distonia", "miopatia"];
-    public static readonly List<string> HipFractureSynonyms = ["frattura dell’anca", "frattura anca", "frattura femore", "frattura di femore", "frattura del femore", "pta"];
+    public static readonly List<string> HipFractureSynonyms = [@"frattur\w*\b(?:\W+\w+){0,5}\W+\banca", @"frattur\w*\b(?:\W+\w+){0,5}\W+\bfemore", "pta"];
     public static readonly List<string> AnemiaSynonyms = ["anemia"];
     public static readonly List<string> BradycardiaSynonyms = ["bradicardia", "bav"];
     public static readonly List<string> ArterialHypertensionSynonyms = ["ipertensione arteriosa", "ia", "ipertensiva"];
