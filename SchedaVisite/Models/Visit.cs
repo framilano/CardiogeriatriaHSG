@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace SchedaVisite.Models;
@@ -7,8 +8,11 @@ public partial class Visit: ObservableObject
 {
     //Dati fissi a inizializzazione
     public VisitPersistedTexts? VisitPersistedTexts { get; set; }
+    
+    [MaxLength(36)]
     public string? VisitCode { get; set; }
     public Patient? Patient { get; set; }
+    [MaxLength(8)]
     public string? PatientCode { get; set; }
     public DateTimeOffset Timestamp { get; set; }
     public int Number { get; set; }
