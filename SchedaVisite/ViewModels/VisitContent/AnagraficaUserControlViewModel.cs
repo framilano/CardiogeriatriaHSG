@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using SchedaVisite.Models;
 using SchedaVisite.Models.enums.anagrafica;
@@ -11,4 +12,6 @@ public class AnagraficaUserControlViewModel(Visit currentVisit, Patient currentP
     public Patient CurrentPatient { get; set; } = currentPatient;
 
     public IEnumerable<string> GenderTypesValues => Gender.GenderTypes;
+    
+    public DateTimeOffset MaxAllowedDate { get; } = new(DateTime.Now);
 }

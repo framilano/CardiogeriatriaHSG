@@ -122,7 +122,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Name="AmyloidosisDiagnosisDateTextBlock" Classes="GenericFieldLabel" Text="Data diagnosi "/>
-                                <DatePicker Name="AmyloidosisDiagnosisDateDatePicker" Tag="AmyloidosisType" SelectedDate="{Binding CurrentVisit.AmyloidosisDiagnosisDate}" />
+                                <DatePicker MaxYear="{Binding MaxAllowedDate}" Name="AmyloidosisDiagnosisDateDatePicker" Tag="AmyloidosisType" SelectedDate="{Binding CurrentVisit.AmyloidosisDiagnosisDate}" />
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Name="AmyloidosisDmtTextBlock" Classes="GenericFieldLabel" Text="In terapia con DMT "/>
@@ -130,7 +130,7 @@
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <TextBlock Name="AmyloidosisTherapyStartDateTextBlock" Classes="GenericFieldLabel" Text="Data di avvio della terapia "/>
-                                <DatePicker Name="AmyloidosisTherapyStartDateDatePicker" Tag="AmyloidosisType" SelectedDate="{Binding CurrentVisit.AmyloidosisTherapyStartDate}" />
+                                <DatePicker MaxYear="{Binding MaxAllowedDate}" Name="AmyloidosisTherapyStartDateDatePicker" Tag="AmyloidosisType" SelectedDate="{Binding CurrentVisit.AmyloidosisTherapyStartDate}" />
                             </StackPanel>
                             
                             <!-- DEMENTIA -->

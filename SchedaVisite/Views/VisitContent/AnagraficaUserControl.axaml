@@ -19,7 +19,7 @@
             <StackPanel Orientation="Vertical" Spacing="8">
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Classes="GenericFieldLabel" Text="Data di nascita "/>
-                    <DatePicker Tag="DateOfBirth" SelectedDateChanged="OnColumnADatePickerChanged" SelectedDate="{Binding CurrentPatient.DateOfBirth}"></DatePicker>
+                    <DatePicker MaxYear="{Binding MaxAllowedDate}" Tag="DateOfBirth" SelectedDateChanged="OnColumnADatePickerChanged" SelectedDate="{Binding CurrentPatient.DateOfBirth}"></DatePicker>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Classes="GenericFieldLabel" Text="Genere "/>

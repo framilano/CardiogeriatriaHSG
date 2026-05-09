@@ -15,7 +15,8 @@ public partial class AnamnesiPatologicaRemotaUserControlViewModel(Visit currentV
 
     public static IEnumerable<string> AmyloidosisTypesValues => AmyloidosisType.AmyloidosisTypes;
     public static IEnumerable<string> DementiaTypesValues => DementiaType.DementiaTypes;
-    
+    public DateTimeOffset MaxAllowedDate { get; } = new(DateTime.Now);
+
     public void InferColumnBValues()
     {
         if (CurrentVisit.VisitPersistedTexts is null  || string.IsNullOrEmpty(CurrentVisit.VisitPersistedTexts.AprText)) return;
