@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:visitContent="clr-namespace:CardiogeriatriaHSG.ViewModels.VisitContent"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CardiogeriatriaHSG.Views.VisitContent.AnagraficaUserControl"
+             x:DataType="visitContent:AnagraficaUserControlViewModel"
+             >
+    
+    <UserControl.Styles>
+        <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
+    </UserControl.Styles>
+    
+    <Grid
+        ColumnDefinitions="*, *">
+        <Border Classes="ColumnBorder"
+                Grid.Column="0">
+            <WrapPanel Classes="ColumnAWrapPanel">
+                <WrapPanel Orientation="Horizontal">
+                    <TextBlock Classes="GenericFieldLabel" Text="Data di nascita "/>
+                    <DatePicker MaxYear="{Binding MaxAllowedDate}" Tag="DateOfBirth" SelectedDateChanged="OnColumnADatePickerChanged" SelectedDate="{Binding CurrentPatient.DateOfBirth}"></DatePicker>
+                </WrapPanel>
+                <WrapPanel Orientation="Horizontal">
+                    <TextBlock Classes="GenericFieldLabel" Text="Genere "/>
+                    <ComboBox Tag="Gender" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding GenderTypesValues}" SelectedItem="{Binding CurrentPatient.Gender}"/>
+                </WrapPanel>
+            </WrapPanel>
+        </Border>
+        <Border Classes="ColumnBorder"
+                Grid.Column="1">
+            <TextBlock Classes="ColumnBTextBlock" Name="ColumnBDescription"></TextBlock>
+        </Border>
+    </Grid>
+</UserControl>

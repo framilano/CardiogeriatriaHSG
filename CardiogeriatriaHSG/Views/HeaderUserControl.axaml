@@ -1,0 +1,63 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:CardiogeriatriaHSG.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CardiogeriatriaHSG.Views.HeaderUserControl"
+             x:DataType="vm:VisitUserControlViewModel">
+    <Border BorderBrush="Black"
+            BorderThickness="2"
+    >
+        <Grid ColumnDefinitions="*, *, *"
+            Background="#6d1a61">
+            
+            <WrapPanel Margin="20" Grid.Column="0" HorizontalAlignment="Left" Orientation="Vertical" ItemSpacing="8">
+                <WrapPanel Orientation="Horizontal">
+                    <TextBlock FontWeight="Bold" Padding="10" Text="Tipo Visita:" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding VisitTypesValues}" SelectedItem="{Binding CurrentVisit.Type}"/>
+                </WrapPanel>
+                <WrapPanel Orientation="Horizontal">
+                    <TextBlock FontWeight="Bold" Padding="10" Text="Sottotipo Visita:" VerticalAlignment="Center"/>
+                    <ComboBox ItemsSource="{Binding VisitSubTypesValues}" SelectedItem="{Binding CurrentVisit.SubType}"/>
+                </WrapPanel>
+                <WrapPanel Orientation="Horizontal">
+                    <TextBlock FontWeight="Bold" Padding="10" Text="Telemedicina:" VerticalAlignment="Center"/>
+                    <CheckBox IsChecked="{Binding CurrentVisit.Telemedicina}"></CheckBox>
+                </WrapPanel>
+            </WrapPanel>
+            
+            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Padding="20" >
+                <Run FontWeight="Bold" Text="Codice Paziente " />
+                <Run Text="{Binding CurrentVisit.PatientCode}" />
+                <LineBreak />
+                <Run FontWeight="Bold" Text="Data Visita " />
+                <Run Text="{Binding CurrentVisit.Timestamp, StringFormat='\{0:dd/MM/yyyy HH:mm}', Mode=OneWay}" />
+                <LineBreak />
+                <Run FontWeight="Bold" Text="Numero Visita " />
+                <Run Text="{Binding CurrentVisit.Number}" />
+            </TextBlock>
+            
+            <WrapPanel Margin="20" Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" ItemSpacing="8">
+                <Button 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top"
+                    Background="Transparent" 
+                    BorderThickness="0" 
+                    Command="{Binding BackToWelcome}">
+                    <Image Source="avares://CardiogeriatriaHSG/Assets/home.png"
+                           Width="40" Height="40" />
+                </Button>
+                <Button 
+                    HorizontalAlignment="Right" 
+                    VerticalAlignment="Top"
+                    Background="Transparent" 
+                    BorderThickness="0" 
+                    Command="{Binding SaveVisit}">
+                    <Image Source="avares://CardiogeriatriaHSG/Assets/save.png"
+                           Width="40" Height="40" />
+                </Button>
+            </WrapPanel>
+        </Grid>
+    </Border>
+</UserControl>
