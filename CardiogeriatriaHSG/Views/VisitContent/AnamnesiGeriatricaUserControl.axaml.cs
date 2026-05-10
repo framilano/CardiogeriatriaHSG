@@ -174,7 +174,7 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
 
         walkingSentenceBuilder.Append(" e ");
         walkingSentenceBuilder.Append("deambulazione ");
-        walkingSentenceBuilder.Append(_currentVisit!.WalkingType.ToLower());
+        walkingSentenceBuilder.Append(_currentVisit.WalkingType!.ToLower());
         walkingSentenceBuilder.Append('.');
         walkingSentenceBuilder.Append('\n');
         _walkingSentence = walkingSentenceBuilder.ToString();
@@ -232,7 +232,7 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     {
         var nightsSentenceBuilder = new StringBuilder();
         nightsSentenceBuilder.Append("Notti ");
-        nightsSentenceBuilder.Append(_currentVisit!.Nights.ToLower());
+        nightsSentenceBuilder.Append(_currentVisit!.Nights!.ToLower());
         nightsSentenceBuilder.Append('.');
         nightsSentenceBuilder.Append('\n');
         _nightsSentence = nightsSentenceBuilder.ToString();
@@ -250,7 +250,7 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         
         //Appetite
         weightLossSentenceBuilder.Append("con appetito ");
-        weightLossSentenceBuilder.Append(_currentVisit!.Appetite.ToLower());
+        weightLossSentenceBuilder.Append(_currentVisit!.Appetite!.ToLower());
         weightLossSentenceBuilder.Append(", ");
 
         //Dysphagia
@@ -258,7 +258,7 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         else
         {
             weightLossSentenceBuilder.Append("disfagia ");
-            weightLossSentenceBuilder.Append(_currentVisit!.Dysphagia.ToLower());
+            weightLossSentenceBuilder.Append(_currentVisit!.Dysphagia!.ToLower());
         }
 
         weightLossSentenceBuilder.Append('.');

@@ -30,7 +30,11 @@ public partial class VisitUserControlViewModel : ViewModelBase
         CurrentPatient = currentPatient;
         CurrentContent = new AnagraficaUserControl { DataContext = new AnagraficaUserControlViewModel(currentVisit, currentPatient) };
     }
-    public VisitUserControlViewModel() {}
+    public VisitUserControlViewModel(MainWindowViewModel main, DatabaseService databaseService)
+    {
+        _main = main;
+        _databaseService = databaseService;
+    }
     
     //Allows us to switch back to WelcomePage
     private readonly MainWindowViewModel _main;
@@ -38,8 +42,8 @@ public partial class VisitUserControlViewModel : ViewModelBase
     //Allows us to call database from this UserControl
     private readonly DatabaseService _databaseService;
     
-    //List of all avaiable Sidebar entries
-    public IEnumerable<string> MenuEntriesValues => SidebarEntries.MenuEntries;
+    //List of all available Sidebar entries
+    public static IEnumerable<string> MenuEntriesValues => SidebarEntries.MenuEntries;
     
     //The selected sidebar entry
     public string SelectedMenuEntry { get; set; } = "Anagrafica";

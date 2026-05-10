@@ -8,7 +8,7 @@ namespace CardiogeriatriaHSG.Services.database;
 public class VisitRepository(AppDb db)
 {
     public List<Visit> FindByPatientCode(string code) =>
-        db.Visits.Where(v => v.Patient.PatientCode == code).ToList();
+        db.Visits.Where(v => v.Patient!.PatientCode == code).ToList();
 
     public Visit? FindByVisitCode(string visitCode) =>
         db.Visits.FirstOrDefault(v => v.VisitCode == visitCode);

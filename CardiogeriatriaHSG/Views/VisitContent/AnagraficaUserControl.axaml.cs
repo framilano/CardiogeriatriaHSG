@@ -14,6 +14,7 @@ public partial class AnagraficaUserControl : UserControl
     {
         InitializeComponent();
         _columnBDescription = this.Find<TextBlock>("ColumnBDescription");
+        _registrySentence = "";
         DataContextChanged += (_, __) =>
         {
             if (DataContext is not AnagraficaUserControlViewModel vm) return;

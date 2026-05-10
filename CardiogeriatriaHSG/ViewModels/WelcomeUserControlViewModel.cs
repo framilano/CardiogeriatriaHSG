@@ -17,6 +17,7 @@ public partial class WelcomeUserControlViewModel : ObservableObject
     {
         _databaseService = databaseService;
         _main = main;
+        LastVisitsList = [];
     }
 
     [ObservableProperty] private string _label = "Inserire codice paziente";
@@ -24,7 +25,7 @@ public partial class WelcomeUserControlViewModel : ObservableObject
     [ObservableProperty] private string? _errorMessage;
     [ObservableProperty] private bool? _createVisitBtnVisibility = false;
     [ObservableProperty] private bool? _lastVisitsListVisibility;
-    [ObservableProperty] private List<Visit>? _lastVisitsList;
+    [ObservableProperty] private List<Visit> _lastVisitsList;
 
     partial void OnUserCodeTextBoxChanged(string value) { SearchUser(); }
     
@@ -57,9 +58,9 @@ public partial class WelcomeUserControlViewModel : ObservableObject
     }
     
     [RelayCommand]
-    public void LoadExistingVisit(Visit visit)
+    private void LoadExistingVisit(Visit visit)
     {
-        var patient = _databaseService.RetrievePatientByCode(UserCodeTextBox);
+        var patient = _databaseService.RetrievePatientByCode(UserCodeTextBox)!;
         _main.NavigateToVisit(_databaseService, visit, patient);
     }
     

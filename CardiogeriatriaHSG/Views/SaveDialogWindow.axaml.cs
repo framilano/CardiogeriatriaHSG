@@ -5,6 +5,7 @@ namespace CardiogeriatriaHSG.Views;
 
 public partial class SaveDialogWindow : Window
 {
+    public SaveDialogWindow() { InitializeComponent(); }
     public SaveDialogWindow(string message)
     {
         InitializeComponent();
