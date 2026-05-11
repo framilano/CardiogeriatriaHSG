@@ -14,8 +14,8 @@
     
     <Border BorderBrush="#6d1a61" BorderThickness="2" Padding="20">
         <WrapPanel ItemSpacing="10" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock Name="Message" HorizontalAlignment="Center" TextWrapping="Wrap" />
-            <Button HorizontalAlignment="Center" Click="OnCloseClick" Content="OK"/>
+            <TextBlock TextAlignment="Center" Name="Message" HorizontalAlignment="Center" TextWrapping="Wrap" />
+            <Button Name="ConfirmButton" HorizontalAlignment="Center" Click="OnCloseClick" Content="OK"/>
         </WrapPanel>
     </Border>
 </Window>

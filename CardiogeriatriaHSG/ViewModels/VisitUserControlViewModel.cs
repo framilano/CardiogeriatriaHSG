@@ -107,6 +107,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
     [RelayCommand]
     public void SaveVisit()
     {
+        var sw = Stopwatch.StartNew();
         try
         {
             //Save or Update Patient
@@ -135,8 +136,9 @@ public partial class VisitUserControlViewModel : ViewModelBase
             return;
         }
         
+        sw.Stop(); 
         // If nothing happened, show a success message
-        new SaveDialogWindow("Visita salvata con successo").ShowDialog(GetCurrentWindow()!);
+        new SaveDialogWindow($"Visita salvata con successo in {sw.ElapsedMilliseconds}ms").ShowDialog(GetCurrentWindow()!);
     }
     
     private static Window? GetCurrentWindow()

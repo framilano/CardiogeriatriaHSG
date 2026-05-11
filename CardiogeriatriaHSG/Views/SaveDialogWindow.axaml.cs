@@ -10,6 +10,11 @@ public partial class SaveDialogWindow : Window
     {
         InitializeComponent();
         Message.Text = message;
+        Opened += (_, _) =>
+        {
+            //If the user press Enter key the dialog closes, we need to put the focus on the OK button
+            ConfirmButton.Focus();
+        };
     }
     
     private void OnCloseClick(object? sender, RoutedEventArgs e)
