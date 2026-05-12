@@ -28,6 +28,9 @@ public class VisitRepository(AppDb db)
         db.SaveChanges();
     }
 
-    public void LoadVisitPersistedTextsByVisit(Visit visit) => 
-        db.Entry(visit).Reference(v => v.VisitPersistedTexts).Load();
+    public void LoadVisitAgByVisit(Visit visit) => 
+        db.Entry(visit).Reference(v => v.VisitAg).Load();
+    
+    public void LoadVisitAprByVisit(Visit visit) => 
+        db.Entry(visit).Reference(v => v.VisitApr).Load();
 }

@@ -19,11 +19,11 @@
             <WrapPanel Classes="ColumnAWrapPanel">
                 <WrapPanel Orientation="Horizontal">
                     <TextBlock Classes="GenericFieldLabel" Text="Data di nascita "/>
-                    <DatePicker MaxYear="{Binding MaxAllowedDate}" Tag="DateOfBirth" SelectedDateChanged="OnColumnADatePickerChanged" SelectedDate="{Binding CurrentPatient.DateOfBirth}"></DatePicker>
+                    <DatePicker MaxYear="{Binding MaxAllowedDate}" Tag="DateOfBirth" SelectedDateChanged="OnColumnADatePickerChanged" SelectedDate="{Binding CurrentVisit.Patient.DateOfBirth}"></DatePicker>
                 </WrapPanel>
                 <WrapPanel Orientation="Horizontal">
                     <TextBlock Classes="GenericFieldLabel" Text="Genere "/>
-                    <ComboBox Tag="Gender" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding GenderTypesValues}" SelectedItem="{Binding CurrentPatient.Gender}"/>
+                    <ComboBox Tag="Gender" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding GenderTypesValues}" SelectedItem="{Binding CurrentVisit.Patient.Gender}"/>
                 </WrapPanel>
             </WrapPanel>
         </Border>

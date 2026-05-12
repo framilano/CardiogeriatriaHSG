@@ -7,9 +7,6 @@ public class AppDb(DbContextOptions<AppDb> options) : DbContext(options)
 {
     public DbSet<Patient> Patients => Set<Patient>();
     public DbSet<Visit> Visits => Set<Visit>();
-
-    public DbSet<VisitPersistedTexts> VisitsPersistedTexts => Set<VisitPersistedTexts>();
-
     
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -27,11 +24,16 @@ public class AppDb(DbContextOptions<AppDb> options) : DbContext(options)
         modelBuilder.Entity<Visit>()
             .HasIndex(v => v.PatientCode);  //Defining INDEX on PatientCode
         modelBuilder.Entity<Visit>()
-            .HasOne(v => v.VisitPersistedTexts)
+            .HasOne(v => v.VisitAg)
+            .WithOne(vpt => vpt.Visit).HasForeignKey<Visit>(v => v.VisitCode);
+        modelBuilder.Entity<Visit>()
+            .HasOne(v => v.VisitApr)
             .WithOne(vpt => vpt.Visit).HasForeignKey<Visit>(v => v.VisitCode);
         
-        //VISIT PERSISTED TEXTS PROPERTIES
-        modelBuilder.Entity<VisitPersistedTexts>()
-            .HasKey(vpt => vpt.VisitCode);
+        //VISIT SUBTABLES PROPERTIES
+        modelBuilder.Entity<VisitAg>()
+            .HasKey(vag => vag.VisitCode);
+        modelBuilder.Entity<VisitApr>()
+            .HasKey(vapr => vapr.VisitCode);
     }
 }

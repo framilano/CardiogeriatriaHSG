@@ -13,16 +13,15 @@ public partial class RefertoUserControl : UserControl
         {
             if (DataContext is not RefertoUserControlViewModel vm) return;
             var currentVisit = vm.CurrentVisit!;
-            var currentPatient = vm.CurrentPatient!;
             
             var anagraficaUserControl = new AnagraficaUserControl();
-            anagraficaUserControl.LoadAnagraficaContent(currentVisit, currentPatient);
+            anagraficaUserControl.LoadAnagraficaContent(currentVisit);
             var anamnesiGeriatricaUserControl = new AnamnesiGeriatricaUserControl();
             anamnesiGeriatricaUserControl.LoadAnamnesiGeriatricaContent(currentVisit);
             Dispatcher.UIThread.Post(() => { 
                 AnagraficaContent.Text = anagraficaUserControl.ColumnBDescription.Text;
                 AnamnesiGeriatricaContent.Text = anamnesiGeriatricaUserControl.ColumnBDescription.Text;
-                AnamnesiPatologicaRemotaContent.Text = currentVisit.VisitPersistedTexts!.AprText;
+                AnamnesiPatologicaRemotaContent.Text = currentVisit.VisitApr!.AprText;
             });
         };
     }

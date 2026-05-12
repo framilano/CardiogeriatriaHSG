@@ -56,83 +56,83 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         switch (tag) 
         {
             case "AssistanceAlone":
-                _currentVisit!.AssistanceAlone = value == "True";
+                _currentVisit!.VisitAg!.AssistanceAlone = value == "True";
                 UpdateAssistanceSentence();
                 break;
             case "AssistanceSpouse":
-                _currentVisit!.AssistanceSpouse = value == "True";
+                _currentVisit!.VisitAg!.AssistanceSpouse = value == "True";
                 UpdateAssistanceSentence();
                 break;
             case "AssistanceFamilyMembers":
-                _currentVisit!.AssistanceFamilyMembers = value == "True";
+                _currentVisit!.VisitAg!.AssistanceFamilyMembers = value == "True";
                 UpdateAssistanceSentence();
                 break;
             case "CareTaker":
-                _currentVisit!.CareTaker = value == "True";
+                _currentVisit!.VisitAg!.CareTaker = value == "True";
                 UpdateAssistanceSentence();
                 break;
             case "MotorSkill":
-                _currentVisit!.MotorSkill = value!;
-                if (_currentVisit!.MotorSkill is not "Solo letto-poltrona")
+                _currentVisit!.VisitAg!.MotorSkill = value!;
+                if (_currentVisit!.VisitAg!.MotorSkill is not "Solo letto-poltrona")
                 {
-                    _currentVisit.WalkingType ??= "Autonoma senza ausili";
+                    _currentVisit.VisitAg.WalkingType ??= "Autonoma senza ausili";
                     WalkingTypeComboBox.IsVisible = true;
                     WalkingTypeTextBlock.IsVisible = true;
                 }
                 else
                 {
-                    _currentVisit!.WalkingType = null;
+                    _currentVisit!.VisitAg!.WalkingType = null;
                     WalkingTypeComboBox.IsVisible = false;
                     WalkingTypeTextBlock.IsVisible = false;
                 }
                 UpdateWalkingSentence();
                 break;
             case "WalkingType":
-                _currentVisit!.WalkingType = value!;
+                _currentVisit!.VisitAg!.WalkingType = value!;
                 UpdateWalkingSentence();
                 break;
             case "Falls":
-                _currentVisit!.Falls = value!;
+                _currentVisit!.VisitAg!.Falls = value!;
                 UpdateFallsSentence();
                 break;
             case "CognitiveDeficit":
-                _currentVisit!.CognitiveDeficit = value!;
+                _currentVisit!.VisitAg!.CognitiveDeficit = value!;
                 UpdateCognitiveDeficitSentence();
                 break;
             case "Bpsd":
-                _currentVisit!.Bpsd = value == "True";
+                _currentVisit!.VisitAg!.Bpsd = value == "True";
                 UpdateBpsdSentence();
                 break;
             case "HearingImpairment":
-                _currentVisit!.HearingImpairment = value == "True";
+                _currentVisit!.VisitAg!.HearingImpairment = value == "True";
                 UpdateImpairmentSentence();
                 break;
             case "VisualImpairment":
-                _currentVisit!.VisualImpairment = value == "True";
+                _currentVisit!.VisitAg!.VisualImpairment = value == "True";
                 UpdateImpairmentSentence();
                 break;
             case "Nights":
-                _currentVisit!.Nights = value!;
+                _currentVisit!.VisitAg!.Nights = value!;
                 UpdateNightsSentence();
                 break;
             case "WeightLoss":
-                _currentVisit!.WeightLoss = value!;
+                _currentVisit!.VisitAg!.WeightLoss = value!;
                 UpdateWeightLossSentence();
                 break;
             case "Appetite":
-                _currentVisit!.Appetite = value!;
+                _currentVisit!.VisitAg!.Appetite = value!;
                 UpdateWeightLossSentence();
                 break;
             case "Dysphagia":
-                _currentVisit!.Dysphagia = value!;
+                _currentVisit!.VisitAg!.Dysphagia = value!;
                 UpdateWeightLossSentence();
                 break;
             case "Constipation":
-                _currentVisit!.Constipation = value == "True";
+                _currentVisit!.VisitAg!.Constipation = value == "True";
                 UpdateConstipationSentence();
                 break;
             case "Disability":
-                _currentVisit!.Disability = value == "True";
+                _currentVisit!.VisitAg!.Disability = value == "True";
                 UpdateDisabilitySentence();
                 break;
         }
@@ -144,10 +144,10 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     {
         var assistanceSentenceBuilder = new StringBuilder();
         assistanceSentenceBuilder.Append("Vive a domicilio");
-        if (_currentVisit!.AssistanceAlone) assistanceSentenceBuilder.Append(", da solo");
-        if (_currentVisit!.AssistanceSpouse) assistanceSentenceBuilder.Append(", con coniuge");
-        if (_currentVisit!.AssistanceFamilyMembers) assistanceSentenceBuilder.Append(", con familiari");
-        if (_currentVisit!.CareTaker) assistanceSentenceBuilder.Append(" e con badante");
+        if (_currentVisit!.VisitAg!.AssistanceAlone) assistanceSentenceBuilder.Append(", da solo");
+        if (_currentVisit!.VisitAg!.AssistanceSpouse) assistanceSentenceBuilder.Append(", con coniuge");
+        if (_currentVisit!.VisitAg!.AssistanceFamilyMembers) assistanceSentenceBuilder.Append(", con familiari");
+        if (_currentVisit!.VisitAg!.CareTaker) assistanceSentenceBuilder.Append(" e con badante");
         assistanceSentenceBuilder.Append('.');
         assistanceSentenceBuilder.Append('\n');
         _assistanceSentence = assistanceSentenceBuilder.ToString();
@@ -156,7 +156,7 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     private void UpdateWalkingSentence()
     {
         var walkingSentenceBuilder = new StringBuilder();
-        switch (_currentVisit!.MotorSkill)
+        switch (_currentVisit!.VisitAg!.MotorSkill)
         {
             case "Solo letto-poltrona":
                 walkingSentenceBuilder.Append("Vita di risparmio, spostamenti solo letto-poltrona");
@@ -174,7 +174,7 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
 
         walkingSentenceBuilder.Append(" e ");
         walkingSentenceBuilder.Append("deambulazione ");
-        walkingSentenceBuilder.Append(_currentVisit.WalkingType!.ToLower());
+        walkingSentenceBuilder.Append(_currentVisit.VisitAg.WalkingType!.ToLower());
         walkingSentenceBuilder.Append('.');
         walkingSentenceBuilder.Append('\n');
         _walkingSentence = walkingSentenceBuilder.ToString();
@@ -183,9 +183,9 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     private void UpdateFallsSentence()
     {
         var fallsSentenceBuilder = new StringBuilder();
-        if (_currentVisit!.Falls == "0") fallsSentenceBuilder.Append("Non riferite cadute negli ultimi 6 mesi");
-        else if (_currentVisit!.Falls == "1") fallsSentenceBuilder.Append("Riferita 1 caduta negli ultimi 6 mesi");
-        else if (_currentVisit!.Falls == "2") fallsSentenceBuilder.Append("Riferite 2 cadute negli ultimi 6 mesi");
+        if (_currentVisit!.VisitAg!.Falls == "0") fallsSentenceBuilder.Append("Non riferite cadute negli ultimi 6 mesi");
+        else if (_currentVisit!.VisitAg!.Falls == "1") fallsSentenceBuilder.Append("Riferita 1 caduta negli ultimi 6 mesi");
+        else if (_currentVisit!.VisitAg!.Falls == "2") fallsSentenceBuilder.Append("Riferite 2 cadute negli ultimi 6 mesi");
         else fallsSentenceBuilder.Append("Riferite 3 o più cadute negli ultimi 6 mesi");
 
         fallsSentenceBuilder.Append('.');
@@ -196,8 +196,8 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     private void UpdateCognitiveDeficitSentence()
     {
         var cognitiveDeficitSentenceBuilder = new StringBuilder();
-        if (_currentVisit!.CognitiveDeficit == "Nessuno") cognitiveDeficitSentenceBuilder.Append("Nessun decadimento cognitivo");
-        else if (_currentVisit!.CognitiveDeficit == "Iniziali") cognitiveDeficitSentenceBuilder.Append("Iniziali deficit cognitivi");
+        if (_currentVisit!.VisitAg!.CognitiveDeficit == "Nessuno") cognitiveDeficitSentenceBuilder.Append("Nessun decadimento cognitivo");
+        else if (_currentVisit!.VisitAg!.CognitiveDeficit == "Iniziali") cognitiveDeficitSentenceBuilder.Append("Iniziali deficit cognitivi");
         else cognitiveDeficitSentenceBuilder.Append("Noti deficit cognitivi");
 
         cognitiveDeficitSentenceBuilder.Append('.');
@@ -208,7 +208,7 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     private void UpdateBpsdSentence()
     {
         var bpsdSentenceBuilder = new StringBuilder();
-        if (_currentVisit!.Bpsd) bpsdSentenceBuilder.Append("Noti BPSD");
+        if (_currentVisit!.VisitAg!.Bpsd) bpsdSentenceBuilder.Append("Noti BPSD");
         else bpsdSentenceBuilder.Append("Non BPSD");
 
         bpsdSentenceBuilder.Append('.');
@@ -219,9 +219,9 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     private void UpdateImpairmentSentence()
     {
         var impairmentSentenceBuilder = new StringBuilder();
-        if (_currentVisit!.HearingImpairment) impairmentSentenceBuilder.Append("Affetto da ipoacusia e ");
+        if (_currentVisit!.VisitAg!.HearingImpairment) impairmentSentenceBuilder.Append("Affetto da ipoacusia e ");
         else  impairmentSentenceBuilder.Append("Non affetto da ipoacusia e ");
-        if (_currentVisit!.VisualImpairment) impairmentSentenceBuilder.Append("affetto da ipovisus");
+        if (_currentVisit!.VisitAg!.VisualImpairment) impairmentSentenceBuilder.Append("affetto da ipovisus");
         else  impairmentSentenceBuilder.Append("non affetto da ipovisus");
         impairmentSentenceBuilder.Append('.');
         impairmentSentenceBuilder.Append('\n');
@@ -232,7 +232,7 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     {
         var nightsSentenceBuilder = new StringBuilder();
         nightsSentenceBuilder.Append("Notti ");
-        nightsSentenceBuilder.Append(_currentVisit!.Nights!.ToLower());
+        nightsSentenceBuilder.Append(_currentVisit!.VisitAg!.Nights!.ToLower());
         nightsSentenceBuilder.Append('.');
         nightsSentenceBuilder.Append('\n');
         _nightsSentence = nightsSentenceBuilder.ToString();
@@ -243,22 +243,22 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         var weightLossSentenceBuilder = new StringBuilder();
         //WeightLoss
         weightLossSentenceBuilder.Append("Negli ultimi 3 mesi ");
-        if (_currentVisit!.WeightLoss == "No") weightLossSentenceBuilder.Append("nessuna perdita di peso, ");
-        else if (_currentVisit!.WeightLoss == "1-3 Kg") weightLossSentenceBuilder.Append("persi dagli 1 ai 3 Kg, ");
-        else if (_currentVisit!.WeightLoss == "Non noto") weightLossSentenceBuilder.Append("non è nota alcuna perdita di peso, ");
+        if (_currentVisit!.VisitAg!.WeightLoss == "No") weightLossSentenceBuilder.Append("nessuna perdita di peso, ");
+        else if (_currentVisit!.VisitAg!.WeightLoss == "1-3 Kg") weightLossSentenceBuilder.Append("persi dagli 1 ai 3 Kg, ");
+        else if (_currentVisit!.VisitAg!.WeightLoss == "Non noto") weightLossSentenceBuilder.Append("non è nota alcuna perdita di peso, ");
         else  weightLossSentenceBuilder.Append("sono stati persi più di 3 Kg, ");
         
         //Appetite
         weightLossSentenceBuilder.Append("con appetito ");
-        weightLossSentenceBuilder.Append(_currentVisit!.Appetite!.ToLower());
+        weightLossSentenceBuilder.Append(_currentVisit!.VisitAg!.Appetite!.ToLower());
         weightLossSentenceBuilder.Append(", ");
 
         //Dysphagia
-        if (_currentVisit!.Dysphagia == "No") weightLossSentenceBuilder.Append("nessuna disfagia");
+        if (_currentVisit!.VisitAg!.Dysphagia == "No") weightLossSentenceBuilder.Append("nessuna disfagia");
         else
         {
             weightLossSentenceBuilder.Append("disfagia ");
-            weightLossSentenceBuilder.Append(_currentVisit!.Dysphagia!.ToLower());
+            weightLossSentenceBuilder.Append(_currentVisit!.VisitAg!.Dysphagia!.ToLower());
         }
 
         weightLossSentenceBuilder.Append('.');
@@ -271,7 +271,7 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         var constipationSentenceBuilder = new StringBuilder();
         
         constipationSentenceBuilder.Append("Alvo ");
-        if (_currentVisit!.Constipation) constipationSentenceBuilder.Append("stitico");
+        if (_currentVisit!.VisitAg!.Constipation) constipationSentenceBuilder.Append("stitico");
         else constipationSentenceBuilder.Append("regolare");
         
         constipationSentenceBuilder.Append('.');
@@ -283,7 +283,7 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     {
         var disabilitySentenceBuilder = new StringBuilder();
         
-        if (_currentVisit!.Disability) disabilitySentenceBuilder.Append("In possesso di IC");
+        if (_currentVisit!.VisitAg!.Disability) disabilitySentenceBuilder.Append("In possesso di IC");
         else disabilitySentenceBuilder.Append("Non in possesso di IC");
         
         disabilitySentenceBuilder.Append('.');

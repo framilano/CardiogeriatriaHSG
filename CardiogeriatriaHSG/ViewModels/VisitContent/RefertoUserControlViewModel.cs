@@ -2,11 +2,9 @@ using CardiogeriatriaHSG.Models;
 
 namespace CardiogeriatriaHSG.ViewModels.VisitContent;
 
-public class RefertoUserControlViewModel(Visit currentVisit, Patient currentPatient) : ViewModelBase
+public class RefertoUserControlViewModel(Visit currentVisit) : ViewModelBase
 {
     //CONSTRUCTORS
 
     public Visit CurrentVisit { get; set; } = currentVisit;
-
-    public Patient CurrentPatient { get; set; } = currentPatient;
 }

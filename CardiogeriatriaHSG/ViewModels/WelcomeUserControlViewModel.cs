@@ -60,8 +60,7 @@ public partial class WelcomeUserControlViewModel : ObservableObject
     [RelayCommand]
     private void LoadExistingVisit(Visit visit)
     {
-        var patient = _databaseService.RetrievePatientByCode(UserCodeTextBox)!;
-        _main.NavigateToVisit(_databaseService, visit, patient);
+        _main.NavigateToVisit(_databaseService, visit);
     }
     
     [RelayCommand]
@@ -78,69 +77,8 @@ public partial class WelcomeUserControlViewModel : ObservableObject
             Type = "Cardiogeriatrica",
             SubType = "Hf",
             Telemedicina = false,
-            //AnamnesiGeriatrica
-            AssistanceAlone = false,
-            AssistanceSpouse = false,
-            AssistanceFamilyMembers = false,
-            CareTaker = false,
-            MotorSkill = "Solo letto-poltrona",
-            WalkingType = null,
-            Falls = "0",
-            CognitiveDeficit = "Nessuno",
-            Bpsd = false,
-            HearingImpairment = false,
-            VisualImpairment = false,
-            Nights = "Riposate",
-            WeightLoss = "No",
-            Appetite = "Conservato",
-            Dysphagia = "No",
-            NutrionalProblems = false,
-            Constipation = false,
-            Disability = false,
-            //APR
-            IschemicHeartDisease = false,
-            HeartFailure = false,
-            AtrialFibrillation = false,
-            CerebrovascularDisease = false,
-            Neoplasm = false,
-            ChronicObstructivePulmonaryDisease = false,
-            ChronicKidneyDisease = false,
-            PeripheralVascularDisease = false,
-            Diabetes = false,
-            ChronicSkinUlcers = false,
-            Parkinson = false,
-            Schizophrenia = false,
-            NeuromuscularDisorders = false,
-            HipFracture = false,
-            Anemia = false,
-            OxygenTherapyLast6Months = false,
-            HospitalizationLast6Months = false,
-            HeparinUseLast6Months = false,
-            Bradycardia = false,
-            ArterialHypertension = false,
-            SevereValvularDiseaseSm = false,
-            SevereValvularDiseaseIm = false,
-            SevereValvularDiseaseIao = false,
-            SevereValvularDiseaseSao = false,
-            SevereValvularDiseaseItr = false,
-            Amyloidosis = false,
-            AmyloidosisType = null,
-            AmyloidosisDiagnosisDate = null,
-            AmyloidosisDmt = null,
-            AmyloidosisTherapyStartDate = null,
-            Dementia = false,
-            DementiaType = null,
         };
 
-        visit.VisitPersistedTexts = new VisitPersistedTexts(visit.VisitCode);
-
-        var patient = _databaseService.RetrievePatientByCode(UserCodeTextBox) ?? new Patient
-        {
-            PatientCode = UserCodeTextBox,
-            Gender = "F",
-            DateOfBirth = new DateTime(1970, 1, 1)
-        };
-
-        _main.NavigateToVisit(_databaseService, visit, patient);
+        _main.NavigateToVisit(_databaseService, visit);
     }
 }

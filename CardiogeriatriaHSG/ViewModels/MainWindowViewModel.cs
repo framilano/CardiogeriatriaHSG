@@ -20,12 +20,11 @@ public partial class MainWindowViewModel : ObservableObject
         CurrentPage = new WelcomeUserControl { DataContext = new WelcomeUserControlViewModel(this, databaseService) };
     }
 
-    public void NavigateToVisit(DatabaseService databaseService, Visit visitToLoad, Patient patientToLoad)
+    public void NavigateToVisit(DatabaseService databaseService, Visit visitToLoad)
     {
-        CurrentPage = new VisitUserControl { DataContext = new VisitUserControlViewModel(this, databaseService, visitToLoad, patientToLoad)
+        CurrentPage = new VisitUserControl { DataContext = new VisitUserControlViewModel(this, databaseService, visitToLoad)
             {
-                CurrentVisit = visitToLoad,
-                CurrentPatient = patientToLoad
+                CurrentVisit = visitToLoad
             }
         };
     }

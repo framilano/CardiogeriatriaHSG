@@ -42,55 +42,55 @@ public partial class AnamnesiPatologicaRemotaUserControl : UserControl
         switch (tag) 
         {
             case "Amyloidosis":
-                _currentVisit!.Amyloidosis = value == "True";
-                if (_currentVisit!.Amyloidosis)
+                _currentVisit!.VisitApr!.Amyloidosis = value == "True";
+                if (_currentVisit!.VisitApr!.Amyloidosis)
                 {
-                    _currentVisit.AmyloidosisType ??= "ATTR-WT";
+                    _currentVisit.VisitApr.AmyloidosisType ??= "ATTR-WT";
                     AmyloidosisTypeComboBox.IsVisible = true;
                     AmyloidosisTypeTextBlock.IsVisible = true;
                     
-                    _currentVisit.AmyloidosisDiagnosisDate ??= now;
+                    _currentVisit.VisitApr.AmyloidosisDiagnosisDate ??= now;
                     AmyloidosisDiagnosisDateDatePicker.IsVisible = true;
                     AmyloidosisDiagnosisDateTextBlock.IsVisible = true;
                     
-                    _currentVisit.AmyloidosisDmt ??= false;
+                    _currentVisit.VisitApr.AmyloidosisDmt ??= false;
                     AmyloidosisDmtTextBlock.IsVisible = true;
                     AmyloidosisDmtCheckBox.IsVisible = true;
                     
-                    _currentVisit.AmyloidosisTherapyStartDate ??= now;
+                    _currentVisit.VisitApr.AmyloidosisTherapyStartDate ??= now;
                     AmyloidosisTherapyStartDateDatePicker.IsVisible = true;
                     AmyloidosisTherapyStartDateTextBlock.IsVisible = true;
                 }
                 else
                 {
-                    _currentVisit!.AmyloidosisType = null;
+                    _currentVisit!.VisitApr!.AmyloidosisType = null;
                     AmyloidosisTypeComboBox.IsVisible = false;
                     AmyloidosisTypeTextBlock.IsVisible = false;
                     
-                    _currentVisit!.AmyloidosisDiagnosisDate = null;
+                    _currentVisit!.VisitApr!.AmyloidosisDiagnosisDate = null;
                     AmyloidosisDiagnosisDateDatePicker.IsVisible = false;
                     AmyloidosisDiagnosisDateTextBlock.IsVisible = false;
                     
-                    _currentVisit!.AmyloidosisDmt = null;
+                    _currentVisit!.VisitApr!.AmyloidosisDmt = null;
                     AmyloidosisDmtCheckBox.IsVisible = false;
                     AmyloidosisDmtTextBlock.IsVisible = false;
                     
-                    _currentVisit!.AmyloidosisTherapyStartDate = null;
+                    _currentVisit!.VisitApr!.AmyloidosisTherapyStartDate = null;
                     AmyloidosisTherapyStartDateDatePicker.IsVisible = false;
                     AmyloidosisTherapyStartDateTextBlock.IsVisible = false;
                 }
                 break;
             case "Dementia":
-                _currentVisit!.Dementia = value == "True";
-                if (_currentVisit!.Dementia)
+                _currentVisit!.VisitApr!.Dementia = value == "True";
+                if (_currentVisit!.VisitApr!.Dementia)
                 {
-                    _currentVisit.DementiaType ??= "Neurodegenerativa";
+                    _currentVisit.VisitApr.DementiaType ??= "Neurodegenerativa";
                     DementiaTypeComboBox.IsVisible = true;
                     DementiaTypeTextBlock.IsVisible = true;
                 }
                 else
                 {
-                    _currentVisit!.DementiaType = null;
+                    _currentVisit!.VisitApr!.DementiaType = null;
                     DementiaTypeComboBox.IsVisible = false;
                     DementiaTypeTextBlock.IsVisible = false;
                 }
