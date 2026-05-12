@@ -7,7 +7,7 @@
         <ApplicationManifest>app.manifest</ApplicationManifest>
         <AvaloniaUseCompiledBindingsByDefault>true</AvaloniaUseCompiledBindingsByDefault>
         <PublishSingleFile>true</PublishSingleFile>
-        <PublishReadyToRun>true</PublishReadyToRun>
+        <!-- <PublishReadyToRun>true</PublishReadyToRun> -->
         <PublishTrimmed>false</PublishTrimmed>
     </PropertyGroup>
 
