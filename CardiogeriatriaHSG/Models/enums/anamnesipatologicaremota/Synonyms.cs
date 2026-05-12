@@ -2,7 +2,7 @@
 
 namespace CardiogeriatriaHSG.Models.enums.anamnesipatologicaremota;
 
-public static class AnamnesiPatologicaRemotaSynonyms
+public static class Synonyms
 {
     public static readonly List<string> IschemicHeartDiseaseSynonyms = ["cardiopatia ischemica", "stemi", "infarto", "ima", "nstemi"];
     public static readonly List<string> HeartFailureSynonyms = ["insufficienza cardiaca", "scompenso cardiaco", "scc"];
@@ -21,11 +21,11 @@ public static class AnamnesiPatologicaRemotaSynonyms
     public static readonly List<string> AnemiaSynonyms = ["anemia"];
     public static readonly List<string> BradycardiaSynonyms = ["bradicardia", "bav"];
     public static readonly List<string> ArterialHypertensionSynonyms = ["ipertensione arteriosa", "ia", "ipertensiva"];
-    public static readonly List<string> SevereValvularDiseaseSmSynonyms = ["sm", "stenosi mitralica"];
-    public static readonly List<string> SevereValvularDiseaseImSynonyms = ["im", "insufficienza mitralica"];
-    public static readonly List<string> SevereValvularDiseaseIaoSynonyms = ["iao", "insufficienza aortica"];
-    public static readonly List<string> SevereValvularDiseaseSaoSynonyms = ["sao", "stenosi aortica"];
-    public static readonly List<string> SevereValvularDiseaseItrSynonyms = ["itr", "insufficienza tricuspidalica"];
+    public static readonly List<string> SevereValvularDiseaseSmSynonyms = ["sm", "stenosi mitralica severa"];
+    public static readonly List<string> SevereValvularDiseaseImSynonyms = ["im", "insufficienza mitralica severa"];
+    public static readonly List<string> SevereValvularDiseaseIaoSynonyms = ["iao", "insufficienza aortica severa"];
+    public static readonly List<string> SevereValvularDiseaseSaoSynonyms = ["sao", "stenosi aortica severa"];
+    public static readonly List<string> SevereValvularDiseaseItrSynonyms = ["itr", "insufficienza tricuspidalica severa"];
     public static readonly List<string> AmyloidosisSynonyms = ["amiloidosi"];
 
     public static readonly List<string> DementiaSynonyms = ["deficit cognitivo", "demenza", "decadimento cognitivo", "disturbo cognitivo"," disturbo neurocognitivo", "mci", "lbd", "alzheimer"];
