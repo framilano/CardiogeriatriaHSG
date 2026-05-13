@@ -46,38 +46,30 @@ public partial class AnamnesiPatologicaRemotaUserControl : UserControl
                 if (_currentVisit!.VisitApr!.Amyloidosis)
                 {
                     _currentVisit.VisitApr.AmyloidosisType ??= "ATTR-WT";
-                    AmyloidosisTypeComboBox.IsVisible = true;
-                    AmyloidosisTypeTextBlock.IsVisible = true;
+                    AmyloidosisTypeWrapPanel.IsVisible = true;
                     
                     _currentVisit.VisitApr.AmyloidosisDiagnosisDate ??= now;
-                    AmyloidosisDiagnosisDateDatePicker.IsVisible = true;
-                    AmyloidosisDiagnosisDateTextBlock.IsVisible = true;
+                    AmyloidosisDiagnosisDateWrapPanel.IsVisible = true;
                     
                     _currentVisit.VisitApr.AmyloidosisDmt ??= false;
-                    AmyloidosisDmtTextBlock.IsVisible = true;
-                    AmyloidosisDmtCheckBox.IsVisible = true;
+                    AmyloidosisDmtWrapPanel.IsVisible = true;
                     
                     _currentVisit.VisitApr.AmyloidosisTherapyStartDate ??= now;
-                    AmyloidosisTherapyStartDateDatePicker.IsVisible = true;
-                    AmyloidosisTherapyStartDateTextBlock.IsVisible = true;
+                    AmyloidosisTherapyStartDateWrapPanel.IsVisible = true;
                 }
                 else
                 {
                     _currentVisit!.VisitApr!.AmyloidosisType = null;
-                    AmyloidosisTypeComboBox.IsVisible = false;
-                    AmyloidosisTypeTextBlock.IsVisible = false;
+                    AmyloidosisTypeWrapPanel.IsVisible = false;
                     
                     _currentVisit!.VisitApr!.AmyloidosisDiagnosisDate = null;
-                    AmyloidosisDiagnosisDateDatePicker.IsVisible = false;
-                    AmyloidosisDiagnosisDateTextBlock.IsVisible = false;
+                    AmyloidosisDiagnosisDateWrapPanel.IsVisible = false;
                     
                     _currentVisit!.VisitApr!.AmyloidosisDmt = null;
-                    AmyloidosisDmtCheckBox.IsVisible = false;
-                    AmyloidosisDmtTextBlock.IsVisible = false;
+                    AmyloidosisDmtWrapPanel.IsVisible = false;
                     
                     _currentVisit!.VisitApr!.AmyloidosisTherapyStartDate = null;
-                    AmyloidosisTherapyStartDateDatePicker.IsVisible = false;
-                    AmyloidosisTherapyStartDateTextBlock.IsVisible = false;
+                    AmyloidosisTherapyStartDateWrapPanel.IsVisible = false;
                 }
                 break;
             case "Dementia":
@@ -85,14 +77,12 @@ public partial class AnamnesiPatologicaRemotaUserControl : UserControl
                 if (_currentVisit!.VisitApr!.Dementia)
                 {
                     _currentVisit.VisitApr.DementiaType ??= "Neurodegenerativa";
-                    DementiaTypeComboBox.IsVisible = true;
-                    DementiaTypeTextBlock.IsVisible = true;
+                    DementiaTypeWrapPanel.IsVisible = true;
                 }
                 else
                 {
                     _currentVisit!.VisitApr!.DementiaType = null;
-                    DementiaTypeComboBox.IsVisible = false;
-                    DementiaTypeTextBlock.IsVisible = false;
+                    DementiaTypeWrapPanel.IsVisible = false;
                 }
                 break;
         }
