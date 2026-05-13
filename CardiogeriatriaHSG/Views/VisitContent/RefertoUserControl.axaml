@@ -26,6 +26,10 @@
                 <LineBreak/>
                 <Run Name="AnamnesiPatologicaRemotaContent"/>
                 <LineBreak/>
+                <Run FontWeight="Bold" Text="Terapia Domiciliare" />
+                <LineBreak/>
+                <Run Name="TerapiaDomiciliareContent"/>
+                <LineBreak/>
             </SelectableTextBlock>
          </Border>
     </ScrollViewer>

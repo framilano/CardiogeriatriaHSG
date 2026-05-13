@@ -29,6 +29,8 @@ public class AppDb(DbContextOptions<AppDb> options) : DbContext(options)
             .HasKey(vag => vag.VisitCode);
         modelBuilder.Entity<VisitApr>()
             .HasKey(vapr => vapr.VisitCode);
+        modelBuilder.Entity<VisitTd>()
+            .HasKey(vtd => vtd.VisitCode);
         
         //VISIT SUBTABLES FOREIGN KEYS
         modelBuilder.Entity<VisitAg>()
@@ -40,6 +42,11 @@ public class AppDb(DbContextOptions<AppDb> options) : DbContext(options)
             .HasOne(vapr => vapr.Visit)
             .WithOne(v => v.VisitApr)
             .HasForeignKey<VisitApr>(vapr => vapr.VisitCode)
+            .IsRequired(false);
+        modelBuilder.Entity<VisitTd>()
+            .HasOne(vtd => vtd.Visit)
+            .WithOne(v => v.VisitTd)
+            .HasForeignKey<VisitTd>(vtd => vtd.VisitCode)
             .IsRequired(false);
     }
 }

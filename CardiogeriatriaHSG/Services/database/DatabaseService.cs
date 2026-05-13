@@ -39,6 +39,13 @@ public class DatabaseService
         Log.Debug("DatabaseService initialized with database at: " + dbPath);
     }
     
+    public void ClearDatabaseContext()
+    {
+        Log.Debug("[START] Clearing database context...");
+        _db.ChangeTracker.Clear();
+        Log.Information("[STOP] Database context cleared");
+    }
+    
     //************* PATIENT APIS *************
     
     public Patient? RetrievePatientByCode(string patientCode)
@@ -109,11 +116,13 @@ public class DatabaseService
         _visitRepository.LoadVisitAprByVisit(visit);
         Log.Information("[STOP] Loaded visit APR data for visit {VisitVisitCode}", visit.VisitCode);
     }
-
-    public void ClearDatabaseContext()
+    
+    public void LoadVisitTerapiaDomiciliareByVisit(Visit visit)
     {
-        Log.Debug("[START] Clearing database context...");
-        _db.ChangeTracker.Clear();
-        Log.Information("[STOP] Database context cleared");
+        Log.Debug("[START] Loading visit TD data for visit {VisitVisitCode}", visit.VisitCode);
+        _visitRepository.LoadVisitTdByVisit(visit);
+        Log.Information("[STOP] Loaded visit TD data for visit {VisitVisitCode}", visit.VisitCode);
     }
+
+
 }

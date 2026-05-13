@@ -34,9 +34,9 @@
                                 <TextBlock Classes="GenericFieldLabel" Text="Motricità " />
                                 <ComboBox Tag="MotorSkill" Loaded="OnColumnAChanged" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding MotorSkillsValues}" SelectedItem="{Binding CurrentVisit.VisitAg.MotorSkill}"/>
                             </WrapPanel>
-                            <WrapPanel Orientation="Horizontal">
-                                <TextBlock Name="WalkingTypeTextBlock" Classes="GenericFieldLabel" Text="Deambulazione " />
-                                <ComboBox Name="WalkingTypeComboBox" Tag="WalkingType" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding WalkingTypesValues}" SelectedItem="{Binding CurrentVisit.VisitAg.WalkingType}"/>
+                            <WrapPanel IsVisible="False" Name="WalkingTypeWrapPanel" Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Deambulazione " />
+                                <ComboBox Tag="WalkingType" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding WalkingTypesValues}" SelectedItem="{Binding CurrentVisit.VisitAg.WalkingType}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Cadute in 6 mesi " />

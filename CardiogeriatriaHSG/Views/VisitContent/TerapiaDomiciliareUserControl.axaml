@@ -1,0 +1,54 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             xmlns:visitContent="clr-namespace:CardiogeriatriaHSG.ViewModels.VisitContent"
+             x:Class="CardiogeriatriaHSG.Views.VisitContent.TerapiaDomiciliareUserControl"
+             x:DataType="visitContent:TerapiaDomiciliareUserControlViewModel"
+             FontSize="25">
+    
+            <UserControl.Styles>
+                <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
+            </UserControl.Styles>
+    
+             <Grid
+                ColumnDefinitions="*, *">
+                        <Border Classes="ColumnBorder"
+                                Grid.Column="0">
+                    <ScrollViewer>
+                        <WrapPanel Classes="ColumnAWrapPanel">
+                            
+                            <!-- FUROSEMIDE -->
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Furosemide "/>
+                                <CheckBox Tag="Dementia" IsCheckedChanged="OnColumnAChanged" Loaded="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitTd.Furosemide}"/>
+                            </WrapPanel>
+                            <WrapPanel IsVisible="False" Name="FurosemideDoseWrapPanel" Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Dosaggio furosemide "/>
+                                <NumericUpDown Minimum="0" Maximum="2000" Increment="1" FormatString="0" Value="{Binding CurrentVisit.VisitTd.FurosemideDose}"/>
+                            </WrapPanel>
+                        </WrapPanel>
+                    </ScrollViewer>
+                </Border>
+                 <Border Grid.Column="1" Classes="ColumnBorder">
+                     <Grid>
+                         <ScrollViewer VerticalScrollBarVisibility="Auto">
+                             <TextBox
+                                 Text="{Binding CurrentVisit.VisitTd.TdText}"
+                                 Classes="ColumnBTextBox"
+                                 Name="ColumnBDescription"
+                             />
+                         </ScrollViewer>
+                         <Button 
+                             HorizontalAlignment="Right" 
+                             VerticalAlignment="Top"
+                             Margin="0,4,4,0"
+                             Classes="TransparentButton"
+                             Command="{Binding InferColumnBValues}">
+                             <Image Source="avares://CardiogeriatriaHSG/Assets/inverted-linux.png" Width="50" Height="50" />
+                         </Button>
+                     </Grid>
+                 </Border>
+            </Grid>
+</UserControl>

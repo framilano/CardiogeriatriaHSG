@@ -27,7 +27,7 @@
                 </WrapPanel>
             </WrapPanel>
             
-            <TextBlock HorizontalAlignment="Center" Grid.Column="1" Padding="20" >
+            <SelectableTextBlock HorizontalAlignment="Center" Grid.Column="1" Padding="20" >
                 <Run FontWeight="Bold" Text="Codice Paziente " />
                 <Run Text="{Binding CurrentVisit.PatientCode}" />
                 <LineBreak />
@@ -36,7 +36,7 @@
                 <LineBreak />
                 <Run FontWeight="Bold" Text="Numero Visita " />
                 <Run Text="{Binding CurrentVisit.Number}" />
-            </TextBlock>
+            </SelectableTextBlock>
             
             <WrapPanel Margin="20" Orientation="Horizontal" Grid.Column="2" HorizontalAlignment="Right" ItemSpacing="8">
                 <Button 

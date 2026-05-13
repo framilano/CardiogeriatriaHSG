@@ -27,11 +27,13 @@ public partial class VisitUserControlViewModel : ViewModelBase
         _main = main;
         CurrentVisit = currentVisit;
         MenuEntrySelected("Anagrafica");
+        SelectedMenuEntry = "Anagrafica";
     }
     public VisitUserControlViewModel(MainWindowViewModel main, DatabaseService databaseService)
     {
         _main = main;
         _databaseService = databaseService;
+        SelectedMenuEntry = "Anagrafica";
     }
     
     //Allows us to switch back to WelcomePage
@@ -44,12 +46,12 @@ public partial class VisitUserControlViewModel : ViewModelBase
     public static IEnumerable<string> MenuEntriesValues => SidebarEntries.MenuEntries;
     
     //The selected sidebar entry
-    public string SelectedMenuEntry { get; set; } = "Anagrafica";
+    private string SelectedMenuEntry { get; set; } = "";
     
     //All the VisitTypeValues available in Header
-    public IEnumerable<string> VisitTypesValues => VisitType.VisitTypes;
+    public static IEnumerable<string> VisitTypesValues => VisitType.VisitTypes;
     //All the VisitSubTypeValues available in Header
-    public IEnumerable<string> VisitSubTypesValues => VisitSubType.VisitSubTypes;
+    public static IEnumerable<string> VisitSubTypesValues => VisitSubType.VisitSubTypes;
     
     public required Visit CurrentVisit { get; set; }
     
@@ -61,6 +63,11 @@ public partial class VisitUserControlViewModel : ViewModelBase
     [RelayCommand]
     private void MenuEntrySelected(string menuEntry)
     {
+        if (SelectedMenuEntry == menuEntry)
+        {
+            Log.Information("Menu entry {MenuEntry} already selected, skipping content reload.", menuEntry);
+            return;
+        }
         SelectedMenuEntry = menuEntry;
         var sw = Stopwatch.StartNew();
         switch (menuEntry)
@@ -77,14 +84,22 @@ public partial class VisitUserControlViewModel : ViewModelBase
             case "APR":
                 if (CurrentVisit.VisitApr is null) _databaseService.LoadVisitAnamnesiPatologicaRemotaByVisit(CurrentVisit);
                 CurrentVisit.VisitApr ??= CreateNewVisitApr(CurrentVisit.VisitCode!);
-                CurrentContent = new AnamnesiPatologicaRemotaUserControl() { DataContext = new AnamnesiPatologicaRemotaUserControlViewModel(CurrentVisit) };
+                CurrentContent = new AnamnesiPatologicaRemotaUserControl { DataContext = new AnamnesiPatologicaRemotaUserControlViewModel(CurrentVisit) };
+                break;
+            case "Terapia domiciliare":
+                if (CurrentVisit.VisitTd is null) _databaseService.LoadVisitTerapiaDomiciliareByVisit(CurrentVisit);
+                CurrentVisit.VisitTd ??= CreateNewVisitTd(CurrentVisit.VisitCode!);
+                CurrentContent = new TerapiaDomiciliareUserControl { DataContext = new TerapiaDomiciliareUserControlViewModel(CurrentVisit) };
                 break;
             case "Referto":
+                //There's no need to load patient (anagrafica) because already loaded by default
                 if (CurrentVisit.VisitAg is null) { _databaseService.LoadVisitAnamnesiGeriatricaByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitApr is null) { _databaseService.LoadVisitAnamnesiPatologicaRemotaByVisit(CurrentVisit); }
+                if (CurrentVisit.VisitTd is null) { _databaseService.LoadVisitTerapiaDomiciliareByVisit(CurrentVisit); }
                 CurrentVisit.VisitAg ??= CreateNewVisitAg(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitApr ??= CreateNewVisitApr(CurrentVisit.VisitCode!);
-                CurrentContent = new RefertoUserControl() { DataContext = new RefertoUserControlViewModel(CurrentVisit) };
+                CurrentVisit.VisitTd ??= CreateNewVisitTd(CurrentVisit.VisitCode!);
+                CurrentContent = new RefertoUserControl { DataContext = new RefertoUserControlViewModel(CurrentVisit) };
                 break;
         }
         
@@ -173,6 +188,54 @@ public partial class VisitUserControlViewModel : ViewModelBase
         };
         Log.Information("[STOP] Created new VisitAPR");
         return visitApr;
+    }
+    
+    private static VisitTd CreateNewVisitTd(string visitCode)
+    {
+        Log.Debug("[START] Creating new VisitTD...");
+        var visitTd = new VisitTd(visitCode)
+        {
+            BetaBlocker = false,
+            Mra = false,
+            AceInhibitor = false,
+            Arb = false,
+            Sglt2Inhibitor = false,
+            Arni = false,
+            Vericiguat = false,
+            Furosemide = false,
+            FurosemideDose = null,
+            OtherLoopDiuretic = false,
+            Doac = false,
+            Vka = false,
+            Acetazolamide = false,
+            Hydrochlorothiazide = false,
+            Acoramidis = false,
+            Tafamidis = false,
+            Vutrisiran = false,
+            CalciumChannelBlockers = false,
+            Ranolazine = false,
+            Nitrates = false,
+            Glp1 = false,
+            Doxazosin = false,
+            Clonidine = false,
+            Fibrates = false,
+            Statins = false,
+            Ezetimibe = false,
+            Ppi = false,
+            AcheInhibitorOrMemantine = false,
+            Benzodiazepines = false,
+            ZDrugs = false,
+            LowDoseTrazodone = false,
+            Antidepressants = false,
+            Antipsychotics = false,
+            Paracetamol = false,
+            Opioids = false,
+            OtherAnalgesics = false,
+            ProteinSupplementation = false,
+            PhysicalExercise = false
+        };
+        Log.Information("[STOP] Created new VisitTD");
+        return visitTd;
     }
     
     [RelayCommand]

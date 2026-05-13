@@ -22,6 +22,7 @@ public partial class RefertoUserControl : UserControl
                 AnagraficaContent.Text = anagraficaUserControl.ColumnBDescription.Text;
                 AnamnesiGeriatricaContent.Text = anamnesiGeriatricaUserControl.ColumnBDescription.Text;
                 AnamnesiPatologicaRemotaContent.Text = currentVisit.VisitApr!.AprText;
+                TerapiaDomiciliareContent.Text = currentVisit.VisitTd!.TdText;
             });
         };
     }

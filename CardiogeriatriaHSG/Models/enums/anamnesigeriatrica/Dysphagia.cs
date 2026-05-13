@@ -9,7 +9,7 @@ public static class Dysphagia
         "Iniziale ai liquidi",
         "Iniziale ai solidi",
         "Ai liquidi",
-        "Ai soliti",
+        "Ai solidi",
         "A liquidi e solidi"
     ];
 }

@@ -116,19 +116,19 @@
                                 <TextBlock Classes="GenericFieldLabel" Text="Amiloidosi "/>
                                 <CheckBox Tag="Amyloidosis" IsCheckedChanged="OnColumnAChanged" Loaded="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitApr.Amyloidosis}"/>
                             </WrapPanel>
-                            <WrapPanel Name="AmyloidosisTypeWrapPanel" Orientation="Horizontal">
+                            <WrapPanel IsVisible="False" Name="AmyloidosisTypeWrapPanel" Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Tipo Amiloidosi "/>
                                 <ComboBox SelectionChanged="OnColumnAChanged" ItemsSource="{Binding AmyloidosisTypesValues}" SelectedItem="{Binding CurrentVisit.VisitApr.AmyloidosisType}"/>
                             </WrapPanel>
-                            <WrapPanel Name="AmyloidosisDiagnosisDateWrapPanel" Orientation="Horizontal">
+                            <WrapPanel IsVisible="False" Name="AmyloidosisDiagnosisDateWrapPanel" Orientation="Horizontal">
                                 <TextBlock  Classes="GenericFieldLabel" Text="Data diagnosi "/>
                                 <DatePicker MaxYear="{Binding MaxAllowedDate}" SelectedDate="{Binding CurrentVisit.VisitApr.AmyloidosisDiagnosisDate}" />
                             </WrapPanel>
-                            <WrapPanel Name="AmyloidosisDmtWrapPanel" Orientation="Horizontal">
+                            <WrapPanel IsVisible="False" Name="AmyloidosisDmtWrapPanel" Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="In terapia con DMT "/>
                                 <CheckBox IsChecked="{Binding CurrentVisit.VisitApr.AmyloidosisDmt}" />
                             </WrapPanel>
-                            <WrapPanel Name="AmyloidosisTherapyStartDateWrapPanel" Orientation="Horizontal">
+                            <WrapPanel IsVisible="False" Name="AmyloidosisTherapyStartDateWrapPanel" Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Data di avvio della terapia "/>
                                 <DatePicker MaxYear="{Binding MaxAllowedDate}" SelectedDate="{Binding CurrentVisit.VisitApr.AmyloidosisTherapyStartDate}" />
                             </WrapPanel>
@@ -138,7 +138,7 @@
                                 <TextBlock Classes="GenericFieldLabel" Text="Deficit cognitivo "/>
                                 <CheckBox Tag="Dementia" IsCheckedChanged="OnColumnAChanged" Loaded="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitApr.Dementia}"/>
                             </WrapPanel>
-                            <WrapPanel Name="DementiaTypeWrapPanel" Orientation="Horizontal">
+                            <WrapPanel IsVisible="False" Name="DementiaTypeWrapPanel" Orientation="Horizontal">
                                 <TextBlock Name="DementiaTypeTextBlock" Classes="GenericFieldLabel" Text="Tipo di demenza "/>
                                 <ComboBox SelectionChanged="OnColumnAChanged" ItemsSource="{Binding DementiaTypesValues}" SelectedItem="{Binding CurrentVisit.VisitApr.DementiaType}"/>
                             </WrapPanel>

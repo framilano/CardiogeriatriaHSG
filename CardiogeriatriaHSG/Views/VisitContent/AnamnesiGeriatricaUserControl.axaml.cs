@@ -76,14 +76,12 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
                 if (_currentVisit!.VisitAg!.MotorSkill is not "Solo letto-poltrona")
                 {
                     _currentVisit.VisitAg.WalkingType ??= "Autonoma senza ausili";
-                    WalkingTypeComboBox.IsVisible = true;
-                    WalkingTypeTextBlock.IsVisible = true;
+                    WalkingTypeWrapPanel.IsVisible = true;
                 }
                 else
                 {
                     _currentVisit!.VisitAg!.WalkingType = null;
-                    WalkingTypeComboBox.IsVisible = false;
-                    WalkingTypeTextBlock.IsVisible = false;
+                    WalkingTypeWrapPanel.IsVisible = false;
                 }
                 UpdateWalkingSentence();
                 break;
