@@ -209,7 +209,8 @@ public partial class VisitUserControlViewModel : ViewModelBase
         } catch (Exception e)
         {
             //If whatever error occurs, print a save dialog with the error message
-            Log.Error("An error occurred while saving the visit: {EMessage}", e.Message);
+            Log.Error("Salvataggio su Database fallito. Errore completo salvato nella cartella logs: {EMessage}", e.Message);
+            Log.Error("Exception: {Exception}", e);
             new SaveDialogWindow(e.Message).ShowDialog(GetCurrentWindow()!);
             return;
         }

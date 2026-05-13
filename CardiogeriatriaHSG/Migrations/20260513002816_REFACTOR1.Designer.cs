@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CardiogeriatriaHSG.Migrations
 {
     [DbContext(typeof(AppDb))]
-    [Migration("20260512232111_REFACTOR0")]
-    partial class REFACTOR0
+    [Migration("20260513002816_REFACTOR1")]
+    partial class REFACTOR1
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -250,23 +250,25 @@ namespace CardiogeriatriaHSG.Migrations
                         .WithMany("Visits")
                         .HasForeignKey("PatientCode");
 
-                    b.HasOne("CardiogeriatriaHSG.Models.VisitAg", "VisitAg")
-                        .WithOne("Visit")
-                        .HasForeignKey("CardiogeriatriaHSG.Models.Visit", "VisitCode")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("CardiogeriatriaHSG.Models.VisitApr", "VisitApr")
-                        .WithOne("Visit")
-                        .HasForeignKey("CardiogeriatriaHSG.Models.Visit", "VisitCode")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Patient");
+                });
 
-                    b.Navigation("VisitAg");
+            modelBuilder.Entity("CardiogeriatriaHSG.Models.VisitAg", b =>
+                {
+                    b.HasOne("CardiogeriatriaHSG.Models.Visit", "Visit")
+                        .WithOne("VisitAg")
+                        .HasForeignKey("CardiogeriatriaHSG.Models.VisitAg", "VisitCode");
 
-                    b.Navigation("VisitApr");
+                    b.Navigation("Visit");
+                });
+
+            modelBuilder.Entity("CardiogeriatriaHSG.Models.VisitApr", b =>
+                {
+                    b.HasOne("CardiogeriatriaHSG.Models.Visit", "Visit")
+                        .WithOne("VisitApr")
+                        .HasForeignKey("CardiogeriatriaHSG.Models.VisitApr", "VisitCode");
+
+                    b.Navigation("Visit");
                 });
 
             modelBuilder.Entity("CardiogeriatriaHSG.Models.Patient", b =>
@@ -274,14 +276,11 @@ namespace CardiogeriatriaHSG.Migrations
                     b.Navigation("Visits");
                 });
 
-            modelBuilder.Entity("CardiogeriatriaHSG.Models.VisitAg", b =>
+            modelBuilder.Entity("CardiogeriatriaHSG.Models.Visit", b =>
                 {
-                    b.Navigation("Visit");
-                });
+                    b.Navigation("VisitAg");
 
-            modelBuilder.Entity("CardiogeriatriaHSG.Models.VisitApr", b =>
-                {
-                    b.Navigation("Visit");
+                    b.Navigation("VisitApr");
                 });
 #pragma warning restore 612, 618
         }

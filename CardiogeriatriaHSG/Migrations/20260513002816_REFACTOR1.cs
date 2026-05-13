@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace CardiogeriatriaHSG.Migrations
 {
     /// <inheritdoc />
-    public partial class APR0 : Migration
+    public partial class REFACTOR1 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,7 +15,7 @@ namespace CardiogeriatriaHSG.Migrations
                 name: "Patients",
                 columns: table => new
                 {
-                    PatientCode = table.Column<string>(type: "TEXT", nullable: false),
+                    PatientCode = table.Column<string>(type: "TEXT", maxLength: 8, nullable: false),
                     Gender = table.Column<string>(type: "TEXT", nullable: true),
                     DateOfBirth = table.Column<DateTimeOffset>(type: "TEXT", nullable: true)
                 },
@@ -25,28 +25,32 @@ namespace CardiogeriatriaHSG.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "VisitsPersistedTexts",
-                columns: table => new
-                {
-                    VisitCode = table.Column<string>(type: "TEXT", nullable: false),
-                    AprText = table.Column<string>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_VisitsPersistedTexts", x => x.VisitCode);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Visits",
                 columns: table => new
                 {
-                    VisitCode = table.Column<string>(type: "TEXT", nullable: false),
-                    PatientCode = table.Column<string>(type: "TEXT", nullable: true),
+                    VisitCode = table.Column<string>(type: "TEXT", maxLength: 36, nullable: false),
+                    PatientCode = table.Column<string>(type: "TEXT", maxLength: 8, nullable: true),
                     Timestamp = table.Column<DateTimeOffset>(type: "TEXT", nullable: false),
                     Number = table.Column<int>(type: "INTEGER", nullable: false),
                     Type = table.Column<string>(type: "TEXT", nullable: true),
                     SubType = table.Column<string>(type: "TEXT", nullable: true),
-                    Telemedicina = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Telemedicina = table.Column<bool>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Visits", x => x.VisitCode);
+                    table.ForeignKey(
+                        name: "FK_Visits_Patients_PatientCode",
+                        column: x => x.PatientCode,
+                        principalTable: "Patients",
+                        principalColumn: "PatientCode");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VisitAg",
+                columns: table => new
+                {
+                    VisitCode = table.Column<string>(type: "TEXT", maxLength: 36, nullable: false),
                     AssistanceAlone = table.Column<bool>(type: "INTEGER", nullable: false),
                     AssistanceSpouse = table.Column<bool>(type: "INTEGER", nullable: false),
                     AssistanceFamilyMembers = table.Column<bool>(type: "INTEGER", nullable: false),
@@ -64,7 +68,24 @@ namespace CardiogeriatriaHSG.Migrations
                     Dysphagia = table.Column<string>(type: "TEXT", nullable: true),
                     NutrionalProblems = table.Column<bool>(type: "INTEGER", nullable: false),
                     Constipation = table.Column<bool>(type: "INTEGER", nullable: false),
-                    Disability = table.Column<bool>(type: "INTEGER", nullable: false),
+                    Disability = table.Column<bool>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_VisitAg", x => x.VisitCode);
+                    table.ForeignKey(
+                        name: "FK_VisitAg_Visits_VisitCode",
+                        column: x => x.VisitCode,
+                        principalTable: "Visits",
+                        principalColumn: "VisitCode");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "VisitApr",
+                columns: table => new
+                {
+                    VisitCode = table.Column<string>(type: "TEXT", maxLength: 36, nullable: false),
+                    AprText = table.Column<string>(type: "TEXT", nullable: true),
                     IschemicHeartDisease = table.Column<bool>(type: "INTEGER", nullable: false),
                     HeartFailure = table.Column<bool>(type: "INTEGER", nullable: false),
                     AtrialFibrillation = table.Column<bool>(type: "INTEGER", nullable: false),
@@ -100,18 +121,12 @@ namespace CardiogeriatriaHSG.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Visits", x => x.VisitCode);
+                    table.PrimaryKey("PK_VisitApr", x => x.VisitCode);
                     table.ForeignKey(
-                        name: "FK_Visits_Patients_PatientCode",
-                        column: x => x.PatientCode,
-                        principalTable: "Patients",
-                        principalColumn: "PatientCode");
-                    table.ForeignKey(
-                        name: "FK_Visits_VisitsPersistedTexts_VisitCode",
+                        name: "FK_VisitApr_Visits_VisitCode",
                         column: x => x.VisitCode,
-                        principalTable: "VisitsPersistedTexts",
-                        principalColumn: "VisitCode",
-                        onDelete: ReferentialAction.Cascade);
+                        principalTable: "Visits",
+                        principalColumn: "VisitCode");
                 });
 
             migrationBuilder.CreateIndex(
@@ -124,13 +139,16 @@ namespace CardiogeriatriaHSG.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "VisitAg");
+
+            migrationBuilder.DropTable(
+                name: "VisitApr");
+
+            migrationBuilder.DropTable(
                 name: "Visits");
 
             migrationBuilder.DropTable(
                 name: "Patients");
-
-            migrationBuilder.DropTable(
-                name: "VisitsPersistedTexts");
         }
     }
 }
