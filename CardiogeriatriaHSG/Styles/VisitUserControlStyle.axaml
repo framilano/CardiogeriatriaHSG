@@ -25,6 +25,7 @@
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="AcceptsReturn" Value="True"/>
         <Setter Property="Padding" Value="10 10 60 10"/>
+        <Setter Property="MaxLength" Value="3000"/>
     </Style>
     
     <Style Selector="TextBlock.ColumnBTextBlock">
