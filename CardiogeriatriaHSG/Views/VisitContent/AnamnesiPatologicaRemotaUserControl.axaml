@@ -19,7 +19,7 @@
                         <WrapPanel Classes="ColumnAWrapPanel">
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Cardiopatia Ischemica "/>
-                                <CheckBox Name="IschemicHeartDisease" Tag="IschemicHeartDisease" IsChecked="{Binding CurrentVisit.VisitApr.IschemicHeartDisease}"/>
+                                <CheckBox Name="IschemicHeartDisease" IsChecked="{Binding CurrentVisit.VisitApr.IschemicHeartDisease}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Insufficienza Cardiaca "/>

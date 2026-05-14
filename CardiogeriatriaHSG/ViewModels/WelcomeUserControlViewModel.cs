@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CardiogeriatriaHSG.Models;
@@ -20,7 +21,6 @@ public partial class WelcomeUserControlViewModel : ObservableObject
         LastVisitsList = [];
     }
 
-    [ObservableProperty] private string _label = "Inserire codice paziente";
     [ObservableProperty] private string _userCodeTextBox = "";
     [ObservableProperty] private string? _errorMessage;
     [ObservableProperty] private bool? _createVisitBtnVisibility = false;
@@ -81,4 +81,9 @@ public partial class WelcomeUserControlViewModel : ObservableObject
 
         _main.NavigateToVisit(_databaseService, visit);
     }
+    
+    public string AppVersion { get; } =
+        Assembly.GetExecutingAssembly()
+            .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
+            .InformationalVersion ?? "Unknown";
 }
