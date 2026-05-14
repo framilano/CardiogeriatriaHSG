@@ -5,8 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:visitContent="clr-namespace:CardiogeriatriaHSG.ViewModels.VisitContent"
              x:Class="CardiogeriatriaHSG.Views.VisitContent.AnamnesiPatologicaRemotaUserControl"
-             x:DataType="visitContent:AnamnesiPatologicaRemotaUserControlViewModel"
-             FontSize="25">
+             x:DataType="visitContent:AnamnesiPatologicaRemotaUserControlViewModel">
     
             <UserControl.Styles>
                 <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>

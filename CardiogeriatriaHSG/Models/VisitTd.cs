@@ -49,5 +49,4 @@ public partial class VisitTd(string visitCode): ObservableObject
     [ObservableProperty] private bool _otherAnalgesics;
     [ObservableProperty] private bool _proteinSupplementation;
     [ObservableProperty] private bool _physicalExercise;
-
 }

@@ -5,8 +5,7 @@
              xmlns:visitContent="clr-namespace:CardiogeriatriaHSG.ViewModels.VisitContent"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CardiogeriatriaHSG.Views.VisitContent.RefertoUserControl"
-             x:DataType="visitContent:RefertoUserControlViewModel"
-             FontSize="25">
+             x:DataType="visitContent:RefertoUserControlViewModel">
     <UserControl.Styles>
         <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
     </UserControl.Styles>

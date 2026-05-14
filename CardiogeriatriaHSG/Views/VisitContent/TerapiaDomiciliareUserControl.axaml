@@ -5,8 +5,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              xmlns:visitContent="clr-namespace:CardiogeriatriaHSG.ViewModels.VisitContent"
              x:Class="CardiogeriatriaHSG.Views.VisitContent.TerapiaDomiciliareUserControl"
-             x:DataType="visitContent:TerapiaDomiciliareUserControlViewModel"
-             FontSize="25">
+             x:DataType="visitContent:TerapiaDomiciliareUserControlViewModel">
     
             <UserControl.Styles>
                 <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
@@ -18,7 +17,34 @@
                                 Grid.Column="0">
                     <ScrollViewer>
                         <WrapPanel Classes="ColumnAWrapPanel">
-                            
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="β-bloccante "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.BetaBlocker}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="MRA "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Mra}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="ACE inibitore "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.AceInhibitor}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Sartano (ARB) "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Arb}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="SGLT-2 Inibitore "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Sglt2Inhibitor}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="ARNI "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Arni}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Vericiguat "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Vericiguat}"/>
+                            </WrapPanel>
                             <!-- FUROSEMIDE -->
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Furosemide "/>
@@ -27,6 +53,122 @@
                             <WrapPanel IsVisible="False" Name="FurosemideDoseWrapPanel" Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Dosaggio furosemide "/>
                                 <NumericUpDown Minimum="0" Maximum="2000" Increment="1" FormatString="0" Value="{Binding CurrentVisit.VisitTd.FurosemideDose}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Altro diuretico dell’ansa "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.OtherLoopDiuretic}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="DOAC "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Doac}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="VKA "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Vka}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Acetazolamide "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Acetazolamide}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Idroclorotiazide "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Hydrochlorothiazide}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Acoramidis "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Acoramidis}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Tafamidis "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Tafamidis}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Vutrisiran "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Vutrisiran}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Calcio antagonisti "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.CalciumChannelBlockers}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Ranolazina "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Ranolazine}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Nitrati "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Nitrates}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="GLP-1 "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Glp1}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Doxazosina "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Doxazosin}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Clonidina "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Clonidine}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Fibrati "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Fibrates}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Statine "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Statins}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Ezetimibe "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Ezetimibe}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="PPI "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Ppi}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Ach-i/memantina "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.AcheInhibitorOrMemantine}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Benzodiazepine "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Benzodiazepines}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Z drugs "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.ZDrugs}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Trazodone a dosaggio ridotto "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.LowDoseTrazodone}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Antidepressivi "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Antidepressants}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Antipsicotici "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Antipsychotics}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Paracetamolo "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Paracetamol}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Oppiacei "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Opioids}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Altri analgesici (gabapentinoidi, antidepressivi) "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.OtherAnalgesics}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Integrazione proteica con dieta/integratore alimentare "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.ProteinSupplementation}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Esercizio fisico "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.PhysicalExercise}"/>
                             </WrapPanel>
                         </WrapPanel>
                     </ScrollViewer>

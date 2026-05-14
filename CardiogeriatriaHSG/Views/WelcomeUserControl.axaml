@@ -7,8 +7,7 @@
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CardiogeriatriaHSG.Views.WelcomeUserControl"
              x:DataType="vm:WelcomeUserControlViewModel"
-             Background="#6d1a61"
-             FontSize="35">
+             Background="#6d1a61">
     
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -17,7 +16,6 @@
     </Design.DataContext>
     
     <Grid VerticalAlignment="Top" HorizontalAlignment="Center" RowDefinitions="*,Auto, Auto, Auto, Auto, *">
-        <TextBlock Margin="5" Grid.Row="0" FontWeight="ExtraBold" FontSize="50">Cardiogeriatria HSG</TextBlock>
         <TextBlock Margin="5" Grid.Row="1" HorizontalAlignment="Center" Text="{Binding Label}" FontWeight="Bold"/>
 
         <TextBox MaxLength="8" TextAlignment="Center" Margin="5" Grid.Row="2" HorizontalAlignment="Center" Text="{Binding UserCodeTextBox, UpdateSourceTrigger=PropertyChanged}" Width="300"/>

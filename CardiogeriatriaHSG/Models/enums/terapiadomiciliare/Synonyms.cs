@@ -4,31 +4,41 @@ namespace CardiogeriatriaHSG.Models.enums.terapiadomiciliare;
 
 public static class Synonyms
 {
-    public static readonly List<string> IschemicHeartDiseaseSynonyms = ["cardiopatia ischemica", "stemi", "infarto", "ima", "nstemi"];
-    public static readonly List<string> HeartFailureSynonyms = ["insufficienza cardiaca", "scompenso cardiaco", "scc"];
-    public static readonly List<string> AtrialFibrillationSynonyms = ["fibrillazione atriale", "FA", "fap"];
-    public static readonly List<string> CerebrovascularDiseaseSynonyms = ["malattia cerebrovascolare", "vasculopatia cerebrale", "tia", "stroke", "ictus"];
-    public static readonly List<string> NeoplasmSynonyms = ["neoplasia", "adenok", "tumore", "k", "carcinoma"];
-    public static readonly List<string> ChronicObstructivePulmonaryDiseaseSynonyms = ["bpco", "copd", "enfisema", "bronchite cronica"];
-    public static readonly List<string> ChronicKidneyDiseaseSynonyms = ["malattia renale cronica", "insufficienza renale cronica", "irc", "mrc"];
-    public static readonly List<string> PeripheralVascularDiseaseSynonyms = ["malattia vascolare periferica", "AOCP", "pad", "ischemia acuta arto inferiore"];
-    public static readonly List<string> DiabetesSynonyms = ["diabete", "dm"];
-    public static readonly List<string> ChronicSkinUlcersSynonyms = [@"\bulcer\w*\b"];
-    public static readonly List<string> ParkinsonSynonyms = [@"\bparkinson\w*\b"];
-    public static readonly List<string> SchizophreniaSynonyms = ["schizofrenia"];
-    public static readonly List<string> NeuromuscularDisordersSynonyms = ["paraplegia ", "atassia", "distonia", "miopatia"];
-    public static readonly List<string> HipFractureSynonyms = [@"frattur\w*\b(?:\W+\w+){0,5}\W+\banca", @"frattur\w*\b(?:\W+\w+){0,5}\W+\bfemore", "pta"];
-    public static readonly List<string> AnemiaSynonyms = ["anemia"];
-    public static readonly List<string> BradycardiaSynonyms = ["bradicardia", "bav"];
-    public static readonly List<string> ArterialHypertensionSynonyms = ["ipertensione arteriosa", "ia", "ipertensiva"];
-    public static readonly List<string> SevereValvularDiseaseSmSynonyms = ["sm", "stenosi mitralica severa"];
-    public static readonly List<string> SevereValvularDiseaseImSynonyms = ["im", "insufficienza mitralica severa"];
-    public static readonly List<string> SevereValvularDiseaseIaoSynonyms = ["iao", "insufficienza aortica severa"];
-    public static readonly List<string> SevereValvularDiseaseSaoSynonyms = ["sao", "stenosi aortica severa"];
-    public static readonly List<string> SevereValvularDiseaseItrSynonyms = ["itr", "insufficienza tricuspidalica severa"];
-    public static readonly List<string> AmyloidosisSynonyms = ["amiloidosi"];
-
-    public static readonly List<string> DementiaSynonyms = ["deficit cognitivo", "demenza", "decadimento cognitivo", "disturbo cognitivo"," disturbo neurocognitivo", "mci", "lbd", "alzheimer"];
+    public static readonly List<string> BetaBlockerSynonyms = ["bisoprololo", "carvedilolo", "metoprololo", "nebivololo", "atenololo"];
+    public static readonly List<string> MraSynonyms = ["spironolattone", "canrenone", "luvion", "potassio canrenoato", "eplerenone", "finrenone", "finerenone", "karendia"];
+    public static readonly List<string> AceInhibitorSynonyms = ["ramipril", "enalapril", "lisinopril", "perindopril", "zofenopril."];
+    public static readonly List<string> ArbSynonyms = ["valsartan", "losartan", "candesartan", "olmesartan", "telmisartan"];
+    public static readonly List<string> Sglt2InhibitorSynonyms = ["valsartan", "losartan", "candesartan", "olmesartan", "telmisartan"];
+    public static readonly List<string> ArniSynonyms = ["valsartan", "losartan", "candesartan", "olmesartan", "telmisartan"];
+    public static readonly List<string> VericiguatSynonyms = ["valsartan", "losartan", "candesartan", "olmesartan", "telmisartan"];
+    public static readonly List<string> FurosemideSynonyms = ["furosemide", "lasix"];
+    public static readonly List<string> OtherLoopDiureticSynonyms = ["torasemide", "bumetanide", "acido etacrinico"];
+    public static readonly List<string> DoacSynonyms = ["apixaban", "rivaroxaban", "edoxaban", "dabigatran"];
+    public static readonly List<string> VkaSynonyms = ["warfarin", "coumadin", "acenocumarol", "sintrom"];
+    public static readonly List<string> AcetazolamideSynonyms = ["acetazolamide"];
+    public static readonly List<string> HydrochlorothiazideSynonyms = ["idroclorotiazide"];
+    public static readonly List<string> AcoramidisSynonyms = ["acoramidis"];
+    public static readonly List<string> TafamidisSynonyms = ["tafamidis"];
+    public static readonly List<string> VutrisiranSynonyms = ["vutrisiran"];
+    public static readonly List<string> CalciumChannelBlockersSynonyms = ["amlodipina", "nifedipina", "lercanidipina", "verapamil", "diltiazem"];
+    public static readonly List<string> RanolazineSynonyms = ["ranolazina"];
+    public static readonly List<string> NitratesSynonyms = ["isosorbide", "nitroglicerina", "nitroderm", "natispray"];
+    public static readonly List<string> Glp1Synonyms = ["semaglutide", "liraglutide", "dulaglutide", "tirzepatide"];
+    public static readonly List<string> DoxazosinSynonyms = ["doxazosina"];
+    public static readonly List<string> ClonidineSynonyms = ["clonidina"];
+    public static readonly List<string> FibratesSynonyms = ["fenofibrato", "gemfibrozil", "clofibrato"];
+    public static readonly List<string> StatinsSynonyms = ["atorvastatina", "rosuvastatina", "simvastatina", "pravastatina", "fluvastatina", "lovastatina"];
+    public static readonly List<string> EzetimibeSynonyms = ["ezetimibe"];
+    public static readonly List<string> PpiSynonyms = ["omeprazolo", "pantoprazolo", "lansoprazolo", "esomeprazolo", "rabeprazolo"];
+    public static readonly List<string> AcheInhibitorOrMemantineSynonyms = ["donepezil", "rivastigmina", "galantamina"];
+    public static readonly List<string> BenzodiazepinesSynonyms = ["lorazepam", "alprazolam", "diazepam", "delorazepam", "lormetazepam", "bromazepam", "tavor", "en", "xanax"];
+    public static readonly List<string> ZDrugsSynonyms = ["zolpidem", "zopiclone", "eszopiclone", "stilnox"];
+    public static readonly List<string> LowDoseTrazodoneSynonyms = ["trittico"];
+    public static readonly List<string> AntidepressantsSynonyms = ["sertralina", "citalopram", "escitalopram", "duloxetina", "amitriptilina", "vortioxetina", "mirtazapina", "fluoxetina", "paroxetina", "fluvoxamina", "venlafaxina"];
+    public static readonly List<string> AntipsychoticsSynonyms = ["quetiapina", "risperidone", "olanzapina", "aloperidolo", "aripiprazolo", "promazina", "amisulpiride", "levosulpiride", "litio", "brexpiprazolo"];
+    public static readonly List<string> ParacetamolSynonyms = ["paracetamolo"];
+    public static readonly List<string> OpioidsSynonyms = ["morfina", "codeina", "ossicodone", "buprenorfina", "tapentadolo", "fentanyl", "fentanil", "tramadolo"];
+    public static readonly List<string> OtherAnalgesicsSynonyms = ["pregabalin", "gabapentin"];
     
-    public static readonly List<string> CaseSensitiveFields = ["FA"];
+    public static readonly List<string> CaseSensitiveFields = [];
 }

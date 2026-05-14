@@ -8,8 +8,7 @@
              xmlns:visitContent="clr-namespace:CardiogeriatriaHSG.Views.VisitContent"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CardiogeriatriaHSG.Views.VisitUserControl"
-             x:DataType="viewModels:VisitUserControlViewModel"
-             FontSize="35">
+             x:DataType="viewModels:VisitUserControlViewModel">
     
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
