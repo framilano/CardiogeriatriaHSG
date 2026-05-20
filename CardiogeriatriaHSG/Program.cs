@@ -30,7 +30,7 @@ sealed class Program
         }
         catch (Exception ex)
         {
-            Log.Fatal(ex, "Application terminated unexpectedly");
+            Log.Error(ex, "Application terminated unexpectedly {Exception}", ex);
             throw;
         }
         finally

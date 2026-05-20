@@ -18,6 +18,23 @@
                     <ScrollViewer>
                         <WrapPanel Classes="ColumnAWrapPanel">
                             <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Integrazione proteica con dieta/integratore alimentare "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.ProteinSupplementation}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Esercizio fisico "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.PhysicalExercise}"/>
+                            </WrapPanel>
+                            <!-- FUROSEMIDE -->
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Furosemide "/>
+                                <CheckBox Tag="Dementia" IsCheckedChanged="OnColumnAChanged" Loaded="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitTd.Furosemide}"/>
+                            </WrapPanel>
+                            <WrapPanel IsVisible="False" Name="FurosemideDoseWrapPanel" Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Dosaggio furosemide "/>
+                                <NumericUpDown Minimum="0" Maximum="2000" Increment="1" FormatString="0" Value="{Binding CurrentVisit.VisitTd.FurosemideDose}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="β-bloccante "/>
                                 <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.BetaBlocker}"/>
                             </WrapPanel>
@@ -44,15 +61,6 @@
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Vericiguat "/>
                                 <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.Vericiguat}"/>
-                            </WrapPanel>
-                            <!-- FUROSEMIDE -->
-                            <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Furosemide "/>
-                                <CheckBox Tag="Dementia" IsCheckedChanged="OnColumnAChanged" Loaded="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitTd.Furosemide}"/>
-                            </WrapPanel>
-                            <WrapPanel IsVisible="False" Name="FurosemideDoseWrapPanel" Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Dosaggio furosemide "/>
-                                <NumericUpDown Minimum="0" Maximum="2000" Increment="1" FormatString="0" Value="{Binding CurrentVisit.VisitTd.FurosemideDose}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Altro diuretico dell’ansa "/>
@@ -161,14 +169,6 @@
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Altri analgesici (gabapentinoidi, antidepressivi) "/>
                                 <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.OtherAnalgesics}"/>
-                            </WrapPanel>
-                            <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Integrazione proteica con dieta/integratore alimentare "/>
-                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.ProteinSupplementation}"/>
-                            </WrapPanel>
-                            <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Esercizio fisico "/>
-                                <CheckBox IsChecked="{Binding CurrentVisit.VisitTd.PhysicalExercise}"/>
                             </WrapPanel>
                         </WrapPanel>
                     </ScrollViewer>

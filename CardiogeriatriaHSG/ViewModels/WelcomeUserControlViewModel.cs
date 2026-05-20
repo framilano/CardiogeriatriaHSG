@@ -36,12 +36,10 @@ public partial class WelcomeUserControlViewModel : ObservableObject
         LastVisitsListVisibility = false;
         if (UserCodeTextBox.Length < 8)
         {
-            //ErrorMessage = "Il codice paziente deve essere di almeno 8 caratteri";
             return;
         }
 
         CreateVisitBtnVisibility = true;
-        //var patient = _databaseService.RetrievePatientByCode(UserCodeTextBox);
         var visits = _databaseService.RetrieveVisitsByPatientCode(UserCodeTextBox);
         if (visits.Count <= 0)
         {

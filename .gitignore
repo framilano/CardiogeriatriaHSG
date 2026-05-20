@@ -213,3 +213,4 @@ FakesAssemblies/
 *.sln.iml
 *.docx#
 *.pptx#
+/CardiogeriatriaHSG/.sonarqube

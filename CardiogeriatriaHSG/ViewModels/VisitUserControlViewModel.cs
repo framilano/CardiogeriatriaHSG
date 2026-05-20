@@ -114,7 +114,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
         {
             PatientCode = patientCode,
             Gender = "F",
-            DateOfBirth = new DateTime(1970, 1, 1)
+            DateOfBirth = DateTime.UnixEpoch
         };
         Log.Information("[START] Created new Patient {PatientCode}", patientCode);
         return patient;
@@ -272,8 +272,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
         } catch (Exception e)
         {
             //If whatever error occurs, print a save dialog with the error message
-            Log.Error("Salvataggio su Database fallito. Errore completo salvato nella cartella logs: {EMessage}", e.Message);
-            Log.Error("Exception: {Exception}", e);
+            Log.Error("Salvataggio su Database fallito. Errore completo salvato nella cartella logs: {EMessage}, Exception: {Exception}", e.Message, e);
             new SaveDialogWindow(e.Message).ShowDialog(GetCurrentWindow()!);
             return;
         }

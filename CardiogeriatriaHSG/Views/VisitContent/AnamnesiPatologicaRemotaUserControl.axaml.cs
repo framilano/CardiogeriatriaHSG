@@ -11,7 +11,6 @@ public partial class AnamnesiPatologicaRemotaUserControl : UserControl
     public AnamnesiPatologicaRemotaUserControl()
     {
         InitializeComponent();
-        _columnBDescription = this.Find<TextBox>("ColumnBDescription");
         DataContextChanged += (_, __) =>
         {
             if (DataContext is AnamnesiPatologicaRemotaUserControlViewModel viewModel)
@@ -89,5 +88,4 @@ public partial class AnamnesiPatologicaRemotaUserControl : UserControl
     }
     
     private Visit? _currentVisit;
-    private readonly TextBox? _columnBDescription;
 }

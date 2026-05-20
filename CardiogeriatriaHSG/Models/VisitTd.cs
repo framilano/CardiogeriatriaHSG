@@ -11,6 +11,10 @@ public partial class VisitTd(string visitCode): ObservableObject
     [ObservableProperty] private string? _tdText = "";
     
     //TD
+    [ObservableProperty] private bool _proteinSupplementation;
+    [ObservableProperty] private bool _physicalExercise;
+    [ObservableProperty] private bool _furosemide;
+    [ObservableProperty] private int? _furosemideDose;
     [ObservableProperty] private bool _betaBlocker;
     [ObservableProperty] private bool _mra;
     [ObservableProperty] private bool _aceInhibitor;
@@ -18,8 +22,6 @@ public partial class VisitTd(string visitCode): ObservableObject
     [ObservableProperty] private bool _sglt2Inhibitor;
     [ObservableProperty] private bool _arni;
     [ObservableProperty] private bool _vericiguat;
-    [ObservableProperty] private bool _furosemide;
-    [ObservableProperty] private int? _furosemideDose;
     [ObservableProperty] private bool _otherLoopDiuretic;
     [ObservableProperty] private bool _doac;
     [ObservableProperty] private bool _vka;
@@ -47,6 +49,4 @@ public partial class VisitTd(string visitCode): ObservableObject
     [ObservableProperty] private bool _paracetamol;
     [ObservableProperty] private bool _opioids;
     [ObservableProperty] private bool _otherAnalgesics;
-    [ObservableProperty] private bool _proteinSupplementation;
-    [ObservableProperty] private bool _physicalExercise;
 }

@@ -16,6 +16,8 @@ public partial class TerapiaDomiciliareUserControlViewModel(Visit currentVisit) 
     {
         if (CurrentVisit.VisitTd!.TdText is null  || string.IsNullOrEmpty(CurrentVisit.VisitTd.TdText)) return;
         
+        if (Synonyms.FurosemideSynonyms.Any(word => Regex.IsMatch(CurrentVisit.VisitTd.TdText, $@"\b{word}\b", RegexOptions.IgnoreCase)))
+        { CurrentVisit.VisitTd.Furosemide = true; }
         if (Synonyms.BetaBlockerSynonyms.Any(word => Regex.IsMatch(CurrentVisit.VisitTd.TdText, $@"\b{word}\b", RegexOptions.IgnoreCase)))
         { CurrentVisit.VisitTd.BetaBlocker = true; }
         if (Synonyms.MraSynonyms.Any(word => Regex.IsMatch(CurrentVisit.VisitTd.TdText, $@"\b{word}\b", RegexOptions.IgnoreCase)))
@@ -30,8 +32,6 @@ public partial class TerapiaDomiciliareUserControlViewModel(Visit currentVisit) 
         { CurrentVisit.VisitTd.Arni = true; }
         if (Synonyms.VericiguatSynonyms.Any(word => Regex.IsMatch(CurrentVisit.VisitTd.TdText, $@"\b{word}\b", RegexOptions.IgnoreCase)))
         { CurrentVisit.VisitTd.Vericiguat = true; }
-        if (Synonyms.FurosemideSynonyms.Any(word => Regex.IsMatch(CurrentVisit.VisitTd.TdText, $@"\b{word}\b", RegexOptions.IgnoreCase)))
-        { CurrentVisit.VisitTd.Furosemide = true; }
         if (Synonyms.OtherLoopDiureticSynonyms.Any(word => Regex.IsMatch(CurrentVisit.VisitTd.TdText, $@"\b{word}\b", RegexOptions.IgnoreCase)))
         { CurrentVisit.VisitTd.OtherLoopDiuretic = true; }
         if (Synonyms.DoacSynonyms.Any(word => Regex.IsMatch(CurrentVisit.VisitTd.TdText, $@"\b{word}\b", RegexOptions.IgnoreCase)))

@@ -40,6 +40,5 @@ public partial class SidebarUserControl : UserControl
     {
         var btn = sender as Button;
         AddHighlight(btn!);
-        //Log.Debug("I clicked on " + btn.Content);
     }
 }

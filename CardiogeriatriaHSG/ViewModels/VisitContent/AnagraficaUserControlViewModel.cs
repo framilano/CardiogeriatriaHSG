@@ -9,7 +9,7 @@ public class AnagraficaUserControlViewModel(Visit currentVisit) : ViewModelBase
 {
     public Visit CurrentVisit { get; set; } = currentVisit;
     
-    public IEnumerable<string> GenderTypesValues => Gender.GenderTypes;
+    public static IEnumerable<string> GenderTypesValues => Gender.GenderTypes;
     
     public DateTimeOffset MaxAllowedDate { get; } = new(DateTime.Now);
 }
