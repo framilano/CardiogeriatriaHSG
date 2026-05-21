@@ -16,11 +16,11 @@
                 <Run FontWeight="Bold" Text="Anagrafica" />
                 <LineBreak/>
                 <Run Name="AnagraficaContent"/>
-                <LineBreak/>
+                <LineBreak/><LineBreak/>
                 <Run FontWeight="Bold" Text="Anamnesi Geriatrica" />
                 <LineBreak/>
                 <Run Name="AnamnesiGeriatricaContent"/>
-                <LineBreak/>
+                <LineBreak/><LineBreak/>
                 <Run FontWeight="Bold" Text="Anamnesi Patologica Remota" />
                 <LineBreak/>
                 <Run Name="AnamnesiPatologicaRemotaContent"/>
@@ -32,7 +32,7 @@
                 <Run FontWeight="Bold" Text="Raccordo Clinico" />
                 <LineBreak/>
                 <Run Name="RaccordoClinicoContent"/>
-                <LineBreak/>
+                <LineBreak/><LineBreak/>
             </SelectableTextBlock>
          </Border>
     </ScrollViewer>
