@@ -9,7 +9,6 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CardiogeriatriaHSG.Models;
 using CardiogeriatriaHSG.Models.enums;
-using CardiogeriatriaHSG.Models.enums.header;
 using CardiogeriatriaHSG.Services.database;
 using CardiogeriatriaHSG.ViewModels.VisitContent;
 using CardiogeriatriaHSG.Views;
@@ -49,9 +48,9 @@ public partial class VisitUserControlViewModel : ViewModelBase
     private string SelectedMenuEntry { get; set; } = "";
     
     //All the VisitTypeValues available in Header
-    public static IEnumerable<string> VisitTypesValues => VisitType.VisitTypes;
+    public static IEnumerable<string> VisitTypesValues => StringChoices.VisitTypes;
     //All the VisitSubTypeValues available in Header
-    public static IEnumerable<string> VisitSubTypesValues => VisitSubType.VisitSubTypes;
+    public static IEnumerable<string> VisitSubTypesValues => StringChoices.VisitSubTypes;
     
     public required Visit CurrentVisit { get; set; }
     
@@ -90,6 +89,11 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 if (CurrentVisit.VisitTd is null) _databaseService.LoadVisitTerapiaDomiciliareByVisit(CurrentVisit);
                 CurrentVisit.VisitTd ??= CreateNewVisitTd(CurrentVisit.VisitCode!);
                 CurrentContent = new TerapiaDomiciliareUserControl { DataContext = new TerapiaDomiciliareUserControlViewModel(CurrentVisit) };
+                break;
+            case "Raccordo clinico":
+                if (CurrentVisit.VisitRc is null) _databaseService.LoadVisitRaccordoClinicoByVisit(CurrentVisit);
+                CurrentVisit.VisitRc ??= CreateNewVisitRc(CurrentVisit.VisitCode!);
+                CurrentContent = new RaccordoClinicoUserControl { DataContext = new RaccordoClinicoUserControlViewModel(CurrentVisit) };
                 break;
             case "Referto":
                 //There's no need to load patient (anagrafica) because already loaded by default
@@ -236,6 +240,35 @@ public partial class VisitUserControlViewModel : ViewModelBase
         };
         Log.Information("[STOP] Created new VisitTD");
         return visitTd;
+    }
+    
+    private static VisitRc CreateNewVisitRc(string visitCode)
+    {
+        Log.Debug("[START] Creating new VisitRc...");
+        var visitRc = new VisitRc(visitCode)
+        {
+            Reports = "Benessere",
+            Dyspnea = "Non dispnea",
+            Angina = "Non angor",
+            Palpitations = false,
+            SleepingWithPillowsNumber = 1,
+            SleepingSittingPosition = false,
+            ParoxysmalNocturnalDyspnea = false,
+            AcuteStressLast3Months = false,
+            FallsSinceLastVisit = false,
+            FallsSinceLastVisitNumber = null,
+            FallsSinceLastVisitType = null,
+            EmergenciesSinceLastVisit = false,
+            EmergenciesSinceLastVisitNumber = null,
+            EmergenciesSinceLastVisitCause = null,
+            HospitalizationsSinceLastVisit = false,
+            HospitalizationsSinceLastVisitNumber = null,
+            HospitalizationsSinceLastVisitDays = null,
+            HospitalizationsSinceLastVisitCause = null
+        };
+        
+        Log.Information("[STOP] Created new VisitRc");
+        return visitRc;
     }
     
     [RelayCommand]

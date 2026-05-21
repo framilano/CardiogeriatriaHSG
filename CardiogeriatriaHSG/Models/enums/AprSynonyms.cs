@@ -2,7 +2,7 @@
 
 namespace CardiogeriatriaHSG.Models.enums.anamnesipatologicaremota;
 
-public static class Synonyms
+public static class AprSynonyms
 {
     public static readonly List<string> IschemicHeartDiseaseSynonyms = ["cardiopatia ischemica", "stemi", "infarto", "ima", "nstemi"];
     public static readonly List<string> HeartFailureSynonyms = ["insufficienza cardiaca", "scompenso cardiaco", "scc"];

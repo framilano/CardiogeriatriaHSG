@@ -24,10 +24,14 @@
                 <Run FontWeight="Bold" Text="Anamnesi Patologica Remota" />
                 <LineBreak/>
                 <Run Name="AnamnesiPatologicaRemotaContent"/>
-                <LineBreak/>
+                <LineBreak/><LineBreak/>
                 <Run FontWeight="Bold" Text="Terapia Domiciliare" />
                 <LineBreak/>
                 <Run Name="TerapiaDomiciliareContent"/>
+                <LineBreak/><LineBreak/>
+                <Run FontWeight="Bold" Text="Raccordo Clinico" />
+                <LineBreak/>
+                <Run Name="RaccordoClinicoContent"/>
                 <LineBreak/>
             </SelectableTextBlock>
          </Border>

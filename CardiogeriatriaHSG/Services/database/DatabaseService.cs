@@ -123,6 +123,12 @@ public class DatabaseService
         _visitRepository.LoadVisitTdByVisit(visit);
         Log.Information("[STOP] Loaded visit TD data for visit {VisitVisitCode}", visit.VisitCode);
     }
+    
+    public void LoadVisitRaccordoClinicoByVisit(Visit visit) {
+          Log.Debug("[START] Loading visit RC data for visit {VisitVisitCode}", visit.VisitCode);
+        _visitRepository.LoadVisitRcByVisit(visit);
+        Log.Information("[STOP] Loaded visit RC data for visit {VisitVisitCode}", visit.VisitCode);
+    }
 
 
 }

@@ -15,11 +15,9 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         _columnBDescription = this.Find<TextBlock>("ColumnBDescription");
         DataContextChanged += (_, __) =>
         {
-            if (DataContext is AnamnesiGeriatricaUserControlViewModel viewModel)
-            {
-                _currentVisit = viewModel.CurrentVisit!;
-                LoadAnamnesiGeriatricaContent(_currentVisit);
-            }
+            if (DataContext is not AnamnesiGeriatricaUserControlViewModel viewModel) return;
+            _currentVisit = viewModel.CurrentVisit!;
+            LoadAnamnesiGeriatricaContent(_currentVisit);
         };
     }
     

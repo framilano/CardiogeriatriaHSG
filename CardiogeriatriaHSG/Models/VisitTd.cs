@@ -9,6 +9,7 @@ public partial class VisitTd(string visitCode): ObservableObject
     public string? VisitCode { get; set; } = visitCode;
     public Visit? Visit { get; set; }
     [ObservableProperty] private string? _tdText = "";
+    partial void OnTdTextChanged(string? value) { if (value != null) TdText = value.Trim(); }
     
     //TD
     [ObservableProperty] private bool _proteinSupplementation;

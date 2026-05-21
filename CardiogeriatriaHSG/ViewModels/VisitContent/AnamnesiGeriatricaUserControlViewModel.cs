@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using CardiogeriatriaHSG.Models;
-using CardiogeriatriaHSG.Models.enums.anamnesigeriatrica;
+using CardiogeriatriaHSG.Models.enums;
 
 namespace CardiogeriatriaHSG.ViewModels.VisitContent;
 
@@ -8,12 +8,12 @@ public class AnamnesiGeriatricaUserControlViewModel(Visit currentVisit) : ViewMo
 {
     public Visit CurrentVisit { get; set; } = currentVisit;
 
-    public static IEnumerable<string> AppetitesValues => Appetite.Appetites;
-    public static IEnumerable<string> CognitiveDeficitsValues => CognitiveDeficit.CognitiveDeficits;
-    public static IEnumerable<string> DysphagiasValues => Dysphagia.DysphagiaTypes;
-    public static IEnumerable<string> FallsValuesValues => Falls.FallTypes;
-    public static IEnumerable<string> MotorSkillsValues => MotorSkill.MotorSkillTypes;
-    public static IEnumerable<string> NightsValues => Nights.NightTypes;
-    public static IEnumerable<string> WalkingTypesValues => WalkingType.WalkingTypes;
-    public static IEnumerable<string> WeightLossesValues => WeightLoss.WeightLossTypes;
+    public static IEnumerable<string> AppetitesValues => StringChoices.Appetites;
+    public static IEnumerable<string> CognitiveDeficitsValues => StringChoices.CognitiveDeficits;
+    public static IEnumerable<string> DysphagiasValues => StringChoices.DysphagiaTypes;
+    public static IEnumerable<string> FallsValuesValues => StringChoices.FallTypes;
+    public static IEnumerable<string> MotorSkillsValues => StringChoices.MotorSkillTypes;
+    public static IEnumerable<string> NightsValues => StringChoices.NightTypes;
+    public static IEnumerable<string> WalkingTypesValues => StringChoices.WalkingTypes;
+    public static IEnumerable<string> WeightLossesValues => StringChoices.WeightLossTypes;
 }

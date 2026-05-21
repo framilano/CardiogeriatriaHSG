@@ -10,6 +10,7 @@ public partial class Visit: ObservableObject
     [ObservableProperty] private VisitAg? _visitAg;
     [ObservableProperty] private VisitApr? _visitApr;
     [ObservableProperty] private VisitTd? _visitTd;
+    [ObservableProperty] private VisitRc? _visitRc;
 
     [MaxLength(36)]
     public string? VisitCode { get; set; }

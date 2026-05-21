@@ -1,0 +1,62 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:visitContent="clr-namespace:CardiogeriatriaHSG.ViewModels.VisitContent"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CardiogeriatriaHSG.Views.VisitContent.RaccordoClinicoUserControl"
+             x:DataType="visitContent:RaccordoClinicoUserControlViewModel">
+            <UserControl.Styles>
+                <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
+            </UserControl.Styles>
+            <Grid
+                ColumnDefinitions="*, *">
+                        <Border Classes="ColumnBorder"
+                                Grid.Column="0">
+                    <ScrollViewer>
+                        <WrapPanel Classes="ColumnAWrapPanel">
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Riferisce "/>
+                                <ComboBox Tag="Reports" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding ReportTypesValues}" SelectedItem="{Binding CurrentVisit.VisitRc.Reports}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Dispnea "/>
+                                <ComboBox Tag="Reports" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding DyspneaTypesValues}" SelectedItem="{Binding CurrentVisit.VisitRc.Dyspnea}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Angor "/>
+                                <ComboBox Tag="Reports" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding AnginaTypesValues}" SelectedItem="{Binding CurrentVisit.VisitRc.Angina}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Cardiopalmo "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitRc.Palpitations}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Vertical">
+                                <TextBlock Classes="GenericFieldLabel" Text="Sonno " />
+                                <WrapPanel Orientation="Horizontal">
+                                    <TextBlock Padding="10" Text="‣ Numero cuscini" />
+                                    <NumericUpDown AllowSpin="True" Increment="1" Minimum="1" Maximum="2"  Tag="SleepingWithPillowsNumber" Value="{Binding CurrentVisit.VisitRc.SleepingWithPillowsNumber}"></NumericUpDown>
+                                </WrapPanel>
+                                <WrapPanel Orientation="Horizontal">
+                                    <TextBlock Padding="10" Text="‣ Dorme in posizione seduta" />
+                                    <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="SleepingSittingPosition" IsChecked="{Binding CurrentVisit.VisitRc.SleepingSittingPosition}"></CheckBox>
+                                </WrapPanel>
+                                <WrapPanel Orientation="Horizontal">
+                                    <TextBlock Padding="10" Text="‣ DPN" />
+                                    <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="ParoxysmalNocturnalDyspnea" IsChecked="{Binding CurrentVisit.VisitRc.ParoxysmalNocturnalDyspnea}"></CheckBox>
+                                </WrapPanel>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Stress acuto negli ultimi 3 mesi (ricoveri compresi) "/>
+                                <CheckBox IsChecked="{Binding CurrentVisit.VisitRc.AcuteStressLast3Months}"/>
+                            </WrapPanel>
+                        </WrapPanel>
+                    </ScrollViewer>
+                </Border>
+                <ScrollViewer Grid.Column="1">
+                    <Border Classes="ColumnBorder">
+                        <TextBlock Classes="ColumnBTextBlock" Name="ColumnBDescription"></TextBlock>
+                    </Border>
+                </ScrollViewer>
+            </Grid>
+</UserControl>

@@ -10,7 +10,8 @@ public partial class VisitApr(string visitCode): ObservableObject
     public string? VisitCode { get; set; } = visitCode;
     public Visit? Visit { get; set; }
     [ObservableProperty] private string? _aprText = "";
-    
+    partial void OnAprTextChanged(string? value) { if (value != null) AprText = value.Trim(); }
+
     //APR
     [ObservableProperty] private bool _ischemicHeartDisease;
     [ObservableProperty] private bool _heartFailure;
