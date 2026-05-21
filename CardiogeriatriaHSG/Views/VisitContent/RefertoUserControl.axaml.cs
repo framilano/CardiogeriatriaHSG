@@ -12,8 +12,9 @@ public partial class RefertoUserControl : UserControl
         DataContextChanged += (_, __) =>
         {
             if (DataContext is not RefertoUserControlViewModel vm) return;
-            var currentVisit = vm.CurrentVisit!;
+            var currentVisit = vm.CurrentVisit;
             
+            //Loading self text sections first
             var anagraficaUserControl = new AnagraficaUserControl();
             anagraficaUserControl.LoadAnagraficaContent(currentVisit);
             var anamnesiGeriatricaUserControl = new AnamnesiGeriatricaUserControl();

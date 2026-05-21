@@ -12,15 +12,8 @@ sealed class Program
     [STAThread]
     public static void Main(string[] args)
     {
-        Log.Logger = new LoggerConfiguration()
-            .MinimumLevel.Debug()
-            .WriteTo.Console()
-            .WriteTo.File(
-                "logs/CardiogeriatriaHSG.log",
-                rollingInterval: RollingInterval.Day,
-                retainedFileCountLimit: 7)
-            .CreateLogger();
-
+        InitializeSerilog();
+        
         try
         {
             Log.Information("Application starting");
@@ -37,6 +30,18 @@ sealed class Program
         {
             Log.CloseAndFlush();
         }
+    }
+    
+    private static void InitializeSerilog()
+    {
+        Log.Logger = new LoggerConfiguration()
+            .MinimumLevel.Debug()
+            .WriteTo.Console()
+            .WriteTo.File(
+                "logs/CardiogeriatriaHSG.log",
+                rollingInterval: RollingInterval.Day,
+                retainedFileCountLimit: 7)
+            .CreateLogger();
     }
 
     // Avalonia configuration, don't remove; also used by visual designer.

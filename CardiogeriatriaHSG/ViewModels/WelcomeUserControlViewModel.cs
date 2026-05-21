@@ -81,7 +81,7 @@ public partial class WelcomeUserControlViewModel : ObservableObject
     }
     
     public string AppVersion { get; } =
-        Assembly.GetExecutingAssembly()
+        (Assembly.GetExecutingAssembly()
             .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
-            .InformationalVersion ?? "Unknown";
+            .InformationalVersion ?? "Unknown").Split("+")[0];
 }

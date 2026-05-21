@@ -54,7 +54,6 @@ public partial class AnagraficaUserControl : UserControl
         registrySentenceBuilder.Append(age + " anni al momento della visita");
         
         registrySentenceBuilder.Append('.');
-        registrySentenceBuilder.Append('\n');
         _registrySentence = registrySentenceBuilder.ToString();
         UpdateColumnBDescription();
     }

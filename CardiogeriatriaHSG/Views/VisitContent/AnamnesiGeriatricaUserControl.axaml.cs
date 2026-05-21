@@ -283,7 +283,6 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         else disabilitySentenceBuilder.Append("Non in possesso di IC");
         
         disabilitySentenceBuilder.Append('.');
-        disabilitySentenceBuilder.Append('\n');
         _disabilitySentence = disabilitySentenceBuilder.ToString();
     }
     

@@ -8,9 +8,9 @@ public static class TdSynonyms
     public static readonly List<string> MraSynonyms = ["spironolattone", "canrenone", "luvion", "potassio canrenoato", "eplerenone", "finrenone", "finerenone", "karendia"];
     public static readonly List<string> AceInhibitorSynonyms = ["ramipril", "enalapril", "lisinopril", "perindopril", "zofenopril."];
     public static readonly List<string> ArbSynonyms = ["valsartan", "losartan", "candesartan", "olmesartan", "telmisartan"];
-    public static readonly List<string> Sglt2InhibitorSynonyms = ["valsartan", "losartan", "candesartan", "olmesartan", "telmisartan"];
-    public static readonly List<string> ArniSynonyms = ["valsartan", "losartan", "candesartan", "olmesartan", "telmisartan"];
-    public static readonly List<string> VericiguatSynonyms = ["valsartan", "losartan", "candesartan", "olmesartan", "telmisartan"];
+    public static readonly List<string> Sglt2InhibitorSynonyms = ["dapagliflozin", "dapaglifozin", "empagliflozin", "empaglifozin", "canagliflozin", "sotagliflozin"];
+    public static readonly List<string> ArniSynonyms = ["sacubitril", "valsartan", "entresto"];
+    public static readonly List<string> VericiguatSynonyms = ["vericiguat"];
     public static readonly List<string> FurosemideSynonyms = ["furosemide", "lasix"];
     public static readonly List<string> OtherLoopDiureticSynonyms = ["torasemide", "bumetanide", "acido etacrinico"];
     public static readonly List<string> DoacSynonyms = ["apixaban", "rivaroxaban", "edoxaban", "dabigatran"];
@@ -31,9 +31,9 @@ public static class TdSynonyms
     public static readonly List<string> EzetimibeSynonyms = ["ezetimibe"];
     public static readonly List<string> PpiSynonyms = ["omeprazolo", "pantoprazolo", "lansoprazolo", "esomeprazolo", "rabeprazolo"];
     public static readonly List<string> AcheInhibitorOrMemantineSynonyms = ["donepezil", "rivastigmina", "galantamina"];
-    public static readonly List<string> BenzodiazepinesSynonyms = ["lorazepam", "alprazolam", "diazepam", "delorazepam", "lormetazepam", "bromazepam", "tavor", "en", "xanax"];
+    public static readonly List<string> BenzodiazepinesSynonyms = ["benzodiazepine", "lorazepam", "alprazolam", "diazepam", "delorazepam", "lormetazepam", "bromazepam", "tavor", "en", "xanax"];
     public static readonly List<string> ZDrugsSynonyms = ["zolpidem", "zopiclone", "eszopiclone", "stilnox"];
-    public static readonly List<string> LowDoseTrazodoneSynonyms = ["trittico"];
+    public static readonly List<string> LowDoseTrazodoneSynonyms = ["trozodone", "trittico"];
     public static readonly List<string> AntidepressantsSynonyms = ["sertralina", "citalopram", "escitalopram", "duloxetina", "amitriptilina", "vortioxetina", "mirtazapina", "fluoxetina", "paroxetina", "fluvoxamina", "venlafaxina"];
     public static readonly List<string> AntipsychoticsSynonyms = ["quetiapina", "risperidone", "olanzapina", "aloperidolo", "aripiprazolo", "promazina", "amisulpiride", "levosulpiride", "litio", "brexpiprazolo"];
     public static readonly List<string> ParacetamolSynonyms = ["paracetamolo"];
