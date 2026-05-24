@@ -94,7 +94,7 @@
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
                                     <TextBlock Classes="GenericFieldLabel" Text="‣ Giorni "/>
-                                    <NumericUpDown Tag="HospitalizationsSinceLastVisitDays" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="10" Value="{Binding CurrentVisitRc.HospitalizationsSinceLastVisitDays}"></NumericUpDown>
+                                    <NumericUpDown Tag="HospitalizationsSinceLastVisitDays" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="1000" Value="{Binding CurrentVisitRc.HospitalizationsSinceLastVisitDays}"></NumericUpDown>
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
                                     <TextBlock Classes="GenericFieldLabel" Text="‣ Causa "/>
