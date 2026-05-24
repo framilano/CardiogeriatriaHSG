@@ -14,28 +14,29 @@ public partial class TerapiaDomiciliareUserControl : UserControl
         {
             if (DataContext is TerapiaDomiciliareUserControlViewModel viewModel)
             {
-                _currentVisit = viewModel.CurrentVisit!;
+                _currentVisitTd = viewModel.CurrentVisitTd!;
             }
         };
     }
+    
+    private VisitTd? _currentVisitTd;
+
     
     public void OnColumnAChanged(object? sender, RoutedEventArgs routedEventArgs)
     {
         var box = sender as CheckBox;
         var value = box!.IsChecked.ToString();
         
-        _currentVisit!.VisitTd!.Furosemide = value == "True";
-        if (_currentVisit!.VisitTd!.Furosemide)
+        _currentVisitTd!.Furosemide = value == "True";
+        if (_currentVisitTd.Furosemide)
         {
-            _currentVisit.VisitTd.FurosemideDose ??= 0;
+            _currentVisitTd.FurosemideDose ??= 0;
             FurosemideDoseWrapPanel.IsVisible = true;
         }
         else
         {
-            _currentVisit.VisitTd.FurosemideDose = null;
+            _currentVisitTd.FurosemideDose = null;
             FurosemideDoseWrapPanel.IsVisible = false;
         }
     }
-    
-    private Visit? _currentVisit;
 }

@@ -14,31 +14,32 @@ public partial class AnagraficaUserControl : UserControl
     {
         InitializeComponent();
         _columnBDescription = this.Find<TextBlock>("ColumnBDescription");
-        _registrySentence = "";
         DataContextChanged += (_, __) =>
         {
-            if (DataContext is not AnagraficaUserControlViewModel vm) return;
-            _currentVisit = vm.CurrentVisit;
-            LoadAnagraficaContent(_currentVisit);
+            if (DataContext is not AnagraficaUserControlViewModel viewModel) return;
+            _currentPatient = viewModel.CurrentPatient;
+            _visitTimestamp = viewModel.CurrentVisitTimestamp;
+            LoadAnagraficaContent(_currentPatient, _visitTimestamp);
         };
     }
     
-    private Visit? _currentVisit;
+    private Patient? _currentPatient;
+    private DateTimeOffset _visitTimestamp;
 
-    private string _registrySentence;
+    private string? _registrySentence;
     private readonly TextBlock? _columnBDescription;
 
     public void OnColumnAChanged(object? sender, RoutedEventArgs routedEventArgs)
     {
         var gender = (ComboBox)sender!;
-        _currentVisit!.Patient!.Gender = gender.SelectedValue!.ToString();
+        _currentPatient!.Gender = gender.SelectedValue!.ToString();
         UpdateRegistrySentence();
     }
     
     private void OnColumnADatePickerChanged(object? sender, DatePickerSelectedValueChangedEventArgs e)
     {
         var datePicker = (DatePicker)sender!;
-        _currentVisit!.Patient!.DateOfBirth = (DateTimeOffset)datePicker.SelectedDate!;
+        _currentPatient!.DateOfBirth = (DateTimeOffset)datePicker.SelectedDate!;
         UpdateRegistrySentence();
     }
     
@@ -46,11 +47,11 @@ public partial class AnagraficaUserControl : UserControl
     {
         var registrySentenceBuilder = new StringBuilder();
         
-        var visitDate = _currentVisit!.Timestamp;
+        var visitDate = _visitTimestamp;
         
-        registrySentenceBuilder.Append(_currentVisit!.Patient!.Gender == "M" ? "Uomo di " : "Donna di ");
-        var age = visitDate.Year - _currentVisit!.Patient!.DateOfBirth!.Value.Year;
-        if (_currentVisit!.Patient!.DateOfBirth > visitDate.AddYears(-age)) age--;
+        registrySentenceBuilder.Append(_currentPatient!.Gender == "M" ? "Uomo di " : "Donna di ");
+        var age = visitDate.Year - _currentPatient!.DateOfBirth!.Value.Year;
+        if (_currentPatient!.DateOfBirth > visitDate.AddYears(-age)) age--;
         registrySentenceBuilder.Append(age + " anni al momento della visita");
         
         registrySentenceBuilder.Append('.');
@@ -58,9 +59,10 @@ public partial class AnagraficaUserControl : UserControl
         UpdateColumnBDescription();
     }
 
-    public void LoadAnagraficaContent(Visit currentVisit)
+    public void LoadAnagraficaContent(Patient currentPatient, DateTimeOffset visitTimestamp)
     {
-        _currentVisit = currentVisit;
+        _currentPatient = currentPatient;
+        _visitTimestamp = visitTimestamp;
         UpdateRegistrySentence();
     }
 

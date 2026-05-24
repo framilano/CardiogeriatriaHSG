@@ -5,9 +5,11 @@ using CardiogeriatriaHSG.Models.enums;
 
 namespace CardiogeriatriaHSG.ViewModels.VisitContent;
 
-public class AnagraficaUserControlViewModel(Visit currentVisit) : ViewModelBase
+public class AnagraficaUserControlViewModel(Patient currentPatient, DateTimeOffset currentVisitTimestamp) : ViewModelBase
 {
-    public Visit CurrentVisit { get; set; } = currentVisit;
+    public Patient CurrentPatient { get; set; } = currentPatient;
+    
+    public DateTimeOffset CurrentVisitTimestamp { get; set; } = currentVisitTimestamp;
     
     public static IEnumerable<string> GenderTypesValues => StringChoices.GenderTypes;
     

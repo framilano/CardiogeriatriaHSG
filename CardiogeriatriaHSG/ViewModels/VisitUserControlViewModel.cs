@@ -73,36 +73,40 @@ public partial class VisitUserControlViewModel : ViewModelBase
         {
             case "Anagrafica":
                 CurrentVisit.Patient ??= CreateNewPatient(CurrentVisit.PatientCode!);
-                CurrentContent = new AnagraficaUserControl { DataContext = new AnagraficaUserControlViewModel(CurrentVisit) };
+                CurrentContent = new AnagraficaUserControl { DataContext = new AnagraficaUserControlViewModel(CurrentVisit.Patient, CurrentVisit.Timestamp) };
                 break;
             case "Anamnesi geriatrica":
                 if (CurrentVisit.VisitAg is null) _databaseService.LoadVisitAnamnesiGeriatricaByVisit(CurrentVisit);
                 CurrentVisit.VisitAg ??= CreateNewVisitAg(CurrentVisit.VisitCode!);
-                CurrentContent = new AnamnesiGeriatricaUserControl { DataContext = new AnamnesiGeriatricaUserControlViewModel(CurrentVisit) };
+                CurrentContent = new AnamnesiGeriatricaUserControl { DataContext = new AnamnesiGeriatricaUserControlViewModel(CurrentVisit.VisitAg) };
                 break;
             case "APR":
                 if (CurrentVisit.VisitApr is null) _databaseService.LoadVisitAnamnesiPatologicaRemotaByVisit(CurrentVisit);
                 CurrentVisit.VisitApr ??= CreateNewVisitApr(CurrentVisit.VisitCode!);
-                CurrentContent = new AnamnesiPatologicaRemotaUserControl { DataContext = new AnamnesiPatologicaRemotaUserControlViewModel(CurrentVisit) };
+                CurrentContent = new AnamnesiPatologicaRemotaUserControl { DataContext = new AnamnesiPatologicaRemotaUserControlViewModel(CurrentVisit.VisitApr) };
                 break;
             case "Terapia domiciliare":
                 if (CurrentVisit.VisitTd is null) _databaseService.LoadVisitTerapiaDomiciliareByVisit(CurrentVisit);
                 CurrentVisit.VisitTd ??= CreateNewVisitTd(CurrentVisit.VisitCode!);
-                CurrentContent = new TerapiaDomiciliareUserControl { DataContext = new TerapiaDomiciliareUserControlViewModel(CurrentVisit) };
+                CurrentContent = new TerapiaDomiciliareUserControl { DataContext = new TerapiaDomiciliareUserControlViewModel(CurrentVisit.VisitTd) };
                 break;
             case "Raccordo clinico":
                 if (CurrentVisit.VisitRc is null) _databaseService.LoadVisitRaccordoClinicoByVisit(CurrentVisit);
                 CurrentVisit.VisitRc ??= CreateNewVisitRc(CurrentVisit.VisitCode!);
-                CurrentContent = new RaccordoClinicoUserControl { DataContext = new RaccordoClinicoUserControlViewModel(CurrentVisit) };
+                CurrentContent = new RaccordoClinicoUserControl { DataContext = new RaccordoClinicoUserControlViewModel(CurrentVisit.VisitRc) };
                 break;
             case "Referto":
                 //There's no need to load patient (anagrafica) because already loaded by default
                 if (CurrentVisit.VisitAg is null) { _databaseService.LoadVisitAnamnesiGeriatricaByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitApr is null) { _databaseService.LoadVisitAnamnesiPatologicaRemotaByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitTd is null) { _databaseService.LoadVisitTerapiaDomiciliareByVisit(CurrentVisit); }
+                if (CurrentVisit.VisitRc is null) { _databaseService.LoadVisitRaccordoClinicoByVisit(CurrentVisit); }
+                
+                //If still null after loading from DB, we create new Visits elements
                 CurrentVisit.VisitAg ??= CreateNewVisitAg(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitApr ??= CreateNewVisitApr(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitTd ??= CreateNewVisitTd(CurrentVisit.VisitCode!);
+                CurrentVisit.VisitRc ??= CreateNewVisitRc(CurrentVisit.VisitCode!);
                 CurrentContent = new RefertoUserControl { DataContext = new RefertoUserControlViewModel(CurrentVisit) };
                 break;
         }
@@ -305,7 +309,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
         } catch (Exception e)
         {
             //If whatever error occurs, print a save dialog with the error message
-            Log.Error("Salvataggio su Database fallito. Errore completo salvato nella cartella logs: {EMessage}, Exception: {Exception}", e.Message, e);
+            Log.Error(e, "Salvataggio su Database fallito. Errore completo salvato nella cartella logs: {EMessage}, Exception: {Exception}", e.Message, e);
             new SaveDialogWindow(e.Message).ShowDialog(GetCurrentWindow()!);
             return;
         }

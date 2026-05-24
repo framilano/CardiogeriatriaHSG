@@ -17,12 +17,12 @@ public partial class RaccordoClinicoUserControl : UserControl
         DataContextChanged += (_, __) =>
         {
             if (DataContext is not RaccordoClinicoUserControlViewModel viewModel) return;
-            _currentVisit = viewModel.CurrentVisit;
-            LoadRaccordoClinicoContent(_currentVisit);
+            _currentVisitRc = viewModel.CurrentVisitRc;
+            LoadRaccordoClinicoContent(_currentVisitRc);
         };
     }
     
-    private Visit? _currentVisit;
+    private VisitRc? _currentVisitRc;
     private readonly TextBlock? _columnBDescription;
 
     private string? _reportsSentence;
@@ -54,57 +54,106 @@ public partial class RaccordoClinicoUserControl : UserControl
         switch (tag) 
         {
             case "ReportTypes":
-                _currentVisit!.VisitRc!.Reports = value;
+                _currentVisitRc!.Reports = value;
                 UpdateReportsSentence();
                 break;
+            case "DyspneaTypes":
+                _currentVisitRc!.Dyspnea = value;
+                break;
+            case "AnginaTypes":
+                _currentVisitRc!.Angina = value;
+                break;
+            case "Palpitations":
+                _currentVisitRc!.Palpitations = value == "True";
+                break;
+            case "SleepingWithPillowsNumber":
+                _currentVisitRc!.SleepingWithPillowsNumber = int.Parse(value!);
+                break;
+            case "SleepingSittingPosition":
+                _currentVisitRc!.SleepingSittingPosition = value == "True";
+                break;
+            case "ParoxysmalNocturnalDyspnea":
+                _currentVisitRc!.ParoxysmalNocturnalDyspnea = value == "True";
+                break;
+            case "AcuteStressLast3Months":
+                _currentVisitRc!.AcuteStressLast3Months = value == "True";
+                break;
             case "FallsSinceLastVisit":
-                _currentVisit!.VisitRc!.FallsSinceLastVisit = value == "True";
-                if (_currentVisit!.VisitRc!.FallsSinceLastVisit)
+                _currentVisitRc!.FallsSinceLastVisit = value == "True";
+                if (_currentVisitRc!.FallsSinceLastVisit)
                 {
-                    _currentVisit.VisitRc.FallsSinceLastVisitNumber ??= 0;
-                    _currentVisit.VisitRc.FallsSinceLastVisitType ??= StringChoices.FallsSinceLastVisitTypes[0];
+                    _currentVisitRc!.FallsSinceLastVisitNumber ??= 0;
+                    _currentVisitRc!.FallsSinceLastVisitType ??= StringChoices.FallsSinceLastVisitTypes[0];
                     FallsSinceLastVisitWrapPanel.IsVisible = true;
                 }
                 else
                 {
-                    _currentVisit.VisitRc.FallsSinceLastVisitNumber ??= null;
-                    _currentVisit.VisitRc.FallsSinceLastVisitType ??= null;
+                    _currentVisitRc!.FallsSinceLastVisitNumber ??= null;
+                    _currentVisitRc!.FallsSinceLastVisitType ??= null;
                     FallsSinceLastVisitWrapPanel.IsVisible = false;
                 }
                 UpdateFallsSinceLastVisitSentence();
                 break;
+            case "FallsSinceLastVisitNumber": 
+                _currentVisitRc!.FallsSinceLastVisitNumber = int.Parse(value!);
+                UpdateFallsSinceLastVisitSentence();
+                break;
+            case "FallsSinceLastVisitType":
+                _currentVisitRc!.FallsSinceLastVisitType = value;
+                UpdateFallsSinceLastVisitSentence();
+                break;
             case "EmergenciesSinceLastVisit":
-                _currentVisit!.VisitRc!.EmergenciesSinceLastVisit = value == "True";
-                if (_currentVisit!.VisitRc!.EmergenciesSinceLastVisit)
+                _currentVisitRc!.EmergenciesSinceLastVisit = value == "True";
+                if (_currentVisitRc!.EmergenciesSinceLastVisit)
                 {
-                    _currentVisit.VisitRc.EmergenciesSinceLastVisitNumber ??= 0;
-                    _currentVisit.VisitRc.EmergenciesSinceLastVisitCause ??= StringChoices.EmergenciesSinceLastVisitCauses[0];
+                    _currentVisitRc!.EmergenciesSinceLastVisitNumber ??= 0;
+                    _currentVisitRc!.EmergenciesSinceLastVisitCause ??= StringChoices.EmergenciesSinceLastVisitCauses[0];
                     EmergenciesSinceLastVisitWrapPanel.IsVisible = true;
                 }
                 else
                 {
-                    _currentVisit.VisitRc.EmergenciesSinceLastVisitNumber ??= null;
-                    _currentVisit.VisitRc.EmergenciesSinceLastVisitCause ??= null;
+                    _currentVisitRc!.EmergenciesSinceLastVisitNumber ??= null;
+                    _currentVisitRc!.EmergenciesSinceLastVisitCause ??= null;
                     EmergenciesSinceLastVisitWrapPanel.IsVisible = false;
                 }
                 UpdateEmergenciesSinceLastVisitSentence();
                 break;
+            case "EmergenciesSinceLastVisitNumber": 
+                _currentVisitRc!.EmergenciesSinceLastVisitNumber = int.Parse(value!);
+                UpdateEmergenciesSinceLastVisitSentence();
+                break;
+            case "EmergenciesSinceLastVisitCause":
+                _currentVisitRc!.EmergenciesSinceLastVisitCause = value;
+                UpdateEmergenciesSinceLastVisitSentence();
+                break;
             case "HospitalizationsSinceLastVisit":
-                _currentVisit!.VisitRc!.HospitalizationsSinceLastVisit = value == "True";
-                if (_currentVisit!.VisitRc!.HospitalizationsSinceLastVisit)
+                _currentVisitRc!.HospitalizationsSinceLastVisit = value == "True";
+                if (_currentVisitRc!.HospitalizationsSinceLastVisit)
                 {
-                    _currentVisit.VisitRc.HospitalizationsSinceLastVisitNumber ??= 0;
-                    _currentVisit.VisitRc.HospitalizationsSinceLastVisitDays ??= 0;
-                    _currentVisit.VisitRc.HospitalizationsSinceLastVisitCause ??= StringChoices.HospitalizationsSinceLastVisitCauses[0];
+                    _currentVisitRc!.HospitalizationsSinceLastVisitNumber ??= 0;
+                    _currentVisitRc!.HospitalizationsSinceLastVisitDays ??= 0;
+                    _currentVisitRc!.HospitalizationsSinceLastVisitCause ??= StringChoices.HospitalizationsSinceLastVisitCauses[0];
                     HospitalizationsSinceLastVisitWrapPanel.IsVisible = true;
                 }
                 else
                 {
-                    _currentVisit.VisitRc.HospitalizationsSinceLastVisitNumber ??= null;
-                    _currentVisit.VisitRc.HospitalizationsSinceLastVisitDays ??= null;
-                    _currentVisit.VisitRc.HospitalizationsSinceLastVisitCause ??= null;
+                    _currentVisitRc!.HospitalizationsSinceLastVisitNumber ??= null;
+                    _currentVisitRc!.HospitalizationsSinceLastVisitDays ??= null;
+                    _currentVisitRc!.HospitalizationsSinceLastVisitCause ??= null;
                     HospitalizationsSinceLastVisitWrapPanel.IsVisible = false;
                 }
+                UpdateHospitalizationsSinceLastVisitSentence();
+                break;
+            case "HospitalizationsSinceLastVisitNumber": 
+                _currentVisitRc!.HospitalizationsSinceLastVisitNumber = int.Parse(value!);
+                UpdateHospitalizationsSinceLastVisitSentence();
+                break;
+            case "HospitalizationsSinceLastVisitDays":
+                _currentVisitRc!.HospitalizationsSinceLastVisitDays = int.Parse(value!);
+                UpdateHospitalizationsSinceLastVisitSentence();
+                break;
+            case "HospitalizationsSinceLastVisitCause":
+                _currentVisitRc!.HospitalizationsSinceLastVisitCause = value;
                 UpdateHospitalizationsSinceLastVisitSentence();
                 break;
         }
@@ -117,31 +166,86 @@ public partial class RaccordoClinicoUserControl : UserControl
     {
         var reportsSentenceBuilder = new StringBuilder();
         reportsSentenceBuilder.Append("Riferisce ");
-        reportsSentenceBuilder.Append(_currentVisit!.VisitRc!.Reports!.ToLower());
+        reportsSentenceBuilder.Append(_currentVisitRc!.Reports!.ToLower());
         reportsSentenceBuilder.Append('.');
         reportsSentenceBuilder.Append('\n');
         _reportsSentence = reportsSentenceBuilder.ToString();
     }
     
-    
     private void UpdateFallsSinceLastVisitSentence()
     {
-       
+       var fallsSentenceBuilder = new StringBuilder();
+       if (_currentVisitRc!.FallsSinceLastVisit && 
+           _currentVisitRc!.FallsSinceLastVisitNumber is not null &&
+           _currentVisitRc!.FallsSinceLastVisitType is not null)
+       {
+           fallsSentenceBuilder.Append("Riferisce ");
+           fallsSentenceBuilder.Append(_currentVisitRc!.FallsSinceLastVisitNumber);
+           fallsSentenceBuilder.Append(' ');
+           fallsSentenceBuilder.Append(_currentVisitRc!.FallsSinceLastVisitNumber == 1 ? "caduta" : "cadute");
+           fallsSentenceBuilder.Append(" da ultima visita, ");
+           fallsSentenceBuilder.Append(_currentVisitRc!.FallsSinceLastVisitType!.ToLower());
+           fallsSentenceBuilder.Append(".\n");
+       }
+       else
+       {
+           fallsSentenceBuilder.Append("Non riferisce cadute da ultima visita.\n");
+       }
+       _fallsSinceLastVisitSentence = fallsSentenceBuilder.ToString();
     }
     
     private void UpdateEmergenciesSinceLastVisitSentence()
     {
-
+        var emergenciesSentenceBuilder = new StringBuilder();
+        if (_currentVisitRc!.EmergenciesSinceLastVisit &&
+            _currentVisitRc!.EmergenciesSinceLastVisitNumber is not null &&
+            _currentVisitRc!.EmergenciesSinceLastVisitCause is not null)
+        {
+            emergenciesSentenceBuilder.Append("Riferisce ");
+            emergenciesSentenceBuilder.Append(_currentVisitRc!.EmergenciesSinceLastVisitNumber);
+            emergenciesSentenceBuilder.Append(' ');
+            emergenciesSentenceBuilder.Append(_currentVisitRc!.EmergenciesSinceLastVisitNumber == 1 ? "accesso" : "accessi");
+            emergenciesSentenceBuilder.Append(" in pronto soccorso da ultima visita, per causa ");
+            emergenciesSentenceBuilder.Append(_currentVisitRc!.EmergenciesSinceLastVisitCause!.ToLower());
+            emergenciesSentenceBuilder.Append(".\n");
+        }
+        else
+        {
+            emergenciesSentenceBuilder.Append("Non riferisce accessi in pronto soccorso da ultima visita.\n");
+        }
+        _emergenciesSinceLastVisitSentence = emergenciesSentenceBuilder.ToString();
     }
     
     private void UpdateHospitalizationsSinceLastVisitSentence()
     {
-
+        var hospitalizationsSentenceBuilder = new StringBuilder();
+        if (_currentVisitRc!.HospitalizationsSinceLastVisit &&
+            _currentVisitRc!.HospitalizationsSinceLastVisitNumber is not null &&
+            _currentVisitRc!.HospitalizationsSinceLastVisitDays is not null &&
+            _currentVisitRc!.HospitalizationsSinceLastVisitCause is not null)
+        {
+            hospitalizationsSentenceBuilder.Append("Riferisce ");
+            hospitalizationsSentenceBuilder.Append(_currentVisitRc!.HospitalizationsSinceLastVisitNumber);
+            hospitalizationsSentenceBuilder.Append(' ');
+            hospitalizationsSentenceBuilder.Append(_currentVisitRc!.HospitalizationsSinceLastVisitNumber == 1 ? "ricovero" : "ricoveri");
+            hospitalizationsSentenceBuilder.Append(" da ultima visita, per un totale di ");
+            hospitalizationsSentenceBuilder.Append(_currentVisitRc!.HospitalizationsSinceLastVisitDays);
+            hospitalizationsSentenceBuilder.Append(' ');
+            hospitalizationsSentenceBuilder.Append(_currentVisitRc!.HospitalizationsSinceLastVisitDays == 1 ? "giorno" : "giorni");
+            hospitalizationsSentenceBuilder.Append(", per causa ");
+            hospitalizationsSentenceBuilder.Append(_currentVisitRc!.HospitalizationsSinceLastVisitCause!.ToLower());
+            hospitalizationsSentenceBuilder.Append(".\n");
+        }
+        else
+        {
+            hospitalizationsSentenceBuilder.Append("Non riferisce ricoveri da ultima visita.\n");
+        }
+        _hospitalizationsSinceLastVisitSentence = hospitalizationsSentenceBuilder.ToString();
     }
     
-    public void LoadRaccordoClinicoContent(Visit currentVisit)
+    public void LoadRaccordoClinicoContent(VisitRc currentVisitRc)
     {
-        _currentVisit = currentVisit;
+        _currentVisitRc = currentVisitRc;
         UpdateReportsSentence();
         UpdateFallsSinceLastVisitSentence();
         UpdateEmergenciesSinceLastVisitSentence();

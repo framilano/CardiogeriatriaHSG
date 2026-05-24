@@ -17,88 +17,88 @@
                         <WrapPanel Classes="ColumnAWrapPanel">
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Riferisce "/>
-                                <ComboBox Tag="ReportTypes" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding ReportTypesValues}" SelectedItem="{Binding CurrentVisit.VisitRc.Reports}"/>
+                                <ComboBox Tag="ReportTypes" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding ReportTypesValues}" SelectedItem="{Binding CurrentVisitRc.Reports}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Dispnea "/>
-                                <ComboBox Tag="DyspneaTypes" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding DyspneaTypesValues}" SelectedItem="{Binding CurrentVisit.VisitRc.Dyspnea}"/>
+                                <ComboBox Tag="DyspneaTypes" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding DyspneaTypesValues}" SelectedItem="{Binding CurrentVisitRc.Dyspnea}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Angor "/>
-                                <ComboBox Tag="AnginaTypes" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding AnginaTypesValues}" SelectedItem="{Binding CurrentVisit.VisitRc.Angina}"/>
+                                <ComboBox Tag="AnginaTypes" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding AnginaTypesValues}" SelectedItem="{Binding CurrentVisitRc.Angina}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Cardiopalmo "/>
-                                <CheckBox Tag="Palpitations" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitRc.Palpitations}"/>
+                                <CheckBox Tag="Palpitations" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitRc.Palpitations}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Vertical">
                                 <TextBlock Classes="GenericFieldLabel" Text="Sonno " />
                                 <WrapPanel Orientation="Horizontal">
                                     <TextBlock Padding="10" Text="‣ Numero cuscini" />
-                                    <NumericUpDown Tag="SleepingWithPillowsNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="1" Maximum="2" Value="{Binding CurrentVisit.VisitRc.SleepingWithPillowsNumber}"></NumericUpDown>
+                                    <NumericUpDown Tag="SleepingWithPillowsNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="1" Maximum="2" Value="{Binding CurrentVisitRc.SleepingWithPillowsNumber}"></NumericUpDown>
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
                                     <TextBlock Padding="10" Text="‣ Dorme in posizione seduta" />
-                                    <CheckBox Tag="SleepingSittingPosition" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitRc.SleepingSittingPosition}"></CheckBox>
+                                    <CheckBox Tag="SleepingSittingPosition" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitRc.SleepingSittingPosition}"></CheckBox>
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
                                     <TextBlock Padding="10" Text="‣ DPN" />
-                                    <CheckBox Tag="ParoxysmalNocturnalDyspnea" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitRc.ParoxysmalNocturnalDyspnea}"></CheckBox>
+                                    <CheckBox Tag="ParoxysmalNocturnalDyspnea" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitRc.ParoxysmalNocturnalDyspnea}"></CheckBox>
                                 </WrapPanel>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Stress acuto negli ultimi 3 mesi (ricoveri compresi) "/>
-                                <CheckBox Tag="AcuteStressLast3Months" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitRc.AcuteStressLast3Months}"/>
+                                <CheckBox Tag="AcuteStressLast3Months" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitRc.AcuteStressLast3Months}"/>
                             </WrapPanel>
                             <!-- FALLS SECTION -->
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Cadute tra una visita e l’altra "/>
-                                <CheckBox Tag="FallsSinceLastVisit" IsCheckedChanged="OnColumnAChanged" Loaded="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitRc.FallsSinceLastVisit}"/>
+                                <CheckBox Tag="FallsSinceLastVisit" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitRc.FallsSinceLastVisit}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Vertical" IsVisible="False" Name="FallsSinceLastVisitWrapPanel">
                                 <WrapPanel Orientation="Horizontal">
                                     <TextBlock Classes="GenericFieldLabel" Text="‣ Quante "/>
-                                    <NumericUpDown Tag="FallsSinceLastVisitNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="10" Value="{Binding CurrentVisit.VisitRc.FallsSinceLastVisitNumber}"></NumericUpDown>
+                                    <NumericUpDown Tag="FallsSinceLastVisitNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="10" Value="{Binding CurrentVisitRc.FallsSinceLastVisitNumber}"></NumericUpDown>
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
                                     <TextBlock Classes="GenericFieldLabel" Text="‣ Tipo "/>
-                                    <ComboBox Tag="FallsSinceLastVisitType" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding FallsSinceLastVisitTypesValues}" SelectedItem="{Binding CurrentVisit.VisitRc.FallsSinceLastVisitType}"/>
+                                    <ComboBox Tag="FallsSinceLastVisitType" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding FallsSinceLastVisitTypesValues}" SelectedItem="{Binding CurrentVisitRc.FallsSinceLastVisitType}"/>
                                 </WrapPanel>
                             </WrapPanel>
                             
                             <!-- EMERGENCIES SECTION -->
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Accessi in PS tra una visita e la successiva "/>
-                                <CheckBox Tag="EmergenciesSinceLastVisit" IsCheckedChanged="OnColumnAChanged" Loaded="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitRc.EmergenciesSinceLastVisit}"/>
+                                <CheckBox Tag="EmergenciesSinceLastVisit" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitRc.EmergenciesSinceLastVisit}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Vertical" IsVisible="False" Name="EmergenciesSinceLastVisitWrapPanel">
                                 <WrapPanel Orientation="Horizontal">
                                     <TextBlock Classes="GenericFieldLabel" Text="‣ Numero "/>
-                                    <NumericUpDown Tag="EmergenciesSinceLastVisitNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="10" Value="{Binding CurrentVisit.VisitRc.EmergenciesSinceLastVisitNumber}"></NumericUpDown>
+                                    <NumericUpDown Tag="EmergenciesSinceLastVisitNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="10" Value="{Binding CurrentVisitRc.EmergenciesSinceLastVisitNumber}"></NumericUpDown>
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
                                     <TextBlock Classes="GenericFieldLabel" Text="‣ Causa "/>
-                                    <ComboBox Tag="EmergenciesSinceLastVisitCause" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding EmergenciesSinceLastVisitCausesValues}" SelectedItem="{Binding CurrentVisit.VisitRc.EmergenciesSinceLastVisitCause}"/>
+                                    <ComboBox Tag="EmergenciesSinceLastVisitCause" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding EmergenciesSinceLastVisitCausesValues}" SelectedItem="{Binding CurrentVisitRc.EmergenciesSinceLastVisitCause}"/>
                                 </WrapPanel>
                             </WrapPanel>
                             
                             <!-- HOSPITALIZATION SECTION -->
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Ricoveri tra una visita e la successiva "/>
-                                <CheckBox Tag="HospitalizationsSinceLastVisit" IsCheckedChanged="OnColumnAChanged" Loaded="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitRc.HospitalizationsSinceLastVisit}"/>
+                                <CheckBox Tag="HospitalizationsSinceLastVisit" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitRc.HospitalizationsSinceLastVisit}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Vertical" IsVisible="False" Name="HospitalizationsSinceLastVisitWrapPanel">
                                 <WrapPanel Orientation="Horizontal">
                                     <TextBlock Classes="GenericFieldLabel" Text="‣ Numero "/>
-                                    <NumericUpDown Tag="HospitalizationsSinceLastVisitNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="10" Value="{Binding CurrentVisit.VisitRc.HospitalizationsSinceLastVisitNumber}"></NumericUpDown>
+                                    <NumericUpDown Tag="HospitalizationsSinceLastVisitNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="10" Value="{Binding CurrentVisitRc.HospitalizationsSinceLastVisitNumber}"></NumericUpDown>
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
                                     <TextBlock Classes="GenericFieldLabel" Text="‣ Giorni "/>
-                                    <NumericUpDown Tag="HospitalizationsSinceLastVisitDays" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="10" Value="{Binding CurrentVisit.VisitRc.HospitalizationsSinceLastVisitDays}"></NumericUpDown>
+                                    <NumericUpDown Tag="HospitalizationsSinceLastVisitDays" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="10" Value="{Binding CurrentVisitRc.HospitalizationsSinceLastVisitDays}"></NumericUpDown>
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
                                     <TextBlock Classes="GenericFieldLabel" Text="‣ Causa "/>
-                                    <ComboBox Tag="HospitalizationsSinceLastVisitCause" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding HospitalizationsSinceLastVisitCausesValues}" SelectedItem="{Binding CurrentVisit.VisitRc.HospitalizationsSinceLastVisitCause}"/>
+                                    <ComboBox Tag="HospitalizationsSinceLastVisitCause" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding HospitalizationsSinceLastVisitCausesValues}" SelectedItem="{Binding CurrentVisitRc.HospitalizationsSinceLastVisitCause}"/>
                                 </WrapPanel>
                             </WrapPanel>
                         </WrapPanel>

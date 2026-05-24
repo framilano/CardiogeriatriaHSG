@@ -16,10 +16,13 @@ public partial class AnamnesiPatologicaRemotaUserControl : UserControl
         {
             if (DataContext is AnamnesiPatologicaRemotaUserControlViewModel viewModel)
             {
-                _currentVisit = viewModel.CurrentVisit!;
+                _currentVisitApr = viewModel.CurrentVisitApr!;
             }
         };
     }
+    
+    private VisitApr? _currentVisitApr;
+
     
     public void OnColumnAChanged(object? sender, RoutedEventArgs routedEventArgs)
     {
@@ -42,39 +45,37 @@ public partial class AnamnesiPatologicaRemotaUserControl : UserControl
         switch (tag) 
         {
             case "Amyloidosis":
-                _currentVisit!.VisitApr!.Amyloidosis = value == "True";
-                if (_currentVisit!.VisitApr!.Amyloidosis)
+                _currentVisitApr!.Amyloidosis = value == "True";
+                if (_currentVisitApr.Amyloidosis)
                 {
-                    _currentVisit.VisitApr.AmyloidosisType ??= StringChoices.AmyloidosisTypes[0];
-                    _currentVisit.VisitApr.AmyloidosisDiagnosisDate ??= now;
-                    _currentVisit.VisitApr.AmyloidosisDmt ??= false;
-                    _currentVisit.VisitApr.AmyloidosisTherapyStartDate ??= now;
+                    _currentVisitApr.AmyloidosisType ??= StringChoices.AmyloidosisTypes[0];
+                    _currentVisitApr.AmyloidosisDiagnosisDate ??= now;
+                    _currentVisitApr.AmyloidosisDmt ??= false;
+                    _currentVisitApr.AmyloidosisTherapyStartDate ??= now;
                     AmyloidosisWrapPanel.IsVisible = true;
                 }
                 else
                 {
-                    _currentVisit!.VisitApr!.AmyloidosisType = null;
-                    _currentVisit!.VisitApr!.AmyloidosisDiagnosisDate = null;
-                    _currentVisit!.VisitApr!.AmyloidosisDmt = null;
-                    _currentVisit!.VisitApr!.AmyloidosisTherapyStartDate = null;
+                    _currentVisitApr.AmyloidosisType = null;
+                    _currentVisitApr.AmyloidosisDiagnosisDate = null;
+                    _currentVisitApr.AmyloidosisDmt = null;
+                    _currentVisitApr.AmyloidosisTherapyStartDate = null;
                     AmyloidosisWrapPanel.IsVisible = false;
                 }
                 break;
             case "Dementia":
-                _currentVisit!.VisitApr!.Dementia = value == "True";
-                if (_currentVisit!.VisitApr!.Dementia)
+                _currentVisitApr!.Dementia = value == "True";
+                if (_currentVisitApr.Dementia)
                 {
-                    _currentVisit.VisitApr.DementiaType ??= StringChoices.DementiaTypes[0];
+                    _currentVisitApr.DementiaType ??= StringChoices.DementiaTypes[0];
                     DementiaTypeWrapPanel.IsVisible = true;
                 }
                 else
                 {
-                    _currentVisit!.VisitApr!.DementiaType = null;
+                    _currentVisitApr.DementiaType = null;
                     DementiaTypeWrapPanel.IsVisible = false;
                 }
                 break;
         }
     }
-    
-    private Visit? _currentVisit;
 }

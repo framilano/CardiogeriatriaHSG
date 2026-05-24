@@ -4,9 +4,9 @@ using CardiogeriatriaHSG.Models.enums;
 
 namespace CardiogeriatriaHSG.ViewModels.VisitContent;
 
-public class RaccordoClinicoUserControlViewModel(Visit currentVisit) : ViewModelBase
+public class RaccordoClinicoUserControlViewModel(VisitRc currentVisitRc) : ViewModelBase
 {
-    public Visit CurrentVisit { get; set; } = currentVisit;
+    public VisitRc CurrentVisitRc { get; set; } = currentVisitRc;
 
     public static IEnumerable<string> ReportTypesValues => StringChoices.ReportsTypes;
     public static IEnumerable<string> DyspneaTypesValues => StringChoices.DyspneaTypes;

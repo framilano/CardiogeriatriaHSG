@@ -18,71 +18,71 @@
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Assistenza " />
                                 <TextBlock Padding="10" Text="Da solo" />
-                                <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="AssistanceAlone" IsChecked="{Binding CurrentVisit.VisitAg.AssistanceAlone}"></CheckBox>
+                                <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="AssistanceAlone" IsChecked="{Binding CurrentVisitAg.AssistanceAlone}"></CheckBox>
                                 <TextBlock Padding="10" Text="Con coniuge" />
-                                <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="AssistanceSpouse" IsChecked="{Binding CurrentVisit.VisitAg.AssistanceSpouse}"></CheckBox>
+                                <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="AssistanceSpouse" IsChecked="{Binding CurrentVisitAg.AssistanceSpouse}"></CheckBox>
                                 <TextBlock Padding="10" Text="Con familiari" />
-                                <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="AssistanceFamilyMembers" IsChecked="{Binding CurrentVisit.VisitAg.AssistanceFamilyMembers}"></CheckBox>
+                                <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="AssistanceFamilyMembers" IsChecked="{Binding CurrentVisitAg.AssistanceFamilyMembers}"></CheckBox>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Badante " />
-                                <CheckBox Tag="CareTaker" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitAg.CareTaker}"></CheckBox>
+                                <CheckBox Tag="CareTaker" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitAg.CareTaker}"></CheckBox>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Motricità " />
-                                <ComboBox Tag="MotorSkill" Loaded="OnColumnAChanged" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding MotorSkillsValues}" SelectedItem="{Binding CurrentVisit.VisitAg.MotorSkill}"/>
+                                <ComboBox Tag="MotorSkill" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding MotorSkillsValues}" SelectedItem="{Binding CurrentVisitAg.MotorSkill}"/>
                             </WrapPanel>
                             <WrapPanel IsVisible="False" Name="WalkingTypeWrapPanel" Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="‣ Deambulazione " />
-                                <ComboBox Tag="WalkingType" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding WalkingTypesValues}" SelectedItem="{Binding CurrentVisit.VisitAg.WalkingType}"/>
+                                <ComboBox Tag="WalkingType" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding WalkingTypesValues}" SelectedItem="{Binding CurrentVisitAg.WalkingType}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Cadute in 6 mesi " />
-                                <ComboBox Tag="Falls" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding FallsValuesValues}" SelectedItem="{Binding CurrentVisit.VisitAg.Falls}"/>
+                                <ComboBox Tag="Falls" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding FallsValuesValues}" SelectedItem="{Binding CurrentVisitAg.Falls}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Deficit Cognitivo " />
-                                <ComboBox Tag="CognitiveDeficit" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding CognitiveDeficitsValues}" SelectedItem="{Binding CurrentVisit.VisitAg.CognitiveDeficit}"/>
+                                <ComboBox Tag="CognitiveDeficit" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding CognitiveDeficitsValues}" SelectedItem="{Binding CurrentVisitAg.CognitiveDeficit}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="BPSD " />
-                                <CheckBox Tag="Bpsd" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitAg.Bpsd}"></CheckBox>
+                                <CheckBox Tag="Bpsd" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitAg.Bpsd}"></CheckBox>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Deficit Uditivo " />
-                                <CheckBox Tag="HearingImpairment" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitAg.HearingImpairment}"></CheckBox>
+                                <CheckBox Tag="HearingImpairment" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitAg.HearingImpairment}"></CheckBox>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Deficit Visivo " />
-                                <CheckBox Tag="VisualImpairment" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitAg.VisualImpairment}"></CheckBox>
+                                <CheckBox Tag="VisualImpairment" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitAg.VisualImpairment}"></CheckBox>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Notti " />
-                                <ComboBox Tag="Nights" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding NightsValues}" SelectedItem="{Binding CurrentVisit.VisitAg.Nights}"/>
+                                <ComboBox Tag="Nights" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding NightsValues}" SelectedItem="{Binding CurrentVisitAg.Nights}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Calo ponderale negli ultimi tre mesi " />
-                                <ComboBox Tag="WeightLoss" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding WeightLossesValues}" SelectedItem="{Binding CurrentVisit.VisitAg.WeightLoss}"/>
+                                <ComboBox Tag="WeightLoss" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding WeightLossesValues}" SelectedItem="{Binding CurrentVisitAg.WeightLoss}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Appetito " />
-                                <ComboBox Tag="Appetite" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding AppetitesValues}" SelectedItem="{Binding CurrentVisit.VisitAg.Appetite}"/>
+                                <ComboBox Tag="Appetite" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding AppetitesValues}" SelectedItem="{Binding CurrentVisitAg.Appetite}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Disfagia " />
-                                <ComboBox Tag="Dysphagia" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding DysphagiasValues}" SelectedItem="{Binding CurrentVisit.VisitAg.Dysphagia}"/>
+                                <ComboBox Tag="Dysphagia" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding DysphagiasValues}" SelectedItem="{Binding CurrentVisitAg.Dysphagia}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Problemi nutrizionali " />
-                                <CheckBox Tag="NutrionalProblems" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitAg.NutrionalProblems}"></CheckBox>
+                                <CheckBox Tag="NutrionalProblems" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitAg.NutrionalProblems}"></CheckBox>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Stipsi " />
-                                <CheckBox Tag="Constipation" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitAg.Constipation}"></CheckBox>
+                                <CheckBox Tag="Constipation" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitAg.Constipation}"></CheckBox>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Invalidità " />
-                                <CheckBox Tag="Disability" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisit.VisitAg.Disability}"></CheckBox>
+                                <CheckBox Tag="Disability" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitAg.Disability}"></CheckBox>
                             </WrapPanel>
                         </WrapPanel>
                     </ScrollViewer>

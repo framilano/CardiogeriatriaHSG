@@ -16,11 +16,11 @@ public partial class RefertoUserControl : UserControl
             
             //Loading self text sections first
             var anagraficaUserControl = new AnagraficaUserControl();
-            anagraficaUserControl.LoadAnagraficaContent(currentVisit);
+            anagraficaUserControl.LoadAnagraficaContent(currentVisit.Patient!, currentVisit.Timestamp);
             var anamnesiGeriatricaUserControl = new AnamnesiGeriatricaUserControl();
-            anamnesiGeriatricaUserControl.LoadAnamnesiGeriatricaContent(currentVisit);
+            anamnesiGeriatricaUserControl.LoadAnamnesiGeriatricaContent(currentVisit.VisitAg!);
             var raccordoClinicoUserControl = new RaccordoClinicoUserControl();
-            raccordoClinicoUserControl.LoadRaccordoClinicoContent(currentVisit);
+            raccordoClinicoUserControl.LoadRaccordoClinicoContent(currentVisit.VisitRc!);
             Dispatcher.UIThread.Post(() => { 
                 AnagraficaContent.Text = anagraficaUserControl.ColumnBDescription.Text;
                 AnamnesiGeriatricaContent.Text = anamnesiGeriatricaUserControl.ColumnBDescription.Text;
