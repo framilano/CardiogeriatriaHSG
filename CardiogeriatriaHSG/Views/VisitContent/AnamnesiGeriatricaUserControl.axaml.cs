@@ -3,6 +3,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using CardiogeriatriaHSG.Models;
+using CardiogeriatriaHSG.Models.enums;
 using CardiogeriatriaHSG.ViewModels.VisitContent;
 
 namespace CardiogeriatriaHSG.Views.VisitContent;
@@ -71,9 +72,9 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
                 break;
             case "MotorSkill":
                 _currentVisit!.VisitAg!.MotorSkill = value!;
-                if (_currentVisit!.VisitAg!.MotorSkill is not "Solo letto-poltrona")
+                if (_currentVisit!.VisitAg!.MotorSkill != StringChoices.MotorSkillTypes[0])
                 {
-                    _currentVisit.VisitAg.WalkingType ??= "Autonoma senza ausili";
+                    _currentVisit.VisitAg.WalkingType ??= StringChoices.WalkingTypes[0];
                     WalkingTypeWrapPanel.IsVisible = true;
                 }
                 else

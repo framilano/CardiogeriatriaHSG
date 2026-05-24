@@ -2,6 +2,7 @@
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using CardiogeriatriaHSG.Models;
+using CardiogeriatriaHSG.Models.enums;
 using CardiogeriatriaHSG.ViewModels.VisitContent;
 
 namespace CardiogeriatriaHSG.Views.VisitContent;
@@ -44,38 +45,26 @@ public partial class AnamnesiPatologicaRemotaUserControl : UserControl
                 _currentVisit!.VisitApr!.Amyloidosis = value == "True";
                 if (_currentVisit!.VisitApr!.Amyloidosis)
                 {
-                    _currentVisit.VisitApr.AmyloidosisType ??= "ATTR-WT";
-                    AmyloidosisTypeWrapPanel.IsVisible = true;
-                    
+                    _currentVisit.VisitApr.AmyloidosisType ??= StringChoices.AmyloidosisTypes[0];
                     _currentVisit.VisitApr.AmyloidosisDiagnosisDate ??= now;
-                    AmyloidosisDiagnosisDateWrapPanel.IsVisible = true;
-                    
                     _currentVisit.VisitApr.AmyloidosisDmt ??= false;
-                    AmyloidosisDmtWrapPanel.IsVisible = true;
-                    
                     _currentVisit.VisitApr.AmyloidosisTherapyStartDate ??= now;
-                    AmyloidosisTherapyStartDateWrapPanel.IsVisible = true;
+                    AmyloidosisWrapPanel.IsVisible = true;
                 }
                 else
                 {
                     _currentVisit!.VisitApr!.AmyloidosisType = null;
-                    AmyloidosisTypeWrapPanel.IsVisible = false;
-                    
                     _currentVisit!.VisitApr!.AmyloidosisDiagnosisDate = null;
-                    AmyloidosisDiagnosisDateWrapPanel.IsVisible = false;
-                    
                     _currentVisit!.VisitApr!.AmyloidosisDmt = null;
-                    AmyloidosisDmtWrapPanel.IsVisible = false;
-                    
                     _currentVisit!.VisitApr!.AmyloidosisTherapyStartDate = null;
-                    AmyloidosisTherapyStartDateWrapPanel.IsVisible = false;
+                    AmyloidosisWrapPanel.IsVisible = false;
                 }
                 break;
             case "Dementia":
                 _currentVisit!.VisitApr!.Dementia = value == "True";
                 if (_currentVisit!.VisitApr!.Dementia)
                 {
-                    _currentVisit.VisitApr.DementiaType ??= "Neurodegenerativa";
+                    _currentVisit.VisitApr.DementiaType ??= StringChoices.DementiaTypes[0];
                     DementiaTypeWrapPanel.IsVisible = true;
                 }
                 else

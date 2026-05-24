@@ -33,7 +33,7 @@
                                 <ComboBox Tag="MotorSkill" Loaded="OnColumnAChanged" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding MotorSkillsValues}" SelectedItem="{Binding CurrentVisit.VisitAg.MotorSkill}"/>
                             </WrapPanel>
                             <WrapPanel IsVisible="False" Name="WalkingTypeWrapPanel" Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Deambulazione " />
+                                <TextBlock Classes="GenericFieldLabel" Text="‣ Deambulazione " />
                                 <ComboBox Tag="WalkingType" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding WalkingTypesValues}" SelectedItem="{Binding CurrentVisit.VisitAg.WalkingType}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
