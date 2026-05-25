@@ -209,7 +209,7 @@ public partial class RaccordoClinicoUserControl : UserControl
         sleepingSentenceBuilder.Append("Riferisce riposo con ");
         sleepingSentenceBuilder.Append(_currentVisitRc!.SleepingWithPillowsNumber == 1 ? "un cuscino" : "due cuscini");
         if (_currentVisitRc.SleepingSittingPosition) sleepingSentenceBuilder.Append(", dormendo in posizione seduta");
-        if (_currentVisitRc.ParoxysmalNocturnalDyspnea) sleepingSentenceBuilder.Append("e riferisce ortopnea parossistica notturna");
+        if (_currentVisitRc.ParoxysmalNocturnalDyspnea) sleepingSentenceBuilder.Append(" e riferisce ortopnea parossistica notturna");
         sleepingSentenceBuilder.Append('.');
         sleepingSentenceBuilder.Append('\n');
         _sleepingSentence = sleepingSentenceBuilder.ToString();
