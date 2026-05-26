@@ -12,6 +12,7 @@ public class RaccordoClinicoUserControlViewModel(VisitRc currentVisitRc) : ViewM
     public static IEnumerable<string> DyspneaTypesValues => StringChoices.DyspneaTypes;
     public static IEnumerable<string> AnginaTypesValues => StringChoices.AnginaTypes;
     public static IEnumerable<string> FallsSinceLastVisitTypesValues => StringChoices.FallsSinceLastVisitTypes;
+    public static IEnumerable<string> FallsSinceLastVisitDiagnosisValues => StringChoices.FallsSinceLastVisitDiagnosis;
     public static IEnumerable<string> EmergenciesSinceLastVisitCausesValues => StringChoices.EmergenciesSinceLastVisitCauses;
     public static IEnumerable<string> HospitalizationsSinceLastVisitCausesValues => StringChoices.HospitalizationsSinceLastVisitCauses;
 }

@@ -26,7 +26,8 @@ public partial class VisitRc(string visitCode): ObservableObject
     [ObservableProperty] private bool _fallsSinceLastVisit;
     [ObservableProperty] private int? _fallsSinceLastVisitNumber;
     [ObservableProperty] private string? _fallsSinceLastVisitType;
-    
+    [ObservableProperty] private string? _fallsSinceLastVisitDiagnosis;
+
     [ObservableProperty] private bool _emergenciesSinceLastVisit;
     [ObservableProperty] private int? _emergenciesSinceLastVisitNumber;
     [ObservableProperty] private string? _emergenciesSinceLastVisitCause;

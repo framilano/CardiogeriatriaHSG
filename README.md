@@ -22,3 +22,6 @@ dotnet ef migrations add AnamnesiGeriatrica
 ```
 dotnet ef migrations remove
 ```
+
+### TODO
+- [ ] Togliere svariati "riferisce" nel testo del raccordo clinico

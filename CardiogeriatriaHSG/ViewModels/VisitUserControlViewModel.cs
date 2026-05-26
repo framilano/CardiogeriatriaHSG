@@ -262,6 +262,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
             FallsSinceLastVisit = false,
             FallsSinceLastVisitNumber = null,
             FallsSinceLastVisitType = null,
+            FallsSinceLastVisitDiagnosis = null,
             EmergenciesSinceLastVisit = false,
             EmergenciesSinceLastVisitNumber = null,
             EmergenciesSinceLastVisitCause = null,

@@ -25,7 +25,8 @@ public class StringChoices
     public static readonly List<string> ReportsTypes = ["Benessere", "Stabilità dei sintomi", "Peggioramento della dispnea", "Peggioramento dell’astenia"];  
     public static readonly List<string> DyspneaTypes = ["Non dispnea", "Per sforzi lievi", "Per sforzi moderati", "Per sforzi intensi"];   
     public static readonly List<string> AnginaTypes = ["Non angor", "Episodi di angina"];   
-    public static readonly List<string> FallsSinceLastVisitTypes = ["Testimoniata", "Non testimoniata"];  
+    public static readonly List<string> FallsSinceLastVisitTypes = ["Testimoniata", "Non testimoniata"];
+    public static readonly List<string> FallsSinceLastVisitDiagnosis = ["Caduta accidentale", "Sincope"];  
     public static readonly List<string> EmergenciesSinceLastVisitCauses = ["Non cardiovascolare", "Scompenso", "Altra causa cardiovascolare"];
     public static readonly List<string> HospitalizationsSinceLastVisitCauses = ["Non cardiovascolare", "Scompenso", "Altra causa cardiovascolare"];
 }

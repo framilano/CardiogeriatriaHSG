@@ -28,7 +28,6 @@ public partial class RaccordoClinicoUserControl : UserControl
     private string? _reportsSentence;
     private string? _lastPeriodSentence;
     private string? _sleepingSentence;
-    private string? _stressSentence;
     private string? _fallsSinceLastVisitSentence;
     private string? _emergenciesSinceLastVisitSentence;
     private string? _hospitalizationsSinceLastVisitSentence;
@@ -93,12 +92,14 @@ public partial class RaccordoClinicoUserControl : UserControl
                 {
                     _currentVisitRc!.FallsSinceLastVisitNumber ??= 0;
                     _currentVisitRc!.FallsSinceLastVisitType ??= StringChoices.FallsSinceLastVisitTypes[0];
+                    _currentVisitRc!.FallsSinceLastVisitDiagnosis ??= StringChoices.FallsSinceLastVisitDiagnosis[0];;
                     FallsSinceLastVisitWrapPanel.IsVisible = true;
                 }
                 else
                 {
                     _currentVisitRc!.FallsSinceLastVisitNumber ??= null;
                     _currentVisitRc!.FallsSinceLastVisitType ??= null;
+                    _currentVisitRc!.FallsSinceLastVisitDiagnosis ??= null;
                     FallsSinceLastVisitWrapPanel.IsVisible = false;
                 }
                 UpdateFallsSinceLastVisitSentence();
@@ -109,6 +110,10 @@ public partial class RaccordoClinicoUserControl : UserControl
                 break;
             case "FallsSinceLastVisitType":
                 _currentVisitRc!.FallsSinceLastVisitType = value;
+                UpdateFallsSinceLastVisitSentence();
+                break;
+            case "FallsSinceLastVisitDiagnosis":
+                _currentVisitRc!.FallsSinceLastVisitDiagnosis = value;
                 UpdateFallsSinceLastVisitSentence();
                 break;
             case "EmergenciesSinceLastVisit":
@@ -174,7 +179,7 @@ public partial class RaccordoClinicoUserControl : UserControl
     private void UpdateReportsSentence()
     {
         var reportsSentenceBuilder = new StringBuilder();
-        reportsSentenceBuilder.Append("Riferisce ");
+        reportsSentenceBuilder.Append("Nell'ultimo periodo riferisce ");
         reportsSentenceBuilder.Append(_currentVisitRc!.Reports!.ToLower());
         reportsSentenceBuilder.Append('.');
         reportsSentenceBuilder.Append('\n');
@@ -184,20 +189,20 @@ public partial class RaccordoClinicoUserControl : UserControl
     private void UpdateLastPeriodSentence()
     {
         var lastPeriodSentenceBuilder = new StringBuilder();
-        if (_currentVisitRc!.Dyspnea == "Non dispnea") lastPeriodSentenceBuilder.Append("Non riferisce dispnea, ");
+        if (_currentVisitRc!.Dyspnea == "Non dispnea") lastPeriodSentenceBuilder.Append("Senza dispnea, ");
         else
         {
-            lastPeriodSentenceBuilder.Append("Riferisce dispnea ");
+            lastPeriodSentenceBuilder.Append("Con dispnea ");
             lastPeriodSentenceBuilder.Append(_currentVisitRc.Dyspnea!.ToLower());
             lastPeriodSentenceBuilder.Append(", ");
         }
 
         lastPeriodSentenceBuilder.Append(_currentVisitRc.Angina == "Non angor"
-            ? "non riferisce angina e "
-            : "riferisce angina e ");
+            ? "senza angina e "
+            : "con angina e ");
         lastPeriodSentenceBuilder.Append(_currentVisitRc.Palpitations
-            ? "riferisce palpitazioni"
-            : "non riferisce palpitazioni");
+            ? "con palpitazioni"
+            : "senza palpitazioni");
         lastPeriodSentenceBuilder.Append('.');
         lastPeriodSentenceBuilder.Append('\n');
         _lastPeriodSentence = lastPeriodSentenceBuilder.ToString();
@@ -220,13 +225,17 @@ public partial class RaccordoClinicoUserControl : UserControl
        var fallsSentenceBuilder = new StringBuilder();
        if (_currentVisitRc!.FallsSinceLastVisit && 
            _currentVisitRc!.FallsSinceLastVisitNumber is not null &&
-           _currentVisitRc!.FallsSinceLastVisitType is not null)
+           _currentVisitRc!.FallsSinceLastVisitType is not null &&
+           _currentVisitRc!.FallsSinceLastVisitDiagnosis is not null)
        {
            fallsSentenceBuilder.Append("Riferisce ");
            fallsSentenceBuilder.Append(_currentVisitRc!.FallsSinceLastVisitNumber);
            fallsSentenceBuilder.Append(' ');
            fallsSentenceBuilder.Append(_currentVisitRc!.FallsSinceLastVisitNumber == 1 ? "caduta" : "cadute");
            fallsSentenceBuilder.Append(" da ultima visita, ");
+           fallsSentenceBuilder.Append(" per ");
+           fallsSentenceBuilder.Append(_currentVisitRc!.FallsSinceLastVisitDiagnosis!.ToLower());
+           fallsSentenceBuilder.Append(" e ");
            fallsSentenceBuilder.Append(_currentVisitRc!.FallsSinceLastVisitType!.ToLower());
            fallsSentenceBuilder.Append(".\n");
        }
@@ -236,15 +245,6 @@ public partial class RaccordoClinicoUserControl : UserControl
        }
        _fallsSinceLastVisitSentence = fallsSentenceBuilder.ToString();
     }
-
-    private void UpdateStressSentence()
-    {
-        var stressSentenceBuilder = new StringBuilder();
-        stressSentenceBuilder.Append(_currentVisitRc!.AcuteStressLast3Months
-            ? "Riferisce stress acuto negli ultimi 3 mesi.\n"
-            : "Non riferisce stress acuto negli ultimi 3 mesi.\n");
-        _stressSentence = stressSentenceBuilder.ToString();
-  }
     
     private void UpdateEmergenciesSinceLastVisitSentence()
     {
@@ -301,7 +301,6 @@ public partial class RaccordoClinicoUserControl : UserControl
         UpdateReportsSentence();
         UpdateLastPeriodSentence();
         UpdateSleepingSentence();
-        UpdateStressSentence();
         UpdateFallsSinceLastVisitSentence();
         UpdateEmergenciesSinceLastVisitSentence();
         UpdateHospitalizationsSinceLastVisitSentence();
@@ -314,7 +313,6 @@ public partial class RaccordoClinicoUserControl : UserControl
         columnBDescriptionStringBuilder.Append(_reportsSentence);
         columnBDescriptionStringBuilder.Append(_lastPeriodSentence);
         columnBDescriptionStringBuilder.Append(_sleepingSentence);
-        columnBDescriptionStringBuilder.Append(_stressSentence);
         columnBDescriptionStringBuilder.Append(_fallsSinceLastVisitSentence);
         columnBDescriptionStringBuilder.Append(_emergenciesSinceLastVisitSentence);
         columnBDescriptionStringBuilder.Append(_hospitalizationsSinceLastVisitSentence);
