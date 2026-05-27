@@ -109,7 +109,7 @@ public partial class EsamiEmaticiUserControl : UserControl
     //Doesn't make sense to have multiple update methods for these easy-to-build sentences
     private void UpdateAllSentences(string updatedField)
     {
-        if (updatedField is "ExamDate" or "All") _examDateSentence = $"Data ultima esami del sangue {_currentVisitEe!.ExamDate:dd/MM/yyyy}\n";
+        if (updatedField is "ExamDate" or "All") _examDateSentence = $"Data ultimi esami del sangue {_currentVisitEe!.ExamDate:dd/MM/yyyy}\n";
         if (updatedField is "Hemoglobin" or "All") _hemoglobinSentence = _currentVisitEe!.Hemoglobin is null ? null : $"Emoglobina {_currentVisitEe!.Hemoglobin} g/dl\n";
         if (updatedField is "Creatinine" or "All") _creatinineSentence = _currentVisitEe!.Creatinine is null ? null : $"Creatinina {_currentVisitEe!.Creatinine} mg/dl\n";
         if (updatedField is "Urea" or "All") _ureaSentence = _currentVisitEe!.Urea is null ? null : $"Urea {_currentVisitEe!.Urea} mg/dl\n";
