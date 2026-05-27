@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:visitContent="clr-namespace:CardiogeriatriaHSG.ViewModels.VisitContent"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CardiogeriatriaHSG.Views.VisitContent.EsamiEmaticiUserControl"
+             x:DataType="visitContent:EsamiEmaticiUserControlViewModel">
+            <UserControl.Styles>
+                <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
+            </UserControl.Styles>
+            <Grid
+                ColumnDefinitions="*, *">
+                        <Border Classes="ColumnBorder"
+                                Grid.Column="0">
+                    <ScrollViewer>
+                        <WrapPanel Orientation="Vertical" Classes="ColumnAWrapPanel">
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Data esami "/>
+                                <DatePicker MaxYear="{Binding MaxAllowedDate}" Tag="DateOfBirth" SelectedDateChanged="OnColumnADatePickerChanged" SelectedDate="{Binding CurrentVisitEe.ExamDate}"></DatePicker>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Hb " />
+                                <NumericUpDown Classes="CustomNumericUpDown" FormatString="0.00" Minimum="0.00" Increment="0.01" Tag="Hemoglobin" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Hemoglobin}" />                           
+                                <TextBlock Classes="GenericFieldLabel" Text="g/L" />
+                            </WrapPanel>
+                        </WrapPanel>
+                    </ScrollViewer>
+                </Border>
+                <ScrollViewer Grid.Column="1">
+                    <Border Classes="ColumnBorder">
+                        <TextBlock Classes="ColumnBTextBlock" Name="ColumnBDescription"></TextBlock>
+                    </Border>
+                </ScrollViewer>
+            </Grid>
+</UserControl>

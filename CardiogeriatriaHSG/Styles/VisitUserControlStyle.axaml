@@ -46,5 +46,8 @@
     
     <Style Selector="NumericUpDown.CustomNumericUpDown">
         <Setter Property="VerticalAlignment" Value="Top"/>
+        <Setter Property="BorderThickness" Value="2"/>
+        <Setter Property="Margin" Value="0,2,0,0"/>
+        <Setter Property="ClipValueToMinMax" Value="True"/>
     </Style>
 </Styles>

@@ -3,6 +3,7 @@ using System;
 using CardiogeriatriaHSG.Services.database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CardiogeriatriaHSG.Migrations
 {
     [DbContext(typeof(AppDb))]
-    partial class AppDbModelSnapshot : ModelSnapshot
+    [Migration("20260527160317_EsamiEmatici2")]
+    partial class EsamiEmatici2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.8");
@@ -114,7 +117,7 @@ namespace CardiogeriatriaHSG.Migrations
                     b.Property<string>("Nights")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("NutritionalProblems")
+                    b.Property<bool>("NutrionalProblems")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("VisualImpairment")
@@ -247,34 +250,34 @@ namespace CardiogeriatriaHSG.Migrations
                         .HasMaxLength(36)
                         .HasColumnType("TEXT");
 
-                    b.Property<float?>("Albumin")
+                    b.Property<float>("Albumin")
                         .HasColumnType("REAL");
 
-                    b.Property<float?>("Albuminuria")
+                    b.Property<float>("Albuminuria")
                         .HasColumnType("REAL");
 
-                    b.Property<float?>("Bnp")
+                    b.Property<float>("Bnp")
                         .HasColumnType("REAL");
 
-                    b.Property<float?>("Creatinine")
+                    b.Property<float>("Creatinine")
                         .HasColumnType("REAL");
 
                     b.Property<DateTimeOffset>("ExamDate")
                         .HasColumnType("TEXT");
 
-                    b.Property<float?>("Hemoglobin")
+                    b.Property<float>("Hemoglobin")
                         .HasColumnType("REAL");
 
-                    b.Property<float?>("NtProBnp")
+                    b.Property<float>("NtProBnp")
                         .HasColumnType("REAL");
 
-                    b.Property<float?>("Potassium")
+                    b.Property<float>("Potassium")
                         .HasColumnType("REAL");
 
-                    b.Property<float?>("Sodium")
+                    b.Property<float>("Sodium")
                         .HasColumnType("REAL");
 
-                    b.Property<float?>("Urea")
+                    b.Property<float>("Urea")
                         .HasColumnType("REAL");
 
                     b.HasKey("VisitCode");

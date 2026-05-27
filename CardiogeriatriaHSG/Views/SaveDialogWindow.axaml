@@ -9,7 +9,7 @@
         Height="200"
         CanResize="False"
         WindowStartupLocation="CenterOwner"
-        SystemDecorations="BorderOnly">
+        WindowDecorations="BorderOnly">
     
     <Border BorderBrush="#6d1a61" BorderThickness="2" Padding="20">
         <WrapPanel ItemSpacing="10" Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">

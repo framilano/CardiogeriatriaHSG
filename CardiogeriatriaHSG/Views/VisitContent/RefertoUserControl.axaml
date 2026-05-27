@@ -33,6 +33,10 @@
                 <LineBreak/>
                 <Run Name="RaccordoClinicoContent"/>
                 <LineBreak/><LineBreak/>
+                <Run FontWeight="Bold" Text="Esami Ematici" />
+                <LineBreak/>
+                <Run Name="EsamiEmaticiContent"/>
+                <LineBreak/><LineBreak/>
             </SelectableTextBlock>
          </Border>
     </ScrollViewer>

@@ -7,34 +7,29 @@ public partial class VisitRc(string visitCode): ObservableObject
 {
     
     [MaxLength(36)]
-    public string? VisitCode { get; set; } = visitCode;
-    public Visit? Visit { get; set; }
+    public string? VisitCode { get; init; } = visitCode;
+    public Visit? Visit { get; init; }
     
     //Raccordo Clinico
-    [ObservableProperty] private string? _reports;  
+    [ObservableProperty] public partial string? Reports { get; set; }
 
-    [ObservableProperty] private string? _dyspnea;  
-    [ObservableProperty] private string? _angina;  
-    [ObservableProperty] private bool _palpitations;
-    
-    [ObservableProperty] private int _sleepingWithPillowsNumber;  
-    [ObservableProperty] private bool _sleepingSittingPosition;
-    [ObservableProperty] private bool _paroxysmalNocturnalDyspnea;  
-    
-    [ObservableProperty] private bool _acuteStressLast3Months;
-    
-    [ObservableProperty] private bool _fallsSinceLastVisit;
-    [ObservableProperty] private int? _fallsSinceLastVisitNumber;
-    [ObservableProperty] private string? _fallsSinceLastVisitType;
-    [ObservableProperty] private string? _fallsSinceLastVisitDiagnosis;
-
-    [ObservableProperty] private bool _emergenciesSinceLastVisit;
-    [ObservableProperty] private int? _emergenciesSinceLastVisitNumber;
-    [ObservableProperty] private string? _emergenciesSinceLastVisitCause;
-
-    [ObservableProperty] private bool _hospitalizationsSinceLastVisit;
-    [ObservableProperty] private int? _hospitalizationsSinceLastVisitNumber;
-    [ObservableProperty] private int? _hospitalizationsSinceLastVisitDays;
-    [ObservableProperty] private string? _hospitalizationsSinceLastVisitCause;
+    [ObservableProperty] public partial string? Dyspnea { get; set; }
+    [ObservableProperty] public partial string? Angina { get; set; }
+    [ObservableProperty] public partial bool Palpitations { get; set; }
+    [ObservableProperty] public partial int SleepingWithPillowsNumber { get; set; }
+    [ObservableProperty] public partial bool SleepingSittingPosition { get; set; }
+    [ObservableProperty] public partial bool ParoxysmalNocturnalDyspnea { get; set; }
+    [ObservableProperty] public partial bool AcuteStressLast3Months { get; set; }
+    [ObservableProperty] public partial bool FallsSinceLastVisit { get; set; }
+    [ObservableProperty] public partial int? FallsSinceLastVisitNumber { get; set; }
+    [ObservableProperty] public partial string? FallsSinceLastVisitType { get; set; }
+    [ObservableProperty] public partial string? FallsSinceLastVisitDiagnosis { get; set; }
+    [ObservableProperty] public partial bool EmergenciesSinceLastVisit { get; set; }
+    [ObservableProperty] public partial int? EmergenciesSinceLastVisitNumber { get; set; }
+    [ObservableProperty] public partial string? EmergenciesSinceLastVisitCause { get; set; }
+    [ObservableProperty] public partial bool HospitalizationsSinceLastVisit { get; set; }
+    [ObservableProperty] public partial int? HospitalizationsSinceLastVisitNumber { get; set; }
+    [ObservableProperty] public partial int? HospitalizationsSinceLastVisitDays { get; set; }
+    [ObservableProperty] public partial string? HospitalizationsSinceLastVisitCause { get; set; }
 
 }

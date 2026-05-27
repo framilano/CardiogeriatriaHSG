@@ -1,3 +1,4 @@
+using System.Globalization;
 using System.Text;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -50,6 +51,7 @@ public partial class RaccordoClinicoUserControl : UserControl
             case NumericUpDown box:
                 tag = (string)box.Tag!;
                 value = box.Value.ToString();
+                value ??= box.Minimum.ToString(CultureInfo.InvariantCulture);
                 break;
         }
         

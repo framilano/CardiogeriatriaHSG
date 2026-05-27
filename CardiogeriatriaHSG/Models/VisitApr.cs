@@ -7,45 +7,45 @@ namespace CardiogeriatriaHSG.Models;
 public partial class VisitApr(string visitCode): ObservableObject
 {
     [MaxLength(36)]
-    public string? VisitCode { get; set; } = visitCode;
-    public Visit? Visit { get; set; }
-    [ObservableProperty] private string? _aprText = "";
+    public string? VisitCode { get; init; } = visitCode;
+    public Visit? Visit { get; init; }
+    [ObservableProperty]
+    public partial string? AprText { get; set; } = "";
+
     partial void OnAprTextChanged(string? value) { if (value != null) AprText = value.Trim(); }
 
     //APR
-    [ObservableProperty] private bool _ischemicHeartDisease;
-    [ObservableProperty] private bool _heartFailure;
-    [ObservableProperty] private bool _atrialFibrillation;
-    [ObservableProperty] private bool _cerebrovascularDisease;
-    [ObservableProperty] private bool _neoplasm;
-    [ObservableProperty] private bool _chronicObstructivePulmonaryDisease;
-    [ObservableProperty] private bool _chronicKidneyDisease;
-    [ObservableProperty] private bool _peripheralVascularDisease;
-    [ObservableProperty] private bool _diabetes;
-    [ObservableProperty] private bool _chronicSkinUlcers;
-    [ObservableProperty] private bool _parkinson;
-    [ObservableProperty] private bool _schizophrenia;
-    [ObservableProperty] private bool _neuromuscularDisorders;
-    [ObservableProperty] private bool _hipFracture;
-    [ObservableProperty] private bool _anemia;
-    [ObservableProperty] private bool _oxygenTherapyLast6Months;
-    [ObservableProperty] private bool _hospitalizationLast6Months;
-    [ObservableProperty] private bool _heparinUseLast6Months;
-    [ObservableProperty] private bool _bradycardia;
-    [ObservableProperty] private bool _arterialHypertension;
+    [ObservableProperty] public partial bool IschemicHeartDisease { get; set; }
+    [ObservableProperty] public partial bool HeartFailure { get; set; }
 
-    [ObservableProperty] private bool _severeValvularDiseaseSm;
-    [ObservableProperty] private bool _severeValvularDiseaseIm;
-    [ObservableProperty] private bool _severeValvularDiseaseIao;
-    [ObservableProperty] private bool _severeValvularDiseaseSao;
-    [ObservableProperty] private bool _severeValvularDiseaseItr;
-
-    [ObservableProperty] private bool _amyloidosis;
-    [ObservableProperty] private string? _amyloidosisType;
-    [ObservableProperty] private DateTimeOffset? _amyloidosisDiagnosisDate;
-    [ObservableProperty] private bool? _amyloidosisDmt;
-    [ObservableProperty] private DateTimeOffset? _amyloidosisTherapyStartDate;
-
-    [ObservableProperty] private bool _dementia;
-    [ObservableProperty] private string? _dementiaType;
+    [ObservableProperty] public partial bool AtrialFibrillation { get; set; }
+    [ObservableProperty] public partial bool CerebrovascularDisease { get; set; }
+    [ObservableProperty] public partial bool Neoplasm { get; set; }
+    [ObservableProperty] public partial bool ChronicObstructivePulmonaryDisease { get; set; }
+    [ObservableProperty] public partial bool ChronicKidneyDisease { get; set; }
+    [ObservableProperty] public partial bool PeripheralVascularDisease { get; set; }
+    [ObservableProperty] public partial bool Diabetes { get; set; }
+    [ObservableProperty] public partial bool ChronicSkinUlcers { get; set; }
+    [ObservableProperty] public partial bool Parkinson { get; set; }
+    [ObservableProperty] public partial bool Schizophrenia { get; set; }
+    [ObservableProperty] public partial bool NeuromuscularDisorders { get; set; }
+    [ObservableProperty] public partial bool HipFracture { get; set; }
+    [ObservableProperty] public partial bool Anemia { get; set; }
+    [ObservableProperty] public partial bool OxygenTherapyLast6Months { get; set; }
+    [ObservableProperty] public partial bool HospitalizationLast6Months { get; set; }
+    [ObservableProperty] public partial bool HeparinUseLast6Months { get; set; }
+    [ObservableProperty] public partial bool Bradycardia { get; set; }
+    [ObservableProperty] public partial bool ArterialHypertension { get; set; }
+    [ObservableProperty] public partial bool SevereValvularDiseaseSm { get; set; }
+    [ObservableProperty] public partial bool SevereValvularDiseaseIm { get; set; }
+    [ObservableProperty] public partial bool SevereValvularDiseaseIao { get; set; }
+    [ObservableProperty] public partial bool SevereValvularDiseaseSao { get; set; }
+    [ObservableProperty] public partial bool SevereValvularDiseaseItr { get; set; }
+    [ObservableProperty] public partial bool Amyloidosis { get; set; }
+    [ObservableProperty] public partial string? AmyloidosisType { get; set; }
+    [ObservableProperty] public partial DateTimeOffset? AmyloidosisDiagnosisDate { get; set; }
+    [ObservableProperty] public partial bool? AmyloidosisDmt { get; set; }
+    [ObservableProperty] public partial DateTimeOffset? AmyloidosisTherapyStartDate { get; set; }
+    [ObservableProperty] public partial bool Dementia { get; set; }
+    [ObservableProperty] public partial string? DementiaType { get; set; }
 }

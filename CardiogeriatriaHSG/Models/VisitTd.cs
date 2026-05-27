@@ -6,48 +6,49 @@ namespace CardiogeriatriaHSG.Models;
 public partial class VisitTd(string visitCode): ObservableObject
 {
     [MaxLength(36)]
-    public string? VisitCode { get; set; } = visitCode;
-    public Visit? Visit { get; set; }
-    [ObservableProperty] private string? _tdText = "";
+    public string? VisitCode { get; init; } = visitCode;
+    public Visit? Visit { get; init; }
+    [ObservableProperty] public partial string? TdText { get; set; } = "";
+
     partial void OnTdTextChanged(string? value) { if (value != null) TdText = value.Trim(); }
     
     //TD
-    [ObservableProperty] private bool _proteinSupplementation;
-    [ObservableProperty] private bool _physicalExercise;
-    [ObservableProperty] private bool _furosemide;
-    [ObservableProperty] private int? _furosemideDose;
-    [ObservableProperty] private bool _betaBlocker;
-    [ObservableProperty] private bool _mra;
-    [ObservableProperty] private bool _aceInhibitor;
-    [ObservableProperty] private bool _arb;
-    [ObservableProperty] private bool _sglt2Inhibitor;
-    [ObservableProperty] private bool _arni;
-    [ObservableProperty] private bool _vericiguat;
-    [ObservableProperty] private bool _otherLoopDiuretic;
-    [ObservableProperty] private bool _doac;
-    [ObservableProperty] private bool _vka;
-    [ObservableProperty] private bool _acetazolamide;
-    [ObservableProperty] private bool _hydrochlorothiazide;
-    [ObservableProperty] private bool _acoramidis;
-    [ObservableProperty] private bool _tafamidis;
-    [ObservableProperty] private bool _vutrisiran;
-    [ObservableProperty] private bool _calciumChannelBlockers;
-    [ObservableProperty] private bool _ranolazine;
-    [ObservableProperty] private bool _nitrates;
-    [ObservableProperty] private bool _glp1;
-    [ObservableProperty] private bool _doxazosin;
-    [ObservableProperty] private bool _clonidine;
-    [ObservableProperty] private bool _fibrates;
-    [ObservableProperty] private bool _statins;
-    [ObservableProperty] private bool _ezetimibe;
-    [ObservableProperty] private bool _ppi;
-    [ObservableProperty] private bool _acheInhibitorOrMemantine;
-    [ObservableProperty] private bool _benzodiazepines;
-    [ObservableProperty] private bool _zDrugs;
-    [ObservableProperty] private bool _lowDoseTrazodone;
-    [ObservableProperty] private bool _antidepressants;
-    [ObservableProperty] private bool _antipsychotics;
-    [ObservableProperty] private bool _paracetamol;
-    [ObservableProperty] private bool _opioids;
-    [ObservableProperty] private bool _otherAnalgesics;
+    [ObservableProperty] public partial bool ProteinSupplementation { get; set; }
+    [ObservableProperty] public partial bool PhysicalExercise { get; set; }
+    [ObservableProperty] public partial bool Furosemide { get; set; }
+    [ObservableProperty] public partial int? FurosemideDose { get; set; }
+    [ObservableProperty] public partial bool BetaBlocker { get; set; }
+    [ObservableProperty] public partial bool Mra { get; set; }
+    [ObservableProperty] public partial bool AceInhibitor { get; set; }
+    [ObservableProperty] public partial bool Arb { get; set; }
+    [ObservableProperty] public partial bool Sglt2Inhibitor { get; set; }
+    [ObservableProperty] public partial bool Arni { get; set; }
+    [ObservableProperty] public partial bool Vericiguat { get; set; }
+    [ObservableProperty] public partial bool OtherLoopDiuretic { get; set; }
+    [ObservableProperty] public partial bool Doac { get; set; }
+    [ObservableProperty] public partial bool Vka { get; set; }
+    [ObservableProperty] public partial bool Acetazolamide { get; set; }
+    [ObservableProperty] public partial bool Hydrochlorothiazide { get; set; }
+    [ObservableProperty] public partial bool Acoramidis { get; set; }
+    [ObservableProperty] public partial bool Tafamidis { get; set; }
+    [ObservableProperty] public partial bool Vutrisiran { get; set; }
+    [ObservableProperty] public partial bool CalciumChannelBlockers { get; set; }
+    [ObservableProperty] public partial bool Ranolazine { get; set; }
+    [ObservableProperty] public partial bool Nitrates { get; set; }
+    [ObservableProperty] public partial bool Glp1 { get; set; }
+    [ObservableProperty] public partial bool Doxazosin { get; set; }
+    [ObservableProperty] public partial bool Clonidine { get; set; }
+    [ObservableProperty] public partial bool Fibrates { get; set; }
+    [ObservableProperty] public partial bool Statins { get; set; }
+    [ObservableProperty] public partial bool Ezetimibe { get; set; }
+    [ObservableProperty] public partial bool Ppi { get; set; }
+    [ObservableProperty] public partial bool AcheInhibitorOrMemantine { get; set; }
+    [ObservableProperty] public partial bool Benzodiazepines { get; set; }
+    [ObservableProperty] public partial bool ZDrugs { get; set; }
+    [ObservableProperty] public partial bool LowDoseTrazodone { get; set; }
+    [ObservableProperty] public partial bool Antidepressants { get; set; }
+    [ObservableProperty] public partial bool Antipsychotics { get; set; }
+    [ObservableProperty] public partial bool Paracetamol { get; set; }
+    [ObservableProperty] public partial bool Opioids { get; set; }
+    [ObservableProperty] public partial bool OtherAnalgesics { get; set; }
 }

@@ -74,7 +74,7 @@
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Problemi nutrizionali " />
-                                <CheckBox Tag="NutrionalProblems" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitAg.NutrionalProblems}"></CheckBox>
+                                <CheckBox Tag="NutritionalProblems" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitAg.NutritionalProblems}"></CheckBox>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Stipsi " />

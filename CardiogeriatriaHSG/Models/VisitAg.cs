@@ -8,26 +8,28 @@ public partial class VisitAg(string visitCode): ObservableObject
 {
     
     [MaxLength(36)]
-    public string? VisitCode { get; set; } = visitCode;
-    public Visit? Visit { get; set; }
-    
+    public string? VisitCode { get; init; } = visitCode;
+    public Visit? Visit { get; init; }
+
     //Anamnesi Geriatrica
-    [ObservableProperty] private bool _assistanceAlone;
-    [ObservableProperty] private bool _assistanceSpouse;
-    [ObservableProperty] private bool _assistanceFamilyMembers;
-    [ObservableProperty] private bool _careTaker;
-    [ObservableProperty] private string? _motorSkill;
-    [ObservableProperty] private string? _walkingType;
-    [ObservableProperty] private string? _falls;
-    [ObservableProperty] private string? _cognitiveDeficit;
-    [ObservableProperty] private bool _bpsd;
-    [ObservableProperty] private bool _hearingImpairment;
-    [ObservableProperty] private bool _visualImpairment;
-    [ObservableProperty] private string? _nights;
-    [ObservableProperty] private string? _weightLoss;
-    [ObservableProperty] private string? _appetite;
-    [ObservableProperty] private string? _dysphagia;
-    [ObservableProperty] private bool _nutrionalProblems;
-    [ObservableProperty] private bool _constipation;
-    [ObservableProperty] private bool _disability;
+    [ObservableProperty]
+    public partial bool AssistanceAlone { get; set; }
+
+    [ObservableProperty] public partial bool AssistanceSpouse { get; set; }
+    [ObservableProperty] public partial bool AssistanceFamilyMembers { get; set; }
+    [ObservableProperty] public partial bool CareTaker { get; set; }
+    [ObservableProperty] public partial string? MotorSkill { get; set; }
+    [ObservableProperty] public partial string? WalkingType { get; set; }
+    [ObservableProperty] public partial string? Falls { get; set; }
+    [ObservableProperty] public partial string? CognitiveDeficit { get; set; }
+    [ObservableProperty] public partial bool Bpsd { get; set; }
+    [ObservableProperty] public partial bool HearingImpairment { get; set; }
+    [ObservableProperty] public partial bool VisualImpairment { get; set; }
+    [ObservableProperty] public partial string? Nights { get; set; }
+    [ObservableProperty] public partial string? WeightLoss { get; set; }
+    [ObservableProperty] public partial string? Appetite { get; set; }
+    [ObservableProperty] public partial string? Dysphagia { get; set; }
+    [ObservableProperty] public partial bool NutritionalProblems { get; set; }
+    [ObservableProperty] public partial bool Constipation { get; set; }
+    [ObservableProperty] public partial bool Disability { get; set; }
 }

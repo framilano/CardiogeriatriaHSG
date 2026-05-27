@@ -21,12 +21,15 @@ public partial class RefertoUserControl : UserControl
             anamnesiGeriatricaUserControl.LoadAnamnesiGeriatricaContent(currentVisit.VisitAg!);
             var raccordoClinicoUserControl = new RaccordoClinicoUserControl();
             raccordoClinicoUserControl.LoadRaccordoClinicoContent(currentVisit.VisitRc!);
+            var esamiEmaticiUserControl = new EsamiEmaticiUserControl();
+            esamiEmaticiUserControl.LoadEsamiEmaticiContent(currentVisit.VisitEe!);
             Dispatcher.UIThread.Post(() => { 
                 AnagraficaContent.Text = anagraficaUserControl.ColumnBDescription.Text;
                 AnamnesiGeriatricaContent.Text = anamnesiGeriatricaUserControl.ColumnBDescription.Text;
                 AnamnesiPatologicaRemotaContent.Text = currentVisit.VisitApr!.AprText;
                 TerapiaDomiciliareContent.Text = currentVisit.VisitTd!.TdText;
                 RaccordoClinicoContent.Text = raccordoClinicoUserControl.ColumnBDescription.Text;
+                EsamiEmaticiContent.Text = esamiEmaticiUserControl.ColumnBDescription.Text;
             });
         };
     }

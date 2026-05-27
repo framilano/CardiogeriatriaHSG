@@ -95,6 +95,11 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 CurrentVisit.VisitRc ??= CreateNewVisitRc(CurrentVisit.VisitCode!);
                 CurrentContent = new RaccordoClinicoUserControl { DataContext = new RaccordoClinicoUserControlViewModel(CurrentVisit.VisitRc) };
                 break;
+            case "Esami Ematici":
+                if (CurrentVisit.VisitEe is null) _databaseService.LoadVisitEsamiEmaticiByVisit(CurrentVisit);
+                CurrentVisit.VisitEe ??= CreateNewVisitEe(CurrentVisit.VisitCode!);
+                CurrentContent = new EsamiEmaticiUserControl { DataContext = new EsamiEmaticiUserControlViewModel(CurrentVisit.VisitEe) };
+                break;
             case "Referto":
                 //There's no need to load patient (anagrafica) because already loaded by default
                 if (CurrentVisit.VisitAg is null) { _databaseService.LoadVisitAnamnesiGeriatricaByVisit(CurrentVisit); }
@@ -148,7 +153,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
             WeightLoss = "No",
             Appetite = "Conservato",
             Dysphagia = "No",
-            NutrionalProblems = false,
+            NutritionalProblems = false,
             Constipation = false,
             Disability = false,
         };
@@ -274,6 +279,27 @@ public partial class VisitUserControlViewModel : ViewModelBase
         
         Log.Information("[STOP] Created new VisitRc");
         return visitRc;
+    }
+    
+    private static VisitEe CreateNewVisitEe(string visitCode)
+    {
+        Log.Debug("[START] Creating new VisitEe...");
+        var visitEe = new VisitEe(visitCode)
+        {
+            ExamDate = DateTime.UnixEpoch,
+            Hemoglobin = 0,
+            Creatinine = 0,
+            Urea = 0,
+            Sodium = 0,
+            Potassium = 0,
+            NtProBnp = 0,
+            Bnp = 0,
+            Albumin = 0,
+            Albuminuria = 0
+        };
+        
+        Log.Information("[STOP] Created new VisitEe");
+        return visitEe;
     }
     
     [RelayCommand]

@@ -7,21 +7,30 @@ namespace CardiogeriatriaHSG.Models;
 public partial class Visit: ObservableObject
 {
     //Dati fissi a inizializzazione
-    [ObservableProperty] private VisitAg? _visitAg;
-    [ObservableProperty] private VisitApr? _visitApr;
-    [ObservableProperty] private VisitTd? _visitTd;
-    [ObservableProperty] private VisitRc? _visitRc;
+    [ObservableProperty]
+    public partial VisitAg? VisitAg { get; set; }
 
+    [ObservableProperty]
+    public partial VisitApr? VisitApr { get; set; }
+
+    [ObservableProperty]
+    public partial VisitTd? VisitTd { get; set; }
+
+    [ObservableProperty]
+    public partial VisitRc? VisitRc { get; set; }
+
+    [ObservableProperty]
+    public partial VisitEe? VisitEe { get; set; }
     [MaxLength(36)]
-    public string? VisitCode { get; set; }
+    public string? VisitCode { get; init; }
     public Patient? Patient { get; set; }
     [MaxLength(8)]
     public string? PatientCode { get; set; }
-    public DateTimeOffset Timestamp { get; set; }
+    public DateTimeOffset Timestamp { get; init; }
     public int Number { get; set; }
-    
+
     //Dati Visita
-    [ObservableProperty] private string? _type;
-    [ObservableProperty] private string? _subType;
-    [ObservableProperty] private bool _telemedicina;
+    [ObservableProperty] public partial string? Type { get; set; }
+    [ObservableProperty] public partial string? SubType { get; set; }
+    [ObservableProperty] public partial bool Telemedicina { get; set; }
 }
