@@ -110,15 +110,15 @@ public partial class EsamiEmaticiUserControl : UserControl
     private void UpdateAllSentences(string updatedField)
     {
         if (updatedField is "ExamDate" or "All") _examDateSentence = $"Data ultimi esami del sangue {_currentVisitEe!.ExamDate:dd/MM/yyyy}\n";
-        if (updatedField is "Hemoglobin" or "All") _hemoglobinSentence = _currentVisitEe!.Hemoglobin is null ? null : $"Emoglobina {_currentVisitEe!.Hemoglobin} g/dl\n";
-        if (updatedField is "Creatinine" or "All") _creatinineSentence = _currentVisitEe!.Creatinine is null ? null : $"Creatinina {_currentVisitEe!.Creatinine} mg/dl\n";
-        if (updatedField is "Urea" or "All") _ureaSentence = _currentVisitEe!.Urea is null ? null : $"Urea {_currentVisitEe!.Urea} mg/dl\n";
-        if (updatedField is "Sodium" or "All") _sodiumSentence = _currentVisitEe!.Sodium is null ? null : $"Na {_currentVisitEe!.Sodium} mmol/L\n";
-        if (updatedField is "Potassium" or "All") _potassiumSentence = _currentVisitEe!.Potassium is null ? null : $"K {_currentVisitEe!.Potassium} mmol/L\n";
-        if (updatedField is "NtProBnp" or "All") _ntProBnpSentence = _currentVisitEe!.NtProBnp is null ? null : $"NTproBNP {_currentVisitEe!.NtProBnp} ng/L\n";
-        if (updatedField is "Bnp" or "All") _bnpSentence = _currentVisitEe!.Bnp is null ? null : $"BNP {_currentVisitEe!.Bnp} ng/L\n";
-        if (updatedField is "Albumin" or "All") _albuminSentence = _currentVisitEe!.Albumin is null ? null : $"Albumina {_currentVisitEe!.Albumin} -g/L\n";
-        if (updatedField is "Albuminuria" or "All") _albuminuriaSentence = _currentVisitEe!.Albuminuria is null ? null : $"Albuminuria {_currentVisitEe!.Albuminuria} g\n";
+        else if (updatedField is "Hemoglobin" or "All") _hemoglobinSentence = _currentVisitEe!.Hemoglobin is null ? null : $"Emoglobina {_currentVisitEe!.Hemoglobin} g/dl\n";
+        else if (updatedField is "Creatinine" or "All") _creatinineSentence = _currentVisitEe!.Creatinine is null ? null : $"Creatinina {_currentVisitEe!.Creatinine} mg/dl\n";
+        else if (updatedField is "Urea" or "All") _ureaSentence = _currentVisitEe!.Urea is null ? null : $"Urea {_currentVisitEe!.Urea} mg/dl\n";
+        else if (updatedField is "Sodium" or "All") _sodiumSentence = _currentVisitEe!.Sodium is null ? null : $"Na {_currentVisitEe!.Sodium} mmol/L\n";
+        else if (updatedField is "Potassium" or "All") _potassiumSentence = _currentVisitEe!.Potassium is null ? null : $"K {_currentVisitEe!.Potassium} mmol/L\n";
+        else if (updatedField is "NtProBnp" or "All") _ntProBnpSentence = _currentVisitEe!.NtProBnp is null ? null : $"NTproBNP {_currentVisitEe!.NtProBnp} ng/L\n";
+        else if (updatedField is "Bnp" or "All") _bnpSentence = _currentVisitEe!.Bnp is null ? null : $"BNP {_currentVisitEe!.Bnp} ng/L\n";
+        else if (updatedField is "Albumin" or "All") _albuminSentence = _currentVisitEe!.Albumin is null ? null : $"Albumina {_currentVisitEe!.Albumin} -g/L\n";
+        else _albuminuriaSentence = _currentVisitEe!.Albuminuria is null ? null : $"Albuminuria {_currentVisitEe!.Albuminuria} g\n";
     }
     
     public void LoadEsamiEmaticiContent(VisitEe currentVisitEe)
