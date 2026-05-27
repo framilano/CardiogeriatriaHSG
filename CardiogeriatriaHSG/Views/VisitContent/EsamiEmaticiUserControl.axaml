@@ -9,28 +9,59 @@
             <UserControl.Styles>
                 <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
             </UserControl.Styles>
-            <Grid
-                ColumnDefinitions="*, *">
-                        <Border Classes="ColumnBorder"
-                                Grid.Column="0">
+            <Grid ColumnDefinitions="*, *">
+                <Border Classes="ColumnBorder" Grid.Column="0">
                     <ScrollViewer>
                         <WrapPanel Orientation="Vertical" Classes="ColumnAWrapPanel">
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Data esami "/>
-                                <DatePicker MaxYear="{Binding MaxAllowedDate}" Tag="DateOfBirth" SelectedDateChanged="OnColumnADatePickerChanged" SelectedDate="{Binding CurrentVisitEe.ExamDate}"></DatePicker>
+                                <DatePicker HorizontalAlignment="Left" MaxYear="{Binding MaxAllowedDate}" Tag="DateOfBirth" SelectedDateChanged="OnColumnADatePickerChanged" SelectedDate="{Binding CurrentVisitEe.ExamDate}"></DatePicker>
                             </WrapPanel>
-                            <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Hb " />
-                                <NumericUpDown Classes="CustomNumericUpDown" FormatString="0.00" Minimum="0.00" Increment="0.01" Tag="Hemoglobin" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Hemoglobin}" />                           
-                                <TextBlock Classes="GenericFieldLabel" Text="g/L" />
-                            </WrapPanel>
+                            <Grid ColumnDefinitions="*, *, *" RowDefinitions="*, *, *, *, *, *, *, *, *, *">
+                                
+                                <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="Hb " />
+                                <NumericUpDown Grid.Row="0" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Hemoglobin" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Hemoglobin}" />                           
+                                <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="g/L" />
+                                
+                                <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericFieldLabel" Text="Creatinina " />
+                                <NumericUpDown Grid.Row="1" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Creatinine" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Creatinine}" />                           
+                                <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="mg/dl" />
+                                
+                                <TextBlock Grid.Row="2" Grid.Column="0" Classes="GenericFieldLabel" Text="Urea " />
+                                <NumericUpDown Grid.Row="2" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Urea" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Urea}" />                           
+                                <TextBlock Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="mg/dl" />
+                                
+                                <TextBlock Grid.Row="3" Grid.Column="0" Classes="GenericFieldLabel" Text="Na " />
+                                <NumericUpDown Grid.Row="3" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Sodium" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Sodium}" />                           
+                                <TextBlock Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="mmol/L" />
+                                
+                                <TextBlock Grid.Row="4" Grid.Column="0" Classes="GenericFieldLabel" Text="K " />
+                                <NumericUpDown Grid.Row="4" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Potassium" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Potassium}" />                           
+                                <TextBlock Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="mmol/L" />
+                                
+                                <TextBlock Grid.Row="5" Grid.Column="0" Classes="GenericFieldLabel" Text="NTproBNP " />
+                                <NumericUpDown Grid.Row="5" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="NtProBnp" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.NtProBnp}" />                           
+                                <TextBlock Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="ng/L" />
+                                
+                                <TextBlock Grid.Row="6" Grid.Column="0" Classes="GenericFieldLabel" Text="BNP " />
+                                <NumericUpDown Grid.Row="6" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Bnp" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Bnp}" />                           
+                                <TextBlock Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="ng/L" />
+                                
+                                <TextBlock Grid.Row="7" Grid.Column="0" Classes="GenericFieldLabel" Text="Albumina " />
+                                <NumericUpDown Grid.Row="7" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Albumin" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Albumin}" />                           
+                                <TextBlock Grid.Row="7" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="-g/L" />
+                                
+                                <TextBlock Grid.Row="8" Grid.Column="0" Classes="GenericFieldLabel" Text="Albuminuria " />
+                                <NumericUpDown Grid.Row="8" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Albuminuria" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Albuminuria}" />                           
+                                <TextBlock Grid.Row="8" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="g" />
+                            </Grid>
                         </WrapPanel>
                     </ScrollViewer>
                 </Border>
-                <ScrollViewer Grid.Column="1">
-                    <Border Classes="ColumnBorder">
+                <Border Classes="ColumnBorder" Grid.Column="1">
+                    <ScrollViewer>
                         <TextBlock Classes="ColumnBTextBlock" Name="ColumnBDescription"></TextBlock>
-                    </Border>
-                </ScrollViewer>
+                    </ScrollViewer>
+                </Border>
             </Grid>
 </UserControl>

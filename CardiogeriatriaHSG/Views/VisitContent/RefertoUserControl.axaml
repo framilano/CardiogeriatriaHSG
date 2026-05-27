@@ -10,8 +10,8 @@
         <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
     </UserControl.Styles>
     
-    <ScrollViewer VerticalScrollBarVisibility="Auto">
-        <Border Classes="ColumnBorder">
+    <Border Classes="ColumnBorder">
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
             <SelectableTextBlock Classes="ColumnBSelectableTextBlock">
                 <Run FontWeight="Bold" Text="Anagrafica" />
                 <LineBreak/>
@@ -38,6 +38,6 @@
                 <Run Name="EsamiEmaticiContent"/>
                 <LineBreak/><LineBreak/>
             </SelectableTextBlock>
-         </Border>
-    </ScrollViewer>
+        </ScrollViewer>
+    </Border>
 </UserControl>

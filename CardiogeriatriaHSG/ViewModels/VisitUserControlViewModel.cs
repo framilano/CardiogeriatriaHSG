@@ -106,12 +106,15 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 if (CurrentVisit.VisitApr is null) { _databaseService.LoadVisitAnamnesiPatologicaRemotaByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitTd is null) { _databaseService.LoadVisitTerapiaDomiciliareByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitRc is null) { _databaseService.LoadVisitRaccordoClinicoByVisit(CurrentVisit); }
-                
+                if (CurrentVisit.VisitEe is null) { _databaseService.LoadVisitEsamiEmaticiByVisit(CurrentVisit); }
+
                 //If still null after loading from DB, we create new Visits elements
                 CurrentVisit.VisitAg ??= CreateNewVisitAg(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitApr ??= CreateNewVisitApr(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitTd ??= CreateNewVisitTd(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitRc ??= CreateNewVisitRc(CurrentVisit.VisitCode!);
+                CurrentVisit.VisitEe ??= CreateNewVisitEe(CurrentVisit.VisitCode!);
+
                 CurrentContent = new RefertoUserControl { DataContext = new RefertoUserControlViewModel(CurrentVisit) };
                 break;
         }
@@ -287,15 +290,15 @@ public partial class VisitUserControlViewModel : ViewModelBase
         var visitEe = new VisitEe(visitCode)
         {
             ExamDate = DateTime.UnixEpoch,
-            Hemoglobin = 0,
-            Creatinine = 0,
-            Urea = 0,
-            Sodium = 0,
-            Potassium = 0,
-            NtProBnp = 0,
-            Bnp = 0,
-            Albumin = 0,
-            Albuminuria = 0
+            Hemoglobin = null,
+            Creatinine = null,
+            Urea = null,
+            Sodium = null,
+            Potassium = null,
+            NtProBnp = null,
+            Bnp = null,
+            Albumin = null,
+            Albuminuria = null
         };
         
         Log.Information("[STOP] Created new VisitEe");
