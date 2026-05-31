@@ -1,0 +1,26 @@
+using System;
+using System.ComponentModel.DataAnnotations;
+using CommunityToolkit.Mvvm.ComponentModel;
+
+namespace CardiogeriatriaHSG.Models;
+
+public partial class VisitEo(string visitCode): ObservableObject
+{
+    
+    [MaxLength(36)]
+    public string? VisitCode { get; init; } = visitCode;
+    public Visit? Visit { get; init; }
+
+    [ObservableProperty] public partial int MinimumBloodPressure { get; set; }
+    [ObservableProperty] public partial int MaximumBloodPressure { get; set; }
+    [ObservableProperty] public partial int HeartRate { get; set; }
+    [ObservableProperty] public partial bool JugularVenousDistension { get; set; }
+    [ObservableProperty] public partial bool Rheoencephalography { get; set; }
+
+    //TODO add toni cardiaci
+    //TODO add al torace
+
+    [ObservableProperty] public partial bool DependentEdema { get; set; }
+    [ObservableProperty] public partial bool PeripheralNeuropathy { get; set; }
+    [ObservableProperty] public partial bool OrthostaticHypotension { get; set; }
+}

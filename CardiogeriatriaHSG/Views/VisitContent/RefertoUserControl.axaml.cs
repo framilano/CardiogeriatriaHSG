@@ -23,6 +23,8 @@ public partial class RefertoUserControl : UserControl
             raccordoClinicoUserControl.LoadRaccordoClinicoContent(currentVisit.VisitRc!);
             var esamiEmaticiUserControl = new EsamiEmaticiUserControl();
             esamiEmaticiUserControl.LoadEsamiEmaticiContent(currentVisit.VisitEe!);
+            var esamiObiettivoUserControl = new EsamiObiettivoUserControl();
+            esamiObiettivoUserControl.LoadEsamiObiettivoContent(currentVisit.VisitEo!);
             Dispatcher.UIThread.Post(() => { 
                 AnagraficaContent.Text = anagraficaUserControl.ColumnBDescription.Text;
                 AnamnesiGeriatricaContent.Text = anamnesiGeriatricaUserControl.ColumnBDescription.Text;
@@ -30,6 +32,7 @@ public partial class RefertoUserControl : UserControl
                 TerapiaDomiciliareContent.Text = currentVisit.VisitTd!.TdText;
                 RaccordoClinicoContent.Text = raccordoClinicoUserControl.ColumnBDescription.Text;
                 EsamiEmaticiContent.Text = esamiEmaticiUserControl.ColumnBDescription.Text;
+                EsamiObiettivoContent.Text = esamiObiettivoUserControl.ColumnBDescription.Text;
             });
         };
     }

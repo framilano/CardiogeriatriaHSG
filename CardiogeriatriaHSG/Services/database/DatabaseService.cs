@@ -135,6 +135,12 @@ public class DatabaseService
         _visitRepository.LoadVisitEeByVisit(visit);
         Log.Information("[STOP] Loaded visit EE data for visit {VisitVisitCode}", visit.VisitCode);
     }
+    
+    public void LoadVisitEsamiObiettivoByVisit(Visit visit) {
+        Log.Debug("[START] Loading visit EO data for visit {VisitVisitCode}", visit.VisitCode);
+        _visitRepository.LoadVisitEoByVisit(visit);
+        Log.Information("[STOP] Loaded visit EO data for visit {VisitVisitCode}", visit.VisitCode);
+    }
 
 
 }

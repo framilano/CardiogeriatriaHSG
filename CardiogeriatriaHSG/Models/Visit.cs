@@ -9,18 +9,17 @@ public partial class Visit: ObservableObject
     //Dati fissi a inizializzazione
     [ObservableProperty]
     public partial VisitAg? VisitAg { get; set; }
-
     [ObservableProperty]
     public partial VisitApr? VisitApr { get; set; }
-
     [ObservableProperty]
     public partial VisitTd? VisitTd { get; set; }
-
     [ObservableProperty]
     public partial VisitRc? VisitRc { get; set; }
-
     [ObservableProperty]
     public partial VisitEe? VisitEe { get; set; }
+    [ObservableProperty]
+    public partial VisitEo? VisitEo { get; set; }
+    
     [MaxLength(36)]
     public string? VisitCode { get; init; }
     public Patient? Patient { get; set; }

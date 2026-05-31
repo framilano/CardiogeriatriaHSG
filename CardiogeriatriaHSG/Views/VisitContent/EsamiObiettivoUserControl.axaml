@@ -1,0 +1,36 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:visitContent="clr-namespace:CardiogeriatriaHSG.ViewModels.VisitContent"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CardiogeriatriaHSG.Views.VisitContent.EsamiObiettivoUserControl"
+             x:DataType="visitContent:EsamiObiettivoUserControlViewModel">
+            <UserControl.Styles>
+                <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
+            </UserControl.Styles>
+            <Grid ColumnDefinitions="*, *">
+                <Border Classes="ColumnBorder" Grid.Column="0">
+                    <ScrollViewer>
+                        <WrapPanel Orientation="Vertical" Classes="ColumnAWrapPanel">
+                            <WrapPanel Orientation="Vertical">
+                                <TextBlock Classes="GenericFieldLabel" Text="Pressione Arteriosa" />
+                                <WrapPanel Orientation="Horizontal">
+                                    <TextBlock Padding="10" Text="‣ Minima" />
+                                    <NumericUpDown Classes="CustomNumericUpDown" Tag="MinimumBloodPressure" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="500" Value="{Binding CurrentVisitEo.MinimumBloodPressure}"></NumericUpDown>
+                                </WrapPanel>
+                                <WrapPanel Orientation="Horizontal">
+                                    <TextBlock Padding="10" Text="‣ Massima" />
+                                    <NumericUpDown Classes="CustomNumericUpDown" Tag="MaximumBloodPressure" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="500" Value="{Binding CurrentVisitEo.MaximumBloodPressure}"></NumericUpDown>
+                                </WrapPanel>
+                            </WrapPanel>
+                        </WrapPanel>
+                    </ScrollViewer>
+                </Border>
+                <Border Classes="ColumnBorder" Grid.Column="1">
+                    <ScrollViewer>
+                        <TextBlock Classes="ColumnBTextBlock" Name="ColumnBDescription"></TextBlock>
+                    </ScrollViewer>
+                </Border>
+            </Grid>
+</UserControl>

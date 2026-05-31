@@ -37,6 +37,10 @@
                 <LineBreak/>
                 <Run Name="EsamiEmaticiContent"/>
                 <LineBreak/><LineBreak/>
+                <Run FontWeight="Bold" Text="Esami Obiettivo" />
+                <LineBreak/>
+                <Run Name="EsamiObiettivoContent"/>
+                <LineBreak/><LineBreak/>
             </SelectableTextBlock>
         </ScrollViewer>
     </Border>

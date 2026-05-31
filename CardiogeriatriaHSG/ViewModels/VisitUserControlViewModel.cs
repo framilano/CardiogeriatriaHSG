@@ -100,6 +100,11 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 CurrentVisit.VisitEe ??= CreateNewVisitEe(CurrentVisit.VisitCode!);
                 CurrentContent = new EsamiEmaticiUserControl { DataContext = new EsamiEmaticiUserControlViewModel(CurrentVisit.VisitEe) };
                 break;
+            case "Esami Obiettivo":
+                if (CurrentVisit.VisitEo is null) _databaseService.LoadVisitEsamiObiettivoByVisit(CurrentVisit);
+                CurrentVisit.VisitEo ??= CreateNewVisitEo(CurrentVisit.VisitCode!);
+                CurrentContent = new EsamiObiettivoUserControl { DataContext = new EsamiObiettivoUserControlViewModel(CurrentVisit.VisitEo) };
+                break;
             case "Referto":
                 //There's no need to load patient (anagrafica) because already loaded by default
                 if (CurrentVisit.VisitAg is null) { _databaseService.LoadVisitAnamnesiGeriatricaByVisit(CurrentVisit); }
@@ -107,6 +112,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 if (CurrentVisit.VisitTd is null) { _databaseService.LoadVisitTerapiaDomiciliareByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitRc is null) { _databaseService.LoadVisitRaccordoClinicoByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitEe is null) { _databaseService.LoadVisitEsamiEmaticiByVisit(CurrentVisit); }
+                if (CurrentVisit.VisitEo is null) { _databaseService.LoadVisitEsamiObiettivoByVisit(CurrentVisit); }
 
                 //If still null after loading from DB, we create new Visits elements
                 CurrentVisit.VisitAg ??= CreateNewVisitAg(CurrentVisit.VisitCode!);
@@ -114,6 +120,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 CurrentVisit.VisitTd ??= CreateNewVisitTd(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitRc ??= CreateNewVisitRc(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitEe ??= CreateNewVisitEe(CurrentVisit.VisitCode!);
+                CurrentVisit.VisitEo ??= CreateNewVisitEo(CurrentVisit.VisitCode!);
 
                 CurrentContent = new RefertoUserControl { DataContext = new RefertoUserControlViewModel(CurrentVisit) };
                 break;

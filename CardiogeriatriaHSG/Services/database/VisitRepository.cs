@@ -42,4 +42,7 @@ public class VisitRepository(AppDb db)
     
     public void LoadVisitEeByVisit(Visit visit) => 
         db.Entry(visit).Reference(v => v.VisitEe).Load();
+    
+    public void LoadVisitEoByVisit(Visit visit) => 
+        db.Entry(visit).Reference(v => v.VisitEo).Load();
 }

@@ -10,7 +10,7 @@
         <!-- <PublishReadyToRun>true</PublishReadyToRun> -->
         <PublishTrimmed>false</PublishTrimmed>
 
-        <Version>0.3.2</Version>
+        <Version>0.4.0</Version>
     </PropertyGroup>
 
     <ItemGroup>
@@ -46,6 +46,10 @@
       </Compile>
       <Compile Update="Views\VisitContent\EsamiEmaticiUserControl.axaml.cs">
         <DependentUpon>EsamiEmaticiUserControl.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\VisitContent\EsamiObiettivoUserControl.axaml.cs">
+        <DependentUpon>EsamiObiettivoUserControl.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>
