@@ -20,7 +20,7 @@ public partial class EsamiObiettivoUserControl : UserControl
         {
             if (DataContext is not EsamiObiettivoUserControlViewModel viewModel) return;
             _currentVisitEo = viewModel.CurrentVisitEo;
-            LoadEsamiObiettivoContent(_currentVisitEe);
+            LoadEsamiObiettivoContent(_currentVisitEo);
         };
     }
     
@@ -35,11 +35,19 @@ public partial class EsamiObiettivoUserControl : UserControl
         var value = "";
         switch (sender)
         {
+            case ComboBox box:
+                tag = (string)box.Tag!;
+                value = box.SelectedValue?.ToString();
+                break;
+            case CheckBox box:
+                tag = (string)box.Tag!;
+                value = box.IsChecked.ToString();
+                break;
+            //This weird handling is needed because some numbers could be actually null on purpose
             case NumericUpDown box:
                 tag = (string)box.Tag!;
                 if (box.Value is null) value = null;
-                else
-                {
+                else                {
                     value = box.Value.ToString();
                     if (value.IsWhiteSpace() || value!.Length == 0) value = null;
                 }
@@ -48,9 +56,12 @@ public partial class EsamiObiettivoUserControl : UserControl
         
         switch (tag) 
         {
-            case "Hemoglobin":
-                if (value is null) {  _currentVisitEo!.Hemoglobin = null; break; }
-                _currentVisitEo!.Hemoglobin = float.Parse(value!);
+            case "MinimumBloodPressure":
+                _currentVisitEo!.MinimumBloodPressure = value is null ? null : int.Parse(value);
+                UpdateBloodPressureSentence();
+                break;
+            case "MaximumBloodPressure":
+                _currentVisitEo!.MaximumBloodPressure = value is null ? null : int.Parse(value);
                 UpdateBloodPressureSentence();
                 break;
         }

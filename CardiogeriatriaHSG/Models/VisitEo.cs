@@ -11,9 +11,9 @@ public partial class VisitEo(string visitCode): ObservableObject
     public string? VisitCode { get; init; } = visitCode;
     public Visit? Visit { get; init; }
 
-    [ObservableProperty] public partial int MinimumBloodPressure { get; set; }
-    [ObservableProperty] public partial int MaximumBloodPressure { get; set; }
-    [ObservableProperty] public partial int HeartRate { get; set; }
+    [ObservableProperty] public partial int? MinimumBloodPressure { get; set; }
+    [ObservableProperty] public partial int? MaximumBloodPressure { get; set; }
+    [ObservableProperty] public partial int? HeartRate { get; set; }
     [ObservableProperty] public partial bool JugularVenousDistension { get; set; }
     [ObservableProperty] public partial bool Rheoencephalography { get; set; }
 

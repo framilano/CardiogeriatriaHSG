@@ -44,6 +44,7 @@ public partial class EsamiEmaticiUserControl : UserControl
         var value = "";
         switch (sender)
         {
+            //This weird handling is needed because some numbers could be actually null on purpose
             case NumericUpDown box:
                 tag = (string)box.Tag!;
                 if (box.Value is null) value = null;
