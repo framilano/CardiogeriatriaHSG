@@ -13,7 +13,7 @@
                 <Border Classes="ColumnBorder" Grid.Column="0">
                     <ScrollViewer>
                         <WrapPanel Orientation="Vertical" Classes="ColumnAWrapPanel">
-                            <Grid ColumnDefinitions="*, *, *" RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *, *">
+                            <Grid ColumnDefinitions="*, *, *" RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *">
                                 
                                 <!-- Pressione Arteriosa -->
                                 <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="MinPA " />
@@ -53,10 +53,20 @@
                                 <!-- Edemi -->
                                 <TextBlock Grid.Row="13" Grid.Column="0" Classes="GenericFieldLabel" Text="Edemi declivi  "/>
                                 <CheckBox Grid.Row="13" Grid.Column="1" Tag="DependentEdema" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEo.DependentEdema}"></CheckBox>
+                                <WrapPanel Name="EdemaWrapPanel" IsVisible="False" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2">
+                                    <Grid RowDefinitions="*, *, *" ColumnDefinitions="*, *">
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Padding="10" Text="‣ Tipo" />
+                                        <ComboBox Grid.Row="0" Grid.Column="1" Tag="DependentEdemaType" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding DependentEdemaTypes}" SelectedItem="{Binding CurrentVisitEo.DependentEdemaType}"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Padding="10" Text="‣ Fino a" />
+                                        <ComboBox Grid.Row="1" Grid.Column="1" Tag="DependentEdemaLocation" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding DependentEdemaLocations}" SelectedItem="{Binding CurrentVisitEo.DependentEdemaLocation}"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Padding="10" Text="‣ Fovea" />
+                                        <ComboBox Grid.Row="2" Grid.Column="1" Tag="DependentEdemaFovea" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding DependentEdemaFoveas}" SelectedItem="{Binding CurrentVisitEo.DependentEdemaFovea}"/>
+                                    </Grid>
+                                </WrapPanel>
                                 
                                 <!-- Neuropatia -->
-                                <TextBlock Grid.Row="14" Grid.Column="0" Classes="GenericFieldLabel" Text="Neuropatia periferica  "/>
-                                <CheckBox Grid.Row="14" Grid.Column="1" Tag="PeripheralNeuropathy" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEo.PeripheralNeuropathy}"></CheckBox>
+                                <TextBlock Grid.Row="15" Grid.Column="0" Classes="GenericFieldLabel" Text="Neuropatia periferica  "/>
+                                <CheckBox Grid.Row="15" Grid.Column="1" Tag="PeripheralNeuropathy" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEo.PeripheralNeuropathy}"></CheckBox>
 
                             </Grid>
                         </WrapPanel>

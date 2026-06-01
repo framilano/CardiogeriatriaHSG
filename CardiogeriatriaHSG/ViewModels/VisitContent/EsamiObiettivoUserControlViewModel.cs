@@ -12,5 +12,8 @@ public class EsamiObiettivoUserControlViewModel(VisitEo currentVisitEo) : ViewMo
     public static IEnumerable<string> HeartSoundPausesTypes => StringChoices.HeartSoundPausesTypes;
     public static IEnumerable<string> ChestMvTypes => StringChoices.ChestMvTypes;
     public static IEnumerable<string> ChestNoisesTypes => StringChoices.ChestNoisesTypes;
+    public static IEnumerable<string> DependentEdemaTypes => StringChoices.DependentEdemaTypes;
+    public static IEnumerable<string> DependentEdemaLocations => StringChoices.DependentEdemaLocations;
+    public static IEnumerable<string> DependentEdemaFoveas => StringChoices.DependentEdemaFoveas;
 
 }

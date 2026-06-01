@@ -64,12 +64,91 @@ public partial class EsamiObiettivoUserControl : UserControl
                 _currentVisitEo!.MaximumBloodPressure = value is null ? null : int.Parse(value);
                 UpdateBloodPressureSentence();
                 break;
+            case "HeartRate":
+                _currentVisitEo!.HeartRate = value is null ? null : int.Parse(value);
+                UpdateBloodPressureSentence();
+                break;
+            case "JugularVenousDistension":
+                _currentVisitEo!.JugularVenousDistension = value == "True";
+                UpdateTgAndRegSentence();
+                break;
+            case "Rheoencephalography":
+                _currentVisitEo!.Rheoencephalography = value == "True";
+                UpdateTgAndRegSentence();
+                break;
+            case "HeartSoundType":
+                _currentVisitEo!.HeartSoundType = value;
+                UpdateHeartSoundSentence();
+                break;
+            case "HeartSoundRhythm":
+                _currentVisitEo!.HeartSoundRhythm = value;
+                UpdateHeartSoundSentence();
+                break;
+            case "HeartSoundPauses":
+                _currentVisitEo!.HeartSoundPauses = value;
+                UpdateHeartSoundSentence();
+                break;
+            case "ChestMv":
+                _currentVisitEo!.ChestMv = value;
+                UpdateChestMvSentence();
+                break;
+            case "ChestNoises":
+                _currentVisitEo!.ChestNoises = value;
+                UpdateChestMvSentence();
+                break;
+            case "DependentEdema":
+                _currentVisitEo!.DependentEdema = value == "True";
+                if (_currentVisitEo.DependentEdema)
+                {
+                    _currentVisitEo.DependentEdemaType ??= StringChoices.DependentEdemaTypes[0];
+                    _currentVisitEo.DependentEdemaLocation ??= StringChoices.DependentEdemaLocations[0];
+                    _currentVisitEo.DependentEdemaFovea ??= StringChoices.DependentEdemaFoveas[0];
+                    EdemaWrapPanel.IsVisible = true;
+                }
+                else
+                {
+                    _currentVisitEo.DependentEdemaType = null;
+                    _currentVisitEo.DependentEdemaLocation = null;
+                    _currentVisitEo.DependentEdemaFovea = null;
+                    EdemaWrapPanel.IsVisible = false;
+                }
+                UpdateEdemaSentence();
+                break;
+            case "PeripheralNeuropathy":
+                _currentVisitEo!.PeripheralNeuropathy = value == "True";
+                UpdateNeuropathyentence();
+                break;
         }
         UpdateColumnBDescription();
     }
     
     //Doesn't make sense to have multiple update methods for these easy-to-build sentences
     private void UpdateBloodPressureSentence()
+    {
+       
+    }
+    
+    private void UpdateTgAndRegSentence()
+    {
+       
+    }
+    
+    private void UpdateHeartSoundSentence()
+    {
+       
+    }
+    
+    private void UpdateChestMvSentence()
+    {
+       
+    }
+    
+    private void UpdateEdemaSentence()
+    {
+       
+    }
+    
+    private void UpdateNeuropathyentence()
     {
        
     }

@@ -328,6 +328,9 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 ChestMv = StringChoices.ChestMvTypes[0],
                 ChestNoises = StringChoices.ChestNoisesTypes[0],
                 DependentEdema = false,
+                DependentEdemaType = null,
+                DependentEdemaLocation = null,
+                DependentEdemaFovea = null,
                 PeripheralNeuropathy = false,
                 OrthostaticHypotension = false
         };

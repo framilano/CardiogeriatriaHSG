@@ -19,7 +19,7 @@
         <StackPanel Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center">
             <TextBlock Margin="15" HorizontalAlignment="Center" Text="Inserire codice paziente" FontWeight="Bold" />
 
-            <TextBox MaxLength="8" TextAlignment="Center" Margin="5" HorizontalAlignment="Center"
+            <TextBox MaxLength="16" TextAlignment="Center" Margin="5" HorizontalAlignment="Center"
                      Text="{Binding UserCodeTextBox, UpdateSourceTrigger=PropertyChanged}" Width="300" />
 
             <!-- <TextBlock Margin="5" Background="Black" HorizontalAlignment="Center" Foreground="Red"

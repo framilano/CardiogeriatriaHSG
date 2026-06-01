@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Reflection;
+using System.Security.Cryptography;
+using System.Text;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using CardiogeriatriaHSG.Models;
@@ -21,26 +23,39 @@ public partial class WelcomeUserControlViewModel : ObservableObject
         LastVisitsList = [];
     }
 
-    [ObservableProperty] private string _userCodeTextBox = "";
-    [ObservableProperty] private string? _errorMessage;
-    [ObservableProperty] private bool? _createVisitBtnVisibility = false;
-    [ObservableProperty] private bool? _lastVisitsListVisibility;
-    [ObservableProperty] private List<Visit> _lastVisitsList;
+    [ObservableProperty]
+    public partial string UserCodeTextBox { get; set; }
+    
+    private string UserCodeTextBoxSha256B64 { get; set; }
 
-    partial void OnUserCodeTextBoxChanged(string value) { SearchUser(); }
+    [ObservableProperty]
+    public partial string? ErrorMessage { get; set; }
+
+    [ObservableProperty]
+    public partial bool? CreateVisitBtnVisibility { get; set; } = false;
+
+    [ObservableProperty]
+    public partial bool? LastVisitsListVisibility { get; set; }
+
+    [ObservableProperty]
+    public partial List<Visit> LastVisitsList { get; set; }
+
+    partial void OnUserCodeTextBoxChanged(string value)
+    {
+        if (string.IsNullOrEmpty(value) || value.Length < 16) { return; }
+        
+        UserCodeTextBoxSha256B64 = HashBase64(value);
+        SearchUser();
+    }
     
     private void SearchUser()
     {
         ErrorMessage = null;
         CreateVisitBtnVisibility = false;
         LastVisitsListVisibility = false;
-        if (UserCodeTextBox.Length < 8)
-        {
-            return;
-        }
 
         CreateVisitBtnVisibility = true;
-        var visits = _databaseService.RetrieveVisitsByPatientCode(UserCodeTextBox);
+        var visits = _databaseService.RetrieveVisitsByPatientCode(UserCodeTextBoxSha256B64);
         if (visits.Count <= 0)
         {
             ErrorMessage = $"{UserCodeTextBox} non ha visite associate";
@@ -69,7 +84,7 @@ public partial class WelcomeUserControlViewModel : ObservableObject
         var visit = new Visit
         {
             VisitCode = uuid,
-            PatientCode = UserCodeTextBox,
+            PatientCode = UserCodeTextBoxSha256B64,
             Timestamp = now,
             Number = LastVisitsList.Count,
             Type = "Cardiogeriatrica",
@@ -79,7 +94,14 @@ public partial class WelcomeUserControlViewModel : ObservableObject
 
         _main.NavigateToVisit(_databaseService, visit);
     }
-    
+
+    private static string HashBase64(string input)
+    {
+        var hash = SHA256.HashData(Encoding.UTF8.GetBytes(input));
+        return Convert.ToBase64String(hash)[..10];
+    }
+
+
     public string AppVersion { get; } =
         (Assembly.GetExecutingAssembly()
             .GetCustomAttribute<AssemblyInformationalVersionAttribute>()?
