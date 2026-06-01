@@ -152,17 +152,17 @@ public partial class VisitUserControlViewModel : ViewModelBase
             AssistanceSpouse = false,
             AssistanceFamilyMembers = false,
             CareTaker = false,
-            MotorSkill = "Solo letto-poltrona",
+            MotorSkill = StringChoices.MotorSkillTypes[0],
             WalkingType = null,
             Falls = "0",
-            CognitiveDeficit = "Nessuno",
+            CognitiveDeficit = StringChoices.CognitiveDeficits[0],
             Bpsd = false,
             HearingImpairment = false,
             VisualImpairment = false,
-            Nights = "Riposate",
-            WeightLoss = "No",
-            Appetite = "Conservato",
-            Dysphagia = "No",
+            Nights = StringChoices.NightTypes[0],
+            WeightLoss = StringChoices.WeightLossTypes[0],
+            Appetite = StringChoices.Appetites[0],
+            Dysphagia = StringChoices.DysphagiaTypes[0],
             NutritionalProblems = false,
             Constipation = false,
             Disability = false,
@@ -266,9 +266,9 @@ public partial class VisitUserControlViewModel : ViewModelBase
         Log.Debug("[START] Creating new VisitRc...");
         var visitRc = new VisitRc(visitCode)
         {
-            Reports = "Benessere",
-            Dyspnea = "Non dispnea",
-            Angina = "Non angor",
+            Reports = StringChoices.ReportsTypes[0],
+            Dyspnea = StringChoices.DyspneaTypes[0],
+            Angina = StringChoices.AnginaTypes[0],
             Palpitations = false,
             SleepingWithPillowsNumber = 1,
             SleepingSittingPosition = false,
@@ -310,6 +310,30 @@ public partial class VisitUserControlViewModel : ViewModelBase
         
         Log.Information("[STOP] Created new VisitEe");
         return visitEe;
+    }
+    
+    private static VisitEo CreateNewVisitEo(string visitCode)
+    {
+        Log.Debug("[START] Creating new VisitEo...");
+        var visitEo = new VisitEo(visitCode)
+        {
+                MinimumBloodPressure = null,
+                MaximumBloodPressure = null,
+                HeartRate = null,
+                JugularVenousDistension = false,
+                Rheoencephalography = false,
+                HeartSoundType = StringChoices.HeartSoundTypes[0],
+                HeartSoundRhythm = StringChoices.HeartSoundRhythmTypes[0],
+                HeartSoundPauses = StringChoices.HeartSoundPausesTypes[0],
+                ChestMv = StringChoices.ChestMvTypes[0],
+                ChestNoises = StringChoices.ChestNoisesTypes[0],
+                DependentEdema = false,
+                PeripheralNeuropathy = false,
+                OrthostaticHypotension = false
+        };
+        
+        Log.Information("[STOP] Created new VisitEo");
+        return visitEo;
     }
     
     [RelayCommand]

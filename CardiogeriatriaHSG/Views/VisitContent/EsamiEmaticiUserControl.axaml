@@ -52,8 +52,8 @@
                                 <TextBlock Grid.Row="7" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="g/L" />
                                 
                                 <TextBlock Grid.Row="8" Grid.Column="0" Classes="GenericFieldLabel" Text="Albuminuria " />
-                                <NumericUpDown Grid.Row="8" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Albuminuria" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Albuminuria}" />                           
-                                <TextBlock Grid.Row="8" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="g" />
+                                <NumericUpDown Minimum="0" Maximum="500" Grid.Row="8" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Albuminuria" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Albuminuria}" />                           
+                                <TextBlock Grid.Row="8" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="mg/L" />
                             </Grid>
                         </WrapPanel>
                     </ScrollViewer>

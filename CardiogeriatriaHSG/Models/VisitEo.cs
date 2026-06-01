@@ -18,7 +18,13 @@ public partial class VisitEo(string visitCode): ObservableObject
     [ObservableProperty] public partial bool Rheoencephalography { get; set; }
 
     //TODO add toni cardiaci
+    [ObservableProperty] public partial string? HeartSoundType { get; set; }
+    [ObservableProperty] public partial string? HeartSoundRhythm { get; set; }
+    [ObservableProperty] public partial string? HeartSoundPauses { get; set; }
+
     //TODO add al torace
+    [ObservableProperty] public partial string? ChestMv { get; set; }
+    [ObservableProperty] public partial string? ChestNoises { get; set; }
 
     [ObservableProperty] public partial bool DependentEdema { get; set; }
     [ObservableProperty] public partial bool PeripheralNeuropathy { get; set; }

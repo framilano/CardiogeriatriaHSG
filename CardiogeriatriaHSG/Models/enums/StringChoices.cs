@@ -29,4 +29,10 @@ public class StringChoices
     public static readonly List<string> FallsSinceLastVisitDiagnosis = ["Caduta accidentale", "Sincope"];  
     public static readonly List<string> EmergenciesSinceLastVisitCauses = ["Non cardiovascolare", "Scompenso", "Altra causa cardiovascolare"];
     public static readonly List<string> HospitalizationsSinceLastVisitCauses = ["Non cardiovascolare", "Scompenso", "Altra causa cardiovascolare"];
+    //Esami Obiettivo
+    public static readonly List<string> HeartSoundTypes = ["validi", "parafonici"];  
+    public static readonly List<string> HeartSoundRhythmTypes = ["ritmici", "aritmici"];  
+    public static readonly List<string> HeartSoundPausesTypes = ["pause libere", "SS 2/6", "SS 4/6", "SS 5/6"];
+    public static readonly List<string> ChestMvTypes = ["presente", "ridotto", "abolito alle basi"];  
+    public static readonly List<string> ChestNoisesTypes = ["senza rumori aggiunti", "crepitii alle basi", "crepitii ai campi mediobasali", "ronchi", "rumori da secrezione", "broncospasmo"];  
 }
