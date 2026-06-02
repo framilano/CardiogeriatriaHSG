@@ -28,6 +28,11 @@ public partial class EsamiObiettivoUserControl : UserControl
     private readonly TextBlock? _columnBDescription;
 
     private string? _bloodPressureSentence;
+    private string? _tgAndRegSentence;
+    private string? _heartSoundSentence;
+    private string? _chestMvSentence;
+    private string? _edemaSentence;
+    private string? _neuropathySentence;
 
     public void OnColumnAChanged(object? sender, RoutedEventArgs routedEventArgs)
     {
@@ -114,9 +119,21 @@ public partial class EsamiObiettivoUserControl : UserControl
                 }
                 UpdateEdemaSentence();
                 break;
+            case "DependentEdemaType":
+                _currentVisitEo!.DependentEdemaType = value;
+                UpdateEdemaSentence();
+                break;
+            case "DependentEdemaLocation":
+                _currentVisitEo!.DependentEdemaLocation = value;
+                UpdateEdemaSentence();
+                break;
+            case "DependentEdemaFovea":
+                _currentVisitEo!.DependentEdemaFovea = value;
+                UpdateEdemaSentence();
+                break;
             case "PeripheralNeuropathy":
                 _currentVisitEo!.PeripheralNeuropathy = value == "True";
-                UpdateNeuropathyentence();
+                UpdateNeuropathySentence();
                 break;
         }
         UpdateColumnBDescription();
@@ -125,38 +142,76 @@ public partial class EsamiObiettivoUserControl : UserControl
     //Doesn't make sense to have multiple update methods for these easy-to-build sentences
     private void UpdateBloodPressureSentence()
     {
-       
+        var bloodPressureSentenceStringBuilder = new StringBuilder();
+       if (_currentVisitEo!.MinimumBloodPressure is not null)  bloodPressureSentenceStringBuilder.Append($"PA min: {_currentVisitEo.MinimumBloodPressure} mmHg. ");
+       if (_currentVisitEo!.MaximumBloodPressure is not null)  bloodPressureSentenceStringBuilder.Append($"PA max: {_currentVisitEo.MaximumBloodPressure} mmHg. ");
+       if (_currentVisitEo!.HeartRate is not null)  bloodPressureSentenceStringBuilder.Append($"FC: {_currentVisitEo.HeartRate} bpm. ");
+       _bloodPressureSentence = bloodPressureSentenceStringBuilder.ToString();
     }
     
     private void UpdateTgAndRegSentence()
     {
-       
+       var tgAndRegSentenceStringBuilder = new StringBuilder();
+       tgAndRegSentenceStringBuilder.Append("Turgore giugulare ");
+       tgAndRegSentenceStringBuilder.Append(_currentVisitEo!.JugularVenousDistension ? "presente. " : "assente. ");
+
+       tgAndRegSentenceStringBuilder.Append("REG ");
+       tgAndRegSentenceStringBuilder.Append(_currentVisitEo!.Rheoencephalography ? "presente.\n" : "assente.\n");
+       _tgAndRegSentence = tgAndRegSentenceStringBuilder.ToString();
     }
     
     private void UpdateHeartSoundSentence()
     {
-       
+        var heartSoundSentenceStringBuilder = new StringBuilder();
+        heartSoundSentenceStringBuilder.Append("Toni cardiaci ");
+        heartSoundSentenceStringBuilder.Append($"{_currentVisitEo!.HeartSoundType}, con andamenti ");
+        heartSoundSentenceStringBuilder.Append($"{_currentVisitEo.HeartSoundRhythm} e con pause ");
+        heartSoundSentenceStringBuilder.Append($"{_currentVisitEo.HeartSoundPauses}.\n");
+        
+        _heartSoundSentence = heartSoundSentenceStringBuilder.ToString();
     }
     
     private void UpdateChestMvSentence()
     {
-       
+        var chestMvSentenceStringBuilder = new StringBuilder();
+        chestMvSentenceStringBuilder.Append("Al torace risulta MV ");
+        chestMvSentenceStringBuilder.Append($"{_currentVisitEo!.ChestMv}, {_currentVisitEo!.ChestNoises}.\n");
+        _chestMvSentence = chestMvSentenceStringBuilder.ToString();
     }
     
     private void UpdateEdemaSentence()
     {
-       
+        var edemaSentenceStringBuilder = new StringBuilder();
+        if (_currentVisitEo!.DependentEdema)
+        {
+            edemaSentenceStringBuilder.Append("Edemi declivi ");
+            edemaSentenceStringBuilder.Append($"{_currentVisitEo.DependentEdemaType} a localizzazione ");
+            edemaSentenceStringBuilder.Append($"{_currentVisitEo.DependentEdemaLocation} con fovea {_currentVisitEo.DependentEdemaFovea}.\n");
+        }
+        else
+        {
+            edemaSentenceStringBuilder.Append("Non edemi declivi.\n");
+        }
+        _edemaSentence = edemaSentenceStringBuilder.ToString();
     }
     
-    private void UpdateNeuropathyentence()
-    {
-       
+    private void UpdateNeuropathySentence()
+    { 
+        var neuropathySentenceStringBuilder = new StringBuilder();
+        neuropathySentenceStringBuilder.Append("Neuropatia periferica ");
+        neuropathySentenceStringBuilder.Append(_currentVisitEo!.PeripheralNeuropathy ? "presente." : "assente.");
+        _neuropathySentence = neuropathySentenceStringBuilder.ToString();
     }
     
     public void LoadEsamiObiettivoContent(VisitEo currentVisitEo)
     {
         _currentVisitEo = currentVisitEo;
         UpdateBloodPressureSentence();
+        UpdateTgAndRegSentence();
+        UpdateHeartSoundSentence();
+        UpdateChestMvSentence();
+        UpdateEdemaSentence();
+        UpdateNeuropathySentence();
         UpdateColumnBDescription();
     }
 
@@ -164,6 +219,11 @@ public partial class EsamiObiettivoUserControl : UserControl
     {
         var columnBDescriptionStringBuilder = new StringBuilder();
         columnBDescriptionStringBuilder.Append(_bloodPressureSentence);
+        columnBDescriptionStringBuilder.Append(_tgAndRegSentence);
+        columnBDescriptionStringBuilder.Append(_heartSoundSentence);
+        columnBDescriptionStringBuilder.Append(_chestMvSentence);
+        columnBDescriptionStringBuilder.Append(_edemaSentence);
+        columnBDescriptionStringBuilder.Append(_neuropathySentence);
 
         Dispatcher.UIThread.Post(() => { _columnBDescription!.Text = columnBDescriptionStringBuilder.ToString(); });
     }

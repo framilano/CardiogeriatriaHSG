@@ -119,7 +119,7 @@ public partial class EsamiEmaticiUserControl : UserControl
         else if (updatedField is "NtProBnp" or "All") _ntProBnpSentence = _currentVisitEe!.NtProBnp is null ? null : $"NTproBNP {_currentVisitEe!.NtProBnp}ng/L. ";
         else if (updatedField is "Bnp" or "All") _bnpSentence = _currentVisitEe!.Bnp is null ? null : $"BNP {_currentVisitEe!.Bnp}ng/L. ";
         else if (updatedField is "Albumin" or "All") _albuminSentence = _currentVisitEe!.Albumin is null ? null : $"ALB {_currentVisitEe!.Albumin}g/L. ";
-        else _albuminuriaSentence = _currentVisitEe!.Albuminuria is null ? null : $"U-Alb {_currentVisitEe!.Albuminuria}mg/L. ";
+        else _albuminuriaSentence = _currentVisitEe!.Albuminuria is null ? null : $"U-Alb {_currentVisitEe!.Albuminuria}mg/L.";
     }
     
     public void LoadEsamiEmaticiContent(VisitEe currentVisitEe)

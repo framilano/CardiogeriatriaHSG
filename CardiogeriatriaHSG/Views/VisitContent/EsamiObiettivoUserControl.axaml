@@ -20,12 +20,12 @@
                                 <NumericUpDown Minimum="40" Maximum="200" Grid.Row="0" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="MinimumBloodPressure" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEo.MinimumBloodPressure}" />                           
                                 <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="mmHg" />
                                 <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericFieldLabel" Text="MaxPA " />
-                                <NumericUpDown Minimum="0" Maximum="20" Grid.Row="1" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="MaximumBloodPressure" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEo.MaximumBloodPressure}" />                           
+                                <NumericUpDown Minimum="40" Maximum="200" Grid.Row="1" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="MaximumBloodPressure" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEo.MaximumBloodPressure}" />                           
                                 <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="mmHg" />
                                 
                                 <!-- Ritmo Cardiaco -->
                                 <TextBlock Grid.Row="2" Grid.Column="0" Classes="GenericFieldLabel" Text="FC " />
-                                <NumericUpDown Minimum="0" Maximum="20" Grid.Row="2" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="HeartRate" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEo.HeartRate}" />                           
+                                <NumericUpDown Minimum="0" Maximum="200" Grid.Row="2" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="HeartRate" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEo.HeartRate}" />                           
                                 <TextBlock Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="bpm" />
                                 
                                 <!-- Heart Sound -->

@@ -32,10 +32,10 @@ public class StringChoices
     //Esami Obiettivo
     public static readonly List<string> HeartSoundTypes = ["validi", "parafonici"];  
     public static readonly List<string> HeartSoundRhythmTypes = ["ritmici", "aritmici"];  
-    public static readonly List<string> HeartSoundPausesTypes = ["pause libere", "SS 2/6", "SS 4/6", "SS 5/6"];
+    public static readonly List<string> HeartSoundPausesTypes = ["libere", "SS 2/6", "SS 4/6", "SS 5/6"];
     public static readonly List<string> ChestMvTypes = ["presente", "ridotto", "abolito alle basi"];  
     public static readonly List<string> ChestNoisesTypes = ["senza rumori aggiunti", "crepitii alle basi", "crepitii ai campi mediobasali", "ronchi", "rumori da secrezione", "broncospasmo"];  
-    public static readonly List<string> DependentEdemaTypes = ["bilaterali ", "unilaterali"];
+    public static readonly List<string> DependentEdemaTypes = ["bilaterali", "unilaterali"];
     public static readonly List<string> DependentEdemaLocations = ["perimalleolare", "1/3 inferiore gamba", "ginocchia", "radice arti"];  
     public static readonly List<string> DependentEdemaFoveas = ["+", "++", "+++"];  
 }
