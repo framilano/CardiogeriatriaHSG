@@ -6,6 +6,7 @@
         x:Class="CardiogeriatriaHSG.Views.MainWindow"
         Title="Cardiogeriatria HSG"
         x:DataType="viewmodels:MainWindowViewModel"
+        Icon="/Assets/hsg.png"
         xmlns:viewmodels="clr-namespace:CardiogeriatriaHSG.ViewModels">
 
     <ContentControl Content="{Binding CurrentPage}" />
