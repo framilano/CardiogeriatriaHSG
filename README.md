@@ -1,5 +1,8 @@
 # CardiogeriatriaHSG
 
+<img width="1934" height="1043" alt="immagine" src="https://github.com/user-attachments/assets/cadacd46-8ae8-4925-bf65-d27dc7f11ab9" />
+
+
 ### Building
 ```
 #Windows
