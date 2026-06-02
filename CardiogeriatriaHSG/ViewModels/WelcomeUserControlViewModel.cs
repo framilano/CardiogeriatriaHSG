@@ -26,7 +26,7 @@ public partial class WelcomeUserControlViewModel : ObservableObject
     [ObservableProperty]
     public partial string UserCodeTextBox { get; set; }
     
-    private string UserCodeTextBoxSha256B64 { get; set; }
+    private string? UserCodeTextBoxSha256B64 { get; set; }
 
     [ObservableProperty]
     public partial string? ErrorMessage { get; set; }
@@ -55,7 +55,7 @@ public partial class WelcomeUserControlViewModel : ObservableObject
         LastVisitsListVisibility = false;
 
         CreateVisitBtnVisibility = true;
-        var visits = _databaseService.RetrieveVisitsByPatientCode(UserCodeTextBoxSha256B64);
+        var visits = _databaseService.RetrieveVisitsByPatientCode(UserCodeTextBoxSha256B64!);
         if (visits.Count <= 0)
         {
             ErrorMessage = $"{UserCodeTextBox} non ha visite associate";
