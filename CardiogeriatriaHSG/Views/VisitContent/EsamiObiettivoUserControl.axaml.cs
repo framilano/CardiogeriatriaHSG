@@ -33,6 +33,7 @@ public partial class EsamiObiettivoUserControl : UserControl
     private string? _chestMvSentence;
     private string? _edemaSentence;
     private string? _neuropathySentence;
+    private string? _orthostaticHypotensionSentence;
 
     public void OnColumnAChanged(object? sender, RoutedEventArgs routedEventArgs)
     {
@@ -135,6 +136,10 @@ public partial class EsamiObiettivoUserControl : UserControl
                 _currentVisitEo!.PeripheralNeuropathy = value == "True";
                 UpdateNeuropathySentence();
                 break;
+            case "OrthostaticHypotension":
+                _currentVisitEo!.OrthostaticHypotension = value == "True";
+                UpdateOrthostaticHypotensionSentence();
+                break;
         }
         UpdateColumnBDescription();
     }
@@ -199,8 +204,16 @@ public partial class EsamiObiettivoUserControl : UserControl
     { 
         var neuropathySentenceStringBuilder = new StringBuilder();
         neuropathySentenceStringBuilder.Append("Neuropatia periferica ");
-        neuropathySentenceStringBuilder.Append(_currentVisitEo!.PeripheralNeuropathy ? "presente." : "assente.");
+        neuropathySentenceStringBuilder.Append(_currentVisitEo!.PeripheralNeuropathy ? "presente.\n" : "assente.\n");
         _neuropathySentence = neuropathySentenceStringBuilder.ToString();
+    }
+    
+    private void UpdateOrthostaticHypotensionSentence()
+    { 
+        var orthostaticHypotensionSentenceStringBuilder = new StringBuilder();
+        orthostaticHypotensionSentenceStringBuilder.Append("Prove di ipotensione ortostatica: ");
+        orthostaticHypotensionSentenceStringBuilder.Append(_currentVisitEo!.OrthostaticHypotension ? "positive." : "negative.");
+        _orthostaticHypotensionSentence = orthostaticHypotensionSentenceStringBuilder.ToString();
     }
     
     public void LoadEsamiObiettivoContent(VisitEo currentVisitEo)
@@ -212,6 +225,7 @@ public partial class EsamiObiettivoUserControl : UserControl
         UpdateChestMvSentence();
         UpdateEdemaSentence();
         UpdateNeuropathySentence();
+        UpdateOrthostaticHypotensionSentence();
         UpdateColumnBDescription();
     }
 
@@ -224,7 +238,8 @@ public partial class EsamiObiettivoUserControl : UserControl
         columnBDescriptionStringBuilder.Append(_chestMvSentence);
         columnBDescriptionStringBuilder.Append(_edemaSentence);
         columnBDescriptionStringBuilder.Append(_neuropathySentence);
-
+        columnBDescriptionStringBuilder.Append(_orthostaticHypotensionSentence);
+        
         Dispatcher.UIThread.Post(() => { _columnBDescription!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
 }

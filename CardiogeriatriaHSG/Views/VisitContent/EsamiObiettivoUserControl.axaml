@@ -68,6 +68,10 @@
                                 <TextBlock Grid.Row="15" Grid.Column="0" Classes="GenericFieldLabel" Text="Neuropatia periferica  "/>
                                 <CheckBox Grid.Row="15" Grid.Column="1" Tag="PeripheralNeuropathy" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEo.PeripheralNeuropathy}"></CheckBox>
 
+                                <!-- Ipotensione ortostatica -->
+                                <TextBlock Grid.Row="16" Grid.Column="0" Classes="GenericFieldLabel" Text="Ipotensione ortostatica  "/>
+                                <CheckBox Grid.Row="16" Grid.Column="1" Tag="OrthostaticHypotension" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEo.OrthostaticHypotension}"></CheckBox>
+
                             </Grid>
                         </WrapPanel>
                     </ScrollViewer>
