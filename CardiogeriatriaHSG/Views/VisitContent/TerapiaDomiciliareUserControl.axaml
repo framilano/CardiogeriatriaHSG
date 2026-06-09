@@ -11,10 +11,8 @@
                 <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
             </UserControl.Styles>
     
-             <Grid
-                ColumnDefinitions="*, *">
-                        <Border Classes="ColumnBorder"
-                                Grid.Column="0">
+             <Grid ColumnDefinitions="*, *">
+                 <Border Classes="ColumnBorder" Grid.Column="0">
                     <ScrollViewer>
                         <WrapPanel Classes="ColumnAWrapPanel">
                             <WrapPanel Orientation="Horizontal">

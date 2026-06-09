@@ -137,7 +137,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
         {
             PatientCode = patientCode,
             Gender = "F",
-            DateOfBirth = DateTime.UnixEpoch
+            DateOfBirth = DateTime.Now.Subtract(TimeSpan.FromDays(365 * 80))
         };
         Log.Information("[START] Created new Patient {PatientCode}", patientCode);
         return patient;
