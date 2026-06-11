@@ -13,8 +13,8 @@
     
              <Grid ColumnDefinitions="*, *">
                  <Border Classes="ColumnBorder" Grid.Column="0">
-                    <ScrollViewer>
-                        <WrapPanel Classes="ColumnAWrapPanel">
+                    <ScrollViewer Name="Scroller">
+                        <WrapPanel Width="{Binding #Scroller.Bounds.Width}" Classes="ColumnAWrapPanel">
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Integrazione proteica con dieta/integratore alimentare "/>
                                 <CheckBox IsChecked="{Binding CurrentVisitTd.ProteinSupplementation}"/>

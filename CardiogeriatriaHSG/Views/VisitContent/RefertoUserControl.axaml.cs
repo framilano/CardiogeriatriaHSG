@@ -26,7 +26,7 @@ public partial class RefertoUserControl : UserControl
             var esamiObiettivoUserControl = new EsamiObiettivoUserControl();
             esamiObiettivoUserControl.LoadEsamiObiettivoContent(currentVisit.VisitEo!);
             Dispatcher.UIThread.Post(() => { 
-                AnagraficaContent.Text = anagraficaUserControl.ColumnBDescription.Text;
+                AnagraficaContent.Text = anagraficaUserControl.AutomaticColumnB.Text;
                 AnamnesiGeriatricaContent.Text = anamnesiGeriatricaUserControl.ColumnBDescription.Text;
                 AnamnesiPatologicaRemotaContent.Text = currentVisit.VisitApr!.AprText;
                 TerapiaDomiciliareContent.Text = currentVisit.VisitTd!.TdText;

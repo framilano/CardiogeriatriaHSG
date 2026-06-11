@@ -22,12 +22,47 @@
         <Setter Property="BorderThickness" Value="2"/>
     </Style>
     
+    <!-- ColumnB generic TextBox (follows theme) -->
+    
     <Style Selector="TextBox.ColumnBTextBox">
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="AcceptsReturn" Value="True"/>
         <Setter Property="Padding" Value="15 15 60 15"/>
         <Setter Property="MaxLength" Value="3000"/>
     </Style>
+    
+    <!-- ColumnBWhiteTextBox Theme Overrides -->
+    
+    <Style Selector="TextBox.ColumnBWhiteTextBox /template/ Border#PART_BorderElement">
+        <Setter Property="Background" Value="White"/>
+    </Style>
+    
+    <Style Selector="TextBox.ColumnBWhiteTextBox /template/ Border#PART_BorderElement">
+        <Setter Property="Background" Value="White"/>
+    </Style>
+
+    <Style Selector="TextBox.ColumnBWhiteTextBox:pointerover /template/ Border#PART_BorderElement">
+        <Setter Property="Background" Value="White"/>
+    </Style>
+
+    <Style Selector="TextBox.ColumnBWhiteTextBox:focus /template/ Border#PART_BorderElement">
+        <Setter Property="Background" Value="White"/>
+    </Style>
+
+    <Style Selector="TextBox.ColumnBWhiteTextBox:disabled /template/ Border#PART_BorderElement">
+        <Setter Property="Background" Value="White"/>
+    </Style>
+    
+    <Style Selector="TextBox.ColumnBWhiteTextBox">
+        <Setter Property="Background" Value="White"/>
+        <Setter Property="Foreground" Value="Black"/>
+        <Setter Property="CaretBrush" Value="Black"/>    
+        <Setter Property="AcceptsReturn" Value="True"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+        <Setter Property="MaxLength" Value="3000"/>
+    </Style>
+    
+    <!-- ColumnB TextBlocks -->
     
     <Style Selector="TextBlock.ColumnBTextBlock">
         <Setter Property="TextWrapping" Value="Wrap"/>

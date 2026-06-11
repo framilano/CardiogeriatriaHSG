@@ -13,9 +13,9 @@
     </UserControl.Styles>
     
     <Grid
-        ColumnDefinitions="*, *">
+        ColumnDefinitions="*, *" RowDefinitions="*, *">
         <Border Classes="ColumnBorder"
-                Grid.Column="0">
+                Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
             <WrapPanel Classes="ColumnAWrapPanel">
                 <WrapPanel Orientation="Horizontal">
                     <TextBlock Classes="GenericFieldLabel" Text="Data di nascita "/>
@@ -27,9 +27,11 @@
                 </WrapPanel>
             </WrapPanel>
         </Border>
-        <Border Classes="ColumnBorder"
-                Grid.Column="1">
-            <TextBlock Classes="ColumnBTextBlock" Name="ColumnBDescription"></TextBlock>
+        <Border Classes="ColumnBorder" Grid.Column="1" Grid.Row="0">
+            <SelectableTextBlock Classes="ColumnBSelectableTextBlock" Name="AutomaticColumnB"></SelectableTextBlock>
+        </Border>
+        <Border Classes="ColumnBorder" Grid.Column="1" Grid.Row="1">
+            <TextBox Classes="ColumnBWhiteTextBox" Name="ManualColumnB"></TextBox>
         </Border>
     </Grid>
 </UserControl>

@@ -13,7 +13,6 @@ public partial class AnagraficaUserControl : UserControl
     public AnagraficaUserControl()
     {
         InitializeComponent();
-        _columnBDescription = this.Find<TextBlock>("ColumnBDescription");
         DataContextChanged += (_, __) =>
         {
             if (DataContext is not AnagraficaUserControlViewModel viewModel) return;
@@ -27,7 +26,6 @@ public partial class AnagraficaUserControl : UserControl
     private DateTimeOffset _visitTimestamp;
 
     private string? _registrySentence;
-    private readonly TextBlock? _columnBDescription;
 
     public void OnColumnAChanged(object? sender, RoutedEventArgs routedEventArgs)
     {
@@ -70,6 +68,6 @@ public partial class AnagraficaUserControl : UserControl
     {
         var columnBDescriptionStringBuilder = new StringBuilder();
         columnBDescriptionStringBuilder.Append(_registrySentence);
-        Dispatcher.UIThread.Post(() => { _columnBDescription!.Text = columnBDescriptionStringBuilder.ToString(); });
+        Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
 }
