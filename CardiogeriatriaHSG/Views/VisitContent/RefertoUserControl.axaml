@@ -41,6 +41,10 @@
                 <LineBreak/>
                 <Run Name="EsamiObiettivoContent"/>
                 <LineBreak/><LineBreak/>
+                <Run FontWeight="Bold" Text="Ecografia Toracica" />
+                <LineBreak/>
+                <Run Name="EcografiaToracicaContent"/>
+                <LineBreak/><LineBreak/>
             </SelectableTextBlock>
         </ScrollViewer>
     </Border>

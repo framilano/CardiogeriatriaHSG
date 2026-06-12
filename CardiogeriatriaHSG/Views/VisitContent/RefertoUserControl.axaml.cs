@@ -25,6 +25,8 @@ public partial class RefertoUserControl : UserControl
             esamiEmaticiUserControl.LoadEsamiEmaticiContent(currentVisit.VisitEe!);
             var esamiObiettivoUserControl = new EsamiObiettivoUserControl();
             esamiObiettivoUserControl.LoadEsamiObiettivoContent(currentVisit.VisitEo!);
+            var ecografiaToracicaUserControl = new EcografiaToracicaUserControl();
+            ecografiaToracicaUserControl.LoadEcografiaToracicaContent(currentVisit.VisitEco!);
             Dispatcher.UIThread.Post(() => { 
                 AnagraficaContent.Text = anagraficaUserControl.AutomaticColumnB.Text;
                 AnamnesiGeriatricaContent.Text = anamnesiGeriatricaUserControl.ColumnBDescription.Text;
@@ -33,6 +35,7 @@ public partial class RefertoUserControl : UserControl
                 RaccordoClinicoContent.Text = raccordoClinicoUserControl.ColumnBDescription.Text;
                 EsamiEmaticiContent.Text = esamiEmaticiUserControl.ColumnBDescription.Text;
                 EsamiObiettivoContent.Text = esamiObiettivoUserControl.ColumnBDescription.Text;
+                EcografiaToracicaContent.Text = ecografiaToracicaUserControl.AutomaticColumnB.Text;
             });
         };
     }

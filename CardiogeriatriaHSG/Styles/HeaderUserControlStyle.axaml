@@ -1,0 +1,7 @@
+﻿<Styles xmlns="https://github.com/avaloniaui">
+    <Style Selector="TextBlock.GenericFieldLabel">
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+</Styles>

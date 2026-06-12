@@ -141,6 +141,10 @@ public class DatabaseService
         _visitRepository.LoadVisitEoByVisit(visit);
         Log.Information("[STOP] Loaded visit EO data for visit {VisitVisitCode}", visit.VisitCode);
     }
-
-
+    
+    public void LoadVisitEcografiaToracicaByVisit(Visit visit) {
+        Log.Debug("[START] Loading visit ECO data for visit {VisitVisitCode}", visit.VisitCode);
+        _visitRepository.LoadVisitEcoByVisit(visit);
+        Log.Information("[STOP] Loaded visit ECO data for visit {VisitVisitCode}", visit.VisitCode);
+    }
 }

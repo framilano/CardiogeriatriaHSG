@@ -100,6 +100,11 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 CurrentVisit.VisitEe ??= CreateNewVisitEe(CurrentVisit.VisitCode!);
                 CurrentContent = new EsamiEmaticiUserControl { DataContext = new EsamiEmaticiUserControlViewModel(CurrentVisit.VisitEe) };
                 break;
+            case "ECO":
+                if (CurrentVisit.VisitEco is null) _databaseService.LoadVisitEcografiaToracicaByVisit(CurrentVisit);
+                CurrentVisit.VisitEco ??= CreateNewVisitEco(CurrentVisit.VisitCode!);
+                CurrentContent = new EcografiaToracicaUserControl { DataContext = new EcografiaToracicaUserControlViewModel(CurrentVisit.VisitEco) };
+                break;
             case "Esami Obiettivo":
                 if (CurrentVisit.VisitEo is null) _databaseService.LoadVisitEsamiObiettivoByVisit(CurrentVisit);
                 CurrentVisit.VisitEo ??= CreateNewVisitEo(CurrentVisit.VisitCode!);
@@ -113,6 +118,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 if (CurrentVisit.VisitRc is null) { _databaseService.LoadVisitRaccordoClinicoByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitEe is null) { _databaseService.LoadVisitEsamiEmaticiByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitEo is null) { _databaseService.LoadVisitEsamiObiettivoByVisit(CurrentVisit); }
+                if (CurrentVisit.VisitEco is null) { _databaseService.LoadVisitEcografiaToracicaByVisit(CurrentVisit); }
 
                 //If still null after loading from DB, we create new Visits elements
                 CurrentVisit.VisitAg ??= CreateNewVisitAg(CurrentVisit.VisitCode!);
@@ -121,6 +127,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 CurrentVisit.VisitRc ??= CreateNewVisitRc(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitEe ??= CreateNewVisitEe(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitEo ??= CreateNewVisitEo(CurrentVisit.VisitCode!);
+                CurrentVisit.VisitEco ??= CreateNewVisitEco(CurrentVisit.VisitCode!);
 
                 CurrentContent = new RefertoUserControl { DataContext = new RefertoUserControlViewModel(CurrentVisit) };
                 break;
@@ -337,6 +344,32 @@ public partial class VisitUserControlViewModel : ViewModelBase
         
         Log.Information("[STOP] Created new VisitEo");
         return visitEo;
+    }
+    
+    private static VisitEco CreateNewVisitEco(string visitCode)
+    {
+        Log.Debug("[START] Creating new VisitEco...");
+        var visitEco = new VisitEco(visitCode)
+        {
+            PleuralLine = false,
+            IrregularPleuralLine = false,
+            PatternA = false,
+            BLines = false,
+            CoalescentBLines = false,
+            GradientDistributionBLines = false,
+            ConsiderationBLines = false,
+            RightPefs = 0,
+            LeftPefs = 0,
+            MeasurableIvc = false,
+            IvcDiameter = null,
+            IvcCollapsibility = null,
+            Vexus = null,
+            PortalVeinPulsatility = null,
+
+        };
+        
+        Log.Information("[STOP] Created new VisitEco");
+        return visitEco;
     }
     
     [RelayCommand]

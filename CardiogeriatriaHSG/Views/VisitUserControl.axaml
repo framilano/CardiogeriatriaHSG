@@ -4,8 +4,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:viewModels="clr-namespace:CardiogeriatriaHSG.ViewModels"
              xmlns:views="clr-namespace:CardiogeriatriaHSG.Views"
-             xmlns:viewmodels="clr-namespace:CardiogeriatriaHSG.ViewModels.VisitContent"
-             xmlns:visitContent="clr-namespace:CardiogeriatriaHSG.Views.VisitContent"
              mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
              x:Class="CardiogeriatriaHSG.Views.VisitUserControl"
              x:DataType="viewModels:VisitUserControlViewModel">

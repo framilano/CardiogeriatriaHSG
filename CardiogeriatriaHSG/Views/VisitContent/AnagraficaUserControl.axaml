@@ -14,8 +14,7 @@
     
     <Grid
         ColumnDefinitions="*, *" RowDefinitions="*, *">
-        <Border Classes="ColumnBorder"
-                Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
+        <Border Classes="ColumnBorder" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
             <WrapPanel Classes="ColumnAWrapPanel">
                 <WrapPanel Orientation="Horizontal">
                     <TextBlock Classes="GenericFieldLabel" Text="Data di nascita "/>

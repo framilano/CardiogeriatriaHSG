@@ -38,4 +38,8 @@ public class StringChoices
     public static readonly List<string> DependentEdemaTypes = ["bilaterali", "unilaterali"];
     public static readonly List<string> DependentEdemaLocations = ["perimalleolare", "1/3 inferiore gamba", "ginocchia", "radice arti"];  
     public static readonly List<string> DependentEdemaFoveas = ["+", "++", "+++"];  
+    //Ecografia Toracica
+    public static readonly List<string> IvcDiameterTypes = ["≥ 2cm", "< 2cm"];  
+    public static readonly List<string> IvcCollapsibilityTypes = ["≥ 50%", "< 50%"];  
+    public static readonly List<string> PortalVeinPulsatilityTypes = ["normale (< 30%)", "lievemente anormale (tra il 30% e il 49%)", "severamente anormale (≥ 50%)"];  
 }
