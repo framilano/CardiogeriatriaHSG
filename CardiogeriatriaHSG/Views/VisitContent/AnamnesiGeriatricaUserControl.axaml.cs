@@ -75,12 +75,12 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
                 if (_currentVisitAg!.MotorSkill != StringChoices.MotorSkillTypes[0])
                 {
                     _currentVisitAg!.WalkingType ??= StringChoices.WalkingTypes[0];
-                    WalkingTypeWrapPanel.IsVisible = true;
+                    Dispatcher.UIThread.Post(() => WalkingTypeWrapPanel.IsVisible = true);
                 }
                 else
                 {
                     _currentVisitAg!.WalkingType = null;
-                    WalkingTypeWrapPanel.IsVisible = false;
+                    Dispatcher.UIThread.Post(() => WalkingTypeWrapPanel.IsVisible = false);
                 }
                 UpdateWalkingSentence();
                 break;

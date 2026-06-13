@@ -13,12 +13,65 @@
                 <Border Classes="ColumnBorder" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2">
                     <ScrollViewer>
                         <WrapPanel Orientation="Vertical" Classes="ColumnAWrapPanel">
-                            <Grid ColumnDefinitions="*, *, *" RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *">
+                            <Grid ColumnDefinitions="*, *" RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *">
                                 <!-- PleuralLine -->
-                                <TextBlock Grid.Row="3" Grid.Column="0" Classes="GenericFieldLabel" Text="Linea pleurica: sliding  "/>
-                                <CheckBox Grid.Row="3" Grid.Column="1" Tag="PleuralLine" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.PleuralLine}"></CheckBox>
-                                <TextBlock Grid.Row="4" Grid.Column="0" Classes="GenericFieldLabel" Text="Irregolarità linea pleurica  "/>
-                                <CheckBox Grid.Row="4" Grid.Column="1" Tag="IrregularPleuralLine" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.IrregularPleuralLine}"></CheckBox>
+                                <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="Linea pleurica: sliding "/>
+                                <CheckBox Grid.Row="0" Grid.Column="1" Tag="PleuralLine" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.PleuralLine}"></CheckBox>
+                                <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericFieldLabel" Text="Irregolarità linea pleurica "/>
+                                <CheckBox Grid.Row="1" Grid.Column="1" Tag="IrregularPleuralLine" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.IrregularPleuralLine}"></CheckBox>
+                                <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"><LineBreak/></TextBlock>
+
+                                <!-- Pattern A -->
+                                <TextBlock Grid.Row="3" Grid.Column="0" Classes="GenericFieldLabel" Text="Pattern A "/>
+                                <CheckBox Grid.Row="3" Grid.Column="1" Tag="PatternA" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.PatternA}"></CheckBox>
+                                <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="2"><LineBreak/></TextBlock>
+                                
+                                <!-- Linee B -->
+                                <TextBlock Grid.Row="5" Grid.Column="0" Classes="GenericFieldLabel" Text="Linee B "/>
+                                <CheckBox Grid.Row="5" Grid.Column="1" Tag="BLines" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.BLines}"></CheckBox>
+                                <WrapPanel Name="BLinesWrapPanel" IsVisible="False" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
+                                    <Grid RowDefinitions="*, *, *" ColumnDefinitions="*, *">
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="‣ Linee B coalescenti "/>
+                                        <CheckBox Grid.Row="0" Grid.Column="1" Tag="CoalescentBLines" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.CoalescentBLines}"></CheckBox>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericFieldLabel" Text="‣ Linee B con gradiente di distribuzione "/>
+                                        <CheckBox Grid.Row="1" Grid.Column="1" Tag="GradientDistributionBLines" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.GradientDistributionBLines}"></CheckBox>
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Classes="GenericFieldLabel" Text="‣ Linee B > 3 per campo in almeno 2 campi"/>
+                                        <CheckBox Grid.Row="2" Grid.Column="1" Tag="ConsiderationBLines" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.ConsiderationBLines}"></CheckBox>
+                                    </Grid>
+                                </WrapPanel>
+                                <TextBlock Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"><LineBreak/></TextBlock>
+                                
+                                <!-- PEFS -->
+                                <TextBlock Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Classes="GenericFieldLabel" Text="PEFS"/>
+                                <WrapPanel Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2">
+                                    <Grid RowDefinitions="*, *" ColumnDefinitions="*, *">
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Padding="10" Text="‣ Destro" />
+                                        <NumericUpDown Minimum="0" Maximum="4" Grid.Row="0" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0" Increment="1" Tag="RightPefs" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEco.RightPefs}" />                           
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Padding="10" Text="‣ Sinistro" />
+                                        <NumericUpDown Minimum="0" Maximum="4" Grid.Row="1" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0" Increment="1" Tag="LeftPefs" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEco.LeftPefs}" />                           
+                                    </Grid>
+                                </WrapPanel>
+                                <TextBlock Grid.Row="10" Grid.Column="0" Grid.ColumnSpan="2"><LineBreak/></TextBlock>
+
+                                <!-- VCI -->
+                                <TextBlock Grid.Row="11" Grid.Column="0" Classes="GenericFieldLabel" Text="VCI campionabile "/>
+                                <CheckBox Grid.Row="11" Grid.Column="1" Tag="MeasurableIvc" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.MeasurableIvc}"></CheckBox>
+                                <WrapPanel Name="VciWrapPanel" IsVisible="False" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2">
+                                    <Grid RowDefinitions="*, *, *" ColumnDefinitions="*, *">
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Padding="10" Text="‣ Diametro VC " />
+                                        <ComboBox Grid.Row="0" Grid.Column="1" Tag="IvcDiameter" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding IvcDiameterTypes}" SelectedItem="{Binding CurrentVisitEco.IvcDiameter}"/>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Padding="10" Text="‣ Collassabilità " />
+                                        <ComboBox Grid.Row="1" Grid.Column="1" Tag="IvcCollapsibility" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding IvcCollapsibilityTypes}" SelectedItem="{Binding CurrentVisitEco.IvcCollapsibility}"/>
+                                        <WrapPanel Name="VciGreaterThanTwoWrapPanel" IsVisible="False" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+                                            <Grid RowDefinitions="*, *" ColumnDefinitions="*, *">
+                                                <TextBlock Grid.Row="0" Grid.Column="0" Padding="10" Text="° Vexus " />
+                                                <NumericUpDown Minimum="0" Maximum="3" Grid.Row="0" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0" Increment="1" Tag="Vexus" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEco.Vexus}" />                           
+                                                <TextBlock Grid.Row="1" Grid.Column="0" Padding="10" Text="° Pulsatilità porta " />
+                                                <ComboBox Grid.Row="1" Grid.Column="1" Tag="PortalVeinPulsatility" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding PortalVeinPulsatilityTypes}" SelectedItem="{Binding CurrentVisitEco.PortalVeinPulsatility}"/>
+                                            </Grid>
+                                        </WrapPanel>
+                                    </Grid>
+                                </WrapPanel>
                             </Grid>
                         </WrapPanel>
                     </ScrollViewer>

@@ -1,5 +1,6 @@
 ﻿using Avalonia.Controls;
 using Avalonia.Interactivity;
+using Avalonia.Threading;
 using CardiogeriatriaHSG.Models;
 using CardiogeriatriaHSG.ViewModels.VisitContent;
 
@@ -31,12 +32,12 @@ public partial class TerapiaDomiciliareUserControl : UserControl
         if (_currentVisitTd.Furosemide)
         {
             _currentVisitTd.FurosemideDose ??= 0;
-            FurosemideDoseWrapPanel.IsVisible = true;
+            Dispatcher.UIThread.Post(() => FurosemideDoseWrapPanel.IsVisible = true);
         }
         else
         {
             _currentVisitTd.FurosemideDose = null;
-            FurosemideDoseWrapPanel.IsVisible = false;
+            Dispatcher.UIThread.Post(() => FurosemideDoseWrapPanel.IsVisible = false);
         }
     }
 }

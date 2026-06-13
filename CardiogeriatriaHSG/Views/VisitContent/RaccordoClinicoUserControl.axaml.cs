@@ -94,15 +94,15 @@ public partial class RaccordoClinicoUserControl : UserControl
                 {
                     _currentVisitRc!.FallsSinceLastVisitNumber ??= 0;
                     _currentVisitRc!.FallsSinceLastVisitType ??= StringChoices.FallsSinceLastVisitTypes[0];
-                    _currentVisitRc!.FallsSinceLastVisitDiagnosis ??= StringChoices.FallsSinceLastVisitDiagnosis[0];;
-                    FallsSinceLastVisitWrapPanel.IsVisible = true;
+                    _currentVisitRc!.FallsSinceLastVisitDiagnosis ??= StringChoices.FallsSinceLastVisitDiagnosis[0];
+                    Dispatcher.UIThread.Post(() => FallsSinceLastVisitWrapPanel.IsVisible = true);
                 }
                 else
                 {
-                    _currentVisitRc!.FallsSinceLastVisitNumber ??= null;
-                    _currentVisitRc!.FallsSinceLastVisitType ??= null;
-                    _currentVisitRc!.FallsSinceLastVisitDiagnosis ??= null;
-                    FallsSinceLastVisitWrapPanel.IsVisible = false;
+                    _currentVisitRc!.FallsSinceLastVisitNumber = null;
+                    _currentVisitRc!.FallsSinceLastVisitType = null;
+                    _currentVisitRc!.FallsSinceLastVisitDiagnosis = null;
+                    Dispatcher.UIThread.Post(() => FallsSinceLastVisitWrapPanel.IsVisible = false);
                 }
                 UpdateFallsSinceLastVisitSentence();
                 break;
@@ -124,13 +124,13 @@ public partial class RaccordoClinicoUserControl : UserControl
                 {
                     _currentVisitRc!.EmergenciesSinceLastVisitNumber ??= 0;
                     _currentVisitRc!.EmergenciesSinceLastVisitCause ??= StringChoices.EmergenciesSinceLastVisitCauses[0];
-                    EmergenciesSinceLastVisitWrapPanel.IsVisible = true;
+                    Dispatcher.UIThread.Post(() => EmergenciesSinceLastVisitWrapPanel.IsVisible = true);
                 }
                 else
                 {
-                    _currentVisitRc!.EmergenciesSinceLastVisitNumber ??= null;
-                    _currentVisitRc!.EmergenciesSinceLastVisitCause ??= null;
-                    EmergenciesSinceLastVisitWrapPanel.IsVisible = false;
+                    _currentVisitRc!.EmergenciesSinceLastVisitNumber = null;
+                    _currentVisitRc!.EmergenciesSinceLastVisitCause = null;
+                    Dispatcher.UIThread.Post(() => EmergenciesSinceLastVisitWrapPanel.IsVisible = false);
                 }
                 UpdateEmergenciesSinceLastVisitSentence();
                 break;
@@ -149,14 +149,14 @@ public partial class RaccordoClinicoUserControl : UserControl
                     _currentVisitRc!.HospitalizationsSinceLastVisitNumber ??= 0;
                     _currentVisitRc!.HospitalizationsSinceLastVisitDays ??= 0;
                     _currentVisitRc!.HospitalizationsSinceLastVisitCause ??= StringChoices.HospitalizationsSinceLastVisitCauses[0];
-                    HospitalizationsSinceLastVisitWrapPanel.IsVisible = true;
+                    Dispatcher.UIThread.Post(() => HospitalizationsSinceLastVisitWrapPanel.IsVisible = true);
                 }
                 else
                 {
-                    _currentVisitRc!.HospitalizationsSinceLastVisitNumber ??= null;
-                    _currentVisitRc!.HospitalizationsSinceLastVisitDays ??= null;
-                    _currentVisitRc!.HospitalizationsSinceLastVisitCause ??= null;
-                    HospitalizationsSinceLastVisitWrapPanel.IsVisible = false;
+                    _currentVisitRc!.HospitalizationsSinceLastVisitNumber = null;
+                    _currentVisitRc!.HospitalizationsSinceLastVisitDays = null;
+                    _currentVisitRc!.HospitalizationsSinceLastVisitCause = null;
+                    Dispatcher.UIThread.Post(() => HospitalizationsSinceLastVisitWrapPanel.IsVisible = false);
                 }
                 UpdateHospitalizationsSinceLastVisitSentence();
                 break;

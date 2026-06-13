@@ -1,11 +1,9 @@
 using System;
-using System.Globalization;
 using System.Text;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using CardiogeriatriaHSG.Models;
-using CardiogeriatriaHSG.Models.enums;
 using CardiogeriatriaHSG.ViewModels.VisitContent;
 
 namespace CardiogeriatriaHSG.Views.VisitContent;
@@ -26,8 +24,11 @@ public partial class EcografiaToracicaUserControl : UserControl
     private VisitEco? _currentVisitEco;
 
     private string? _pleuralLineSentence;
+    private string? _bLinesSentence;
+
     public void OnColumnAChanged(object? sender, RoutedEventArgs routedEventArgs)
     {
+        
         var tag = "";
         var value = "";
         switch (sender)
@@ -37,6 +38,8 @@ public partial class EcografiaToracicaUserControl : UserControl
                 value = box.SelectedValue?.ToString();
                 break;
             case CheckBox box:
+                //This check stops Non-Visible checkboxes to load, we don't have to do this for other Box types (Avalonia doesn't load all their components at start)
+                if (!((WrapPanel)box.Parent!.Parent!).IsVisible) return;
                 tag = (string)box.Tag!;
                 value = box.IsChecked.ToString();
                 break;
@@ -61,6 +64,32 @@ public partial class EcografiaToracicaUserControl : UserControl
                 _currentVisitEco!.IrregularPleuralLine = value == "True";
                 UpdatePleuralLineSentence();
                 break;
+            case "BLines":
+                _currentVisitEco!.BLines = value == "True";
+                if (_currentVisitEco.BLines)
+                {
+                    _currentVisitEco.CoalescentBLines ??= false;
+                    _currentVisitEco.GradientDistributionBLines ??= false;
+                    _currentVisitEco.ConsiderationBLines ??= false;
+                    Dispatcher.UIThread.Post(() => { BLinesWrapPanel.IsVisible = true; });
+                }
+                else
+                {
+                    _currentVisitEco.CoalescentBLines = null;
+                    _currentVisitEco.GradientDistributionBLines = null;
+                    _currentVisitEco.ConsiderationBLines = null;
+                    Dispatcher.UIThread.Post(() => { BLinesWrapPanel.IsVisible = false; });
+                }
+                UpdateBLinesSentence();
+                break;
+            case "CoalescentBLines":
+                _currentVisitEco!.CoalescentBLines = value == "True";
+                UpdateBLinesSentence();
+                break;
+            case "GradientDistributionBLines":
+                _currentVisitEco!.GradientDistributionBLines = value == "True";
+                UpdateBLinesSentence();
+                break;
         }
         UpdateColumnBDescription();
     }
@@ -82,11 +111,30 @@ public partial class EcografiaToracicaUserControl : UserControl
         _pleuralLineSentence = pleuralLineSentenceStringBuilder.ToString();
     }
     
+    private void UpdateBLinesSentence()
+    {
+        var bLinesSentenceStringBuilder = new StringBuilder();
+        if (_currentVisitEco!.BLines)
+        {
+            bLinesSentenceStringBuilder.Append("Linee B presenti, ");
+            bLinesSentenceStringBuilder.Append(_currentVisitEco!.CoalescentBLines.GetValueOrDefault()
+                ? "coalescenti, "
+                : "non coalescenti, ");
+            bLinesSentenceStringBuilder.Append(_currentVisitEco!.GradientDistributionBLines.GetValueOrDefault()
+                ? "con "
+                : "senza ");
+            bLinesSentenceStringBuilder.Append("gradiente di distribuzione.\n");
+        } else bLinesSentenceStringBuilder.Append("Assenza di linee B.\n");
+        
+        _bLinesSentence = bLinesSentenceStringBuilder.ToString();
+    }
+    
     
     public void LoadEcografiaToracicaContent(VisitEco currentVisitEco)
     {
         _currentVisitEco = currentVisitEco;
         UpdatePleuralLineSentence();
+        UpdateBLinesSentence();
         UpdateColumnBDescription();
     }
 
@@ -94,7 +142,7 @@ public partial class EcografiaToracicaUserControl : UserControl
     {
         var columnBDescriptionStringBuilder = new StringBuilder();
         columnBDescriptionStringBuilder.Append(_pleuralLineSentence);
-        
+        columnBDescriptionStringBuilder.Append(_bLinesSentence);
         Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using Avalonia.Controls;
+using Avalonia.Threading;
 using Avalonia.Interactivity;
 using CardiogeriatriaHSG.Models;
 using CardiogeriatriaHSG.Models.enums;
@@ -52,7 +53,7 @@ public partial class AnamnesiPatologicaRemotaUserControl : UserControl
                     _currentVisitApr.AmyloidosisDiagnosisDate ??= now;
                     _currentVisitApr.AmyloidosisDmt ??= false;
                     _currentVisitApr.AmyloidosisTherapyStartDate ??= now;
-                    AmyloidosisWrapPanel.IsVisible = true;
+                    Dispatcher.UIThread.Post(() => AmyloidosisWrapPanel.IsVisible = true);
                 }
                 else
                 {
@@ -60,7 +61,7 @@ public partial class AnamnesiPatologicaRemotaUserControl : UserControl
                     _currentVisitApr.AmyloidosisDiagnosisDate = null;
                     _currentVisitApr.AmyloidosisDmt = null;
                     _currentVisitApr.AmyloidosisTherapyStartDate = null;
-                    AmyloidosisWrapPanel.IsVisible = false;
+                    Dispatcher.UIThread.Post(() => AmyloidosisWrapPanel.IsVisible = false);
                 }
                 break;
             case "Dementia":
@@ -68,12 +69,12 @@ public partial class AnamnesiPatologicaRemotaUserControl : UserControl
                 if (_currentVisitApr.Dementia)
                 {
                     _currentVisitApr.DementiaType ??= StringChoices.DementiaTypes[0];
-                    DementiaTypeWrapPanel.IsVisible = true;
+                    Dispatcher.UIThread.Post(() => DementiaTypeWrapPanel.IsVisible = true);
                 }
                 else
                 {
                     _currentVisitApr.DementiaType = null;
-                    DementiaTypeWrapPanel.IsVisible = false;
+                    Dispatcher.UIThread.Post(() => DementiaTypeWrapPanel.IsVisible = false);
                 }
                 break;
         }

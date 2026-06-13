@@ -109,14 +109,14 @@ public partial class EsamiObiettivoUserControl : UserControl
                     _currentVisitEo.DependentEdemaType ??= StringChoices.DependentEdemaTypes[0];
                     _currentVisitEo.DependentEdemaLocation ??= StringChoices.DependentEdemaLocations[0];
                     _currentVisitEo.DependentEdemaFovea ??= StringChoices.DependentEdemaFoveas[0];
-                    EdemaWrapPanel.IsVisible = true;
+                    Dispatcher.UIThread.Post(() => EdemaWrapPanel.IsVisible = true);
                 }
                 else
                 {
                     _currentVisitEo.DependentEdemaType = null;
                     _currentVisitEo.DependentEdemaLocation = null;
                     _currentVisitEo.DependentEdemaFovea = null;
-                    EdemaWrapPanel.IsVisible = false;
+                    Dispatcher.UIThread.Post(() => EdemaWrapPanel.IsVisible = false);
                 }
                 UpdateEdemaSentence();
                 break;

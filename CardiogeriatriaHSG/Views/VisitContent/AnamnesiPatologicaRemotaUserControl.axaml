@@ -111,7 +111,7 @@
                             <!-- AMILOIDOSI -->
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Amiloidosi "/>
-                                <CheckBox Tag="Amyloidosis" IsCheckedChanged="OnColumnAChanged" Loaded="OnColumnAChanged" IsChecked="{Binding CurrentVisitApr.Amyloidosis}"/>
+                                <CheckBox Tag="Amyloidosis" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitApr.Amyloidosis}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Vertical" IsVisible="False" Name="AmyloidosisWrapPanel">
                                 <WrapPanel Orientation="Horizontal">
@@ -135,7 +135,7 @@
                             <!-- DEMENTIA -->
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Deficit cognitivo "/>
-                                <CheckBox Tag="Dementia" IsCheckedChanged="OnColumnAChanged" Loaded="OnColumnAChanged" IsChecked="{Binding CurrentVisitApr.Dementia}"/>
+                                <CheckBox Tag="Dementia" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitApr.Dementia}"/>
                             </WrapPanel>
                             <WrapPanel Name="DementiaTypeWrapPanel" IsVisible="False" Orientation="Horizontal">
                                 <TextBlock Name="DementiaTypeTextBlock" Classes="GenericFieldLabel" Text="‣ Tipo di demenza "/>
