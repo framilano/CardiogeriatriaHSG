@@ -96,15 +96,15 @@
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Valvulopatia severa "/>
-                                <TextBlock Padding="10" Text="SM"/>
+                                <TextBlock  Classes="GenericSubFieldLabel" Text="SM"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.SevereValvularDiseaseSm}"/>
-                                <TextBlock Padding="10" Text="IM"/>
+                                <TextBlock  Classes="GenericSubFieldLabel" Text="IM"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.SevereValvularDiseaseIm}"/>
-                                <TextBlock Padding="10" Text="IAO"/>
+                                <TextBlock  Classes="GenericSubFieldLabel" Text="IAO"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.SevereValvularDiseaseIao}"/>
-                                <TextBlock Padding="10" Text="SAO"/>
+                                <TextBlock  Classes="GenericSubFieldLabel" Text="SAO"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.SevereValvularDiseaseSao}"/>
-                                <TextBlock Padding="10" Text="ITR"/>
+                                <TextBlock  Classes="GenericSubFieldLabel" Text="ITR"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.SevereValvularDiseaseItr}"/>
                             </WrapPanel>
                            
@@ -115,19 +115,19 @@
                             </WrapPanel>
                             <WrapPanel Orientation="Vertical" IsVisible="False" Name="AmyloidosisWrapPanel">
                                 <WrapPanel Orientation="Horizontal">
-                                    <TextBlock Classes="GenericFieldLabel" Text="‣ Tipo Amiloidosi "/>
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ Tipo Amiloidosi "/>
                                     <ComboBox SelectionChanged="OnColumnAChanged" ItemsSource="{Binding AmyloidosisTypesValues}" SelectedItem="{Binding CurrentVisitApr.AmyloidosisType}"/>
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
-                                    <TextBlock  Classes="GenericFieldLabel" Text="‣ Data diagnosi "/>
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ Data diagnosi "/>
                                     <DatePicker MaxYear="{Binding MaxAllowedDate}" SelectedDate="{Binding CurrentVisitApr.AmyloidosisDiagnosisDate}" />
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
-                                    <TextBlock Classes="GenericFieldLabel" Text="‣ In terapia con DMT "/>
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ In terapia con DMT "/>
                                     <CheckBox IsChecked="{Binding CurrentVisitApr.AmyloidosisDmt}" />
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
-                                    <TextBlock Classes="GenericFieldLabel" Text="‣ Data di avvio della terapia "/>
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ Data di avvio della terapia "/>
                                     <DatePicker MaxYear="{Binding MaxAllowedDate}" SelectedDate="{Binding CurrentVisitApr.AmyloidosisTherapyStartDate}" />
                                 </WrapPanel>
                             </WrapPanel>
@@ -138,7 +138,7 @@
                                 <CheckBox Tag="Dementia" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitApr.Dementia}"/>
                             </WrapPanel>
                             <WrapPanel Name="DementiaTypeWrapPanel" IsVisible="False" Orientation="Horizontal">
-                                <TextBlock Name="DementiaTypeTextBlock" Classes="GenericFieldLabel" Text="‣ Tipo di demenza "/>
+                                <TextBlock Name="DementiaTypeTextBlock" Classes="GenericSubFieldLabel" Text="‣ Tipo di demenza "/>
                                 <ComboBox SelectionChanged="OnColumnAChanged" ItemsSource="{Binding DementiaTypesValues}" SelectedItem="{Binding CurrentVisitApr.DementiaType}"/>
                             </WrapPanel>
                         </WrapPanel>

@@ -15,11 +15,11 @@
                         <WrapPanel Classes="ColumnAWrapPanel">
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Assistenza " />
-                                <TextBlock Padding="10" Text="Da solo" />
+                                <TextBlock  Classes="GenericSubFieldLabel" Text="Da solo" />
                                 <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="AssistanceAlone" IsChecked="{Binding CurrentVisitAg.AssistanceAlone}"></CheckBox>
-                                <TextBlock Padding="10" Text="Con coniuge" />
+                                <TextBlock  Classes="GenericSubFieldLabel" Text="Con coniuge" />
                                 <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="AssistanceSpouse" IsChecked="{Binding CurrentVisitAg.AssistanceSpouse}"></CheckBox>
-                                <TextBlock Padding="10" Text="Con familiari" />
+                                <TextBlock  Classes="GenericSubFieldLabel" Text="Con familiari" />
                                 <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="AssistanceFamilyMembers" IsChecked="{Binding CurrentVisitAg.AssistanceFamilyMembers}"></CheckBox>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">

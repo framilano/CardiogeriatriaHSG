@@ -28,14 +28,15 @@ public partial class RefertoUserControl : UserControl
             var ecografiaToracicaUserControl = new EcografiaToracicaUserControl();
             ecografiaToracicaUserControl.LoadEcografiaToracicaContent(currentVisit.VisitEco!);
             Dispatcher.UIThread.Post(() => { 
-                AnagraficaContent.Text = anagraficaUserControl.AutomaticColumnB.Text;
+                AnagraficaContent.Text = anagraficaUserControl.ColumnBDescription.Text;
                 AnamnesiGeriatricaContent.Text = anamnesiGeriatricaUserControl.ColumnBDescription.Text;
                 AnamnesiPatologicaRemotaContent.Text = currentVisit.VisitApr!.AprText;
                 TerapiaDomiciliareContent.Text = currentVisit.VisitTd!.TdText;
                 RaccordoClinicoContent.Text = raccordoClinicoUserControl.ColumnBDescription.Text;
                 EsamiEmaticiContent.Text = esamiEmaticiUserControl.ColumnBDescription.Text;
                 EsamiObiettivoContent.Text = esamiObiettivoUserControl.ColumnBDescription.Text;
-                EcografiaToracicaContent.Text = ecografiaToracicaUserControl.AutomaticColumnB.Text;
+                EcografiaToracicaContent.Text = currentVisit.VisitEco!.EcoManualText is null || currentVisit.VisitEco!.EcoManualText.Trim().Length == 0 
+                    ? ecografiaToracicaUserControl.AutomaticColumnB.Text : currentVisit.VisitEco!.EcoManualText;
             });
         };
     }

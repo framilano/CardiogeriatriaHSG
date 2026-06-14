@@ -4,6 +4,7 @@ using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Threading;
 using CardiogeriatriaHSG.Models;
+using CardiogeriatriaHSG.Models.enums;
 using CardiogeriatriaHSG.ViewModels.VisitContent;
 
 namespace CardiogeriatriaHSG.Views.VisitContent;
@@ -25,6 +26,10 @@ public partial class EcografiaToracicaUserControl : UserControl
 
     private string? _pleuralLineSentence;
     private string? _bLinesSentence;
+    private string? _patternASentence;
+    private string? _pefsSentence;
+    private string? _vciSentence;
+
 
     public void OnColumnAChanged(object? sender, RoutedEventArgs routedEventArgs)
     {
@@ -64,6 +69,10 @@ public partial class EcografiaToracicaUserControl : UserControl
                 _currentVisitEco!.IrregularPleuralLine = value == "True";
                 UpdatePleuralLineSentence();
                 break;
+            case "PatternA":
+                _currentVisitEco!.PatternA = value == "True";
+                UpdatePatternASentence();
+                break;
             case "BLines":
                 _currentVisitEco!.BLines = value == "True";
                 if (_currentVisitEco.BLines)
@@ -90,8 +99,60 @@ public partial class EcografiaToracicaUserControl : UserControl
                 _currentVisitEco!.GradientDistributionBLines = value == "True";
                 UpdateBLinesSentence();
                 break;
+            case "RightPefs":
+                _currentVisitEco!.RightPefs = int.Parse(value);
+                UpdatePefsSentence();
+                break;
+            case "LeftPefs":
+                _currentVisitEco!.LeftPefs = int.Parse(value);
+                UpdatePefsSentence();
+                break;
+            case "MeasurableIvc":
+                _currentVisitEco!.MeasurableIvc = value == "True";
+                if (_currentVisitEco.MeasurableIvc)
+                {
+                    _currentVisitEco.IvcDiameter ??= StringChoices.IvcDiameterTypes[0];
+                    _currentVisitEco.IvcCollapsibility ??= StringChoices.IvcCollapsibilityTypes[0];
+                    Dispatcher.UIThread.Post(() => { VciWrapPanel.IsVisible = true; });
+                }
+                else
+                {
+                    _currentVisitEco.IvcDiameter = null;
+                    _currentVisitEco.IvcCollapsibility = null;
+                    Dispatcher.UIThread.Post(() => { VciWrapPanel.IsVisible = false; });
+                }
+                UpdateVciSentence();
+                break;
+            case "IvcDiameter":
+                _currentVisitEco!.IvcDiameter = value;
+                if (_currentVisitEco.IvcDiameter == StringChoices.IvcDiameterTypes[0])
+                {
+                    _currentVisitEco.Vexus ??= 0;
+                    _currentVisitEco.PortalVeinPulsatility ??= StringChoices.PortalVeinPulsatilityTypes[0];
+                    Dispatcher.UIThread.Post(() => { VciGreaterThanTwoWrapPanel.IsVisible = true; });
+                }
+                else
+                {
+                    _currentVisitEco.Vexus = null;
+                    _currentVisitEco.PortalVeinPulsatility = null;
+                    Dispatcher.UIThread.Post(() => { VciGreaterThanTwoWrapPanel.IsVisible = false; });
+                }
+                UpdateVciSentence();
+                break;
+            case "IvcCollapsibility":
+                _currentVisitEco!.IvcCollapsibility = value;
+                UpdateVciSentence();
+                break;
+            case "Vexus":
+                _currentVisitEco!.Vexus = int.Parse(value);
+                UpdateVciSentence();
+                break;
+            case "PortalVeinPulsatility":
+                _currentVisitEco!.PortalVeinPulsatility = value;
+                UpdateVciSentence();
+                break;
         }
-        UpdateColumnBDescription();
+        UpdateAutomaticColumnBDescription();
     }
     
     private void UpdatePleuralLineSentence()
@@ -109,6 +170,14 @@ public partial class EcografiaToracicaUserControl : UserControl
             : "regolare.\n");
 
         _pleuralLineSentence = pleuralLineSentenceStringBuilder.ToString();
+    }
+    
+    private void UpdatePatternASentence()
+    {
+        var patternASentenceStringBuilder = new StringBuilder();
+        patternASentenceStringBuilder.Append("Pattern A ");
+        patternASentenceStringBuilder.Append(_currentVisitEco!.PatternA ? "presente.\n" : "non presente.\n");
+        _patternASentence = patternASentenceStringBuilder.ToString();
     }
     
     private void UpdateBLinesSentence()
@@ -129,20 +198,62 @@ public partial class EcografiaToracicaUserControl : UserControl
         _bLinesSentence = bLinesSentenceStringBuilder.ToString();
     }
     
+    private void UpdatePefsSentence()
+    {
+        var pefsStringBuilder = new StringBuilder();
+        pefsStringBuilder.Append($"PEFS destro {_currentVisitEco!.RightPefs} e PEFS sinistro {_currentVisitEco!.LeftPefs}.\n");
+        _pefsSentence = pefsStringBuilder.ToString();
+    }
+    
+    private void UpdateVciSentence()
+    {
+        var vciSentenceStringBuilder = new StringBuilder();
+        if (!_currentVisitEco!.MeasurableIvc)
+        {
+            _vciSentence = "VCI non campionabile.\n";
+            return;
+        }
+
+        vciSentenceStringBuilder.Append("VCI campionabile, ");
+        vciSentenceStringBuilder.Append("con diametro ");
+        vciSentenceStringBuilder.Append(_currentVisitEco!.IvcDiameter);
+        vciSentenceStringBuilder.Append(", collassabilità ");
+        vciSentenceStringBuilder.Append(_currentVisitEco!.IvcCollapsibility);
+
+        if (_currentVisitEco!.IvcDiameter != StringChoices.IvcDiameterTypes[0])
+        {
+            vciSentenceStringBuilder.Append(".\n");
+            _vciSentence = vciSentenceStringBuilder.ToString();
+            return;
+        }
+
+        vciSentenceStringBuilder.Append(", VEXUS con valore ");
+        vciSentenceStringBuilder.Append(_currentVisitEco!.Vexus);
+        vciSentenceStringBuilder.Append(" e pulsatilità portale ");
+        vciSentenceStringBuilder.Append(_currentVisitEco!.PortalVeinPulsatility);
+        vciSentenceStringBuilder.Append(".\n");
+        _vciSentence = vciSentenceStringBuilder.ToString();
+    }
     
     public void LoadEcografiaToracicaContent(VisitEco currentVisitEco)
     {
         _currentVisitEco = currentVisitEco;
         UpdatePleuralLineSentence();
+        UpdatePatternASentence();
         UpdateBLinesSentence();
-        UpdateColumnBDescription();
+        UpdatePefsSentence();
+        UpdateVciSentence();
+        UpdateAutomaticColumnBDescription();
     }
 
-    private void UpdateColumnBDescription()
+    private void UpdateAutomaticColumnBDescription()
     {
         var columnBDescriptionStringBuilder = new StringBuilder();
         columnBDescriptionStringBuilder.Append(_pleuralLineSentence);
+        columnBDescriptionStringBuilder.Append(_patternASentence);
         columnBDescriptionStringBuilder.Append(_bLinesSentence);
+        columnBDescriptionStringBuilder.Append(_pefsSentence);
+        columnBDescriptionStringBuilder.Append(_vciSentence);
         Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
 }

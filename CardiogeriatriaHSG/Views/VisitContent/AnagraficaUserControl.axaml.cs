@@ -68,6 +68,6 @@ public partial class AnagraficaUserControl : UserControl
     {
         var columnBDescriptionStringBuilder = new StringBuilder();
         columnBDescriptionStringBuilder.Append(_registrySentence);
-        Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
+        Dispatcher.UIThread.Post(() => { ColumnBDescription!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
 }

@@ -11,6 +11,12 @@
         <Setter Property="TextWrapping" Value="Wrap"/>
     </Style>
     
+    <Style Selector="TextBlock.GenericSubFieldLabel">
+        <Setter Property="Padding" Value="10"/>
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="TextWrapping" Value="Wrap"/>
+    </Style>
+    
     <Style Selector="WrapPanel.ColumnAWrapPanel">
         <Setter Property="Margin" Value="15"/>
         <Setter Property="Orientation" Value="Vertical"/>

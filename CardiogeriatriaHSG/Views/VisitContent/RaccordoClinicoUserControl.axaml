@@ -32,15 +32,15 @@
                             <WrapPanel Orientation="Vertical">
                                 <TextBlock Classes="GenericFieldLabel" Text="Sonno " />
                                 <WrapPanel Orientation="Horizontal">
-                                    <TextBlock Padding="10" Text="‣ Numero cuscini" />
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ Numero cuscini" />
                                     <NumericUpDown Classes="CustomNumericUpDown" Tag="SleepingWithPillowsNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="1" Maximum="2" Value="{Binding CurrentVisitRc.SleepingWithPillowsNumber}"></NumericUpDown>
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
-                                    <TextBlock Padding="10" Text="‣ Dorme in posizione seduta" />
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ Dorme in posizione seduta" />
                                     <CheckBox Tag="SleepingSittingPosition" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitRc.SleepingSittingPosition}"></CheckBox>
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
-                                    <TextBlock Padding="10" Text="‣ DPN" />
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ DPN" />
                                     <CheckBox Tag="ParoxysmalNocturnalDyspnea" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitRc.ParoxysmalNocturnalDyspnea}"></CheckBox>
                                 </WrapPanel>
                             </WrapPanel>
@@ -55,15 +55,15 @@
                             </WrapPanel>
                             <WrapPanel Orientation="Vertical" IsVisible="False" Name="FallsSinceLastVisitWrapPanel">
                                 <WrapPanel Orientation="Horizontal">
-                                    <TextBlock Classes="GenericFieldLabel" Text="‣ Quante "/>
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ Quante "/>
                                     <NumericUpDown Classes="CustomNumericUpDown" Tag="FallsSinceLastVisitNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="10" Value="{Binding CurrentVisitRc.FallsSinceLastVisitNumber}"></NumericUpDown>
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
-                                    <TextBlock Classes="GenericFieldLabel" Text="‣ Tipo "/>
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ Tipo "/>
                                     <ComboBox Tag="FallsSinceLastVisitType" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding FallsSinceLastVisitTypesValues}" SelectedItem="{Binding CurrentVisitRc.FallsSinceLastVisitType}"/>
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
-                                    <TextBlock Classes="GenericFieldLabel" Text="‣ Diagnosi "/>
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ Diagnosi "/>
                                     <ComboBox Tag="FallsSinceLastVisitDiagnosis" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding FallsSinceLastVisitDiagnosisValues}" SelectedItem="{Binding CurrentVisitRc.FallsSinceLastVisitDiagnosis}"/>
                                 </WrapPanel>
                             </WrapPanel>
@@ -75,11 +75,11 @@
                             </WrapPanel>
                             <WrapPanel Orientation="Vertical" IsVisible="False" Name="EmergenciesSinceLastVisitWrapPanel">
                                 <WrapPanel Orientation="Horizontal">
-                                    <TextBlock Classes="GenericFieldLabel" Text="‣ Numero "/>
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ Numero "/>
                                     <NumericUpDown Classes="CustomNumericUpDown" Tag="EmergenciesSinceLastVisitNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="10" Value="{Binding CurrentVisitRc.EmergenciesSinceLastVisitNumber}"></NumericUpDown>
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
-                                    <TextBlock Classes="GenericFieldLabel" Text="‣ Causa "/>
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ Causa "/>
                                     <ComboBox Tag="EmergenciesSinceLastVisitCause" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding EmergenciesSinceLastVisitCausesValues}" SelectedItem="{Binding CurrentVisitRc.EmergenciesSinceLastVisitCause}"/>
                                 </WrapPanel>
                             </WrapPanel>
@@ -91,15 +91,15 @@
                             </WrapPanel>
                             <WrapPanel Orientation="Vertical" IsVisible="False" Name="HospitalizationsSinceLastVisitWrapPanel">
                                 <WrapPanel Orientation="Horizontal">
-                                    <TextBlock Classes="GenericFieldLabel" Text="‣ Numero "/>
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ Numero "/>
                                     <NumericUpDown Classes="CustomNumericUpDown" Tag="HospitalizationsSinceLastVisitNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="10" Value="{Binding CurrentVisitRc.HospitalizationsSinceLastVisitNumber}"></NumericUpDown>
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
-                                    <TextBlock Classes="GenericFieldLabel" Text="‣ Giorni "/>
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ Giorni "/>
                                     <NumericUpDown Classes="CustomNumericUpDown" Tag="HospitalizationsSinceLastVisitDays" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="1000" Value="{Binding CurrentVisitRc.HospitalizationsSinceLastVisitDays}"></NumericUpDown>
                                 </WrapPanel>
                                 <WrapPanel Orientation="Horizontal">
-                                    <TextBlock Classes="GenericFieldLabel" Text="‣ Causa "/>
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ Causa "/>
                                     <ComboBox Tag="HospitalizationsSinceLastVisitCause" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding HospitalizationsSinceLastVisitCausesValues}" SelectedItem="{Binding CurrentVisitRc.HospitalizationsSinceLastVisitCause}"/>
                                 </WrapPanel>
                             </WrapPanel>

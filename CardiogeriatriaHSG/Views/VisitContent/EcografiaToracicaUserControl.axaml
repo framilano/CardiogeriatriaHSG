@@ -31,11 +31,11 @@
                                 <CheckBox Grid.Row="5" Grid.Column="1" Tag="BLines" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.BLines}"></CheckBox>
                                 <WrapPanel Name="BLinesWrapPanel" IsVisible="False" Grid.Row="6" Grid.Column="0" Grid.ColumnSpan="2">
                                     <Grid RowDefinitions="*, *, *" ColumnDefinitions="*, *">
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="‣ Linee B coalescenti "/>
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Linee B coalescenti "/>
                                         <CheckBox Grid.Row="0" Grid.Column="1" Tag="CoalescentBLines" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.CoalescentBLines}"></CheckBox>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericFieldLabel" Text="‣ Linee B con gradiente di distribuzione "/>
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Linee B con gradiente di distribuzione "/>
                                         <CheckBox Grid.Row="1" Grid.Column="1" Tag="GradientDistributionBLines" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.GradientDistributionBLines}"></CheckBox>
-                                        <TextBlock Grid.Row="2" Grid.Column="0" Classes="GenericFieldLabel" Text="‣ Linee B > 3 per campo in almeno 2 campi"/>
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Linee B > 3 per campo in almeno 2 campi "/>
                                         <CheckBox Grid.Row="2" Grid.Column="1" Tag="ConsiderationBLines" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.ConsiderationBLines}"></CheckBox>
                                     </Grid>
                                 </WrapPanel>
@@ -45,9 +45,9 @@
                                 <TextBlock Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Classes="GenericFieldLabel" Text="PEFS"/>
                                 <WrapPanel Grid.Row="9" Grid.Column="0" Grid.ColumnSpan="2">
                                     <Grid RowDefinitions="*, *" ColumnDefinitions="*, *">
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Padding="10" Text="‣ Destro" />
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Destro" />
                                         <NumericUpDown Minimum="0" Maximum="4" Grid.Row="0" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0" Increment="1" Tag="RightPefs" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEco.RightPefs}" />                           
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Padding="10" Text="‣ Sinistro" />
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Sinistro" />
                                         <NumericUpDown Minimum="0" Maximum="4" Grid.Row="1" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0" Increment="1" Tag="LeftPefs" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEco.LeftPefs}" />                           
                                     </Grid>
                                 </WrapPanel>
@@ -58,15 +58,15 @@
                                 <CheckBox Grid.Row="11" Grid.Column="1" Tag="MeasurableIvc" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.MeasurableIvc}"></CheckBox>
                                 <WrapPanel Name="VciWrapPanel" IsVisible="False" Grid.Row="12" Grid.Column="0" Grid.ColumnSpan="2">
                                     <Grid RowDefinitions="*, *, *" ColumnDefinitions="*, *">
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Padding="10" Text="‣ Diametro VC " />
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Diametro VC " />
                                         <ComboBox Grid.Row="0" Grid.Column="1" Tag="IvcDiameter" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding IvcDiameterTypes}" SelectedItem="{Binding CurrentVisitEco.IvcDiameter}"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Padding="10" Text="‣ Collassabilità " />
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Collassabilità " />
                                         <ComboBox Grid.Row="1" Grid.Column="1" Tag="IvcCollapsibility" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding IvcCollapsibilityTypes}" SelectedItem="{Binding CurrentVisitEco.IvcCollapsibility}"/>
                                         <WrapPanel Name="VciGreaterThanTwoWrapPanel" IsVisible="False" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
                                             <Grid RowDefinitions="*, *" ColumnDefinitions="*, *">
-                                                <TextBlock Grid.Row="0" Grid.Column="0" Padding="10" Text="° Vexus " />
+                                                <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericSubFieldLabel" Text="° Vexus " />
                                                 <NumericUpDown Minimum="0" Maximum="3" Grid.Row="0" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0" Increment="1" Tag="Vexus" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEco.Vexus}" />                           
-                                                <TextBlock Grid.Row="1" Grid.Column="0" Padding="10" Text="° Pulsatilità porta " />
+                                                <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericSubFieldLabel" Text="° Pulsatilità porta " />
                                                 <ComboBox Grid.Row="1" Grid.Column="1" Tag="PortalVeinPulsatility" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding PortalVeinPulsatilityTypes}" SelectedItem="{Binding CurrentVisitEco.PortalVeinPulsatility}"/>
                                             </Grid>
                                         </WrapPanel>
@@ -80,7 +80,7 @@
                     <SelectableTextBlock Classes="ColumnBSelectableTextBlock" Name="AutomaticColumnB"></SelectableTextBlock>
                 </Border>
                 <Border Classes="ColumnBorder" Grid.Column="1" Grid.Row="1">
-                    <TextBox Classes="ColumnBWhiteTextBox" Name="ManualColumnB"></TextBox>
+                    <TextBox Classes="ColumnBWhiteTextBox" Name="ManualColumnB" Text="{Binding CurrentVisitEco.EcoManualText}"></TextBox>
                 </Border>
             </Grid>
 </UserControl>

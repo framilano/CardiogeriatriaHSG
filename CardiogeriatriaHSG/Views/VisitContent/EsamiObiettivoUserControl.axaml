@@ -55,11 +55,11 @@
                                 <CheckBox Grid.Row="13" Grid.Column="1" Tag="DependentEdema" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEo.DependentEdema}"></CheckBox>
                                 <WrapPanel Name="EdemaWrapPanel" IsVisible="False" Grid.Row="14" Grid.Column="0" Grid.ColumnSpan="2">
                                     <Grid RowDefinitions="*, *, *" ColumnDefinitions="*, *">
-                                        <TextBlock Grid.Row="0" Grid.Column="0" Padding="10" Text="‣ Tipo" />
+                                        <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Tipo" />
                                         <ComboBox Grid.Row="0" Grid.Column="1" Tag="DependentEdemaType" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding DependentEdemaTypes}" SelectedItem="{Binding CurrentVisitEo.DependentEdemaType}"/>
-                                        <TextBlock Grid.Row="1" Grid.Column="0" Padding="10" Text="‣ Fino a" />
+                                        <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Fino a" />
                                         <ComboBox Grid.Row="1" Grid.Column="1" Tag="DependentEdemaLocation" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding DependentEdemaLocations}" SelectedItem="{Binding CurrentVisitEo.DependentEdemaLocation}"/>
-                                        <TextBlock Grid.Row="2" Grid.Column="0" Padding="10" Text="‣ Fovea" />
+                                        <TextBlock Grid.Row="2" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Fovea" />
                                         <ComboBox Grid.Row="2" Grid.Column="1" Tag="DependentEdemaFovea" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding DependentEdemaFoveas}" SelectedItem="{Binding CurrentVisitEo.DependentEdemaFovea}"/>
                                     </Grid>
                                 </WrapPanel>

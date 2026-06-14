@@ -29,7 +29,7 @@
                                 <CheckBox Tag="Dementia" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitTd.Furosemide}"/>
                             </WrapPanel>
                             <WrapPanel IsVisible="False" Name="FurosemideDoseWrapPanel" Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Dosaggio furosemide "/>
+                                <TextBlock Classes="GenericSubFieldLabel" Text="‣ Dosaggio furosemide "/>
                                 <NumericUpDown Minimum="0" Maximum="2000" Increment="1" FormatString="0" Value="{Binding CurrentVisitTd.FurosemideDose}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
