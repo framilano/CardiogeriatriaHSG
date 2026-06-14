@@ -100,11 +100,11 @@ public partial class EcografiaToracicaUserControl : UserControl
                 UpdateBLinesSentence();
                 break;
             case "RightPefs":
-                _currentVisitEco!.RightPefs = int.Parse(value);
+                _currentVisitEco!.RightPefs = value is null ? null : int.Parse(value);
                 UpdatePefsSentence();
                 break;
             case "LeftPefs":
-                _currentVisitEco!.LeftPefs = int.Parse(value);
+                _currentVisitEco!.LeftPefs = value is null ? null : int.Parse(value);
                 UpdatePefsSentence();
                 break;
             case "MeasurableIvc":
@@ -144,7 +144,7 @@ public partial class EcografiaToracicaUserControl : UserControl
                 UpdateVciSentence();
                 break;
             case "Vexus":
-                _currentVisitEco!.Vexus = int.Parse(value);
+                _currentVisitEco!.Vexus = value is null ? null : int.Parse(value);
                 UpdateVciSentence();
                 break;
             case "PortalVeinPulsatility":
@@ -201,7 +201,15 @@ public partial class EcografiaToracicaUserControl : UserControl
     private void UpdatePefsSentence()
     {
         var pefsStringBuilder = new StringBuilder();
-        pefsStringBuilder.Append($"PEFS destro {_currentVisitEco!.RightPefs} e PEFS sinistro {_currentVisitEco!.LeftPefs}.\n");
+        if (_currentVisitEco!.RightPefs is null && _currentVisitEco.LeftPefs is null)
+        {
+            _pefsSentence = null;
+            return;
+        }
+        
+        if (_currentVisitEco!.RightPefs is null && _currentVisitEco.LeftPefs is not null) pefsStringBuilder.Append($"PEFS sinistro {_currentVisitEco!.LeftPefs}.\n");
+        else if (_currentVisitEco!.RightPefs is not null && _currentVisitEco.LeftPefs is null) pefsStringBuilder.Append($"PEFS destro {_currentVisitEco!.RightPefs}.\n");
+        else pefsStringBuilder.Append($"PEFS destro {_currentVisitEco!.RightPefs} e PEFS sinistro {_currentVisitEco!.LeftPefs}.\n");
         _pefsSentence = pefsStringBuilder.ToString();
     }
     
@@ -227,10 +235,14 @@ public partial class EcografiaToracicaUserControl : UserControl
             return;
         }
 
-        vciSentenceStringBuilder.Append(", VEXUS con valore ");
-        vciSentenceStringBuilder.Append(_currentVisitEco!.Vexus);
+        if (_currentVisitEco!.Vexus is not null)
+        {
+            vciSentenceStringBuilder.Append(", VEXUS con valore ");
+            vciSentenceStringBuilder.Append(_currentVisitEco!.Vexus);
+        }
         vciSentenceStringBuilder.Append(" e pulsatilità portale ");
         vciSentenceStringBuilder.Append(_currentVisitEco!.PortalVeinPulsatility);
+        
         vciSentenceStringBuilder.Append(".\n");
         _vciSentence = vciSentenceStringBuilder.ToString();
     }
