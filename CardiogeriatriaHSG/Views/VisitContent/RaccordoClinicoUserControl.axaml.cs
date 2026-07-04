@@ -14,7 +14,6 @@ public partial class RaccordoClinicoUserControl : UserControl
     public RaccordoClinicoUserControl()
     {
         InitializeComponent();
-        _columnBDescription = this.Find<TextBlock>("ColumnBDescription");
         DataContextChanged += (_, __) =>
         {
             if (DataContext is not RaccordoClinicoUserControlViewModel viewModel) return;
@@ -24,7 +23,6 @@ public partial class RaccordoClinicoUserControl : UserControl
     }
     
     private VisitRc? _currentVisitRc;
-    private readonly TextBlock? _columnBDescription;
 
     private string? _reportsSentence;
     private string? _lastPeriodSentence;
@@ -319,6 +317,6 @@ public partial class RaccordoClinicoUserControl : UserControl
         columnBDescriptionStringBuilder.Append(_emergenciesSinceLastVisitSentence);
         columnBDescriptionStringBuilder.Append(_hospitalizationsSinceLastVisitSentence);
 
-        Dispatcher.UIThread.Post(() => { _columnBDescription!.Text = columnBDescriptionStringBuilder.ToString(); });
+        Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
 }

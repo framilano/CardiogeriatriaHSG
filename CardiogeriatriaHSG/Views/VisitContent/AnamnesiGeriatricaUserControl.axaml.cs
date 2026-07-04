@@ -13,7 +13,6 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     public AnamnesiGeriatricaUserControl()
     {
         InitializeComponent();
-        _columnBDescription = this.Find<TextBlock>("ColumnBDescription");
         DataContextChanged += (_, __) =>
         {
             if (DataContext is not AnamnesiGeriatricaUserControlViewModel viewModel) return;
@@ -23,7 +22,6 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
     }
     
     private VisitAg? _currentVisitAg;
-    private readonly TextBlock? _columnBDescription;
 
     private string? _assistanceSentence;
     private string? _walkingSentence;
@@ -318,6 +316,6 @@ public partial class AnamnesiGeriatricaUserControl : UserControl
         columnBDescriptionStringBuilder.Append(_constipationSentence);
         columnBDescriptionStringBuilder.Append(_disabilitySentence);
 
-        Dispatcher.UIThread.Post(() => { _columnBDescription!.Text = columnBDescriptionStringBuilder.ToString(); });
+        Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
 }

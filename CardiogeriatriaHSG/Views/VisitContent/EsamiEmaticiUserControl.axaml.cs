@@ -15,7 +15,6 @@ public partial class EsamiEmaticiUserControl : UserControl
     public EsamiEmaticiUserControl()
     {
         InitializeComponent();
-        _columnBDescription = this.Find<TextBlock>("ColumnBDescription");
         DataContextChanged += (_, __) =>
         {
             if (DataContext is not EsamiEmaticiUserControlViewModel viewModel) return;
@@ -25,7 +24,6 @@ public partial class EsamiEmaticiUserControl : UserControl
     }
     
     private VisitEe? _currentVisitEe;
-    private readonly TextBlock? _columnBDescription;
 
     private string? _examDateSentence;
     private string? _hemoglobinSentence;
@@ -143,6 +141,6 @@ public partial class EsamiEmaticiUserControl : UserControl
         columnBDescriptionStringBuilder.Append(_albuminSentence);
         columnBDescriptionStringBuilder.Append(_albuminuriaSentence);
 
-        Dispatcher.UIThread.Post(() => { _columnBDescription!.Text = columnBDescriptionStringBuilder.ToString(); });
+        Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
 }

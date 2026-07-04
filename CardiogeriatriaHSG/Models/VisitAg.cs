@@ -10,6 +10,9 @@ public partial class VisitAg(string visitCode): ObservableObject
     [MaxLength(36)]
     public string? VisitCode { get; init; } = visitCode;
     public Visit? Visit { get; init; }
+    
+    [ObservableProperty] public partial string? AgManualText { get; set; } = "";
+    partial void OnAgManualTextChanged(string? value) { if (value != null) AgManualText = value.Trim(); }
 
     //Anamnesi Geriatrica
     [ObservableProperty]

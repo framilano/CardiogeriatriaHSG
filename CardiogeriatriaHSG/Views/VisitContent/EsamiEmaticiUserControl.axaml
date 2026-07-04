@@ -9,8 +9,8 @@
             <UserControl.Styles>
                 <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
             </UserControl.Styles>
-            <Grid ColumnDefinitions="*, *">
-                <Border Classes="ColumnBorder" Grid.Column="0">
+            <Grid ColumnDefinitions="*, *" RowDefinitions="*, *">
+                <Border Classes="ColumnBorder" Grid.Column="0" Grid.RowSpan="2">
                     <ScrollViewer>
                         <WrapPanel Orientation="Vertical" Classes="ColumnAWrapPanel">
                             <WrapPanel Orientation="Horizontal">
@@ -58,10 +58,11 @@
                         </WrapPanel>
                     </ScrollViewer>
                 </Border>
-                <Border Classes="ColumnBorder" Grid.Column="1">
-                    <ScrollViewer>
-                        <TextBlock Classes="ColumnBTextBlock" Name="ColumnBDescription"></TextBlock>
-                    </ScrollViewer>
+                <Border Classes="ColumnBorder" Grid.Column="1" Grid.Row="0">
+                    <SelectableTextBlock Classes="ColumnBSelectableTextBlock" Name="AutomaticColumnB"></SelectableTextBlock>
+                </Border>
+                <Border Classes="ColumnBorder" Grid.Column="1" Grid.Row="1">
+                    <TextBox Classes="ColumnBWhiteTextBox" Name="ManualColumnB" Text="{Binding CurrentVisitEe.EeManualText}"></TextBox>
                 </Border>
             </Grid>
 </UserControl>

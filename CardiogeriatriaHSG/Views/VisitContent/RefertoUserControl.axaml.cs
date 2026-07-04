@@ -28,13 +28,31 @@ public partial class RefertoUserControl : UserControl
             var ecografiaToracicaUserControl = new EcografiaToracicaUserControl();
             ecografiaToracicaUserControl.LoadEcografiaToracicaContent(currentVisit.VisitEco!);
             Dispatcher.UIThread.Post(() => { 
-                AnagraficaContent.Text = anagraficaUserControl.ColumnBDescription.Text;
-                AnamnesiGeriatricaContent.Text = anamnesiGeriatricaUserControl.ColumnBDescription.Text;
+                //Anagrafica
+                AnagraficaContent.Text = currentVisit.Patient!.PatientManualText is null || currentVisit.Patient!.PatientManualText.Trim().Length == 0 
+                    ? anagraficaUserControl.AutomaticColumnB.Text : currentVisit.Patient!.PatientManualText;
+                
+                //Anamnesi Geriatrica
+                AnamnesiGeriatricaContent.Text = currentVisit.VisitAg!.AgManualText is null || currentVisit.VisitAg!.AgManualText.Trim().Length == 0 
+                    ? anamnesiGeriatricaUserControl.AutomaticColumnB.Text : currentVisit.VisitAg!.AgManualText;
+                
+                //Anamnesi Patologica
                 AnamnesiPatologicaRemotaContent.Text = currentVisit.VisitApr!.AprText;
+                
+                //Terapia Domiciliare
                 TerapiaDomiciliareContent.Text = currentVisit.VisitTd!.TdText;
-                RaccordoClinicoContent.Text = raccordoClinicoUserControl.ColumnBDescription.Text;
-                EsamiEmaticiContent.Text = esamiEmaticiUserControl.ColumnBDescription.Text;
-                EsamiObiettivoContent.Text = esamiObiettivoUserControl.ColumnBDescription.Text;
+                
+                //Raccordo Clinico
+                RaccordoClinicoContent.Text = currentVisit.VisitRc!.RcManualText is null || currentVisit.VisitRc!.RcManualText.Trim().Length == 0 
+                    ? raccordoClinicoUserControl.AutomaticColumnB.Text : currentVisit.VisitRc!.RcManualText;
+                
+                //Esami Ematici
+                EsamiEmaticiContent.Text = esamiEmaticiUserControl.AutomaticColumnB.Text;
+                
+                //Esami Obiettivo
+                EsamiObiettivoContent.Text = esamiObiettivoUserControl.AutomaticColumnB.Text;
+                
+                //Ecografia Toracica
                 EcografiaToracicaContent.Text = currentVisit.VisitEco!.EcoManualText is null || currentVisit.VisitEco!.EcoManualText.Trim().Length == 0 
                     ? ecografiaToracicaUserControl.AutomaticColumnB.Text : currentVisit.VisitEco!.EcoManualText;
             });

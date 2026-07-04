@@ -10,6 +10,9 @@ public partial class VisitEe(string visitCode): ObservableObject
     [MaxLength(36)]
     public string? VisitCode { get; init; } = visitCode;
     public Visit? Visit { get; init; }
+    
+    [ObservableProperty] public partial string? EeManualText { get; set; } = "";
+    partial void OnEeManualTextChanged(string? value) { if (value != null) EeManualText = value.Trim(); }
 
     [ObservableProperty] public partial DateTimeOffset ExamDate { get; set; }
     [ObservableProperty] public partial float? Hemoglobin { get; set; }

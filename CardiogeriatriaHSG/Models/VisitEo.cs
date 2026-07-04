@@ -9,6 +9,9 @@ public partial class VisitEo(string visitCode): ObservableObject
     [MaxLength(36)]
     public string? VisitCode { get; init; } = visitCode;
     public Visit? Visit { get; init; }
+    
+    [ObservableProperty] public partial string? EoManualText { get; set; } = "";
+    partial void OnEoManualTextChanged(string? value) { if (value != null) EoManualText = value.Trim(); }
 
     [ObservableProperty] public partial int? MinimumBloodPressure { get; set; }
     [ObservableProperty] public partial int? MaximumBloodPressure { get; set; }

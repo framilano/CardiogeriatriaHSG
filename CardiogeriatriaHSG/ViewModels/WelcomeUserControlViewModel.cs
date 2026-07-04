@@ -64,7 +64,8 @@ public partial class WelcomeUserControlViewModel : ObservableObject
         else
         {
             ErrorMessage = $"{UserCodeTextBox} ha {visits.Count} visite associate";
-            visits.Sort((v1, v2) => string.Compare(v2.Timestamp.ToString(), v1.Timestamp.ToString(), StringComparison.Ordinal));
+            visits.Sort((x, y) => x.Timestamp.CompareTo(y.Timestamp));
+            visits.Reverse();
             LastVisitsListVisibility = true;
             LastVisitsList =  visits;
         }

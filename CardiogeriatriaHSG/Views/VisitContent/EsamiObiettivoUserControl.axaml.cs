@@ -15,7 +15,6 @@ public partial class EsamiObiettivoUserControl : UserControl
     public EsamiObiettivoUserControl()
     {
         InitializeComponent();
-        _columnBDescription = this.Find<TextBlock>("ColumnBDescription");
         DataContextChanged += (_, __) =>
         {
             if (DataContext is not EsamiObiettivoUserControlViewModel viewModel) return;
@@ -25,7 +24,6 @@ public partial class EsamiObiettivoUserControl : UserControl
     }
     
     private VisitEo? _currentVisitEo;
-    private readonly TextBlock? _columnBDescription;
 
     private string? _bloodPressureSentence;
     private string? _tgAndRegSentence;
@@ -240,6 +238,6 @@ public partial class EsamiObiettivoUserControl : UserControl
         columnBDescriptionStringBuilder.Append(_neuropathySentence);
         columnBDescriptionStringBuilder.Append(_orthostaticHypotensionSentence);
         
-        Dispatcher.UIThread.Post(() => { _columnBDescription!.Text = columnBDescriptionStringBuilder.ToString(); });
+        Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
 }

@@ -3,6 +3,7 @@ using System;
 using CardiogeriatriaHSG.Services.database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CardiogeriatriaHSG.Migrations
 {
     [DbContext(typeof(AppDb))]
-    partial class AppDbModelSnapshot : ModelSnapshot
+    [Migration("20260704081144_ColumnC1")]
+    partial class ColumnC1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.8");
@@ -321,9 +324,6 @@ namespace CardiogeriatriaHSG.Migrations
                     b.Property<float?>("Creatinine")
                         .HasColumnType("REAL");
 
-                    b.Property<string>("EeManualText")
-                        .HasColumnType("TEXT");
-
                     b.Property<DateTimeOffset>("ExamDate")
                         .HasColumnType("TEXT");
 
@@ -369,9 +369,6 @@ namespace CardiogeriatriaHSG.Migrations
                         .HasColumnType("TEXT");
 
                     b.Property<string>("DependentEdemaType")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("EoManualText")
                         .HasColumnType("TEXT");
 
                     b.Property<int?>("HeartRate")
@@ -462,9 +459,6 @@ namespace CardiogeriatriaHSG.Migrations
 
                     b.Property<bool>("ParoxysmalNocturnalDyspnea")
                         .HasColumnType("INTEGER");
-
-                    b.Property<string>("RcManualText")
-                        .HasColumnType("TEXT");
 
                     b.Property<string>("Reports")
                         .HasColumnType("TEXT");

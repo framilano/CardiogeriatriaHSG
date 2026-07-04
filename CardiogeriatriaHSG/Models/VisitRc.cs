@@ -10,6 +10,9 @@ public partial class VisitRc(string visitCode): ObservableObject
     public string? VisitCode { get; init; } = visitCode;
     public Visit? Visit { get; init; }
     
+    [ObservableProperty] public partial string? RcManualText { get; set; } = "";
+    partial void OnRcManualTextChanged(string? value) { if (value != null) RcManualText = value.Trim(); }
+    
     //Raccordo Clinico
     [ObservableProperty] public partial string? Reports { get; set; }
 
