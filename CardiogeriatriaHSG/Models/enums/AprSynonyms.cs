@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace CardiogeriatriaHSG.Models.enums.anamnesipatologicaremota;
+namespace CardiogeriatriaHSG.Models.enums;
 
 public static class AprSynonyms
 {

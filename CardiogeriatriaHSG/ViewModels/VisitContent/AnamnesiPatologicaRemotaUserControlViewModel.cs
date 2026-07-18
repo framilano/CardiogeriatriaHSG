@@ -5,7 +5,6 @@ using System.Text.RegularExpressions;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CardiogeriatriaHSG.Models;
 using CardiogeriatriaHSG.Models.enums;
-using CardiogeriatriaHSG.Models.enums.anamnesipatologicaremota;
 
 namespace CardiogeriatriaHSG.ViewModels.VisitContent;
 

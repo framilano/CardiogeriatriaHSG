@@ -13,15 +13,19 @@
                 <Border Classes="ColumnBorder" Grid.Column="0" Grid.RowSpan="2">
                     <ScrollViewer>
                         <WrapPanel Classes="ColumnAWrapPanel">
-                            <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Assistenza " />
-                                <TextBlock  Classes="GenericSubFieldLabel" Text="Da solo" />
-                                <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="AssistanceAlone" IsChecked="{Binding CurrentVisitAg.AssistanceAlone}"></CheckBox>
-                                <TextBlock  Classes="GenericSubFieldLabel" Text="Con coniuge" />
-                                <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="AssistanceSpouse" IsChecked="{Binding CurrentVisitAg.AssistanceSpouse}"></CheckBox>
-                                <TextBlock  Classes="GenericSubFieldLabel" Text="Con familiari" />
-                                <CheckBox IsCheckedChanged="OnColumnAChanged" Tag="AssistanceFamilyMembers" IsChecked="{Binding CurrentVisitAg.AssistanceFamilyMembers}"></CheckBox>
+                            
+                            <TextBlock Classes="GenericFieldLabel" Text="Assistenza "/>
+                            <WrapPanel>
+                                <Grid RowDefinitions="*, *, *" ColumnDefinitions="*, *">
+                                    <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Da solo" />
+                                    <CheckBox Grid.Row="0" Grid.Column="1" IsCheckedChanged="OnColumnAChanged" Tag="AssistanceAlone" IsChecked="{Binding CurrentVisitAg.AssistanceAlone}"></CheckBox>
+                                    <TextBlock Grid.Row="1" Grid.Column="0"  Classes="GenericSubFieldLabel" Text="‣ Con coniuge" />
+                                    <CheckBox Grid.Row="1" Grid.Column="1" IsCheckedChanged="OnColumnAChanged" Tag="AssistanceSpouse" IsChecked="{Binding CurrentVisitAg.AssistanceSpouse}"></CheckBox>
+                                    <TextBlock Grid.Row="2" Grid.Column="0"  Classes="GenericSubFieldLabel" Text="‣ Con familiari" />
+                                    <CheckBox Grid.Row="2" Grid.Column="1" IsCheckedChanged="OnColumnAChanged" Tag="AssistanceFamilyMembers" IsChecked="{Binding CurrentVisitAg.AssistanceFamilyMembers}"></CheckBox>
+                                </Grid>
                             </WrapPanel>
+                            
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Badante " />
                                 <CheckBox Tag="CareTaker" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitAg.CareTaker}"></CheckBox>

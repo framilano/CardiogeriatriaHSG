@@ -94,18 +94,21 @@
                                 <TextBlock Classes="GenericFieldLabel" Text="Ipertensione Arteriosa "/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.ArterialHypertension}"/>
                             </WrapPanel>
-                            <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Valvulopatia severa "/>
-                                <TextBlock  Classes="GenericSubFieldLabel" Text="SM"/>
-                                <CheckBox IsChecked="{Binding CurrentVisitApr.SevereValvularDiseaseSm}"/>
-                                <TextBlock  Classes="GenericSubFieldLabel" Text="IM"/>
-                                <CheckBox IsChecked="{Binding CurrentVisitApr.SevereValvularDiseaseIm}"/>
-                                <TextBlock  Classes="GenericSubFieldLabel" Text="IAO"/>
-                                <CheckBox IsChecked="{Binding CurrentVisitApr.SevereValvularDiseaseIao}"/>
-                                <TextBlock  Classes="GenericSubFieldLabel" Text="SAO"/>
-                                <CheckBox IsChecked="{Binding CurrentVisitApr.SevereValvularDiseaseSao}"/>
-                                <TextBlock  Classes="GenericSubFieldLabel" Text="ITR"/>
-                                <CheckBox IsChecked="{Binding CurrentVisitApr.SevereValvularDiseaseItr}"/>
+                            
+                            <TextBlock Classes="GenericFieldLabel" Text="Valvulopatia severa "/>
+                            <WrapPanel>
+                                <Grid RowDefinitions="*, *, *, *, *" ColumnDefinitions="*, *">
+                                    <TextBlock Grid.Row="0" Grid.Column="0"  Classes="GenericSubFieldLabel" Text="‣ SM"/>
+                                    <CheckBox Grid.Row="0" Grid.Column="1" IsChecked="{Binding CurrentVisitApr.SevereValvularDiseaseSm}"/>
+                                    <TextBlock Grid.Row="1" Grid.Column="0"  Classes="GenericSubFieldLabel" Text="‣ IM"/>
+                                    <CheckBox Grid.Row="1" Grid.Column="1" IsChecked="{Binding CurrentVisitApr.SevereValvularDiseaseIm}"/>
+                                    <TextBlock Grid.Row="2" Grid.Column="0"  Classes="GenericSubFieldLabel" Text="‣ IAO"/>
+                                    <CheckBox Grid.Row="2" Grid.Column="1" IsChecked="{Binding CurrentVisitApr.SevereValvularDiseaseIao}"/>
+                                    <TextBlock Grid.Row="3" Grid.Column="0"  Classes="GenericSubFieldLabel" Text="‣ SAO"/>
+                                    <CheckBox Grid.Row="3" Grid.Column="1" IsChecked="{Binding CurrentVisitApr.SevereValvularDiseaseSao}"/>
+                                    <TextBlock Grid.Row="4" Grid.Column="0"  Classes="GenericSubFieldLabel" Text="‣ ITR"/>
+                                    <CheckBox Grid.Row="4" Grid.Column="1" IsChecked="{Binding CurrentVisitApr.SevereValvularDiseaseItr}"/>
+                                </Grid>
                             </WrapPanel>
                            
                             <!-- AMILOIDOSI -->
