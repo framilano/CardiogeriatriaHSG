@@ -65,6 +65,10 @@
                                 <CheckBox IsChecked="{Binding CurrentVisitTd.OtherLoopDiuretic}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Amiodarone "/>
+                                <CheckBox IsChecked="{Binding CurrentVisitTd.Amiodarone}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="DOAC "/>
                                 <CheckBox IsChecked="{Binding CurrentVisitTd.Doac}"/>
                             </WrapPanel>
@@ -127,6 +131,14 @@
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="Ezetimibe "/>
                                 <CheckBox IsChecked="{Binding CurrentVisitTd.Ezetimibe}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Ipoglicemizzanti orali "/>
+                                <CheckBox IsChecked="{Binding CurrentVisitTd.OralHypoglycemicAgents}"/>
+                            </WrapPanel>
+                            <WrapPanel Orientation="Horizontal">
+                                <TextBlock Classes="GenericFieldLabel" Text="Insulina "/>
+                                <CheckBox IsChecked="{Binding CurrentVisitTd.Insulin}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
                                 <TextBlock Classes="GenericFieldLabel" Text="PPI "/>

@@ -120,6 +120,7 @@ public partial class EsamiEmaticiUserControl : UserControl
         else _albuminuriaSentence = _currentVisitEe!.Albuminuria is null ? null : $"U-Alb {_currentVisitEe!.Albuminuria}mg/L.";
     }
     
+    
     public void LoadEsamiEmaticiContent(VisitEe currentVisitEe)
     {
         _currentVisitEe = currentVisitEe;

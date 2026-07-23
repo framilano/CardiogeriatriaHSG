@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 using CommunityToolkit.Mvvm.ComponentModel;
 
@@ -34,5 +35,7 @@ public partial class VisitRc(string visitCode): ObservableObject
     [ObservableProperty] public partial int? HospitalizationsSinceLastVisitNumber { get; set; }
     [ObservableProperty] public partial int? HospitalizationsSinceLastVisitDays { get; set; }
     [ObservableProperty] public partial string? HospitalizationsSinceLastVisitCause { get; set; }
+    [ObservableProperty] public partial DateTimeOffset? FirstHospitalizationDate { get; set; }
+
 
 }

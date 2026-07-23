@@ -1,3 +1,4 @@
+using System;
 using System.Globalization;
 using System.Text;
 using Avalonia.Controls;
@@ -30,7 +31,14 @@ public partial class RaccordoClinicoUserControl : UserControl
     private string? _fallsSinceLastVisitSentence;
     private string? _emergenciesSinceLastVisitSentence;
     private string? _hospitalizationsSinceLastVisitSentence;
-
+    
+    private void OnColumnADatePickerChanged(object? sender, DatePickerSelectedValueChangedEventArgs e)
+    {
+        var datePicker = (DatePicker)sender!;
+        _currentVisitRc!.FirstHospitalizationDate = (DateTimeOffset)datePicker.SelectedDate!;
+        UpdateHospitalizationsSinceLastVisitSentence();
+        UpdateColumnBDescription();
+    }
 
     public void OnColumnAChanged(object? sender, RoutedEventArgs routedEventArgs)
     {
@@ -147,6 +155,7 @@ public partial class RaccordoClinicoUserControl : UserControl
                     _currentVisitRc!.HospitalizationsSinceLastVisitNumber ??= 0;
                     _currentVisitRc!.HospitalizationsSinceLastVisitDays ??= 0;
                     _currentVisitRc!.HospitalizationsSinceLastVisitCause ??= StringChoices.HospitalizationsSinceLastVisitCauses[0];
+                    _currentVisitRc!.FirstHospitalizationDate ??= DateTimeOffset.Now;
                     Dispatcher.UIThread.Post(() => HospitalizationsSinceLastVisitWrapPanel.IsVisible = true);
                 }
                 else
@@ -154,6 +163,7 @@ public partial class RaccordoClinicoUserControl : UserControl
                     _currentVisitRc!.HospitalizationsSinceLastVisitNumber = null;
                     _currentVisitRc!.HospitalizationsSinceLastVisitDays = null;
                     _currentVisitRc!.HospitalizationsSinceLastVisitCause = null;
+                    _currentVisitRc!.FirstHospitalizationDate = null;
                     Dispatcher.UIThread.Post(() => HospitalizationsSinceLastVisitWrapPanel.IsVisible = false);
                 }
                 UpdateHospitalizationsSinceLastVisitSentence();
@@ -274,7 +284,9 @@ public partial class RaccordoClinicoUserControl : UserControl
         if (_currentVisitRc!.HospitalizationsSinceLastVisit &&
             _currentVisitRc!.HospitalizationsSinceLastVisitNumber is not null &&
             _currentVisitRc!.HospitalizationsSinceLastVisitDays is not null &&
-            _currentVisitRc!.HospitalizationsSinceLastVisitCause is not null)
+            _currentVisitRc!.HospitalizationsSinceLastVisitCause is not null &&
+            _currentVisitRc!.FirstHospitalizationDate is not null)
+
         {
             hospitalizationsSentenceBuilder.Append("Riferisce ");
             hospitalizationsSentenceBuilder.Append(_currentVisitRc!.HospitalizationsSinceLastVisitNumber);
@@ -286,7 +298,8 @@ public partial class RaccordoClinicoUserControl : UserControl
             hospitalizationsSentenceBuilder.Append(_currentVisitRc!.HospitalizationsSinceLastVisitDays == 1 ? "giorno" : "giorni");
             hospitalizationsSentenceBuilder.Append(", per causa ");
             hospitalizationsSentenceBuilder.Append(_currentVisitRc!.HospitalizationsSinceLastVisitCause!.ToLower());
-            hospitalizationsSentenceBuilder.Append(".\n");
+            hospitalizationsSentenceBuilder.Append($". Data primo ricovero {_currentVisitRc!.FirstHospitalizationDate:dd/MM/yyyy}.\n");
+            
         }
         else
         {

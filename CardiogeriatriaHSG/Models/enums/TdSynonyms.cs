@@ -13,6 +13,7 @@ public static class TdSynonyms
     public static readonly List<string> VericiguatSynonyms = ["vericiguat"];
     public static readonly List<string> FurosemideSynonyms = ["furosemide", "lasix"];
     public static readonly List<string> OtherLoopDiureticSynonyms = ["torasemide", "bumetanide", "acido etacrinico"];
+    public static readonly List<string> AmiodaroneSynonyms = ["amiodarone"];
     public static readonly List<string> DoacSynonyms = ["apixaban", "rivaroxaban", "edoxaban", "dabigatran"];
     public static readonly List<string> VkaSynonyms = ["warfarin", "coumadin", "acenocumarol", "sintrom"];
     public static readonly List<string> AcetazolamideSynonyms = ["acetazolamide"];
@@ -29,6 +30,8 @@ public static class TdSynonyms
     public static readonly List<string> FibratesSynonyms = ["fenofibrato", "gemfibrozil", "clofibrato"];
     public static readonly List<string> StatinsSynonyms = ["atorvastatina", "rosuvastatina", "simvastatina", "pravastatina", "fluvastatina", "lovastatina"];
     public static readonly List<string> EzetimibeSynonyms = ["ezetimibe"];
+    public static readonly List<string> OralHypoglycemicAgentsSynonyms = ["ipoglicimizzante orale"];
+    public static readonly List<string> InsulinSynonyms = ["insulina"];
     public static readonly List<string> PpiSynonyms = ["omeprazolo", "pantoprazolo", "lansoprazolo", "esomeprazolo", "rabeprazolo"];
     public static readonly List<string> AcheInhibitorOrMemantineSynonyms = ["donepezil", "rivastigmina", "galantamina"];
     public static readonly List<string> BenzodiazepinesSynonyms = ["benzodiazepine", "lorazepam", "alprazolam", "diazepam", "delorazepam", "lormetazepam", "bromazepam", "tavor", "en", "xanax"];

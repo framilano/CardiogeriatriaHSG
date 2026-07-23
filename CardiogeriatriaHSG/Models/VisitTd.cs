@@ -25,6 +25,7 @@ public partial class VisitTd(string visitCode): ObservableObject
     [ObservableProperty] public partial bool Arni { get; set; }
     [ObservableProperty] public partial bool Vericiguat { get; set; }
     [ObservableProperty] public partial bool OtherLoopDiuretic { get; set; }
+    [ObservableProperty] public partial bool Amiodarone { get; set; }
     [ObservableProperty] public partial bool Doac { get; set; }
     [ObservableProperty] public partial bool Vka { get; set; }
     [ObservableProperty] public partial bool Acetazolamide { get; set; }
@@ -41,6 +42,8 @@ public partial class VisitTd(string visitCode): ObservableObject
     [ObservableProperty] public partial bool Fibrates { get; set; }
     [ObservableProperty] public partial bool Statins { get; set; }
     [ObservableProperty] public partial bool Ezetimibe { get; set; }
+    [ObservableProperty] public partial bool OralHypoglycemicAgents { get; set; }
+    [ObservableProperty] public partial bool Insulin { get; set; }
     [ObservableProperty] public partial bool Ppi { get; set; }
     [ObservableProperty] public partial bool AcheInhibitorOrMemantine { get; set; }
     [ObservableProperty] public partial bool Benzodiazepines { get; set; }

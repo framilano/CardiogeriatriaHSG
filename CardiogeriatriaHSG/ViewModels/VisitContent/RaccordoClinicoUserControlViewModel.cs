@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using CardiogeriatriaHSG.Models;
 using CardiogeriatriaHSG.Models.enums;
@@ -7,6 +8,8 @@ namespace CardiogeriatriaHSG.ViewModels.VisitContent;
 public class RaccordoClinicoUserControlViewModel(VisitRc currentVisitRc) : ViewModelBase
 {
     public VisitRc CurrentVisitRc { get; set; } = currentVisitRc;
+    
+    public DateTimeOffset MaxAllowedDate { get; } = new(DateTime.Now);
 
     public static IEnumerable<string> ReportTypesValues => StringChoices.ReportsTypes;
     public static IEnumerable<string> DyspneaTypesValues => StringChoices.DyspneaTypes;

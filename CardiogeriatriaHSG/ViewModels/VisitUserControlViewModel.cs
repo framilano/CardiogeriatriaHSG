@@ -235,6 +235,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
             Furosemide = false,
             FurosemideDose = null,
             OtherLoopDiuretic = false,
+            Amiodarone = false,
             Doac = false,
             Vka = false,
             Acetazolamide = false,
@@ -251,6 +252,8 @@ public partial class VisitUserControlViewModel : ViewModelBase
             Fibrates = false,
             Statins = false,
             Ezetimibe = false,
+            OralHypoglycemicAgents = false,
+            Insulin = false,
             Ppi = false,
             AcheInhibitorOrMemantine = false,
             Benzodiazepines = false,
@@ -291,7 +294,8 @@ public partial class VisitUserControlViewModel : ViewModelBase
             HospitalizationsSinceLastVisit = false,
             HospitalizationsSinceLastVisitNumber = null,
             HospitalizationsSinceLastVisitDays = null,
-            HospitalizationsSinceLastVisitCause = null
+            HospitalizationsSinceLastVisitCause = null,
+            FirstHospitalizationDate = null
         };
         
         Log.Information("[STOP] Created new VisitRc");

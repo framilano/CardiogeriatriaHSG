@@ -21,11 +21,11 @@ public static class AprSynonyms
     public static readonly List<string> AnemiaSynonyms = ["anemia"];
     public static readonly List<string> BradycardiaSynonyms = ["bradicardia", "bav"];
     public static readonly List<string> ArterialHypertensionSynonyms = ["ipertensione arteriosa", "ia", "ipertensiva"];
-    public static readonly List<string> SevereValvularDiseaseSmSynonyms = ["sm", "stenosi mitralica severa"];
-    public static readonly List<string> SevereValvularDiseaseImSynonyms = ["im", "insufficienza mitralica severa"];
-    public static readonly List<string> SevereValvularDiseaseIaoSynonyms = ["iao", "insufficienza aortica severa"];
-    public static readonly List<string> SevereValvularDiseaseSaoSynonyms = ["sao", "stenosi aortica severa"];
-    public static readonly List<string> SevereValvularDiseaseItrSynonyms = ["itr", "insufficienza tricuspidalica severa"];
+    public static readonly List<string> SevereValvularDiseaseSmSynonyms = ["sm severa", "severa sm", "stenosi mitralica severa"];
+    public static readonly List<string> SevereValvularDiseaseImSynonyms = ["im severa", "severa im", "insufficienza mitralica severa"];
+    public static readonly List<string> SevereValvularDiseaseIaoSynonyms = ["iao severa", "severa iao", "insufficienza aortica severa"];
+    public static readonly List<string> SevereValvularDiseaseSaoSynonyms = ["sao severa", "severa sao", "stenosi aortica severa"];
+    public static readonly List<string> SevereValvularDiseaseItrSynonyms = ["itr severa", "severa itr", "insufficienza tricuspidalica severa"];
     public static readonly List<string> AmyloidosisSynonyms = ["amiloidosi"];
 
     public static readonly List<string> DementiaSynonyms = ["deficit cognitivo", "demenza", "decadimento cognitivo", "disturbo cognitivo"," disturbo neurocognitivo", "mci", "lbd", "alzheimer"];

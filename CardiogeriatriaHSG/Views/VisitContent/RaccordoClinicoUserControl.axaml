@@ -102,6 +102,10 @@
                                     <TextBlock Classes="GenericSubFieldLabel" Text="‣ Causa "/>
                                     <ComboBox Tag="HospitalizationsSinceLastVisitCause" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding HospitalizationsSinceLastVisitCausesValues}" SelectedItem="{Binding CurrentVisitRc.HospitalizationsSinceLastVisitCause}"/>
                                 </WrapPanel>
+                                <WrapPanel Orientation="Horizontal">
+                                    <TextBlock Classes="GenericSubFieldLabel" Text="‣ Data primo ricovero "/>
+                                    <DatePicker MaxYear="{Binding MaxAllowedDate}" Tag="DateOfBirth" SelectedDateChanged="OnColumnADatePickerChanged" SelectedDate="{Binding CurrentVisitRc.FirstHospitalizationDate}"></DatePicker>
+                                </WrapPanel>
                             </WrapPanel>
                         </WrapPanel>
                     </ScrollViewer>
