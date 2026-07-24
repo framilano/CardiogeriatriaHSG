@@ -242,8 +242,7 @@ public partial class EcografiaToracicaUserControl : UserControl
         }
         vciSentenceStringBuilder.Append(" e pulsatilità portale ");
         vciSentenceStringBuilder.Append(_currentVisitEco!.PortalVeinPulsatility);
-        
-        vciSentenceStringBuilder.Append(".\n");
+        vciSentenceStringBuilder.Append('.');
         _vciSentence = vciSentenceStringBuilder.ToString();
     }
     

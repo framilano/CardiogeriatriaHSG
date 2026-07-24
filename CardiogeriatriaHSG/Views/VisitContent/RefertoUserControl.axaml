@@ -45,6 +45,10 @@
                 <LineBreak/>
                 <Run Name="EcografiaToracicaContent"/>
                 <LineBreak/><LineBreak/>
+                <Run FontWeight="Bold" Text="Valutazione Geriatrica Completa" />
+                <LineBreak/>
+                <Run Name="ValutazioneGeriatricaCompletaContent"/>
+                <LineBreak/><LineBreak/>
             </SelectableTextBlock>
         </ScrollViewer>
     </Border>

@@ -1,0 +1,53 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:visitContent="clr-namespace:CardiogeriatriaHSG.ViewModels.VisitContent"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="CardiogeriatriaHSG.Views.VisitContent.ValutazioneGeriatricaCompletaUserControl"
+             x:DataType="visitContent:ValutazioneGeriatricaCompletaUserControlViewModel">
+            <UserControl.Styles>
+                <StyleInclude Source="/Styles/VisitUserControlStyle.axaml"/>
+            </UserControl.Styles>
+            <Grid ColumnDefinitions="*, *" RowDefinitions="*, *">
+                <Border Classes="ColumnBorder" Grid.Column="0" Grid.RowSpan="2">
+                    <ScrollViewer>
+                        <WrapPanel Classes="ColumnAWrapPanel">
+                            <TextBlock Classes="GenericFieldLabel" Text="ADL conservate" />
+                            <Grid RowDefinitions="*, *, *, *, *, *" ColumnDefinitions="*, *">
+                                <TextBlock Grid.Row="0" Grid.Column="0" Name="Diet" Classes="GenericSubFieldLabel" Text="‣ Alimentazione" />
+                                <CheckBox Grid.Row="0" Grid.Column="1" Tag="Diet" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Diet}"></CheckBox>
+                                <TextBlock Grid.Row="1" Grid.Column="0" Name="Continence" Classes="GenericSubFieldLabel" Text="‣ Continenza" />
+                                <CheckBox Grid.Row="1" Grid.Column="1" Tag="Continence" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Continence}"></CheckBox>
+                                <TextBlock Grid.Row="2" Grid.Column="0" Name="Dressing" Classes="GenericSubFieldLabel" Text="‣ Vestizione" />
+                                <CheckBox Grid.Row="2" Grid.Column="1" Tag="Dressing" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Dressing}"></CheckBox>
+                                <TextBlock Grid.Row="3" Grid.Column="0" Name="Shower" Classes="GenericSubFieldLabel" Text="‣ Doccia" />
+                                <CheckBox Grid.Row="3" Grid.Column="1" Tag="Shower" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Shower}"></CheckBox>
+                                <TextBlock Grid.Row="4" Grid.Column="0" Name="PosturalPassages" Classes="GenericSubFieldLabel" Text="‣ Passaggi posturali" />
+                                <CheckBox Grid.Row="4" Grid.Column="1" Tag="PosturalPassages" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.PosturalPassages}"></CheckBox>
+                                <TextBlock Grid.Row="5" Grid.Column="0" Name="Hygiene" Classes="GenericSubFieldLabel" Text="‣ Andare in bagno e igiene" />
+                                <CheckBox Grid.Row="5" Grid.Column="1" Tag="Hygiene" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Hygiene}"></CheckBox>
+                            </Grid>
+                        </WrapPanel>
+                    </ScrollViewer>
+                </Border>
+                <Border Classes="ColumnBorder" Grid.Column="1" Grid.Row="0">
+                    <Grid>
+                        <ScrollViewer VerticalScrollBarVisibility="Auto">
+                            <SelectableTextBlock Classes="ColumnBSelectableTextBlock" Name="AutomaticColumnB"></SelectableTextBlock>
+                        </ScrollViewer>
+                        <Button 
+                            HorizontalAlignment="Right" 
+                            VerticalAlignment="Top"
+                            Margin="0,4,4,0"
+                            Classes="TransparentButton"
+                            Click="CopyToManualText">
+                            <Image Source="avares://CardiogeriatriaHSG/Assets/parrot.png" Width="50" Height="50" />
+                        </Button>
+                    </Grid>
+                </Border>
+                <Border Classes="ColumnBorder" Grid.Column="1" Grid.Row="1">
+                    <TextBox Classes="ColumnBWhiteTextBox" Name="ManualColumnB" Text="{Binding CurrentVisitCga.CgaManualText}"></TextBox>
+                </Border>
+            </Grid>
+</UserControl>

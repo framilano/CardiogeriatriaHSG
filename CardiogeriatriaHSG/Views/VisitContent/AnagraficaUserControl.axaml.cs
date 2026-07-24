@@ -70,4 +70,9 @@ public partial class AnagraficaUserControl : UserControl
         columnBDescriptionStringBuilder.Append(_registrySentence);
         Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
+
+    private void CopyToManualText(object? sender, RoutedEventArgs routedEventArgs)
+    {
+        _currentPatient!.PatientManualText = AutomaticColumnB.Text;
+    }
 }

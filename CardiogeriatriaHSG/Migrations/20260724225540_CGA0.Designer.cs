@@ -3,6 +3,7 @@ using System;
 using CardiogeriatriaHSG.Services.database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CardiogeriatriaHSG.Migrations
 {
     [DbContext(typeof(AppDb))]
-    partial class AppDbModelSnapshot : ModelSnapshot
+    [Migration("20260724225540_CGA0")]
+    partial class CGA0
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.9");
@@ -265,10 +268,10 @@ namespace CardiogeriatriaHSG.Migrations
                     b.Property<bool>("Dressing")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("Hygiene")
+                    b.Property<bool?>("Hygiene")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("PosturalPassages")
+                    b.Property<bool?>("PosturalPassages")
                         .HasColumnType("INTEGER");
 
                     b.Property<bool>("Shower")

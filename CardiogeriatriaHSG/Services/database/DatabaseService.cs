@@ -147,4 +147,9 @@ public class DatabaseService
         _visitRepository.LoadVisitEcoByVisit(visit);
         Log.Information("[STOP] Loaded visit ECO data for visit {VisitVisitCode}", visit.VisitCode);
     }
+    public void LoadVisitValutazioneGeriatricaCompletaByVisit(Visit visit) {
+        Log.Debug("[START] Loading visit CGA data for visit {VisitVisitCode}", visit.VisitCode);
+        _visitRepository.LoadVisitCgaByVisit(visit);
+        Log.Information("[STOP] Loaded visit CGA data for visit {VisitVisitCode}", visit.VisitCode);
+    }
 }

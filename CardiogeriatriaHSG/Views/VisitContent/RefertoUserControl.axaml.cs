@@ -27,6 +27,8 @@ public partial class RefertoUserControl : UserControl
             esamiObiettivoUserControl.LoadEsamiObiettivoContent(currentVisit.VisitEo!);
             var ecografiaToracicaUserControl = new EcografiaToracicaUserControl();
             ecografiaToracicaUserControl.LoadEcografiaToracicaContent(currentVisit.VisitEco!);
+            var valutazioneGeriatricaCompletaUserControl = new ValutazioneGeriatricaCompletaUserControl();
+            valutazioneGeriatricaCompletaUserControl.LoadValutazioneGeriatricaCompletaContent(currentVisit.VisitCga!);
             Dispatcher.UIThread.Post(() => { 
                 //Anagrafica
                 AnagraficaContent.Text = currentVisit.Patient!.PatientManualText is null || currentVisit.Patient!.PatientManualText.Trim().Length == 0 
@@ -47,14 +49,20 @@ public partial class RefertoUserControl : UserControl
                     ? raccordoClinicoUserControl.AutomaticColumnB.Text : currentVisit.VisitRc!.RcManualText;
                 
                 //Esami Ematici
-                EsamiEmaticiContent.Text = esamiEmaticiUserControl.AutomaticColumnB.Text;
+                EsamiEmaticiContent.Text = currentVisit.VisitEe!.EeManualText is null || currentVisit.VisitEe!.EeManualText.Trim().Length == 0 
+                    ? esamiEmaticiUserControl.AutomaticColumnB.Text : currentVisit.VisitEe!.EeManualText;                
                 
                 //Esami Obiettivo
-                EsamiObiettivoContent.Text = esamiObiettivoUserControl.AutomaticColumnB.Text;
+                EsamiObiettivoContent.Text = currentVisit.VisitEo!.EoManualText is null || currentVisit.VisitEo!.EoManualText.Trim().Length == 0 
+                    ? esamiObiettivoUserControl.AutomaticColumnB.Text : currentVisit.VisitEo!.EoManualText;       
                 
                 //Ecografia Toracica
                 EcografiaToracicaContent.Text = currentVisit.VisitEco!.EcoManualText is null || currentVisit.VisitEco!.EcoManualText.Trim().Length == 0 
                     ? ecografiaToracicaUserControl.AutomaticColumnB.Text : currentVisit.VisitEco!.EcoManualText;
+                
+                //Valutazione Geriatrica Completa
+                ValutazioneGeriatricaCompletaContent.Text = currentVisit.VisitCga!.CgaManualText is null || currentVisit.VisitCga!.CgaManualText.Trim().Length == 0 
+                    ? valutazioneGeriatricaCompletaUserControl.AutomaticColumnB.Text : currentVisit.VisitCga!.CgaManualText;
             });
         };
     }

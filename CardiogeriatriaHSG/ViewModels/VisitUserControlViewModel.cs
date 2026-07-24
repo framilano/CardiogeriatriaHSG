@@ -100,15 +100,20 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 CurrentVisit.VisitEe ??= CreateNewVisitEe(CurrentVisit.VisitCode!);
                 CurrentContent = new EsamiEmaticiUserControl { DataContext = new EsamiEmaticiUserControlViewModel(CurrentVisit.VisitEe) };
                 break;
+            case "Esami Obiettivo":
+                if (CurrentVisit.VisitEo is null) _databaseService.LoadVisitEsamiObiettivoByVisit(CurrentVisit);
+                CurrentVisit.VisitEo ??= CreateNewVisitEo(CurrentVisit.VisitCode!);
+                CurrentContent = new EsamiObiettivoUserControl { DataContext = new EsamiObiettivoUserControlViewModel(CurrentVisit.VisitEo) };
+                break;
             case "ECO":
                 if (CurrentVisit.VisitEco is null) _databaseService.LoadVisitEcografiaToracicaByVisit(CurrentVisit);
                 CurrentVisit.VisitEco ??= CreateNewVisitEco(CurrentVisit.VisitCode!);
                 CurrentContent = new EcografiaToracicaUserControl { DataContext = new EcografiaToracicaUserControlViewModel(CurrentVisit.VisitEco) };
                 break;
-            case "Esami Obiettivo":
-                if (CurrentVisit.VisitEo is null) _databaseService.LoadVisitEsamiObiettivoByVisit(CurrentVisit);
-                CurrentVisit.VisitEo ??= CreateNewVisitEo(CurrentVisit.VisitCode!);
-                CurrentContent = new EsamiObiettivoUserControl { DataContext = new EsamiObiettivoUserControlViewModel(CurrentVisit.VisitEo) };
+            case "CGA":
+                if (CurrentVisit.VisitCga is null) _databaseService.LoadVisitValutazioneGeriatricaCompletaByVisit(CurrentVisit);
+                CurrentVisit.VisitCga ??= CreateNewVisitCga(CurrentVisit.VisitCode!);
+                CurrentContent = new ValutazioneGeriatricaCompletaUserControl { DataContext = new ValutazioneGeriatricaCompletaUserControlViewModel(CurrentVisit.VisitCga) };
                 break;
             case "Referto":
                 //There's no need to load patient (anagrafica) because already loaded by default
@@ -119,6 +124,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 if (CurrentVisit.VisitEe is null) { _databaseService.LoadVisitEsamiEmaticiByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitEo is null) { _databaseService.LoadVisitEsamiObiettivoByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitEco is null) { _databaseService.LoadVisitEcografiaToracicaByVisit(CurrentVisit); }
+                if (CurrentVisit.VisitCga is null) { _databaseService.LoadVisitValutazioneGeriatricaCompletaByVisit(CurrentVisit); }
 
                 //If still null after loading from DB, we create new Visits elements
                 CurrentVisit.VisitAg ??= CreateNewVisitAg(CurrentVisit.VisitCode!);
@@ -128,6 +134,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 CurrentVisit.VisitEe ??= CreateNewVisitEe(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitEo ??= CreateNewVisitEo(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitEco ??= CreateNewVisitEco(CurrentVisit.VisitCode!);
+                CurrentVisit.VisitCga ??= CreateNewVisitCga(CurrentVisit.VisitCode!);
 
                 CurrentContent = new RefertoUserControl { DataContext = new RefertoUserControlViewModel(CurrentVisit) };
                 break;
@@ -374,6 +381,23 @@ public partial class VisitUserControlViewModel : ViewModelBase
         
         Log.Information("[STOP] Created new VisitEco");
         return visitEco;
+    }
+    
+    private static VisitCga CreateNewVisitCga(string visitCode)
+    {
+        Log.Debug("[START] Creating new VisitCga...");
+        var visitCga = new VisitCga(visitCode)
+        {
+            Diet = false,
+            Continence = false,
+            Dressing = false,
+            Shower = false,
+            PosturalPassages = false,
+            Hygiene = false
+        };
+        
+        Log.Information("[STOP] Created new VisitCga");
+        return visitCga;
     }
     
     [RelayCommand]
