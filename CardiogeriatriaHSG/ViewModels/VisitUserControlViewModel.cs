@@ -393,7 +393,15 @@ public partial class VisitUserControlViewModel : ViewModelBase
             Dressing = false,
             Shower = false,
             PosturalPassages = false,
-            Hygiene = false
+            Hygiene = false,
+            Phone = false,
+            Shopping = false,
+            SenseOfMoney = false,
+            Car = false,
+            Medicines = false,
+            Cooking = false,
+            HouseholdChores =  false,
+            Laundry = false
         };
         
         Log.Information("[STOP] Created new VisitCga");

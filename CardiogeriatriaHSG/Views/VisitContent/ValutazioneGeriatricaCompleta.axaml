@@ -13,20 +13,37 @@
                 <Border Classes="ColumnBorder" Grid.Column="0" Grid.RowSpan="2">
                     <ScrollViewer>
                         <WrapPanel Classes="ColumnAWrapPanel">
-                            <TextBlock Classes="GenericFieldLabel" Text="ADL conservate" />
-                            <Grid RowDefinitions="*, *, *, *, *, *" ColumnDefinitions="*, *">
-                                <TextBlock Grid.Row="0" Grid.Column="0" Name="Diet" Classes="GenericSubFieldLabel" Text="‣ Alimentazione" />
-                                <CheckBox Grid.Row="0" Grid.Column="1" Tag="Diet" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Diet}"></CheckBox>
-                                <TextBlock Grid.Row="1" Grid.Column="0" Name="Continence" Classes="GenericSubFieldLabel" Text="‣ Continenza" />
-                                <CheckBox Grid.Row="1" Grid.Column="1" Tag="Continence" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Continence}"></CheckBox>
-                                <TextBlock Grid.Row="2" Grid.Column="0" Name="Dressing" Classes="GenericSubFieldLabel" Text="‣ Vestizione" />
-                                <CheckBox Grid.Row="2" Grid.Column="1" Tag="Dressing" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Dressing}"></CheckBox>
-                                <TextBlock Grid.Row="3" Grid.Column="0" Name="Shower" Classes="GenericSubFieldLabel" Text="‣ Doccia" />
-                                <CheckBox Grid.Row="3" Grid.Column="1" Tag="Shower" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Shower}"></CheckBox>
-                                <TextBlock Grid.Row="4" Grid.Column="0" Name="PosturalPassages" Classes="GenericSubFieldLabel" Text="‣ Passaggi posturali" />
-                                <CheckBox Grid.Row="4" Grid.Column="1" Tag="PosturalPassages" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.PosturalPassages}"></CheckBox>
-                                <TextBlock Grid.Row="5" Grid.Column="0" Name="Hygiene" Classes="GenericSubFieldLabel" Text="‣ Andare in bagno e igiene" />
-                                <CheckBox Grid.Row="5" Grid.Column="1" Tag="Hygiene" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Hygiene}"></CheckBox>
+                            <Grid RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *" ColumnDefinitions="*, *">
+                                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Classes="GenericFieldLabel" Text="ADL conservate" />
+                                <TextBlock Grid.Row="1" Grid.Column="0" Name="Diet" Classes="GenericSubFieldLabel" Text="‣ Alimentazione" />
+                                <CheckBox Grid.Row="1" Grid.Column="1" Tag="Diet" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Diet}"></CheckBox>
+                                <TextBlock Grid.Row="2" Grid.Column="0" Name="Continence" Classes="GenericSubFieldLabel" Text="‣ Continenza" />
+                                <CheckBox Grid.Row="2" Grid.Column="1" Tag="Continence" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Continence}"></CheckBox>
+                                <TextBlock Grid.Row="3" Grid.Column="0" Name="Dressing" Classes="GenericSubFieldLabel" Text="‣ Vestizione" />
+                                <CheckBox Grid.Row="3" Grid.Column="1" Tag="Dressing" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Dressing}"></CheckBox>
+                                <TextBlock Grid.Row="4" Grid.Column="0" Name="Shower" Classes="GenericSubFieldLabel" Text="‣ Doccia" />
+                                <CheckBox Grid.Row="4" Grid.Column="1" Tag="Shower" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Shower}"></CheckBox>
+                                <TextBlock Grid.Row="5" Grid.Column="0" Name="PosturalPassages" Classes="GenericSubFieldLabel" Text="‣ Passaggi posturali" />
+                                <CheckBox Grid.Row="5" Grid.Column="1" Tag="PosturalPassages" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.PosturalPassages}"></CheckBox>
+                                <TextBlock Grid.Row="6" Grid.Column="0" Name="Hygiene" Classes="GenericSubFieldLabel" Text="‣ Andare in bagno e igiene" />
+                                <CheckBox Grid.Row="6" Grid.Column="1" Tag="Hygiene" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Hygiene}"></CheckBox>
+                                <TextBlock Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Classes="GenericFieldLabel" Text="IADL conservate" />
+                                <TextBlock Grid.Row="8" Grid.Column="0" Name="Phone" Classes="GenericSubFieldLabel" Text="‣ Telefono" />
+                                <CheckBox Grid.Row="8" Grid.Column="1" Tag="Phone" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Phone}"></CheckBox>
+                                <TextBlock Grid.Row="9" Grid.Column="0" Name="Shopping" Classes="GenericSubFieldLabel" Text="‣ Acquisti" />
+                                <CheckBox Grid.Row="9" Grid.Column="1" Tag="Shopping" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Shopping}"></CheckBox>
+                                <TextBlock Grid.Row="10" Grid.Column="0" Name="SenseOfMoney" Classes="GenericSubFieldLabel" Text="‣ Senso denaro" />
+                                <CheckBox Grid.Row="10" Grid.Column="1" Tag="SenseOfMoney" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.SenseOfMoney}"></CheckBox>
+                                <TextBlock Grid.Row="11" Grid.Column="0" Name="Car" Classes="GenericSubFieldLabel" Text="‣ Auto/mezzi" />
+                                <CheckBox Grid.Row="11" Grid.Column="1" Tag="Car" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Car}"></CheckBox>
+                                <TextBlock Grid.Row="12" Grid.Column="0" Name="Medicines" Classes="GenericSubFieldLabel" Text="‣ Medicinali" />
+                                <CheckBox Grid.Row="12" Grid.Column="1" Tag="Medicines" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Medicines}"></CheckBox>
+                                <TextBlock Grid.Row="13" Grid.Column="0" Name="Cooking" Classes="GenericSubFieldLabel" Text="‣ Cucinare" />
+                                <CheckBox Grid.Row="13" Grid.Column="1" Tag="Cooking" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Cooking}"></CheckBox>
+                                <TextBlock Grid.Row="14" Grid.Column="0" Name="HouseholdChores" Classes="GenericSubFieldLabel" Text="‣ Faccende domestiche" />
+                                <CheckBox Grid.Row="14" Grid.Column="1" Tag="HouseholdChores" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.HouseholdChores}"></CheckBox>
+                                <TextBlock Grid.Row="15" Grid.Column="0" Name="Laundry" Classes="GenericSubFieldLabel" Text="‣ Lavanderia" />
+                                <CheckBox Grid.Row="15" Grid.Column="1" Tag="Laundry" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Laundry}"></CheckBox>
                             </Grid>
                         </WrapPanel>
                     </ScrollViewer>

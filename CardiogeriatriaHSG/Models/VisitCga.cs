@@ -19,4 +19,12 @@ public partial class VisitCga(string visitCode): ObservableObject
     [ObservableProperty] public partial bool Shower { get; set; }
     [ObservableProperty] public partial bool PosturalPassages { get; set; }
     [ObservableProperty] public partial bool Hygiene { get; set; }
+    [ObservableProperty] public partial bool Phone { get; set; }
+    [ObservableProperty] public partial bool Shopping { get; set; }
+    [ObservableProperty] public partial bool SenseOfMoney { get; set; }
+    [ObservableProperty] public partial bool Car { get; set; }
+    [ObservableProperty] public partial bool Medicines { get; set; }
+    [ObservableProperty] public partial bool Cooking { get; set; }
+    [ObservableProperty] public partial bool HouseholdChores { get; set; }
+    [ObservableProperty] public partial bool Laundry { get; set; }
 }
