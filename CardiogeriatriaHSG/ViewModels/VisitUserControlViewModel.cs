@@ -45,7 +45,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
     public static IEnumerable<string> MenuEntriesValues => SidebarEntries.MenuEntries;
     
     //The selected sidebar entry
-    private string SelectedMenuEntry { get; set; } = "";
+    private string SelectedMenuEntry { get; set; }
     
     //All the VisitTypeValues available in Header
     public static IEnumerable<string> VisitTypesValues => StringChoices.VisitTypes;
@@ -401,7 +401,16 @@ public partial class VisitUserControlViewModel : ViewModelBase
             Medicines = false,
             Cooking = false,
             HouseholdChores =  false,
-            Laundry = false
+            Laundry = false,
+            Mmse = null,
+            Moca = null,
+            Es = null,
+            RestingBorg = null,
+            PostSppbBorg = null,
+            SppbBalance = StringChoices.SppbBalanceTypes[0],
+            SppbFourMetersTime = null,
+            SppbSitToStand = StringChoices.SppbSitToStandTypes[0],
+            Kccq = null
         };
         
         Log.Information("[STOP] Created new VisitCga");

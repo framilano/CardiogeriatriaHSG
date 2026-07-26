@@ -17,43 +17,52 @@
                                 <TextBlock Classes="GenericFieldLabel" Text="Data esami "/>
                                 <DatePicker HorizontalAlignment="Left" MaxYear="{Binding MaxAllowedDate}" Tag="DateOfBirth" SelectedDateChanged="OnColumnADatePickerChanged" SelectedDate="{Binding CurrentVisitEe.ExamDate}"></DatePicker>
                             </WrapPanel>
-                            <Grid ColumnDefinitions="*, *, *" RowDefinitions="*, *, *, *, *, *, *, *, *, *">
+                            <Grid ColumnDefinitions="*, *" RowDefinitions="*, *, *, *, *, *, *, *, *, *">
                                 
                                 <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="Hb " />
-                                <NumericUpDown Minimum="40" Maximum="200" Grid.Row="0" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="Hemoglobin" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Hemoglobin}" />                           
-                                <TextBlock Grid.Row="0" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="g/L" />
+                                <NumericUpDown Minimum="40" Maximum="200" Grid.Row="0" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="Hemoglobin" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Hemoglobin}">   
+                                    <NumericUpDown.InnerRightContent><TextBlock Text="g/L" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
+                                </NumericUpDown>
                                 
                                 <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericFieldLabel" Text="Creatinina " />
-                                <NumericUpDown Minimum="0" Maximum="20" Grid.Row="1" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="Creatinine" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Creatinine}" />                           
-                                <TextBlock Grid.Row="1" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="mg/dl" />
+                                <NumericUpDown Minimum="0" Maximum="20" Grid.Row="1" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="Creatinine" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Creatinine}">                         
+                                    <NumericUpDown.InnerRightContent><TextBlock Text="mg/dl" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
+                                </NumericUpDown>
                                 
                                 <TextBlock Grid.Row="2" Grid.Column="0" Classes="GenericFieldLabel" Text="Urea " />
-                                <NumericUpDown Minimum="0" Maximum="1000" Grid.Row="2" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="Urea" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Urea}" />                           
-                                <TextBlock Grid.Row="2" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="mg/dl" />
+                                <NumericUpDown Minimum="0" Maximum="1000" Grid.Row="2" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="Urea" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Urea}">                         
+                                    <NumericUpDown.InnerRightContent><TextBlock Text="mg/dl" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
+                                </NumericUpDown>
                                 
                                 <TextBlock Grid.Row="3" Grid.Column="0" Classes="GenericFieldLabel" Text="Na " />
-                                <NumericUpDown Minimum="100" Maximum="200" Grid.Row="3" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="Sodium" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Sodium}" />                           
-                                <TextBlock Grid.Row="3" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="mmol/L" />
+                                <NumericUpDown Minimum="100" Maximum="200" Grid.Row="3" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="Sodium" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Sodium}">                         
+                                    <NumericUpDown.InnerRightContent><TextBlock Text="mmol/L" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
+                                </NumericUpDown>
                                 
                                 <TextBlock Grid.Row="4" Grid.Column="0" Classes="GenericFieldLabel" Text="K " />
-                                <NumericUpDown Minimum="1" Maximum="9" Grid.Row="4" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Potassium" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Potassium}" />                           
-                                <TextBlock Grid.Row="4" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="mmol/L" />
+                                <NumericUpDown Minimum="1" Maximum="9" Grid.Row="4" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Potassium" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Potassium}">                         
+                                    <NumericUpDown.InnerRightContent><TextBlock Text="mmol/L" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
+                                </NumericUpDown>
                                 
                                 <TextBlock Grid.Row="5" Grid.Column="0" Classes="GenericFieldLabel" Text="NTproBNP " />
-                                <NumericUpDown Minimum="0" Maximum="100000" Grid.Row="5" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="NtProBnp" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.NtProBnp}" />                           
-                                <TextBlock Grid.Row="5" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="ng/L" />
+                                <NumericUpDown Minimum="0" Maximum="100000" Grid.Row="5" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="NtProBnp" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.NtProBnp}">                         
+                                    <NumericUpDown.InnerRightContent><TextBlock Text="ng/L" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
+                                </NumericUpDown>
                                 
                                 <TextBlock Grid.Row="6" Grid.Column="0" Classes="GenericFieldLabel" Text="BNP " />
-                                <NumericUpDown Minimum="0" Maximum="10000" Grid.Row="6" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="Bnp" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Bnp}" />                           
-                                <TextBlock Grid.Row="6" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="ng/L" />
+                                <NumericUpDown Minimum="0" Maximum="10000" Grid.Row="6" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="1" Tag="Bnp" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Bnp}">                         
+                                    <NumericUpDown.InnerRightContent><TextBlock Text="ng/L" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
+                                </NumericUpDown>
                                 
                                 <TextBlock Grid.Row="7" Grid.Column="0" Classes="GenericFieldLabel" Text="Albumina " />
-                                <NumericUpDown Minimum="1" Maximum="9" Grid.Row="7" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Albumin" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Albumin}" />                           
-                                <TextBlock Grid.Row="7" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="g/L" />
+                                <NumericUpDown Minimum="1" Maximum="9" Grid.Row="7" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Albumin" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Albumin}">                         
+                                    <NumericUpDown.InnerRightContent><TextBlock Text="g/L" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
+                                </NumericUpDown>
                                 
                                 <TextBlock Grid.Row="8" Grid.Column="0" Classes="GenericFieldLabel" Text="Albuminuria " />
-                                <NumericUpDown Minimum="0" Maximum="500" Grid.Row="8" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Albuminuria" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Albuminuria}" />                           
-                                <TextBlock Grid.Row="8" Grid.Column="2" HorizontalAlignment="Left" Classes="GenericFieldLabel" Text="mg/L" />
+                                <NumericUpDown Minimum="0" Maximum="500" Grid.Row="8" Grid.Column="1" Classes="CustomNumericUpDown" FormatString="0.00" Increment="0.01" Tag="Albuminuria" ValueChanged="OnColumnAChanged" Value="{Binding CurrentVisitEe.Albuminuria}">                           
+                                    <NumericUpDown.InnerRightContent><TextBlock Text="mg/L" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
+                                </NumericUpDown>
                             </Grid>
                         </WrapPanel>
                     </ScrollViewer>

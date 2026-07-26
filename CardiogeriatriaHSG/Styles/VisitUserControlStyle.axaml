@@ -98,4 +98,9 @@
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="ClipValueToMinMax" Value="True"></Setter>
     </Style>
+    
+    <Style Selector="TextBlock.UnitOfMeasure">
+        <Setter Property="VerticalAlignment" Value="Center"/>
+        <Setter Property="Margin" Value="0,0,10,0"/>
+    </Style>
 </Styles>

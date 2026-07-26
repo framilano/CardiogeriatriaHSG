@@ -27,4 +27,16 @@ public partial class VisitCga(string visitCode): ObservableObject
     [ObservableProperty] public partial bool Cooking { get; set; }
     [ObservableProperty] public partial bool HouseholdChores { get; set; }
     [ObservableProperty] public partial bool Laundry { get; set; }
+    [ObservableProperty] public partial int? Mmse { get; set; }
+    [ObservableProperty] public partial int? Moca { get; set; }
+    [ObservableProperty] public partial int? Es { get; set; }
+    [ObservableProperty] public partial int? RestingBorg { get; set; }
+    [ObservableProperty] public partial int? PostSppbBorg { get; set; }
+    [ObservableProperty] public partial string SppbBalance { get; set; }
+    [ObservableProperty] public partial float? SppbFourMetersTime { get; set; }
+    [ObservableProperty] public partial string SppbSitToStand { get; set; }
+    [ObservableProperty] public partial int? Kccq { get; set; }
+    [ObservableProperty] public partial int? Handgrip { get; set; }
+    [ObservableProperty] public partial int? Weight { get; set; }
+    [ObservableProperty] public partial float? Height { get; set; }
 }

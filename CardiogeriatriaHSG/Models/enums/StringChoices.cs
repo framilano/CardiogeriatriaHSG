@@ -42,4 +42,8 @@ public class StringChoices
     public static readonly List<string> IvcDiameterTypes = ["≥ 2cm", "< 2cm"];  
     public static readonly List<string> IvcCollapsibilityTypes = ["≥ 50%", "< 50%"];  
     public static readonly List<string> PortalVeinPulsatilityTypes = ["normale (< 30%)", "lievemente anormale (tra il 30% e il 49%)", "severamente anormale (≥ 50%)"];  
+    //Valutazione Geriatrica Completa
+    public static readonly List<string> SppbBalanceTypes = ["Piedi paralleli", "Semitandem 0-9\"", "Tandem 0-2\"", "Tandem 3-9\"", "Tandem 10\""];
+    //public static readonly List<string> SppbFourMetersTimeTypes = ["Incapace", ">7.5\"", "7.4\"-5.4\"", "5.3\"-4.1\"", "<4.1\""];
+    public static readonly List<string> SppbSitToStandTypes = ["Incapace", ">16.6\"", "16.6\"-13.7\"", "13.6\"-11.2\"", "<11.2\""];
 }

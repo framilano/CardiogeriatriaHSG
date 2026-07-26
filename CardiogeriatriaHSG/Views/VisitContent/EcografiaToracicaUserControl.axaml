@@ -19,7 +19,7 @@
                                 <CheckBox Grid.Row="0" Grid.Column="1" Tag="PleuralLine" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.PleuralLine}"></CheckBox>
                                 <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericFieldLabel" Text="Irregolarità linea pleurica "/>
                                 <CheckBox Grid.Row="1" Grid.Column="1" Tag="IrregularPleuralLine" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitEco.IrregularPleuralLine}"></CheckBox>
-                                <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"><LineBreak/></TextBlock>
+                                    <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2"><LineBreak/></TextBlock>
 
                                 <!-- Pattern A -->
                                 <TextBlock Grid.Row="3" Grid.Column="0" Classes="GenericFieldLabel" Text="Pattern A "/>

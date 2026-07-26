@@ -13,7 +13,7 @@
                 <Border Classes="ColumnBorder" Grid.Column="0" Grid.RowSpan="2">
                     <ScrollViewer>
                         <WrapPanel Classes="ColumnAWrapPanel">
-                            <Grid RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *" ColumnDefinitions="*, *">
+                            <Grid RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *" ColumnDefinitions="*, *">
                                 <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Classes="GenericFieldLabel" Text="ADL conservate" />
                                 <TextBlock Grid.Row="1" Grid.Column="0" Name="Diet" Classes="GenericSubFieldLabel" Text="‣ Alimentazione" />
                                 <CheckBox Grid.Row="1" Grid.Column="1" Tag="Diet" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Diet}"></CheckBox>
@@ -27,23 +27,66 @@
                                 <CheckBox Grid.Row="5" Grid.Column="1" Tag="PosturalPassages" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.PosturalPassages}"></CheckBox>
                                 <TextBlock Grid.Row="6" Grid.Column="0" Name="Hygiene" Classes="GenericSubFieldLabel" Text="‣ Andare in bagno e igiene" />
                                 <CheckBox Grid.Row="6" Grid.Column="1" Tag="Hygiene" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Hygiene}"></CheckBox>
-                                <TextBlock Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2" Classes="GenericFieldLabel" Text="IADL conservate" />
-                                <TextBlock Grid.Row="8" Grid.Column="0" Name="Phone" Classes="GenericSubFieldLabel" Text="‣ Telefono" />
-                                <CheckBox Grid.Row="8" Grid.Column="1" Tag="Phone" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Phone}"></CheckBox>
-                                <TextBlock Grid.Row="9" Grid.Column="0" Name="Shopping" Classes="GenericSubFieldLabel" Text="‣ Acquisti" />
-                                <CheckBox Grid.Row="9" Grid.Column="1" Tag="Shopping" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Shopping}"></CheckBox>
-                                <TextBlock Grid.Row="10" Grid.Column="0" Name="SenseOfMoney" Classes="GenericSubFieldLabel" Text="‣ Senso denaro" />
-                                <CheckBox Grid.Row="10" Grid.Column="1" Tag="SenseOfMoney" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.SenseOfMoney}"></CheckBox>
-                                <TextBlock Grid.Row="11" Grid.Column="0" Name="Car" Classes="GenericSubFieldLabel" Text="‣ Auto/mezzi" />
-                                <CheckBox Grid.Row="11" Grid.Column="1" Tag="Car" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Car}"></CheckBox>
-                                <TextBlock Grid.Row="12" Grid.Column="0" Name="Medicines" Classes="GenericSubFieldLabel" Text="‣ Medicinali" />
-                                <CheckBox Grid.Row="12" Grid.Column="1" Tag="Medicines" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Medicines}"></CheckBox>
-                                <TextBlock Grid.Row="13" Grid.Column="0" Name="Cooking" Classes="GenericSubFieldLabel" Text="‣ Cucinare" />
-                                <CheckBox Grid.Row="13" Grid.Column="1" Tag="Cooking" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Cooking}"></CheckBox>
-                                <TextBlock Grid.Row="14" Grid.Column="0" Name="HouseholdChores" Classes="GenericSubFieldLabel" Text="‣ Faccende domestiche" />
-                                <CheckBox Grid.Row="14" Grid.Column="1" Tag="HouseholdChores" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.HouseholdChores}"></CheckBox>
-                                <TextBlock Grid.Row="15" Grid.Column="0" Name="Laundry" Classes="GenericSubFieldLabel" Text="‣ Lavanderia" />
-                                <CheckBox Grid.Row="15" Grid.Column="1" Tag="Laundry" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Laundry}"></CheckBox>
+                                <TextBlock Grid.Row="7" Grid.Column="0" Grid.ColumnSpan="2"><LineBreak/></TextBlock>
+                                <TextBlock Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" Classes="GenericFieldLabel" Text="IADL conservate" />
+                                <TextBlock Grid.Row="9" Grid.Column="0" Name="Phone" Classes="GenericSubFieldLabel" Text="‣ Telefono" />
+                                <CheckBox Grid.Row="9" Grid.Column="1" Tag="Phone" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Phone}"></CheckBox>
+                                <TextBlock Grid.Row="10" Grid.Column="0" Name="Shopping" Classes="GenericSubFieldLabel" Text="‣ Acquisti" />
+                                <CheckBox Grid.Row="10" Grid.Column="1" Tag="Shopping" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Shopping}"></CheckBox>
+                                <TextBlock Grid.Row="11" Grid.Column="0" Name="SenseOfMoney" Classes="GenericSubFieldLabel" Text="‣ Senso denaro" />
+                                <CheckBox Grid.Row="11" Grid.Column="1" Tag="SenseOfMoney" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.SenseOfMoney}"></CheckBox>
+                                <TextBlock Grid.Row="12" Grid.Column="0" Name="Car" Classes="GenericSubFieldLabel" Text="‣ Auto/mezzi" />
+                                <CheckBox Grid.Row="12" Grid.Column="1" Tag="Car" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Car}"></CheckBox>
+                                <TextBlock Grid.Row="13" Grid.Column="0" Name="Medicines" Classes="GenericSubFieldLabel" Text="‣ Medicinali" />
+                                <CheckBox Grid.Row="13" Grid.Column="1" Tag="Medicines" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Medicines}"></CheckBox>
+                                <TextBlock Grid.Row="14" Grid.Column="0" Name="Cooking" Classes="GenericSubFieldLabel" Text="‣ Cucinare" />
+                                <CheckBox Grid.Row="14" Grid.Column="1" Tag="Cooking" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Cooking}"></CheckBox>
+                                <TextBlock Grid.Row="15" Grid.Column="0" Name="HouseholdChores" Classes="GenericSubFieldLabel" Text="‣ Faccende domestiche" />
+                                <CheckBox Grid.Row="15" Grid.Column="1" Tag="HouseholdChores" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.HouseholdChores}"></CheckBox>
+                                <TextBlock Grid.Row="16" Grid.Column="0" Name="Laundry" Classes="GenericSubFieldLabel" Text="‣ Lavanderia" />
+                                <CheckBox Grid.Row="16" Grid.Column="1" Tag="Laundry" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Laundry}"></CheckBox>
+                            </Grid>
+                            <TextBlock><LineBreak/></TextBlock>
+                            <Grid RowDefinitions="*, *, *, *, *" ColumnDefinitions="*, *">
+                                <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="MMSE" />
+                                <NumericUpDown Grid.Row="0" Grid.Column="1" Classes="CustomNumericUpDown" Tag="MmseNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="30" Value="{Binding CurrentVisitCga.Mmse}"></NumericUpDown>
+                                <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericFieldLabel" Text="MoCA" />
+                                <NumericUpDown Grid.Row="1" Grid.Column="1" Classes="CustomNumericUpDown" Tag="MocaNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="30" Value="{Binding CurrentVisitCga.Moca}"></NumericUpDown>
+                                <TextBlock Grid.Row="2" Grid.Column="0" Classes="GenericFieldLabel" Text="ES" />
+                                <NumericUpDown Grid.Row="2" Grid.Column="1" Classes="CustomNumericUpDown" Tag="EsNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="4" Value="{Binding CurrentVisitCga.Es}"></NumericUpDown>
+                                <TextBlock Grid.Row="3" Grid.Column="0" Classes="GenericFieldLabel" Text="BORG a riposo" />
+                                <NumericUpDown Grid.Row="3" Grid.Column="1" Classes="CustomNumericUpDown" Tag="RestingBorgNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="10" Value="{Binding CurrentVisitCga.RestingBorg}"></NumericUpDown>
+                                <TextBlock Grid.Row="4" Grid.Column="0" Classes="GenericFieldLabel" Text="BORG post SPPB" />
+                                <NumericUpDown Grid.Row="4" Grid.Column="1" Classes="CustomNumericUpDown" Tag="PostSppbBorgNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="10" Value="{Binding CurrentVisitCga.PostSppbBorg}"></NumericUpDown>
+                            </Grid>
+                            <TextBlock><LineBreak/></TextBlock>
+                            <Grid RowDefinitions="*, *, *, *" ColumnDefinitions="*, *">
+                                <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="SPPB Totale"/>
+                                <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Equilibrio"/>
+                                <ComboBox Grid.Row="1" Grid.Column="1" Tag="SppBalanceTypes" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding SppbBalanceTypesValues}" SelectedItem="{Binding CurrentVisitCga.SppbBalance}"/>
+                                <TextBlock Grid.Row="2" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Tempo per 4 metri"/>
+                                <NumericUpDown Grid.Row="2" Grid.Column="1" Classes="CustomNumericUpDown" Tag="SppbFourMetersTimeNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="0.1" Minimum="0" Maximum="100" Value="{Binding CurrentVisitCga.SppbFourMetersTime}">
+                                    <NumericUpDown.InnerRightContent><TextBlock Text="s" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
+                                </NumericUpDown>                                
+                                <TextBlock Grid.Row="3" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Sit to Stand"/>
+                                <ComboBox Grid.Row="3" Grid.Column="1" Tag="SppbSitToStandTypes" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding SppbSitToStandTypesValues}" SelectedItem="{Binding CurrentVisitCga.SppbSitToStand}"/>
+                            </Grid>
+                            <TextBlock><LineBreak/></TextBlock>
+                            <Grid RowDefinitions="*, *, *, *" ColumnDefinitions="*, *">
+                                <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="Handgrip" />
+                                <NumericUpDown Grid.Row="0" Grid.Column="1" Classes="CustomNumericUpDown" Tag="HandgripNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="80" Value="{Binding CurrentVisitCga.Handgrip}">
+                                    <NumericUpDown.InnerRightContent><TextBlock Text="kg" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
+                                </NumericUpDown>
+                                <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericFieldLabel" Text="Peso" />
+                                <NumericUpDown Grid.Row="1" Grid.Column="1" Classes="CustomNumericUpDown" Tag="WeightNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="200" Value="{Binding CurrentVisitCga.Weight}">
+                                    <NumericUpDown.InnerRightContent><TextBlock Text="kg" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
+                                </NumericUpDown>
+                                <TextBlock Grid.Row="2" Grid.Column="0" Classes="GenericFieldLabel" Text="Altezza" />
+                                <NumericUpDown Grid.Row="2" Grid.Column="1" Classes="CustomNumericUpDown" Tag="HeightNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="0.01" Minimum="0" Maximum="3" Value="{Binding CurrentVisitCga.Height}">
+                                    <NumericUpDown.InnerRightContent><TextBlock Text="m" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
+                                </NumericUpDown>
+                                <TextBlock Grid.Row="3" Grid.Column="0" Classes="GenericFieldLabel" Text="KCCQ" />
+                                <NumericUpDown Grid.Row="3" Grid.Column="1" Classes="CustomNumericUpDown" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="100" Value="{Binding CurrentVisitCga.Kccq}" />
                             </Grid>
                         </WrapPanel>
                     </ScrollViewer>

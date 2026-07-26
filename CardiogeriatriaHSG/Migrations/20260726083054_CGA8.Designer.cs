@@ -3,6 +3,7 @@ using System;
 using CardiogeriatriaHSG.Services.database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CardiogeriatriaHSG.Migrations
 {
     [DbContext(typeof(AppDb))]
-    partial class AppDbModelSnapshot : ModelSnapshot
+    [Migration("20260726083054_CGA8")]
+    partial class CGA8
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.10");
@@ -277,8 +280,8 @@ namespace CardiogeriatriaHSG.Migrations
                     b.Property<int?>("Handgrip")
                         .HasColumnType("INTEGER");
 
-                    b.Property<float?>("Height")
-                        .HasColumnType("REAL");
+                    b.Property<int?>("Height")
+                        .HasColumnType("INTEGER");
 
                     b.Property<bool>("HouseholdChores")
                         .HasColumnType("INTEGER");
@@ -326,8 +329,9 @@ namespace CardiogeriatriaHSG.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<float?>("SppbFourMetersTime")
-                        .HasColumnType("REAL");
+                    b.Property<string>("SppbFourMetersTime")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
 
                     b.Property<string>("SppbSitToStand")
                         .IsRequired()
