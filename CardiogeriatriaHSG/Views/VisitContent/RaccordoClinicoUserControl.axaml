@@ -45,7 +45,7 @@
                                 </WrapPanel>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Stress acuto negli ultimi 3 mesi (ricoveri compresi) "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Stress acuto negli ultimi 3 mesi (ricoveri compresi) (MNA)"/>
                                 <CheckBox Tag="AcuteStressLast3Months" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitRc.AcuteStressLast3Months}"/>
                             </WrapPanel>
                             <!-- FALLS SECTION -->

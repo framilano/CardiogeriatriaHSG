@@ -24,13 +24,14 @@ public static class TdSynonyms
     public static readonly List<string> CalciumChannelBlockersSynonyms = ["amlodipina", "nifedipina", "lercanidipina", "verapamil", "diltiazem"];
     public static readonly List<string> RanolazineSynonyms = ["ranolazina"];
     public static readonly List<string> NitratesSynonyms = ["isosorbide", "nitroglicerina", "nitroderm", "natispray"];
-    public static readonly List<string> Glp1Synonyms = ["semaglutide", "liraglutide", "dulaglutide", "tirzepatide"];
+    public static readonly List<string> Glp1Synonyms = ["semaglutide", "liraglutide", "dulaglutide", "tirzepatide", "lixisenatide", "exenatide"];
     public static readonly List<string> DoxazosinSynonyms = ["doxazosina"];
     public static readonly List<string> ClonidineSynonyms = ["clonidina"];
     public static readonly List<string> FibratesSynonyms = ["fenofibrato", "gemfibrozil", "clofibrato"];
     public static readonly List<string> StatinsSynonyms = ["atorvastatina", "rosuvastatina", "simvastatina", "pravastatina", "fluvastatina", "lovastatina"];
     public static readonly List<string> EzetimibeSynonyms = ["ezetimibe"];
-    public static readonly List<string> OralHypoglycemicAgentsSynonyms = ["ipoglicimizzante orale"];
+    public static readonly List<string> OralHypoglycemicAgentsSynonyms = ["ipoglicimizzante orale", "ado", "metformina", "gliclazide", "glimepiride", "glibenclamide", "glipizide", "gliquidone", "repaglinide", "nateglinide", "pioglitazone", "acarbosio"];
+    public static readonly List<string> Dpp4Synonyms = ["sitagliptin", "linagliptin", "vildagliptin", "saxagliptin", "alogliptin"];
     public static readonly List<string> InsulinSynonyms = ["insulina"];
     public static readonly List<string> PpiSynonyms = ["omeprazolo", "pantoprazolo", "lansoprazolo", "esomeprazolo", "rabeprazolo"];
     public static readonly List<string> AcheInhibitorOrMemantineSynonyms = ["donepezil", "rivastigmina", "galantamina"];

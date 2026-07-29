@@ -111,9 +111,19 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 CurrentContent = new EcografiaToracicaUserControl { DataContext = new EcografiaToracicaUserControlViewModel(CurrentVisit.VisitEco) };
                 break;
             case "CGA":
+                //CGA requires AG, APR, TD and CGA itself
+                if (CurrentVisit.VisitAg is null) _databaseService.LoadVisitAnamnesiGeriatricaByVisit(CurrentVisit);
+                if (CurrentVisit.VisitApr is null) _databaseService.LoadVisitAnamnesiPatologicaRemotaByVisit(CurrentVisit);
+                if (CurrentVisit.VisitTd is null) _databaseService.LoadVisitTerapiaDomiciliareByVisit(CurrentVisit);
+                if (CurrentVisit.VisitRc is null) _databaseService.LoadVisitRaccordoClinicoByVisit(CurrentVisit);
                 if (CurrentVisit.VisitCga is null) _databaseService.LoadVisitValutazioneGeriatricaCompletaByVisit(CurrentVisit);
+
+                CurrentVisit.VisitAg ??= CreateNewVisitAg(CurrentVisit.VisitCode!);
+                CurrentVisit.VisitApr ??= CreateNewVisitApr(CurrentVisit.VisitCode!);
+                CurrentVisit.VisitTd ??= CreateNewVisitTd(CurrentVisit.VisitCode!);
+                CurrentVisit.VisitRc ??= CreateNewVisitRc(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitCga ??= CreateNewVisitCga(CurrentVisit.VisitCode!);
-                CurrentContent = new ValutazioneGeriatricaCompletaUserControl { DataContext = new ValutazioneGeriatricaCompletaUserControlViewModel(CurrentVisit.VisitCga) };
+                CurrentContent = new ValutazioneGeriatricaCompletaUserControl { DataContext = new ValutazioneGeriatricaCompletaUserControlViewModel(CurrentVisit.VisitAg, CurrentVisit.VisitApr, CurrentVisit.VisitTd, CurrentVisit.VisitRc, CurrentVisit.VisitCga) };
                 break;
             case "Referto":
                 //There's no need to load patient (anagrafica) because already loaded by default
@@ -260,6 +270,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
             Statins = false,
             Ezetimibe = false,
             OralHypoglycemicAgents = false,
+            Dpp4 = false,
             Insulin = false,
             Ppi = false,
             AcheInhibitorOrMemantine = false,

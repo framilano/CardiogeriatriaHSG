@@ -31,7 +31,7 @@
                                 <CheckBox Tag="CareTaker" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitAg.CareTaker}"></CheckBox>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Motricità " />
+                                <TextBlock Classes="GenericFieldLabel" Text="Motricità (MNA) " />
                                 <ComboBox Tag="MotorSkill" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding MotorSkillsValues}" SelectedItem="{Binding CurrentVisitAg.MotorSkill}"/>
                             </WrapPanel>
                             <WrapPanel IsVisible="False" Name="WalkingTypeWrapPanel" Orientation="Horizontal">
@@ -63,11 +63,11 @@
                                 <ComboBox Tag="Nights" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding NightsValues}" SelectedItem="{Binding CurrentVisitAg.Nights}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Calo ponderale negli ultimi tre mesi " />
+                                <TextBlock Classes="GenericFieldLabel" Text="Calo ponderale negli ultimi tre mesi (MNA) " />
                                 <ComboBox Tag="WeightLoss" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding WeightLossesValues}" SelectedItem="{Binding CurrentVisitAg.WeightLoss}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Appetito " />
+                                <TextBlock Classes="GenericFieldLabel" Text="Appetito (MNA)" />
                                 <ComboBox Tag="Appetite" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding AppetitesValues}" SelectedItem="{Binding CurrentVisitAg.Appetite}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">

@@ -77,16 +77,16 @@
                                 <NumericUpDown Grid.Row="0" Grid.Column="1" Classes="CustomNumericUpDown" Tag="HandgripNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="80" Value="{Binding CurrentVisitCga.Handgrip}">
                                     <NumericUpDown.InnerRightContent><TextBlock Text="kg" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
                                 </NumericUpDown>
-                                <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericFieldLabel" Text="Peso" />
+                                <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericFieldLabel" Text="Peso (MNA)" />
                                 <NumericUpDown Grid.Row="1" Grid.Column="1" Classes="CustomNumericUpDown" Tag="WeightNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="200" Value="{Binding CurrentVisitCga.Weight}">
                                     <NumericUpDown.InnerRightContent><TextBlock Text="kg" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
                                 </NumericUpDown>
-                                <TextBlock Grid.Row="2" Grid.Column="0" Classes="GenericFieldLabel" Text="Altezza" />
+                                <TextBlock Grid.Row="2" Grid.Column="0" Classes="GenericFieldLabel" Text="Altezza (MNA)" />
                                 <NumericUpDown Grid.Row="2" Grid.Column="1" Classes="CustomNumericUpDown" Tag="HeightNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="0.01" Minimum="0" Maximum="3" Value="{Binding CurrentVisitCga.Height}">
                                     <NumericUpDown.InnerRightContent><TextBlock Text="m" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
                                 </NumericUpDown>
                                 <TextBlock Grid.Row="3" Grid.Column="0" Classes="GenericFieldLabel" Text="KCCQ" />
-                                <NumericUpDown Grid.Row="3" Grid.Column="1" Classes="CustomNumericUpDown" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="100" Value="{Binding CurrentVisitCga.Kccq}" />
+                                <NumericUpDown Grid.Row="3" Grid.Column="1" Classes="CustomNumericUpDown" Tag="KccqNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="100" Value="{Binding CurrentVisitCga.Kccq}" />
                             </Grid>
                         </WrapPanel>
                     </ScrollViewer>

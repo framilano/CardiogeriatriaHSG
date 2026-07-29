@@ -137,7 +137,7 @@
                             
                             <!-- DEMENTIA -->
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Deficit cognitivo "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Deficit cognitivo (MNA)"/>
                                 <CheckBox Tag="Dementia" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitApr.Dementia}"/>
                             </WrapPanel>
                             <WrapPanel Name="DementiaTypeWrapPanel" IsVisible="False" Orientation="Horizontal">

@@ -74,6 +74,8 @@ public partial class TerapiaDomiciliareUserControlViewModel(VisitTd currentVisit
         { CurrentVisitTd.Insulin = true; }
         if (TdSynonyms.OralHypoglycemicAgentsSynonyms.Any(word => Regex.IsMatch(CurrentVisitTd.TdText, $@"\b{word}\b", RegexOptions.IgnoreCase)))
         { CurrentVisitTd.OralHypoglycemicAgents = true; }
+        if (TdSynonyms.Dpp4Synonyms.Any(word => Regex.IsMatch(CurrentVisitTd.TdText, $@"\b{word}\b", RegexOptions.IgnoreCase)))
+        { CurrentVisitTd.Dpp4 = true; }
         if (TdSynonyms.PpiSynonyms.Any(word => Regex.IsMatch(CurrentVisitTd.TdText, $@"\b{word}\b", RegexOptions.IgnoreCase)))
         { CurrentVisitTd.Ppi = true; }
         if (TdSynonyms.AcheInhibitorOrMemantineSynonyms.Any(word => Regex.IsMatch(CurrentVisitTd.TdText, $@"\b{word}\b", RegexOptions.IgnoreCase)))

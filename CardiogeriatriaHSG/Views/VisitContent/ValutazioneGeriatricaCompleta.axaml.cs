@@ -7,6 +7,7 @@ using Avalonia.Threading;
 using CardiogeriatriaHSG.Models;
 using CardiogeriatriaHSG.Models.enums;
 using CardiogeriatriaHSG.ViewModels.VisitContent;
+using Serilog;
 
 namespace CardiogeriatriaHSG.Views.VisitContent;
 
@@ -18,11 +19,19 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         DataContextChanged += (_, __) =>
         {
             if (DataContext is not ValutazioneGeriatricaCompletaUserControlViewModel viewModel) return;
+            _currentVisitAg = viewModel.CurrentVisitAg;
+            _currentVisitApr = viewModel.CurrentVisitApr;
+            _currentVisitTd = viewModel.CurrentVisitTd;
+            _currentVisitRc = viewModel.CurrentVisitRc;
+
             _currentVisitCga = viewModel.CurrentVisitCga;
-            LoadValutazioneGeriatricaCompletaContent(_currentVisitCga);
+            LoadValutazioneGeriatricaCompletaContent(_currentVisitAg, _currentVisitApr, _currentVisitTd, _currentVisitRc, _currentVisitCga);
         };
     }
-    
+    private VisitAg? _currentVisitAg;
+    private VisitApr? _currentVisitApr;
+    private VisitTd? _currentVisitTd;
+    private VisitRc? _currentVisitRc;
     private VisitCga? _currentVisitCga;
 
     private string? _adlSentence;
@@ -33,6 +42,8 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
     private string? _borgSentence;
     private string? _sppbSentence;
     private string? _ergonomicsSentence;
+    private string? _kccqSentence;
+    private string? _mnaSentence;
 
 
     public void OnColumnAChanged(object? sender, RoutedEventArgs routedEventArgs)
@@ -156,10 +167,16 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
             case "WeightNumber":
                 _currentVisitCga!.Weight = value is null ? null : int.Parse(value);
                 UpdateErgonomicsSentence();
+                UpdateMnaSentence();
                 break;
             case "HeightNumber":
                 _currentVisitCga!.Height = value is null ? null : float.Parse(value);
                 UpdateErgonomicsSentence();
+                UpdateMnaSentence();
+                break;
+            case "KccqNumber":
+                _currentVisitCga!.Kccq = value is null ? null : int.Parse(value);
+                UpdateKccqSentence();
                 break;
         }
         
@@ -268,7 +285,7 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
             StringChoices.SppbBalanceTypes.FindIndex(s => s.Equals(_currentVisitCga!.SppbBalance)) +
             sppbFourMeterTimeValue +
             StringChoices.SppbSitToStandTypes.FindIndex(s => s.Equals(_currentVisitCga!.SppbSitToStand));
-        sppbSentenceBuilder.Append($"SPPD totale {total}\n");
+        sppbSentenceBuilder.Append($"SPPB totale {total}\n");
         if (_currentVisitCga!.SppbFourMetersTime != null && _currentVisitCga.SppbFourMetersTime != 0) sppbSentenceBuilder.Append($"Velocità cammino {4/_currentVisitCga.SppbFourMetersTime:F1}m/s\n");
 
         _sppbSentence = sppbSentenceBuilder.ToString();
@@ -282,7 +299,7 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         if (_currentVisitCga!.Height is not null) ergonomicsSentenceBuilder.Append($"Altezza {_currentVisitCga.Height:F2}m\n");
         if (_currentVisitCga!.Height is not null && _currentVisitCga!.Weight is not null && _currentVisitCga!.Height != 0)
         {
-            var bmi = _currentVisitCga.Weight / Math.Pow((double)_currentVisitCga.Height, 2);
+            var bmi = ComputeBmi(_currentVisitCga.Weight.Value, _currentVisitCga.Height.Value);
             var category = bmi switch
             {
                 < 18.5   => "sottopeso",
@@ -298,8 +315,71 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         _ergonomicsSentence = ergonomicsSentenceBuilder.ToString();
     }
     
-    public void LoadValutazioneGeriatricaCompletaContent(VisitCga currentVisitCga)
+    private void UpdateKccqSentence()
     {
+        var kccqSentenceBuilder = new StringBuilder();
+        if (_currentVisitCga!.Kccq is not null) kccqSentenceBuilder.Append($"KCCQ {_currentVisitCga.Kccq}\n");
+
+        _kccqSentence = kccqSentenceBuilder.ToString();
+    }
+    
+    private void UpdateMnaSentence()
+    {
+        //We need BMI first
+        if (_currentVisitCga!.Weight is null ||
+            _currentVisitCga!.Height is null ||
+            _currentVisitCga!.Height == 0)
+        {
+            Log.Information("Missing data to compute MNA-SF");
+            return;
+        }
+        
+        Log.Information("Computing MNA-SF...");
+
+        var mnaSentenceBuilder = new StringBuilder();
+        var mnaValue =
+            StringChoices.Appetites.FindIndex(s => s.Equals(_currentVisitAg!.Appetite)) +
+            StringChoices.WeightLossTypes.FindIndex(s => s.Equals(_currentVisitAg!.WeightLoss)) +
+            StringChoices.MotorSkillTypes.FindIndex(s => s.Equals(_currentVisitAg!.MotorSkill)) +
+            (_currentVisitRc!.AcuteStressLast3Months ? 0 : 2) +
+            0 + //MANCA LA DEMENZA, DA CAPIRE COME GESTIRLA RISPETTO AI VALORI STRING CHE ABBIAMO SU APR PER DEMENZA
+
+            ComputeBmi(_currentVisitCga.Weight.Value, _currentVisitCga.Height.Value) switch
+            {
+                < 19 => 0,
+                >= 19 and < 21 => 1,
+                >= 21 and < 23 => 2,
+                >= 23 => 3,
+                _ => -1
+            };
+        
+        Log.Information("MNA-SF computed.");
+
+            
+        var category = mnaValue switch
+        {
+            >= 12 and <= 14 => "stato nutrizionale normale",
+            >= 8 and <= 11 => "a rischio di malnutrizione",
+            >= 0 and <= 7 => "malnutrito",
+            _ => "Errore I guess?"
+        };
+            
+        mnaSentenceBuilder.Append($"MNA {mnaValue} ({category})\n");
+        _mnaSentence = mnaSentenceBuilder.ToString();
+    }
+
+    private static double ComputeBmi(int weight, float height)
+    {
+        var bmi = weight / Math.Pow(height, 2);
+        return bmi;
+    }
+    
+    public void LoadValutazioneGeriatricaCompletaContent(VisitAg currentVisitAg, VisitApr currentVisitApr, VisitTd currentVisitTd, VisitRc currentVisitRc, VisitCga currentVisitCga)
+    {
+        _currentVisitAg = currentVisitAg;
+        _currentVisitApr = currentVisitApr;
+        _currentVisitTd = currentVisitTd;
+        _currentVisitRc = currentVisitRc;
         _currentVisitCga = currentVisitCga;
         UpdateAdlSentence();
         UpdateIadlSentence();
@@ -309,6 +389,8 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         UpdateBorgSentence();
         UpdateSppbSentence();
         UpdateErgonomicsSentence();
+        UpdateKccqSentence();
+        UpdateMnaSentence();
         UpdateColumnBDescription();
     }
 
@@ -323,6 +405,8 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         columnBDescriptionStringBuilder.Append(_borgSentence);
         columnBDescriptionStringBuilder.Append(_sppbSentence);
         columnBDescriptionStringBuilder.Append(_ergonomicsSentence);
+        columnBDescriptionStringBuilder.Append(_kccqSentence);
+        columnBDescriptionStringBuilder.Append(_mnaSentence);
 
         Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
     }

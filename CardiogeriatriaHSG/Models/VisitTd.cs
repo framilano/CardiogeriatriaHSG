@@ -43,6 +43,7 @@ public partial class VisitTd(string visitCode): ObservableObject
     [ObservableProperty] public partial bool Statins { get; set; }
     [ObservableProperty] public partial bool Ezetimibe { get; set; }
     [ObservableProperty] public partial bool OralHypoglycemicAgents { get; set; }
+    [ObservableProperty] public partial bool Dpp4 { get; set; }
     [ObservableProperty] public partial bool Insulin { get; set; }
     [ObservableProperty] public partial bool Ppi { get; set; }
     [ObservableProperty] public partial bool AcheInhibitorOrMemantine { get; set; }
