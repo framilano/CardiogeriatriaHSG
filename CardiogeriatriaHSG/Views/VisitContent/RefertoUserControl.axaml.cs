@@ -36,6 +36,7 @@ public partial class RefertoUserControl : UserControl
                 currentVisit.VisitEo!, 
                 currentVisit.VisitCga!
             );
+            
             Dispatcher.UIThread.Post(() => { 
                 //Anagrafica
                 AnagraficaContent.Text = currentVisit.Patient!.PatientManualText is null || currentVisit.Patient!.PatientManualText.Trim().Length == 0 
@@ -70,6 +71,9 @@ public partial class RefertoUserControl : UserControl
                 //Valutazione Geriatrica Completa
                 ValutazioneGeriatricaCompletaContent.Text = currentVisit.VisitCga!.CgaManualText is null || currentVisit.VisitCga!.CgaManualText.Trim().Length == 0 
                     ? valutazioneGeriatricaCompletaUserControl.AutomaticColumnB.Text : currentVisit.VisitCga!.CgaManualText;
+                
+                //Conclusioni
+                ConclusioniContent.Text = currentVisit.VisitCo!.CoText;
             });
         };
     }

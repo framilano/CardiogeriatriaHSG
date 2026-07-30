@@ -14,7 +14,7 @@
                     <ScrollViewer>
                         <WrapPanel Classes="ColumnAWrapPanel">
                             <Grid RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *, *" ColumnDefinitions="*, *">
-                                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Classes="GenericFieldLabel" Text="ADL conservate" />
+                                <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Classes="GenericFieldLabel" Text="ADL conservate (PC-FI)" />
                                 <TextBlock Grid.Row="1" Grid.Column="0" Name="Diet" Classes="GenericSubFieldLabel" Text="‣ Alimentazione" />
                                 <CheckBox Grid.Row="1" Grid.Column="1" Tag="Diet" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Diet}"></CheckBox>
                                 <TextBlock Grid.Row="2" Grid.Column="0" Name="Continence" Classes="GenericSubFieldLabel" Text="‣ Continenza" />
@@ -69,7 +69,7 @@
                                 <TextBlock Grid.Row="3" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Sit to Stand"/>
                                 <ComboBox Grid.Row="3" Grid.Column="1" Tag="SppbSitToStandTypes" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding SppbSitToStandTypesValues}" SelectedItem="{Binding CurrentVisitCga.SppbSitToStand}"/>
                             </Grid>
-                            <Grid RowDefinitions="*, *, *, *, *, *" ColumnDefinitions="*, *">
+                            <Grid RowDefinitions="*, *, *, *, *, *, *" ColumnDefinitions="*, *">
                                 <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="Handgrip" />
                                 <NumericUpDown Grid.Row="0" Grid.Column="1" Classes="CustomNumericUpDown" Tag="HandgripNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="80" Value="{Binding CurrentVisitCga.Handgrip}">
                                     <NumericUpDown.InnerRightContent><TextBlock Text="kg" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
@@ -88,14 +88,8 @@
                                 <NumericUpDown Grid.Row="4" Grid.Column="1" Classes="CustomNumericUpDown" Tag="EftNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="5" Value="{Binding CurrentVisitCga.Eft}"></NumericUpDown>
                                 <TextBlock Grid.Row="5" Grid.Column="0" Classes="GenericFieldLabel" Text="CFS" />
                                 <NumericUpDown Grid.Row="5" Grid.Column="1" Classes="CustomNumericUpDown" Tag="CfsNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="1" Maximum="9" Value="{Binding CurrentVisitCga.Cfs}"></NumericUpDown>
-                            </Grid>
-                            <Grid RowDefinitions="*, *, *" ColumnDefinitions="*, *">
-                                <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="Prescrizione di ossigeno negli ultimi 6 mesi (PC-FI)" />
-                                <CheckBox Grid.Row="0" Grid.Column="1" Tag="OxygenPrescriptionForThePastSixMonths" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.OxygenPrescriptionForThePastSixMonths}"></CheckBox>
-                                <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericFieldLabel" Text="Prescrizione EBPM negli ultimi 6 mesi (PC-FI)" />
-                                <CheckBox Grid.Row="1" Grid.Column="1" Tag="EbpmPrescriptionForThePastSixMonths" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.EbpmPrescriptionForThePastSixMonths}"></CheckBox>
-                                <TextBlock Grid.Row="2" Grid.Column="0" Classes="GenericFieldLabel" Text="Altre malattie neurologiche (PC-FI)" />
-                                <CheckBox Grid.Row="2" Grid.Column="1" Tag="OtherNeurologicalDiseases" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.OtherNeurologicalDiseases}"></CheckBox>
+                                <TextBlock Grid.Row="6" Grid.Column="0" Classes="GenericFieldLabel" Text="Altre malattie neurologiche (PC-FI)" />
+                                <CheckBox Grid.Row="6" Grid.Column="1" Tag="OtherNeurologicalDiseases" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.OtherNeurologicalDiseases}"></CheckBox>
                             </Grid>
                             <WrapPanel Orientation="Vertical">
                                 <WrapPanel Orientation="Horizontal">

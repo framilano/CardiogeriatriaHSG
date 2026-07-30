@@ -42,12 +42,10 @@ public partial class VisitCga(string visitCode): ObservableObject
     [ObservableProperty] public partial string SppbSitToStand { get; set; }
     [ObservableProperty] public partial int? Kccq { get; set; }
     [ObservableProperty] public partial int? Handgrip { get; set; }
-    [ObservableProperty] public partial int? Weight { get; set; }
-    [ObservableProperty] public partial float? Height { get; set; }
+    [ObservableProperty] public partial int Weight { get; set; }
+    [ObservableProperty] public partial decimal Height { get; set; }
     [ObservableProperty] public partial int Eft { get; set; }
     [ObservableProperty] public partial int Cfs { get; set; }
-    [ObservableProperty] public partial bool OxygenPrescriptionForThePastSixMonths { get; set; }
-    [ObservableProperty] public partial bool EbpmPrescriptionForThePastSixMonths { get; set; }
     [ObservableProperty] public partial bool OtherNeurologicalDiseases { get; set; }
     [ObservableProperty] public partial bool SurpriseQuestion { get; set; }
     [ObservableProperty] public partial int? Necpal4 { get; set; }

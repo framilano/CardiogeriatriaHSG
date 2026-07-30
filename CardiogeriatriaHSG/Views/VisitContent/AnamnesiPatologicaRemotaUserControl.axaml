@@ -16,30 +16,30 @@
                     <ScrollViewer>
                         <WrapPanel Classes="ColumnAWrapPanel">
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Cardiopatia Ischemica "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Cardiopatia Ischemica (PC-FI)"/>
                                 <CheckBox Name="IschemicHeartDisease" IsChecked="{Binding CurrentVisitApr.IschemicHeartDisease}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Insufficienza Cardiaca "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Insufficienza Cardiaca (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.HeartFailure}"/>
                             </WrapPanel><WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Fibrillazione Atriale "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Fibrillazione Atriale (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.AtrialFibrillation}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Malattia Cerebrovascolare "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Malattia Cerebrovascolare (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.CerebrovascularDisease}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Neoplasia  "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Neoplasia (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.Neoplasm}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="BPCO "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="BPCO (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.ChronicObstructivePulmonaryDisease}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Malattia Renale Cronica "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Malattia Renale Cronica (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.ChronicKidneyDisease}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
@@ -47,19 +47,19 @@
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.PeripheralVascularDisease}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Diabete "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Diabete (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.Diabetes}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Ulcere Croniche Cutanee"/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Ulcere Croniche Cutanee (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.ChronicSkinUlcers}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Parkinson "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Parkinson (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.Parkinson}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Schizofrenia o altre neurologiche "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Schizofrenia o altre neurologiche (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.Schizophrenia}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
@@ -67,27 +67,27 @@
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.NeuromuscularDisorders}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Frattura dell’anca "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Frattura dell’anca (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.HipFracture}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Anemia "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Anemia (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.Anemia}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Ossigeno negli ultimi 6 mesi "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Ossigeno negli ultimi 6 mesi (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.OxygenTherapyLast6Months}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Ospedalizzazione ultimi 6 mesi "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Ospedalizzazione ultimi 6 mesi (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.HospitalizationLast6Months}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Eparina negli ultimi 6 mesi "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Eparina negli ultimi 6 mesi (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.HeparinUseLast6Months}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Bradicardia "/>
+                                <TextBlock Classes="GenericFieldLabel" Text="Bradicardia (PC-FI)"/>
                                 <CheckBox IsChecked="{Binding CurrentVisitApr.Bradycardia}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">

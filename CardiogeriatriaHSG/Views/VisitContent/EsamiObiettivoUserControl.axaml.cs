@@ -240,4 +240,9 @@ public partial class EsamiObiettivoUserControl : UserControl
         
         Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
+    
+    private void CopyToManualText(object? sender, RoutedEventArgs routedEventArgs)
+    {
+        _currentVisitEo!.EoManualText = AutomaticColumnB.Text;
+    }
 }

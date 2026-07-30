@@ -143,6 +143,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 if (CurrentVisit.VisitEo is null) { _databaseService.LoadVisitEsamiObiettivoByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitEco is null) { _databaseService.LoadVisitEcografiaToracicaByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitCga is null) { _databaseService.LoadVisitValutazioneGeriatricaCompletaByVisit(CurrentVisit); }
+                if (CurrentVisit.VisitCo is null) { _databaseService.LoadVisitConclusioniByVisit(CurrentVisit); }
 
                 //If still null after loading from DB, we create new Visits elements
                 CurrentVisit.VisitAg ??= CreateNewVisitAg(CurrentVisit.VisitCode!);
@@ -153,6 +154,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 CurrentVisit.VisitEo ??= CreateNewVisitEo(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitEco ??= CreateNewVisitEco(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitCga ??= CreateNewVisitCga(CurrentVisit.VisitCode!);
+                CurrentVisit.VisitCo ??= CreateNewVisitCo(CurrentVisit.VisitCode!);
 
                 CurrentContent = new RefertoUserControl { DataContext = new RefertoUserControlViewModel(CurrentVisit) };
                 break;
@@ -391,8 +393,8 @@ public partial class VisitUserControlViewModel : ViewModelBase
             RightPefs = 0,
             LeftPefs = 0,
             MeasurableIvc = false,
-            IvcDiameter = null,
             IvcCollapsibility = null,
+            IvcDiameter = null,
             Vexus = null,
             PortalVeinPulsatility = null,
 
@@ -430,10 +432,11 @@ public partial class VisitUserControlViewModel : ViewModelBase
             SppbFourMetersTime = null,
             SppbSitToStand = StringChoices.SppbSitToStandTypes[0],
             Kccq = null,
+            Handgrip = null,
+            Weight = 60,
+            Height = 1.80m,
             Eft = 0,
             Cfs = 1,
-            OxygenPrescriptionForThePastSixMonths = false,
-            EbpmPrescriptionForThePastSixMonths = false,
             OtherNeurologicalDiseases = false,
             SurpriseQuestion = true,
             Necpal4 = null

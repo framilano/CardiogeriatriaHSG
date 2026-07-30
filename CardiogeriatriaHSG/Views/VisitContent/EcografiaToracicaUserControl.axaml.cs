@@ -123,6 +123,10 @@ public partial class EcografiaToracicaUserControl : UserControl
                 }
                 UpdateVciSentence();
                 break;
+            case "IvcCollapsibility":
+                _currentVisitEco!.IvcCollapsibility = value;
+                UpdateVciSentence();
+                break;
             case "IvcDiameter":
                 _currentVisitEco!.IvcDiameter = value;
                 if (_currentVisitEco.IvcDiameter == StringChoices.IvcDiameterTypes[0])
@@ -137,10 +141,6 @@ public partial class EcografiaToracicaUserControl : UserControl
                     _currentVisitEco.PortalVeinPulsatility = null;
                     Dispatcher.UIThread.Post(() => { VciGreaterThanTwoWrapPanel.IsVisible = false; });
                 }
-                UpdateVciSentence();
-                break;
-            case "IvcCollapsibility":
-                _currentVisitEco!.IvcCollapsibility = value;
                 UpdateVciSentence();
                 break;
             case "Vexus":
@@ -266,5 +266,10 @@ public partial class EcografiaToracicaUserControl : UserControl
         columnBDescriptionStringBuilder.Append(_pefsSentence);
         columnBDescriptionStringBuilder.Append(_vciSentence);
         Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
+    }
+    
+    private void CopyToManualText(object? sender, RoutedEventArgs routedEventArgs)
+    {
+        _currentVisitEco!.EcoManualText = AutomaticColumnB.Text;
     }
 }

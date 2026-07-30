@@ -144,4 +144,9 @@ public partial class EsamiEmaticiUserControl : UserControl
 
         Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
+    
+    private void CopyToManualText(object? sender, RoutedEventArgs routedEventArgs)
+    {
+        _currentVisitEe!.EeManualText = AutomaticColumnB.Text;
+    }
 }

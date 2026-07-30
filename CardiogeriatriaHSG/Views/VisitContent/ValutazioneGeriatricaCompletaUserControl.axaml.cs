@@ -82,26 +82,32 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
             case "Diet":
                 _currentVisitCga!.Diet = value == "True";
                 UpdateAdlSentence();
+                UpdatePcfiSentence();
                 break;
             case "Continence":
                 _currentVisitCga!.Continence = value == "True";
                 UpdateAdlSentence();
+                UpdatePcfiSentence();
                 break;
             case "Dressing":
                 _currentVisitCga!.Dressing = value == "True";
                 UpdateAdlSentence();
+                UpdatePcfiSentence();
                 break;
             case "Shower":
                 _currentVisitCga!.Shower = value == "True";
                 UpdateAdlSentence();
+                UpdatePcfiSentence();
                 break;
             case "PosturalPassages":
                 _currentVisitCga!.PosturalPassages = value == "True";
                 UpdateAdlSentence();
+                UpdatePcfiSentence();
                 break;
             case "Hygiene":
                 _currentVisitCga!.Hygiene = value == "True";
                 UpdateAdlSentence();
+                UpdatePcfiSentence();
                 break;
             case "Phone":
                 _currentVisitCga!.Phone = value == "True";
@@ -172,12 +178,12 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
                 UpdateErgonomicsSentence();
                 break;
             case "WeightNumber":
-                _currentVisitCga!.Weight = value is null ? null : int.Parse(value);
+                _currentVisitCga!.Weight = int.Parse(value!);
                 UpdateErgonomicsSentence();
                 UpdateMnaSentence();
                 break;
             case "HeightNumber":
-                _currentVisitCga!.Height = value is null ? null : float.Parse(value);
+                _currentVisitCga!.Height = decimal.Parse(value!);
                 UpdateErgonomicsSentence();
                 UpdateMnaSentence();
                 break;
@@ -192,14 +198,6 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
             case "CfsNumber":
                 _currentVisitCga!.Cfs = int.Parse(value!);
                 UpdateCfsSentence();
-                break;
-            case "OxygenPrescriptionForThePastSixMonths":
-                _currentVisitCga!.OxygenPrescriptionForThePastSixMonths = value == "True";
-                UpdatePcfiSentence();
-                break;
-            case "EbpmPrescriptionForThePastSixMonths":
-                _currentVisitCga!.EbpmPrescriptionForThePastSixMonths = value == "True";
-                UpdatePcfiSentence();
                 break;
             case "OtherNeurologicalDiseases":
                 _currentVisitCga!.OtherNeurologicalDiseases = value == "True";
@@ -257,15 +255,13 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
     {
         var iadlSentenceBuilder = new StringBuilder();
         var counter = ComputeAdlSum(
-            _currentVisitCga!.Phone, 
-            _currentVisitCga!.Shopping, 
-            _currentVisitCga!.SenseOfMoney,
-            _currentVisitCga!.Car, 
-            _currentVisitCga!.Medicines, 
-            _currentVisitCga!.Cooking,
-            _currentVisitCga!.HouseholdChores, 
-            _currentVisitCga!.Laundry);
-        
+            _currentVisitCga!.Diet, 
+            _currentVisitCga!.Continence, 
+            _currentVisitCga!.Dressing,
+            _currentVisitCga!.Shower, 
+            _currentVisitCga!.PosturalPassages, 
+            _currentVisitCga!.Hygiene
+        );
 
         iadlSentenceBuilder.Append($"IADL {counter}/8 (");
         var iadlSubSentenceBuilder = new StringBuilder();
@@ -341,11 +337,11 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
     {
         var ergonomicsSentenceBuilder = new StringBuilder();
         if (_currentVisitCga!.Handgrip is not null) ergonomicsSentenceBuilder.Append($"Handgrip {_currentVisitCga.Handgrip}Kg\n");
-        if (_currentVisitCga!.Weight is not null) ergonomicsSentenceBuilder.Append($"Peso {_currentVisitCga.Weight}Kg\n");
-        if (_currentVisitCga!.Height is not null) ergonomicsSentenceBuilder.Append($"Altezza {_currentVisitCga.Height:F2}m\n");
-        if (_currentVisitCga!.Height is not null && _currentVisitCga!.Weight is not null && _currentVisitCga!.Height != 0)
+        ergonomicsSentenceBuilder.Append($"Peso {_currentVisitCga.Weight}Kg\n");
+        ergonomicsSentenceBuilder.Append($"Altezza {_currentVisitCga.Height:F2}m\n");
+        if (_currentVisitCga!.Height != 0)
         {
-            var bmi = ComputeBmi(_currentVisitCga.Weight.Value, _currentVisitCga.Height.Value);
+            var bmi = ComputeBmi(_currentVisitCga!.Weight, _currentVisitCga!.Height);
             var category = bmi switch
             {
                 < 18.5   => "sottopeso",
@@ -372,11 +368,9 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
     private void UpdateMnaSentence()
     {
         //We need BMI first
-        if (_currentVisitCga!.Weight is null ||
-            _currentVisitCga!.Height is null ||
-            _currentVisitCga!.Height == 0)
+        if (_currentVisitCga!.Height == 0)
         {
-            Log.Information("Missing data to compute MNA-SF");
+            Log.Information("[STOP] Height is 0, skipping BMI and MNA computation");
             return;
         }
         
@@ -389,7 +383,7 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
             StringChoices.MotorSkillTypes.FindIndex(s => s.Equals(_currentVisitAg!.MotorSkill)) +
             (_currentVisitRc!.AcuteStressLast3Months ? 0 : 2) +
             StringChoices.CognitiveDeficits.FindIndex(s => s.Equals(_currentVisitAg!.CognitiveDeficit)) +
-            ComputeBmi(_currentVisitCga.Weight.Value, _currentVisitCga.Height.Value) switch
+            ComputeBmi(_currentVisitCga!.Weight, _currentVisitCga!.Height) switch
             {
                 < 19 => 0,
                 >= 19 and < 21 => 1,
@@ -467,14 +461,13 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         var pcfiValue =
             (_currentVisitApr!.Dementia ? PcFiIncrementValue : 0) +
             (ComputeAdlSum(
-                _currentVisitCga!.Phone, 
-                _currentVisitCga!.Shopping, 
-                _currentVisitCga!.SenseOfMoney,
-                _currentVisitCga!.Car, 
-                _currentVisitCga!.Medicines, 
-                _currentVisitCga!.Cooking,
-                _currentVisitCga!.HouseholdChores, 
-                _currentVisitCga!.Laundry) < 6 ? PcFiIncrementValue : 0) +
+                _currentVisitCga!.Diet, 
+                _currentVisitCga!.Continence, 
+                _currentVisitCga!.Dressing,
+                _currentVisitCga!.Shower, 
+                _currentVisitCga!.PosturalPassages, 
+                _currentVisitCga!.Hygiene
+                ) < 6 ? PcFiIncrementValue : 0) +
             (_currentVisitApr!.CerebrovascularDisease ? PcFiIncrementValue : 0) +
             (_currentVisitApr!.Neoplasm ? PcFiIncrementValue : 0) +
             (_currentVisitApr!.ChronicObstructivePulmonaryDisease ? PcFiIncrementValue : 0) +
@@ -486,13 +479,13 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
             (_currentVisitApr!.HipFracture ? PcFiIncrementValue : 0) +
             (_currentVisitApr!.Anemia ? PcFiIncrementValue : 0) +
             (_currentVisitAg!.Disability ? PcFiIncrementValue : 0) +
-            (_currentVisitCga!.OxygenPrescriptionForThePastSixMonths ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.OxygenTherapyLast6Months ? PcFiIncrementValue : 0) +
             (_currentVisitApr!.HospitalizationLast6Months ? PcFiIncrementValue : 0) +
             (_currentVisitApr!.ChronicSkinUlcers ? PcFiIncrementValue : 0) +
             (_currentVisitApr!.Bradycardia ? PcFiIncrementValue : 0) +
             (_currentVisitCga!.OtherNeurologicalDiseases ? PcFiIncrementValue : 0) +
             (_currentVisitAg!.Constipation ? PcFiIncrementValue : 0) +
-            (_currentVisitCga!.EbpmPrescriptionForThePastSixMonths ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.HeparinUseLast6Months ? PcFiIncrementValue : 0) +
             (_currentVisitApr!.PeripheralVascularDisease ? PcFiIncrementValue : 0) +
             (_currentVisitAg!.NutritionalProblems ? PcFiIncrementValue : 0) +
             (_currentVisitApr!.Diabetes ? PcFiIncrementValue : 0) +
@@ -512,23 +505,21 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         _necpaleSentence = necpalSentenceBuilder.ToString();
     }
     
-    private static double ComputeAdlSum(bool phone, bool shopping, bool senseOfMoney, bool car, bool medicines, bool cooking, bool householdChores, bool laundry)
+    private static double ComputeAdlSum(bool diet, bool continence, bool dressing, bool shower, bool posturalPassages, bool hygiene)
     {
-        var adlSum = 
-             Convert.ToInt32(phone) + 
-             Convert.ToInt32(shopping) +
-             Convert.ToInt32(senseOfMoney) + 
-             Convert.ToInt32(car) +
-             Convert.ToInt32(medicines) + 
-             Convert.ToInt32(cooking) +
-             Convert.ToInt32(householdChores) +
-             Convert.ToInt32(laundry);
+        var adlSum =
+            Convert.ToInt32(diet) +
+            Convert.ToInt32(continence) +
+            Convert.ToInt32(dressing) +
+            Convert.ToInt32(shower) +
+            Convert.ToInt32(posturalPassages) +
+            Convert.ToInt32(hygiene);
         return adlSum;
     }
     
-    private static double ComputeBmi(int weight, float height)
+    private static double ComputeBmi(int weight, decimal height)
     {
-        var bmi = weight / Math.Pow(height, 2);
+        var bmi = weight / Math.Pow((double)height, 2);
         return bmi;
     }
     
@@ -574,7 +565,6 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         columnBDescriptionStringBuilder.Append(_cfsSentence);
         columnBDescriptionStringBuilder.Append(_pcfiSentence);
         columnBDescriptionStringBuilder.Append(_necpaleSentence);
-        columnBDescriptionStringBuilder.Append(_mnaSentence);
 
         Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
     }

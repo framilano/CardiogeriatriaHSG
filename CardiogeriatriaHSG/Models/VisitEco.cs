@@ -28,8 +28,8 @@ public partial class VisitEco(string visitCode): ObservableObject
     [ObservableProperty] public partial int? RightPefs { get; set; }
     [ObservableProperty] public partial int? LeftPefs { get; set; }  
     [ObservableProperty] public partial bool MeasurableIvc { get; set; }
-    [ObservableProperty] public partial string? IvcDiameter { get; set; }
     [ObservableProperty] public partial string? IvcCollapsibility { get; set; }
+    [ObservableProperty] public partial string? IvcDiameter { get; set; }
     [ObservableProperty] public partial int? Vexus { get; set; }
     [ObservableProperty] public partial string? PortalVeinPulsatility   { get; set; }
 }

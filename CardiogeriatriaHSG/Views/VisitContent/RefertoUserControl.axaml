@@ -49,6 +49,10 @@
                 <LineBreak/>
                 <Run Name="ValutazioneGeriatricaCompletaContent"/>
                 <LineBreak/><LineBreak/>
+                <Run FontWeight="Bold" Text="Conclusioni" />
+                <LineBreak/>
+                <Run Name="ConclusioniContent"/>
+                <LineBreak/><LineBreak/>
             </SelectableTextBlock>
         </ScrollViewer>
     </Border>

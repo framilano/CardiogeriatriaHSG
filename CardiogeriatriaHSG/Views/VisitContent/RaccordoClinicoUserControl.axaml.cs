@@ -332,4 +332,9 @@ public partial class RaccordoClinicoUserControl : UserControl
 
         Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
+    
+    private void CopyToManualText(object? sender, RoutedEventArgs routedEventArgs)
+    {
+        _currentVisitRc!.RcManualText = AutomaticColumnB.Text;
+    }
 }
