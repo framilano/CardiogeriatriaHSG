@@ -23,15 +23,17 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
             _currentVisitApr = viewModel.CurrentVisitApr;
             _currentVisitTd = viewModel.CurrentVisitTd;
             _currentVisitRc = viewModel.CurrentVisitRc;
+            _currentVisitEo = viewModel.CurrentVisitEo;
 
             _currentVisitCga = viewModel.CurrentVisitCga;
-            LoadValutazioneGeriatricaCompletaContent(_currentVisitAg, _currentVisitApr, _currentVisitTd, _currentVisitRc, _currentVisitCga);
+            LoadValutazioneGeriatricaCompletaContent(_currentVisitAg, _currentVisitApr, _currentVisitTd, _currentVisitRc, _currentVisitEo, _currentVisitCga);
         };
     }
     private VisitAg? _currentVisitAg;
     private VisitApr? _currentVisitApr;
     private VisitTd? _currentVisitTd;
     private VisitRc? _currentVisitRc;
+    private VisitEo? _currentVisitEo;
     private VisitCga? _currentVisitCga;
 
     private string? _adlSentence;
@@ -48,8 +50,8 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
     private string? _cfsSentence;
     private string? _pcfiSentence;
     private string? _necpaleSentence;
-
-
+    
+    private const decimal PcFiIncrementValue = 0.04m;
 
     public void OnColumnAChanged(object? sender, RoutedEventArgs routedEventArgs)
     {
@@ -199,6 +201,10 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
                 _currentVisitCga!.EbpmPrescriptionForThePastSixMonths = value == "True";
                 UpdatePcfiSentence();
                 break;
+            case "OtherNeurologicalDiseases":
+                _currentVisitCga!.OtherNeurologicalDiseases = value == "True";
+                UpdatePcfiSentence();
+                break;
             case "SurpriseQuestion":
                 _currentVisitCga!.SurpriseQuestion = value == "True";
                 if (!_currentVisitCga!.SurpriseQuestion)
@@ -250,15 +256,16 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
     private void UpdateIadlSentence()
     {
         var iadlSentenceBuilder = new StringBuilder();
-        var counter = 
-            Convert.ToInt32(_currentVisitCga!.Phone) + 
-            Convert.ToInt32(_currentVisitCga!.Shopping) +
-            Convert.ToInt32(_currentVisitCga!.SenseOfMoney) + 
-            Convert.ToInt32(_currentVisitCga!.Car) +
-            Convert.ToInt32(_currentVisitCga!.Medicines) + 
-            Convert.ToInt32(_currentVisitCga!.Cooking) +
-            Convert.ToInt32(_currentVisitCga!.HouseholdChores) +
-            Convert.ToInt32(_currentVisitCga!.Laundry);
+        var counter = ComputeAdlSum(
+            _currentVisitCga!.Phone, 
+            _currentVisitCga!.Shopping, 
+            _currentVisitCga!.SenseOfMoney,
+            _currentVisitCga!.Car, 
+            _currentVisitCga!.Medicines, 
+            _currentVisitCga!.Cooking,
+            _currentVisitCga!.HouseholdChores, 
+            _currentVisitCga!.Laundry);
+        
 
         iadlSentenceBuilder.Append($"IADL {counter}/8 (");
         var iadlSubSentenceBuilder = new StringBuilder();
@@ -381,8 +388,7 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
             StringChoices.WeightLossTypes.FindIndex(s => s.Equals(_currentVisitAg!.WeightLoss)) +
             StringChoices.MotorSkillTypes.FindIndex(s => s.Equals(_currentVisitAg!.MotorSkill)) +
             (_currentVisitRc!.AcuteStressLast3Months ? 0 : 2) +
-            0 + //MANCA LA DEMENZA, DA CAPIRE COME GESTIRLA RISPETTO AI VALORI STRING CHE ABBIAMO SU APR PER DEMENZA
-
+            StringChoices.CognitiveDeficits.FindIndex(s => s.Equals(_currentVisitAg!.CognitiveDeficit)) +
             ComputeBmi(_currentVisitCga.Weight.Value, _currentVisitCga.Height.Value) switch
             {
                 < 19 => 0,
@@ -455,7 +461,55 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
 
     private void UpdatePcfiSentence()
     {
-        //TODO
+        Log.Information("Computing PC-FI...");
+
+        if (!_currentVisitRc!.HospitalizationsSinceLastVisit ||
+            _currentVisitRc!.HospitalizationsSinceLastVisitDays is null)
+        {
+            Log.Information("Missing data to compute PC-FI");
+            return;
+        }
+        
+        var pcfiSentenceBuilder = new StringBuilder();
+        var pcfiValue =
+            (_currentVisitApr!.Dementia ? PcFiIncrementValue : 0) +
+            (ComputeAdlSum(
+                _currentVisitCga!.Phone, 
+                _currentVisitCga!.Shopping, 
+                _currentVisitCga!.SenseOfMoney,
+                _currentVisitCga!.Car, 
+                _currentVisitCga!.Medicines, 
+                _currentVisitCga!.Cooking,
+                _currentVisitCga!.HouseholdChores, 
+                _currentVisitCga!.Laundry) < 6 ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.CerebrovascularDisease ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.Neoplasm ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.ChronicObstructivePulmonaryDisease ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.IschemicHeartDisease ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.HeartFailure ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.ChronicKidneyDisease ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.AtrialFibrillation ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.Parkinson ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.HipFracture ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.Anemia ? PcFiIncrementValue : 0) +
+            (_currentVisitAg!.Disability ? PcFiIncrementValue : 0) +
+            (_currentVisitCga!.OxygenPrescriptionForThePastSixMonths ? PcFiIncrementValue : 0) +
+            (_currentVisitRc!.HospitalizationsSinceLastVisitDays < 180 ? PcFiIncrementValue : 0) + //Uso 180 giorni come indicatore?
+            (_currentVisitApr!.ChronicSkinUlcers ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.Bradycardia ? PcFiIncrementValue : 0) +
+            (_currentVisitCga!.OtherNeurologicalDiseases ? PcFiIncrementValue : 0) +
+            (_currentVisitAg!.Constipation ? PcFiIncrementValue : 0) +
+            (_currentVisitCga!.EbpmPrescriptionForThePastSixMonths ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.PeripheralVascularDisease ? PcFiIncrementValue : 0) +
+            (_currentVisitAg!.NutritionalProblems ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.Diabetes ? PcFiIncrementValue : 0) +
+            (_currentVisitApr!.Schizophrenia ? PcFiIncrementValue : 0) +
+            (_currentVisitEo!.DependentEdema ? PcFiIncrementValue : 0);
+            
+        Log.Information("PC-FI computed.");
+                
+        pcfiSentenceBuilder.Append($"PC-FI {pcfiValue}\n"); 
+        _pcfiSentence = pcfiSentenceBuilder.ToString();
     }
     
     private void UpdateNecpalSentence()
@@ -465,18 +519,33 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         _necpaleSentence = necpalSentenceBuilder.ToString();
     }
     
+    private static double ComputeAdlSum(bool phone, bool shopping, bool senseOfMoney, bool car, bool medicines, bool cooking, bool householdChores, bool laundry)
+    {
+        var adlSum = 
+             Convert.ToInt32(phone) + 
+             Convert.ToInt32(shopping) +
+             Convert.ToInt32(senseOfMoney) + 
+             Convert.ToInt32(car) +
+             Convert.ToInt32(medicines) + 
+             Convert.ToInt32(cooking) +
+             Convert.ToInt32(householdChores) +
+             Convert.ToInt32(laundry);
+        return adlSum;
+    }
+    
     private static double ComputeBmi(int weight, float height)
     {
         var bmi = weight / Math.Pow(height, 2);
         return bmi;
     }
     
-    public void LoadValutazioneGeriatricaCompletaContent(VisitAg currentVisitAg, VisitApr currentVisitApr, VisitTd currentVisitTd, VisitRc currentVisitRc, VisitCga currentVisitCga)
+    public void LoadValutazioneGeriatricaCompletaContent(VisitAg currentVisitAg, VisitApr currentVisitApr, VisitTd currentVisitTd, VisitRc currentVisitRc, VisitEo currentVisitEo, VisitCga currentVisitCga)
     {
         _currentVisitAg = currentVisitAg;
         _currentVisitApr = currentVisitApr;
         _currentVisitTd = currentVisitTd;
         _currentVisitRc = currentVisitRc;
+        _currentVisitEo = currentVisitEo;
         _currentVisitCga = currentVisitCga;
         UpdateAdlSentence();
         UpdateIadlSentence();

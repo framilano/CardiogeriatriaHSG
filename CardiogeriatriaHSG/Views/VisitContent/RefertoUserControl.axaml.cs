@@ -28,7 +28,14 @@ public partial class RefertoUserControl : UserControl
             var ecografiaToracicaUserControl = new EcografiaToracicaUserControl();
             ecografiaToracicaUserControl.LoadEcografiaToracicaContent(currentVisit.VisitEco!);
             var valutazioneGeriatricaCompletaUserControl = new ValutazioneGeriatricaCompletaUserControl();
-            valutazioneGeriatricaCompletaUserControl.LoadValutazioneGeriatricaCompletaContent(currentVisit.VisitAg!, currentVisit.VisitApr!, currentVisit.VisitTd!, currentVisit.VisitRc!, currentVisit.VisitCga!);
+            valutazioneGeriatricaCompletaUserControl.LoadValutazioneGeriatricaCompletaContent(
+                currentVisit.VisitAg!, 
+                currentVisit.VisitApr!, 
+                currentVisit.VisitTd!, 
+                currentVisit.VisitRc!, 
+                currentVisit.VisitEo!, 
+                currentVisit.VisitCga!
+            );
             Dispatcher.UIThread.Post(() => { 
                 //Anagrafica
                 AnagraficaContent.Text = currentVisit.Patient!.PatientManualText is null || currentVisit.Patient!.PatientManualText.Trim().Length == 0 

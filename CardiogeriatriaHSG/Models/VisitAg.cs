@@ -12,7 +12,12 @@ public partial class VisitAg(string visitCode): ObservableObject
     public Visit? Visit { get; init; }
     
     [ObservableProperty] public partial string? AgManualText { get; set; } = "";
-    partial void OnAgManualTextChanged(string? value) { if (value != null) AgManualText = value.Trim(); }
+
+    partial void OnAgManualTextChanged(string? value)
+    {
+        if (value == null) return;
+        AgManualText = value.Trim().Length == 0 ? null : value.Trim();
+    }
 
     //Anamnesi Geriatrica
     [ObservableProperty]

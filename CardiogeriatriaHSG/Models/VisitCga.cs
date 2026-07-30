@@ -11,7 +11,12 @@ public partial class VisitCga(string visitCode): ObservableObject
     public Visit? Visit { get; init; }
     
     [ObservableProperty] public partial string? CgaManualText { get; set; } = "";
-    partial void OnCgaManualTextChanged(string? value) { if (value != null) CgaManualText = value.Trim(); }
+
+    partial void OnCgaManualTextChanged(string? value)
+    {
+        if (value == null) return;
+        CgaManualText = value.Trim().Length == 0 ? null : value.Trim();
+    }
     
     [ObservableProperty] public partial bool Diet { get; set; }
     [ObservableProperty] public partial bool Continence { get; set; }

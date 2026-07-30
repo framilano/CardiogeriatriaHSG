@@ -46,7 +46,6 @@
                                 <TextBlock Grid.Row="16" Grid.Column="0" Name="Laundry" Classes="GenericSubFieldLabel" Text="‣ Lavanderia" />
                                 <CheckBox Grid.Row="16" Grid.Column="1" Tag="Laundry" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.Laundry}"></CheckBox>
                             </Grid>
-                            <TextBlock><LineBreak/></TextBlock>
                             <Grid RowDefinitions="*, *, *, *, *" ColumnDefinitions="*, *">
                                 <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="MMSE" />
                                 <NumericUpDown Grid.Row="0" Grid.Column="1" Classes="CustomNumericUpDown" Tag="MmseNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="30" Value="{Binding CurrentVisitCga.Mmse}"></NumericUpDown>
@@ -59,7 +58,6 @@
                                 <TextBlock Grid.Row="4" Grid.Column="0" Classes="GenericFieldLabel" Text="BORG post SPPB" />
                                 <NumericUpDown Grid.Row="4" Grid.Column="1" Classes="CustomNumericUpDown" Tag="PostSppbBorgNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="10" Value="{Binding CurrentVisitCga.PostSppbBorg}"></NumericUpDown>
                             </Grid>
-                            <TextBlock><LineBreak/></TextBlock>
                             <Grid RowDefinitions="*, *, *, *" ColumnDefinitions="*, *">
                                 <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="SPPB Totale"/>
                                 <TextBlock Grid.Row="1" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Equilibrio"/>
@@ -71,7 +69,6 @@
                                 <TextBlock Grid.Row="3" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Sit to Stand"/>
                                 <ComboBox Grid.Row="3" Grid.Column="1" Tag="SppbSitToStandTypes" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding SppbSitToStandTypesValues}" SelectedItem="{Binding CurrentVisitCga.SppbSitToStand}"/>
                             </Grid>
-                            <TextBlock><LineBreak/></TextBlock>
                             <Grid RowDefinitions="*, *, *, *, *, *" ColumnDefinitions="*, *">
                                 <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="Handgrip" />
                                 <NumericUpDown Grid.Row="0" Grid.Column="1" Classes="CustomNumericUpDown" Tag="HandgripNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="0" Maximum="80" Value="{Binding CurrentVisitCga.Handgrip}">
@@ -92,7 +89,6 @@
                                 <TextBlock Grid.Row="5" Grid.Column="0" Classes="GenericFieldLabel" Text="CFS" />
                                 <NumericUpDown Grid.Row="5" Grid.Column="1" Classes="CustomNumericUpDown" Tag="CfsNumber" ValueChanged="OnColumnAChanged" AllowSpin="True" Increment="1" Minimum="1" Maximum="9" Value="{Binding CurrentVisitCga.Cfs}"></NumericUpDown>
                             </Grid>
-                            <TextBlock><LineBreak/></TextBlock>
                             <Grid RowDefinitions="*, *, *" ColumnDefinitions="*, *">
                                 <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="Prescrizione di ossigeno negli ultimi 6 mesi (PC-FI)" />
                                 <CheckBox Grid.Row="0" Grid.Column="1" Tag="OxygenPrescriptionForThePastSixMonths" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.OxygenPrescriptionForThePastSixMonths}"></CheckBox>
@@ -101,7 +97,6 @@
                                 <TextBlock Grid.Row="2" Grid.Column="0" Classes="GenericFieldLabel" Text="Altre malattie neurologiche (PC-FI)" />
                                 <CheckBox Grid.Row="2" Grid.Column="1" Tag="OtherNeurologicalDiseases" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentVisitCga.OtherNeurologicalDiseases}"></CheckBox>
                             </Grid>
-                            <TextBlock><LineBreak/></TextBlock>
                             <WrapPanel Orientation="Vertical">
                                 <WrapPanel Orientation="Horizontal">
                                     <TextBlock Classes="GenericFieldLabel" Text="Saresti sorpreso se il paziente morisse entro un anno?" />

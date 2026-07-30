@@ -12,7 +12,12 @@ public partial class VisitEe(string visitCode): ObservableObject
     public Visit? Visit { get; init; }
     
     [ObservableProperty] public partial string? EeManualText { get; set; } = "";
-    partial void OnEeManualTextChanged(string? value) { if (value != null) EeManualText = value.Trim(); }
+
+    partial void OnEeManualTextChanged(string? value)
+    {
+        if (value == null) return;
+        EeManualText = value.Trim().Length == 0 ? null : value.Trim();
+    }
 
     [ObservableProperty] public partial DateTimeOffset ExamDate { get; set; }
     [ObservableProperty] public partial float? Hemoglobin { get; set; }

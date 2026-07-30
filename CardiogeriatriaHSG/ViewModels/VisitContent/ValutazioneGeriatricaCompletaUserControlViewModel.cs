@@ -5,12 +5,13 @@ using CardiogeriatriaHSG.Models.enums;
 
 namespace CardiogeriatriaHSG.ViewModels.VisitContent;
 
-public class ValutazioneGeriatricaCompletaUserControlViewModel(VisitAg currentVisitAg, VisitApr currentVisitApr, VisitTd currentVisitTd, VisitRc currentVisitRc, VisitCga currentVisitCga) : ViewModelBase
+public class ValutazioneGeriatricaCompletaUserControlViewModel(VisitAg currentVisitAg, VisitApr currentVisitApr, VisitTd currentVisitTd, VisitRc currentVisitRc, VisitEo currentVisitEo, VisitCga currentVisitCga) : ViewModelBase
 {
     public VisitAg CurrentVisitAg { get; set; } = currentVisitAg;
     public VisitApr CurrentVisitApr { get; set; } = currentVisitApr;
     public VisitTd CurrentVisitTd { get; set; } = currentVisitTd;
     public VisitRc CurrentVisitRc { get; set; } = currentVisitRc;
+    public VisitEo CurrentVisitEo { get; set; } = currentVisitEo;
     public VisitCga CurrentVisitCga { get; set; } = currentVisitCga;
 
     public static IEnumerable<string> SppbBalanceTypesValues => StringChoices.SppbBalanceTypes;

@@ -11,7 +11,12 @@ public partial class VisitEo(string visitCode): ObservableObject
     public Visit? Visit { get; init; }
     
     [ObservableProperty] public partial string? EoManualText { get; set; } = "";
-    partial void OnEoManualTextChanged(string? value) { if (value != null) EoManualText = value.Trim(); }
+
+    partial void OnEoManualTextChanged(string? value)
+    {
+        if (value == null) return;
+        EoManualText = value.Trim().Length == 0 ? null : value.Trim();
+    }
 
     [ObservableProperty] public partial int? MinimumBloodPressure { get; set; }
     [ObservableProperty] public partial int? MaximumBloodPressure { get; set; }

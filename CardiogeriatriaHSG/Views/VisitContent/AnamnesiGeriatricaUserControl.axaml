@@ -43,7 +43,7 @@
                                 <ComboBox Tag="Falls" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding FallsValuesValues}" SelectedItem="{Binding CurrentVisitAg.Falls}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">
-                                <TextBlock Classes="GenericFieldLabel" Text="Deficit Cognitivo " />
+                                <TextBlock Classes="GenericFieldLabel" Text="Deficit Cognitivo (MNA)" />
                                 <ComboBox Tag="CognitiveDeficit" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding CognitiveDeficitsValues}" SelectedItem="{Binding CurrentVisitAg.CognitiveDeficit}"/>
                             </WrapPanel>
                             <WrapPanel Orientation="Horizontal">

@@ -12,7 +12,11 @@ public partial class VisitApr(string visitCode): ObservableObject
     [ObservableProperty]
     public partial string? AprText { get; set; } = "";
 
-    partial void OnAprTextChanged(string? value) { if (value != null) AprText = value.Trim(); }
+    partial void OnAprTextChanged(string? value)
+    {
+        if (value == null) return;
+        AprText = value.Trim().Length == 0 ? null : value.Trim();
+    }
 
     //APR
     [ObservableProperty] public partial bool IschemicHeartDisease { get; set; }

@@ -10,7 +10,11 @@ public partial class VisitTd(string visitCode): ObservableObject
     public Visit? Visit { get; init; }
     [ObservableProperty] public partial string? TdText { get; set; } = "";
 
-    partial void OnTdTextChanged(string? value) { if (value != null) TdText = value.Trim(); }
+    partial void OnTdTextChanged(string? value)
+    {
+        if (value == null) return;
+        TdText = value.Trim().Length == 0 ? null : value.Trim();
+    }
     
     //TD
     [ObservableProperty] public partial bool ProteinSupplementation { get; set; }
