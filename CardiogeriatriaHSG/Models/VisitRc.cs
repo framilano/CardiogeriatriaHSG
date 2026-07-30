@@ -4,14 +4,14 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace CardiogeriatriaHSG.Models;
 
-public partial class VisitRc(string visitCode): ObservableValidator
+public partial class VisitRc(string visitCode): ObservableObject
 {
     
     [MaxLength(36)]
     public string? VisitCode { get; init; } = visitCode;
     public Visit? Visit { get; init; }
     
-    [ObservableProperty] [MaxLength(3000)] public partial string? RcManualText { get; set; } = "";
+    [ObservableProperty] public partial string? RcManualText { get; set; } = "";
 
     partial void OnRcManualTextChanged(string? value)
     {
