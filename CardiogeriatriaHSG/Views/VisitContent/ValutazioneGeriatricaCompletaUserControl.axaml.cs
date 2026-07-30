@@ -462,13 +462,6 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
     private void UpdatePcfiSentence()
     {
         Log.Information("Computing PC-FI...");
-
-        if (!_currentVisitRc!.HospitalizationsSinceLastVisit ||
-            _currentVisitRc!.HospitalizationsSinceLastVisitDays is null)
-        {
-            Log.Information("Missing data to compute PC-FI");
-            return;
-        }
         
         var pcfiSentenceBuilder = new StringBuilder();
         var pcfiValue =
@@ -494,7 +487,7 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
             (_currentVisitApr!.Anemia ? PcFiIncrementValue : 0) +
             (_currentVisitAg!.Disability ? PcFiIncrementValue : 0) +
             (_currentVisitCga!.OxygenPrescriptionForThePastSixMonths ? PcFiIncrementValue : 0) +
-            (_currentVisitRc!.HospitalizationsSinceLastVisitDays < 180 ? PcFiIncrementValue : 0) + //Uso 180 giorni come indicatore?
+            (_currentVisitApr!.HospitalizationLast6Months ? PcFiIncrementValue : 0) +
             (_currentVisitApr!.ChronicSkinUlcers ? PcFiIncrementValue : 0) +
             (_currentVisitApr!.Bradycardia ? PcFiIncrementValue : 0) +
             (_currentVisitCga!.OtherNeurologicalDiseases ? PcFiIncrementValue : 0) +
