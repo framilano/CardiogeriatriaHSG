@@ -23,6 +23,8 @@ public partial class Visit: ObservableObject
     public partial VisitEco? VisitEco { get; set; }
     [ObservableProperty]
     public partial VisitCga? VisitCga { get; set; }
+    [ObservableProperty]
+    public partial VisitCo? VisitCo { get; set; }
     
     [MaxLength(36)]
     public string? VisitCode { get; init; }

@@ -15,7 +15,7 @@ public static class SidebarEntries
         "ECO",
         "CGA", 
         "Conclusioni", 
-        "Terapia fine visita",
+        "TFV",
         "Consigli",
         "Referto"
     ];

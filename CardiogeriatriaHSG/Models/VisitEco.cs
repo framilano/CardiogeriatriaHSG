@@ -3,14 +3,14 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace CardiogeriatriaHSG.Models;
 
-public partial class VisitEco(string visitCode): ObservableObject
+public partial class VisitEco(string visitCode): ObservableValidator
 {
     
     [MaxLength(36)]
     public string? VisitCode { get; init; } = visitCode;
     public Visit? Visit { get; init; }
     
-    [ObservableProperty] public partial string? EcoManualText { get; set; } = "";
+    [ObservableProperty] [MaxLength(3000)] public partial string? EcoManualText { get; set; } = "";
 
     partial void OnEcoManualTextChanged(string? value)
     {

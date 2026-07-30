@@ -80,7 +80,7 @@
                     <SelectableTextBlock Classes="ColumnBSelectableTextBlock" Name="AutomaticColumnB"></SelectableTextBlock>
                 </Border>
                 <Border Classes="ColumnBorder" Grid.Column="1" Grid.Row="1">
-                    <TextBox Classes="ColumnBWhiteTextBox" Name="ManualColumnB" Text="{Binding CurrentVisitEco.EcoManualText}"></TextBox>
+                    <TextBox Classes="ColumnBWhiteTextBox" Name="ManualColumnB" MaxLength="{x:Static visitContent:EcografiaToracicaUserControlViewModel.MaxTextLength}" Text="{Binding CurrentVisitEco.EcoManualText}"></TextBox>
                 </Border>
             </Grid>
 </UserControl>

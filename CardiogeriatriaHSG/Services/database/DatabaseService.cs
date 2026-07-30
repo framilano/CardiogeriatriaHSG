@@ -152,4 +152,9 @@ public class DatabaseService
         _visitRepository.LoadVisitCgaByVisit(visit);
         Log.Information("[STOP] Loaded visit CGA data for visit {VisitVisitCode}", visit.VisitCode);
     }
+    public void LoadVisitConclusioniByVisit(Visit visit) {
+        Log.Debug("[START] Loading visit CO data for visit {VisitVisitCode}", visit.VisitCode);
+        _visitRepository.LoadVisitCoByVisit(visit);
+        Log.Information("[STOP] Loaded visit CO data for visit {VisitVisitCode}", visit.VisitCode);
+    }
 }

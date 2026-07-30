@@ -14,4 +14,5 @@ public class AnagraficaUserControlViewModel(Patient currentPatient, DateTimeOffs
     public static IEnumerable<string> GenderTypesValues => StringChoices.GenderTypes;
     
     public DateTimeOffset MaxAllowedDate { get; } = new(DateTime.Now);
+    public static int MaxTextLength = 3000;
 }

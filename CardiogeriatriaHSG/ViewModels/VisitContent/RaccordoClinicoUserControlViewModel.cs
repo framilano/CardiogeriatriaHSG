@@ -10,6 +10,7 @@ public class RaccordoClinicoUserControlViewModel(VisitRc currentVisitRc) : ViewM
     public VisitRc CurrentVisitRc { get; set; } = currentVisitRc;
     
     public DateTimeOffset MaxAllowedDate { get; } = new(DateTime.Now);
+    public static int MaxTextLength = 3000;
 
     public static IEnumerable<string> ReportTypesValues => StringChoices.ReportsTypes;
     public static IEnumerable<string> DyspneaTypesValues => StringChoices.DyspneaTypes;

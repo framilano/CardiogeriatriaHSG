@@ -7,5 +7,6 @@ public class EsamiEmaticiUserControlViewModel(VisitEe currentVisitEe) : ViewMode
 {
     public VisitEe CurrentVisitEe { get; set; } = currentVisitEe;
     public DateTimeOffset MaxAllowedDate { get; } = new(DateTime.Now);
+    public static int MaxTextLength = 3000;
 
 }

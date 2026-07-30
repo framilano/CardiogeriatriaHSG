@@ -127,6 +127,12 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 CurrentVisit.VisitCga ??= CreateNewVisitCga(CurrentVisit.VisitCode!);
                 CurrentContent = new ValutazioneGeriatricaCompletaUserControl { DataContext = new ValutazioneGeriatricaCompletaUserControlViewModel(CurrentVisit.VisitAg, CurrentVisit.VisitApr, CurrentVisit.VisitTd, CurrentVisit.VisitRc, CurrentVisit.VisitEo, CurrentVisit.VisitCga) };
                 break;
+            case "Conclusioni":
+                if (CurrentVisit.VisitCo is null) _databaseService.LoadVisitConclusioniByVisit(CurrentVisit);
+                
+                CurrentVisit.VisitCo ??= CreateNewVisitCo(CurrentVisit.VisitCode!);
+                CurrentContent = new ConclusioniUserControl() { DataContext = new ConclusioniUserControlViewModel(CurrentVisit.VisitCo) };
+                break;
             case "Referto":
                 //There's no need to load patient (anagrafica) because already loaded by default
                 if (CurrentVisit.VisitAg is null) { _databaseService.LoadVisitAnamnesiGeriatricaByVisit(CurrentVisit); }
@@ -435,6 +441,14 @@ public partial class VisitUserControlViewModel : ViewModelBase
         
         Log.Information("[STOP] Created new VisitCga");
         return visitCga;
+    }
+    
+    private static VisitCo CreateNewVisitCo(string visitCode)
+    {
+        Log.Debug("[START] Creating new VisitCo...");
+        var visitCo = new VisitCo(visitCode);
+        Log.Information("[STOP] Created new VisitCo");
+        return visitCo;
     }
     
     [RelayCommand]

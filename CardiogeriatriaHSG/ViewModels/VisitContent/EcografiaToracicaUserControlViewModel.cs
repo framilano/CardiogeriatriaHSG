@@ -7,6 +7,7 @@ namespace CardiogeriatriaHSG.ViewModels.VisitContent;
 public class EcografiaToracicaUserControlViewModel(VisitEco currentVisitEco) : ViewModelBase
 {
     public VisitEco CurrentVisitEco { get; set; } = currentVisitEco;
+    public static int MaxTextLength = 3000;
     public static IEnumerable<string> IvcDiameterTypes => StringChoices.IvcDiameterTypes;
     public static IEnumerable<string> IvcCollapsibilityTypes => StringChoices.IvcCollapsibilityTypes;
     public static IEnumerable<string> PortalVeinPulsatilityTypes => StringChoices.PortalVeinPulsatilityTypes;

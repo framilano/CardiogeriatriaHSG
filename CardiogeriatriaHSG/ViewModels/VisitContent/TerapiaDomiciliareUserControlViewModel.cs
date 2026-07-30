@@ -9,8 +9,8 @@ namespace CardiogeriatriaHSG.ViewModels.VisitContent;
 public partial class TerapiaDomiciliareUserControlViewModel(VisitTd currentVisitTd) : ObservableObject
 {
     [ObservableProperty]
-    private VisitTd _currentVisitTd = currentVisitTd;
-    
+    public partial VisitTd CurrentVisitTd { get; set; } = currentVisitTd;
+    public static int MaxTextLength = 3000;
 
     public void InferColumnBValues()
     {

@@ -3,14 +3,14 @@ using CommunityToolkit.Mvvm.ComponentModel;
 
 namespace CardiogeriatriaHSG.Models;
 
-public partial class VisitCga(string visitCode): ObservableObject
+public partial class VisitCga(string visitCode): ObservableValidator
 {
     
     [MaxLength(36)]
     public string? VisitCode { get; init; } = visitCode;
     public Visit? Visit { get; init; }
     
-    [ObservableProperty] public partial string? CgaManualText { get; set; } = "";
+    [ObservableProperty] [MaxLength(3000)] public partial string? CgaManualText { get; set; } = "";
 
     partial void OnCgaManualTextChanged(string? value)
     {

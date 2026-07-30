@@ -41,8 +41,12 @@
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Update="Views\VisitContent\ValutazioneGeriatricaCompleta.axaml.cs">
+      <Compile Update="Views\VisitContent\ValutazioneGeriatricaCompletaUserControl.axaml.cs">
         <DependentUpon>ValutazioneGeriatricaCompleta.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
+      <Compile Update="Views\VisitContent\ConclusioniUserControl.axaml.cs">
+        <DependentUpon>ConclusioniUserControl.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
     </ItemGroup>

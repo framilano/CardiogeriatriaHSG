@@ -11,7 +11,9 @@ namespace CardiogeriatriaHSG.ViewModels.VisitContent;
 public partial class AnamnesiPatologicaRemotaUserControlViewModel(VisitApr currentVisitApr) : ObservableObject
 {
     [ObservableProperty]
-    private VisitApr _currentVisitApr = currentVisitApr;
+    public partial VisitApr CurrentVisitApr { get; set; } = currentVisitApr;
+    
+    public static int MaxTextLength = 3000;
 
     public static IEnumerable<string> AmyloidosisTypesValues => StringChoices.AmyloidosisTypes;
     public static IEnumerable<string> DementiaTypesValues => StringChoices.DementiaTypes;

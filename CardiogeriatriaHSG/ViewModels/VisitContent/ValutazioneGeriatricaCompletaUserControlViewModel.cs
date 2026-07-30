@@ -13,6 +13,8 @@ public class ValutazioneGeriatricaCompletaUserControlViewModel(VisitAg currentVi
     public VisitRc CurrentVisitRc { get; set; } = currentVisitRc;
     public VisitEo CurrentVisitEo { get; set; } = currentVisitEo;
     public VisitCga CurrentVisitCga { get; set; } = currentVisitCga;
+    
+    public static int MaxTextLength = 3000;
 
     public static IEnumerable<string> SppbBalanceTypesValues => StringChoices.SppbBalanceTypes;
     //public static IEnumerable<string> SppbFourMetersTimeTypesValues => StringChoices.SppbFourMetersTimeTypes;

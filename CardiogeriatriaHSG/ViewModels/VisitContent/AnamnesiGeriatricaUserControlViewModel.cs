@@ -7,6 +7,8 @@ namespace CardiogeriatriaHSG.ViewModels.VisitContent;
 public class AnamnesiGeriatricaUserControlViewModel(VisitAg currentVisitAg) : ViewModelBase
 {
     public VisitAg CurrentVisitAg { get; set; } = currentVisitAg;
+    
+    public static int MaxTextLength = 3000;
 
     public static IEnumerable<string> AppetitesValues => StringChoices.Appetites;
     public static IEnumerable<string> CognitiveDeficitsValues => StringChoices.CognitiveDeficits;

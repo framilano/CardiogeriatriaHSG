@@ -191,6 +191,7 @@
                      <Grid>
                          <ScrollViewer VerticalScrollBarVisibility="Auto">
                              <TextBox
+                                 MaxLength="{x:Static visitContent:TerapiaDomiciliareUserControlViewModel.MaxTextLength}"
                                  Text="{Binding CurrentVisitTd.TdText}"
                                  Classes="ColumnBTextBox"
                                  Name="ColumnBDescription"
