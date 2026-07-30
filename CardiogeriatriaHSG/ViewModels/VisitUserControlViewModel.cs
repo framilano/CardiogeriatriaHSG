@@ -421,7 +421,14 @@ public partial class VisitUserControlViewModel : ViewModelBase
             SppbBalance = StringChoices.SppbBalanceTypes[0],
             SppbFourMetersTime = null,
             SppbSitToStand = StringChoices.SppbSitToStandTypes[0],
-            Kccq = null
+            Kccq = null,
+            Eft = 0,
+            Cfs = 1,
+            OxygenPrescriptionForThePastSixMonths = false,
+            EbpmPrescriptionForThePastSixMonths = false,
+            OtherNeurologicalDiseases = false,
+            SurpriseQuestion = true,
+            Necpal4 = null
         };
         
         Log.Information("[STOP] Created new VisitCga");

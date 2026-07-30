@@ -44,6 +44,11 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
     private string? _ergonomicsSentence;
     private string? _kccqSentence;
     private string? _mnaSentence;
+    private string? _eftSentence;
+    private string? _cfsSentence;
+    private string? _pcfiSentence;
+    private string? _necpaleSentence;
+
 
 
     public void OnColumnAChanged(object? sender, RoutedEventArgs routedEventArgs)
@@ -177,6 +182,40 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
             case "KccqNumber":
                 _currentVisitCga!.Kccq = value is null ? null : int.Parse(value);
                 UpdateKccqSentence();
+                break;
+            case "EftNumber":
+                _currentVisitCga!.Eft = int.Parse(value!);
+                UpdateEftSentence();
+                break;
+            case "CfsNumber":
+                _currentVisitCga!.Cfs = int.Parse(value!);
+                UpdateCfsSentence();
+                break;
+            case "OxygenPrescriptionForThePastSixMonths":
+                _currentVisitCga!.OxygenPrescriptionForThePastSixMonths = value == "True";
+                UpdatePcfiSentence();
+                break;
+            case "EbpmPrescriptionForThePastSixMonths":
+                _currentVisitCga!.EbpmPrescriptionForThePastSixMonths = value == "True";
+                UpdatePcfiSentence();
+                break;
+            case "SurpriseQuestion":
+                _currentVisitCga!.SurpriseQuestion = value == "True";
+                if (!_currentVisitCga!.SurpriseQuestion)
+                {
+                    _currentVisitCga!.Necpal4 = null;
+                    Dispatcher.UIThread.Post(() => SurpriseQuestionWrapPanel.IsVisible = true);
+                }
+                else
+                {
+                    _currentVisitCga!.Necpal4 = null;
+                    Dispatcher.UIThread.Post(() => SurpriseQuestionWrapPanel.IsVisible = false);
+                }
+                UpdateNecpalSentence();
+                break;
+            case "Necpal4Number":
+                _currentVisitCga!.Necpal4 = value is null ? null : int.Parse(value);
+                UpdateNecpalSentence();
                 break;
         }
         
@@ -368,6 +407,64 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         _mnaSentence = mnaSentenceBuilder.ToString();
     }
 
+    private void UpdateEftSentence()
+    {
+        var eftSentenceBuilder = new StringBuilder();
+
+        var tavrValue = 0;
+        var savrValue = 0;
+        var eftValue = _currentVisitCga!.Eft;
+        switch (eftValue)
+        {
+            case <= 1:
+                tavrValue = 6; 
+                savrValue = 3;
+                break;
+            case 2:
+                tavrValue = 15;
+                savrValue = 7;
+                break;
+            case 3:
+                tavrValue = 28;
+                savrValue = 16;
+                break;
+            case 4:
+                tavrValue = 30;
+                savrValue = 38;
+                break;
+            case 5:
+                tavrValue = 65;
+                savrValue = 50;
+                break;
+        }
+        
+        eftSentenceBuilder.Append($"EFT {_currentVisitCga!.Eft}, ");
+        eftSentenceBuilder.Append($"TAVR {tavrValue}%, ");
+        eftSentenceBuilder.Append($"SAVR {savrValue}%\n");
+
+        _eftSentence = eftSentenceBuilder.ToString();
+
+    }
+    
+    private void UpdateCfsSentence()
+    {
+        var cfsSentenceBuilder = new StringBuilder();
+        cfsSentenceBuilder.Append($"CFS {_currentVisitCga!.Cfs}\n");
+        _cfsSentence = cfsSentenceBuilder.ToString();
+    }
+
+    private void UpdatePcfiSentence()
+    {
+        //TODO
+    }
+    
+    private void UpdateNecpalSentence()
+    {
+        var necpalSentenceBuilder = new StringBuilder();
+        if (_currentVisitCga!.Necpal4 is not null && _currentVisitCga!.Necpal4 > 0) necpalSentenceBuilder.Append($"NECPAL POSITIVO\n");
+        _necpaleSentence = necpalSentenceBuilder.ToString();
+    }
+    
     private static double ComputeBmi(int weight, float height)
     {
         var bmi = weight / Math.Pow(height, 2);
@@ -391,6 +488,10 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         UpdateErgonomicsSentence();
         UpdateKccqSentence();
         UpdateMnaSentence();
+        UpdateEftSentence();
+        UpdateCfsSentence();
+        UpdatePcfiSentence();
+        UpdateNecpalSentence();
         UpdateColumnBDescription();
     }
 
@@ -406,6 +507,11 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         columnBDescriptionStringBuilder.Append(_sppbSentence);
         columnBDescriptionStringBuilder.Append(_ergonomicsSentence);
         columnBDescriptionStringBuilder.Append(_kccqSentence);
+        columnBDescriptionStringBuilder.Append(_mnaSentence);
+        columnBDescriptionStringBuilder.Append(_eftSentence);
+        columnBDescriptionStringBuilder.Append(_cfsSentence);
+        columnBDescriptionStringBuilder.Append(_pcfiSentence);
+        columnBDescriptionStringBuilder.Append(_necpaleSentence);
         columnBDescriptionStringBuilder.Append(_mnaSentence);
 
         Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
