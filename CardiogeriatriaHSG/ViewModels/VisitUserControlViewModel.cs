@@ -131,7 +131,13 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 if (CurrentVisit.VisitCo is null) _databaseService.LoadVisitConclusioniByVisit(CurrentVisit);
                 
                 CurrentVisit.VisitCo ??= CreateNewVisitCo(CurrentVisit.VisitCode!);
-                CurrentContent = new ConclusioniUserControl() { DataContext = new ConclusioniUserControlViewModel(CurrentVisit.VisitCo) };
+                CurrentContent = new ConclusioniUserControl { DataContext = new ConclusioniUserControlViewModel(CurrentVisit.VisitCo) };
+                break;
+            case "Terapia fine visita":
+                if (CurrentVisit.VisitTfv is null) _databaseService.LoadVisitTerapiaFineVisitaByVisit(CurrentVisit);
+
+                CurrentVisit.VisitTfv ??= CreateNewVisitTfv(CurrentVisit.VisitCode!);
+                CurrentContent = new TerapiaFineVisitaUserControl { DataContext = new TerapiaFineVisitaUserControlViewModel(CurrentVisit.VisitTfv) };
                 break;
             case "Referto":
                 //There's no need to load patient (anagrafica) because already loaded by default
@@ -144,6 +150,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 if (CurrentVisit.VisitEco is null) { _databaseService.LoadVisitEcografiaToracicaByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitCga is null) { _databaseService.LoadVisitValutazioneGeriatricaCompletaByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitCo is null) { _databaseService.LoadVisitConclusioniByVisit(CurrentVisit); }
+                if (CurrentVisit.VisitTfv is null) { _databaseService.LoadVisitTerapiaFineVisitaByVisit(CurrentVisit); }
 
                 //If still null after loading from DB, we create new Visits elements
                 CurrentVisit.VisitAg ??= CreateNewVisitAg(CurrentVisit.VisitCode!);
@@ -155,6 +162,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 CurrentVisit.VisitEco ??= CreateNewVisitEco(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitCga ??= CreateNewVisitCga(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitCo ??= CreateNewVisitCo(CurrentVisit.VisitCode!);
+                CurrentVisit.VisitTfv ??= CreateNewVisitTfv(CurrentVisit.VisitCode!);
 
                 CurrentContent = new RefertoUserControl { DataContext = new RefertoUserControlViewModel(CurrentVisit) };
                 break;
@@ -169,9 +177,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
         Log.Debug("[START] Creating new Patient...");
         var patient = _databaseService.RetrievePatientByCode(patientCode) ?? new Patient
         {
-            PatientCode = patientCode,
-            Gender = "F",
-            DateOfBirth = DateTime.Now.Subtract(TimeSpan.FromDays(365 * 80))
+            PatientCode = patientCode
         };
         Log.Information("[START] Created new Patient {PatientCode}", patientCode);
         return patient;
@@ -180,27 +186,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
     private static VisitAg CreateNewVisitAg(string visitCode)
     {
         Log.Debug("[START] Creating new VisitAg...");
-        var visitAg = new VisitAg(visitCode)
-        {
-            AssistanceAlone = false,
-            AssistanceSpouse = false,
-            AssistanceFamilyMembers = false,
-            CareTaker = false,
-            MotorSkill = StringChoices.MotorSkillTypes[0],
-            WalkingType = null,
-            Falls = "0",
-            CognitiveDeficit = StringChoices.CognitiveDeficits[0],
-            Bpsd = false,
-            HearingImpairment = false,
-            VisualImpairment = false,
-            Nights = StringChoices.NightTypes[0],
-            WeightLoss = StringChoices.WeightLossTypes[0],
-            Appetite = StringChoices.Appetites[0],
-            Dysphagia = StringChoices.DysphagiaTypes[0],
-            NutritionalProblems = false,
-            Constipation = false,
-            Disability = false,
-        };
+        var visitAg = new VisitAg(visitCode);
         Log.Information("[STOP] Created new VisitAG");
         return visitAg;
     }
@@ -208,124 +194,23 @@ public partial class VisitUserControlViewModel : ViewModelBase
     private static VisitApr CreateNewVisitApr(string visitCode)
     {
         Log.Debug("[START] Creating new VisitAPR...");
-        var visitApr = new VisitApr(visitCode)
-        {
-            IschemicHeartDisease = false,
-            HeartFailure = false,
-            AtrialFibrillation = false,
-            CerebrovascularDisease = false,
-            Neoplasm = false,
-            ChronicObstructivePulmonaryDisease = false,
-            ChronicKidneyDisease = false,
-            PeripheralVascularDisease = false,
-            Diabetes = false,
-            ChronicSkinUlcers = false,
-            Parkinson = false,
-            Schizophrenia = false,
-            NeuromuscularDisorders = false,
-            HipFracture = false,
-            Anemia = false,
-            OxygenTherapyLast6Months = false,
-            HospitalizationLast6Months = false,
-            HeparinUseLast6Months = false,
-            Bradycardia = false,
-            ArterialHypertension = false,
-            SevereValvularDiseaseSm = false,
-            SevereValvularDiseaseIm = false,
-            SevereValvularDiseaseIao = false,
-            SevereValvularDiseaseSao = false,
-            SevereValvularDiseaseItr = false,
-            Amyloidosis = false,
-            AmyloidosisType = null,
-            AmyloidosisDiagnosisDate = null,
-            AmyloidosisDmt = null,
-            AmyloidosisTherapyStartDate = null,
-            Dementia = false,
-            DementiaType = null,
-        };
+        var visitApr = new VisitApr(visitCode);
         Log.Information("[STOP] Created new VisitAPR");
         return visitApr;
     }
     
     private static VisitTd CreateNewVisitTd(string visitCode)
     {
-        Log.Debug("[START] Creating new VisitTD...");
-        var visitTd = new VisitTd(visitCode)
-        {
-            BetaBlocker = false,
-            Mra = false,
-            AceInhibitor = false,
-            Arb = false,
-            Sglt2Inhibitor = false,
-            Arni = false,
-            Vericiguat = false,
-            Furosemide = false,
-            FurosemideDose = null,
-            OtherLoopDiuretic = false,
-            Amiodarone = false,
-            Doac = false,
-            Vka = false,
-            Acetazolamide = false,
-            Hydrochlorothiazide = false,
-            Acoramidis = false,
-            Tafamidis = false,
-            Vutrisiran = false,
-            CalciumChannelBlockers = false,
-            Ranolazine = false,
-            Nitrates = false,
-            Glp1 = false,
-            Doxazosin = false,
-            Clonidine = false,
-            Fibrates = false,
-            Statins = false,
-            Ezetimibe = false,
-            OralHypoglycemicAgents = false,
-            Dpp4 = false,
-            Insulin = false,
-            Ppi = false,
-            AcheInhibitorOrMemantine = false,
-            Benzodiazepines = false,
-            ZDrugs = false,
-            LowDoseTrazodone = false,
-            Antidepressants = false,
-            Antipsychotics = false,
-            Paracetamol = false,
-            Opioids = false,
-            OtherAnalgesics = false,
-            ProteinSupplementation = false,
-            PhysicalExercise = false
-        };
-        Log.Information("[STOP] Created new VisitTD");
+        Log.Debug("[START] Creating new VisitTd...");
+        var visitTd = new VisitTd(visitCode);
+        Log.Information("[STOP] Created new VisitTd");
         return visitTd;
     }
     
     private static VisitRc CreateNewVisitRc(string visitCode)
     {
         Log.Debug("[START] Creating new VisitRc...");
-        var visitRc = new VisitRc(visitCode)
-        {
-            Reports = StringChoices.ReportsTypes[0],
-            Dyspnea = StringChoices.DyspneaTypes[0],
-            Angina = StringChoices.AnginaTypes[0],
-            Palpitations = false,
-            SleepingWithPillowsNumber = 1,
-            SleepingSittingPosition = false,
-            ParoxysmalNocturnalDyspnea = false,
-            AcuteStressLast3Months = false,
-            FallsSinceLastVisit = false,
-            FallsSinceLastVisitNumber = null,
-            FallsSinceLastVisitType = null,
-            FallsSinceLastVisitDiagnosis = null,
-            EmergenciesSinceLastVisit = false,
-            EmergenciesSinceLastVisitNumber = null,
-            EmergenciesSinceLastVisitCause = null,
-            HospitalizationsSinceLastVisit = false,
-            HospitalizationsSinceLastVisitNumber = null,
-            HospitalizationsSinceLastVisitDays = null,
-            HospitalizationsSinceLastVisitCause = null,
-            FirstHospitalizationDate = null
-        };
-        
+        var visitRc = new VisitRc(visitCode);
         Log.Information("[STOP] Created new VisitRc");
         return visitRc;
     }
@@ -333,19 +218,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
     private static VisitEe CreateNewVisitEe(string visitCode)
     {
         Log.Debug("[START] Creating new VisitEe...");
-        var visitEe = new VisitEe(visitCode)
-        {
-            ExamDate = DateTime.UnixEpoch,
-            Hemoglobin = null,
-            Creatinine = null,
-            Urea = null,
-            Sodium = null,
-            Potassium = null,
-            NtProBnp = null,
-            Bnp = null,
-            Albumin = null,
-            Albuminuria = null
-        };
+        var visitEe = new VisitEe(visitCode);
         
         Log.Information("[STOP] Created new VisitEe");
         return visitEe;
@@ -354,26 +227,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
     private static VisitEo CreateNewVisitEo(string visitCode)
     {
         Log.Debug("[START] Creating new VisitEo...");
-        var visitEo = new VisitEo(visitCode)
-        {
-                MinimumBloodPressure = null,
-                MaximumBloodPressure = null,
-                HeartRate = null,
-                JugularVenousDistension = false,
-                Rheoencephalography = false,
-                HeartSoundType = StringChoices.HeartSoundTypes[0],
-                HeartSoundRhythm = StringChoices.HeartSoundRhythmTypes[0],
-                HeartSoundPauses = StringChoices.HeartSoundPausesTypes[0],
-                ChestMv = StringChoices.ChestMvTypes[0],
-                ChestNoises = StringChoices.ChestNoisesTypes[0],
-                DependentEdema = false,
-                DependentEdemaType = null,
-                DependentEdemaLocation = null,
-                DependentEdemaFovea = null,
-                PeripheralNeuropathy = false,
-                OrthostaticHypotension = false
-        };
-        
+        var visitEo = new VisitEo(visitCode);
         Log.Information("[STOP] Created new VisitEo");
         return visitEo;
     }
@@ -381,24 +235,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
     private static VisitEco CreateNewVisitEco(string visitCode)
     {
         Log.Debug("[START] Creating new VisitEco...");
-        var visitEco = new VisitEco(visitCode)
-        {
-            PleuralLine = false,
-            IrregularPleuralLine = false,
-            PatternA = false,
-            BLines = false,
-            CoalescentBLines = null,
-            GradientDistributionBLines = null,
-            ConsiderationBLines = null,
-            RightPefs = 0,
-            LeftPefs = 0,
-            MeasurableIvc = false,
-            IvcCollapsibility = null,
-            IvcDiameter = null,
-            Vexus = null,
-            PortalVeinPulsatility = null,
-
-        };
+        var visitEco = new VisitEco(visitCode);
         
         Log.Information("[STOP] Created new VisitEco");
         return visitEco;
@@ -407,41 +244,7 @@ public partial class VisitUserControlViewModel : ViewModelBase
     private static VisitCga CreateNewVisitCga(string visitCode)
     {
         Log.Debug("[START] Creating new VisitCga...");
-        var visitCga = new VisitCga(visitCode)
-        {
-            Diet = false,
-            Continence = false,
-            Dressing = false,
-            Shower = false,
-            PosturalPassages = false,
-            Hygiene = false,
-            Phone = false,
-            Shopping = false,
-            SenseOfMoney = false,
-            Car = false,
-            Medicines = false,
-            Cooking = false,
-            HouseholdChores =  false,
-            Laundry = false,
-            Mmse = null,
-            Moca = null,
-            Es = null,
-            RestingBorg = null,
-            PostSppbBorg = null,
-            SppbBalance = StringChoices.SppbBalanceTypes[0],
-            SppbFourMetersTime = null,
-            SppbSitToStand = StringChoices.SppbSitToStandTypes[0],
-            Kccq = null,
-            Handgrip = null,
-            Weight = 60,
-            Height = 1.80m,
-            Eft = 0,
-            Cfs = 1,
-            OtherNeurologicalDiseases = false,
-            SurpriseQuestion = true,
-            Necpal4 = null
-        };
-        
+        var visitCga = new VisitCga(visitCode);
         Log.Information("[STOP] Created new VisitCga");
         return visitCga;
     }
@@ -452,6 +255,14 @@ public partial class VisitUserControlViewModel : ViewModelBase
         var visitCo = new VisitCo(visitCode);
         Log.Information("[STOP] Created new VisitCo");
         return visitCo;
+    }
+    
+    private static VisitTfv CreateNewVisitTfv(string visitCode)
+    {
+        Log.Debug("[START] Creating new VisitTfv...");
+        var visitTfv = new VisitTfv(visitCode);
+        Log.Information("[STOP] Created new VisitTfv");
+        return visitTfv;
     }
     
     [RelayCommand]

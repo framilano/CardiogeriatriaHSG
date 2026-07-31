@@ -3,6 +3,7 @@ using System;
 using CardiogeriatriaHSG.Services.database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CardiogeriatriaHSG.Migrations
 {
     [DbContext(typeof(AppDb))]
-    partial class AppDbModelSnapshot : ModelSnapshot
+    [Migration("20260731063104_TFV0")]
+    partial class TFV0
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.10");
@@ -746,146 +749,6 @@ namespace CardiogeriatriaHSG.Migrations
                     b.ToTable("VisitTd");
                 });
 
-            modelBuilder.Entity("CardiogeriatriaHSG.Models.VisitTfv", b =>
-                {
-                    b.Property<string>("VisitCode")
-                        .HasMaxLength(36)
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("AceInhibitor")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Acetazolamide")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("AcheInhibitorOrMemantine")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Acoramidis")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Amiodarone")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Antidepressants")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Antipsychotics")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Arb")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Arni")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Benzodiazepines")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("BetaBlocker")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("CalciumChannelBlockers")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Clonidine")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Doac")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Doxazosin")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Dpp4")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Ezetimibe")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Fibrates")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Furosemide")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<int?>("FurosemideDose")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Glp1")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Hydrochlorothiazide")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Insulin")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("LowDoseTrazodone")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Mra")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Nitrates")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Opioids")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("OralHypoglycemicAgents")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("OtherAnalgesics")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("OtherLoopDiuretic")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Paracetamol")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("PhysicalExercise")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Ppi")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("ProteinSupplementation")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Ranolazine")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Sglt2Inhibitor")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Statins")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Tafamidis")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<string>("TfvText")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("Vericiguat")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Vka")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("Vutrisiran")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("ZDrugs")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("VisitCode");
-
-                    b.ToTable("VisitTfv");
-                });
-
             modelBuilder.Entity("CardiogeriatriaHSG.Models.Visit", b =>
                 {
                     b.HasOne("CardiogeriatriaHSG.Models.Patient", "Patient")
@@ -976,15 +839,6 @@ namespace CardiogeriatriaHSG.Migrations
                     b.Navigation("Visit");
                 });
 
-            modelBuilder.Entity("CardiogeriatriaHSG.Models.VisitTfv", b =>
-                {
-                    b.HasOne("CardiogeriatriaHSG.Models.Visit", "Visit")
-                        .WithOne("VisitTfv")
-                        .HasForeignKey("CardiogeriatriaHSG.Models.VisitTfv", "VisitCode");
-
-                    b.Navigation("Visit");
-                });
-
             modelBuilder.Entity("CardiogeriatriaHSG.Models.Patient", b =>
                 {
                     b.Navigation("Visits");
@@ -1009,8 +863,6 @@ namespace CardiogeriatriaHSG.Migrations
                     b.Navigation("VisitRc");
 
                     b.Navigation("VisitTd");
-
-                    b.Navigation("VisitTfv");
                 });
 #pragma warning restore 612, 618
         }

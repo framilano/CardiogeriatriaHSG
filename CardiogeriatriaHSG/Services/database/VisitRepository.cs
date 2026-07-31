@@ -54,4 +54,7 @@ public class VisitRepository(AppDb db)
     
     public void LoadVisitCoByVisit(Visit visit) => 
         db.Entry(visit).Reference(v => v.VisitCo).Load();
+    
+    public void LoadVisitTfvByVisit(Visit visit) => 
+        db.Entry(visit).Reference(v => v.VisitTfv).Load();
 }

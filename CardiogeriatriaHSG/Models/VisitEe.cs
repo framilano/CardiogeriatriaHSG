@@ -19,14 +19,14 @@ public partial class VisitEe(string visitCode): ObservableObject
         EeManualText = value.Trim().Length == 0 ? null : value.Trim();
     }
 
-    [ObservableProperty] public partial DateTimeOffset ExamDate { get; set; }
-    [ObservableProperty] public partial float? Hemoglobin { get; set; }
-    [ObservableProperty] public partial float? Creatinine { get; set; }
-    [ObservableProperty] public partial float? Urea { get; set; }
-    [ObservableProperty] public partial float? Sodium { get; set; }
-    [ObservableProperty] public partial float? Potassium { get; set; }
-    [ObservableProperty] public partial float? NtProBnp { get; set; }
-    [ObservableProperty] public partial float? Bnp { get; set; }
-    [ObservableProperty] public partial float? Albumin { get; set; }
-    [ObservableProperty] public partial float? Albuminuria { get; set; }
+    [ObservableProperty] public partial DateTimeOffset ExamDate { get; set; } = DateTime.UnixEpoch;
+    [ObservableProperty] public partial float? Hemoglobin { get; set; } = null;
+    [ObservableProperty] public partial float? Creatinine { get; set; } = null;
+    [ObservableProperty] public partial float? Urea { get; set; } = null;
+    [ObservableProperty] public partial float? Sodium { get; set; } = null;
+    [ObservableProperty] public partial float? Potassium { get; set; } = null;
+    [ObservableProperty] public partial float? NtProBnp { get; set; } = null;
+    [ObservableProperty] public partial float? Bnp { get; set; } = null;
+    [ObservableProperty] public partial float? Albumin { get; set; } = null;
+    [ObservableProperty] public partial float? Albuminuria { get; set; } = null;
 }

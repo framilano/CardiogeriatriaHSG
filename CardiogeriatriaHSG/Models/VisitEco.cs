@@ -17,19 +17,19 @@ public partial class VisitEco(string visitCode): ObservableObject
         if (value == null) return;
         EcoManualText = value.Trim().Length == 0 ? null : value.Trim();
     }
-    
-    [ObservableProperty] public partial bool PleuralLine { get; set; }
-    [ObservableProperty] public partial bool IrregularPleuralLine { get; set; }
-    [ObservableProperty] public partial bool PatternA { get; set; }
-    [ObservableProperty] public partial bool BLines { get; set; }
-    [ObservableProperty] public partial bool? CoalescentBLines { get; set; }
-    [ObservableProperty] public partial bool? GradientDistributionBLines { get; set; }
-    [ObservableProperty] public partial bool? ConsiderationBLines { get; set; }
-    [ObservableProperty] public partial int? RightPefs { get; set; }
-    [ObservableProperty] public partial int? LeftPefs { get; set; }  
-    [ObservableProperty] public partial bool MeasurableIvc { get; set; }
-    [ObservableProperty] public partial string? IvcCollapsibility { get; set; }
-    [ObservableProperty] public partial string? IvcDiameter { get; set; }
-    [ObservableProperty] public partial int? Vexus { get; set; }
-    [ObservableProperty] public partial string? PortalVeinPulsatility   { get; set; }
+
+    [ObservableProperty] public partial bool PleuralLine { get; set; } = false;
+    [ObservableProperty] public partial bool IrregularPleuralLine { get; set; } = false;
+    [ObservableProperty] public partial bool PatternA { get; set; } = false;
+    [ObservableProperty] public partial bool BLines { get; set; } = false;
+    [ObservableProperty] public partial bool? CoalescentBLines { get; set; } = null;
+    [ObservableProperty] public partial bool? GradientDistributionBLines { get; set; } = null;
+    [ObservableProperty] public partial bool? ConsiderationBLines { get; set; } = null;
+    [ObservableProperty] public partial int? RightPefs { get; set; } = 0;
+    [ObservableProperty] public partial int? LeftPefs { get; set; } = 0;
+    [ObservableProperty] public partial bool MeasurableIvc { get; set; } = false;
+    [ObservableProperty] public partial string? IvcCollapsibility { get; set; } = null;
+    [ObservableProperty] public partial string? IvcDiameter { get; set; } = null;
+    [ObservableProperty] public partial int? Vexus { get; set; } = null;
+    [ObservableProperty] public partial string? PortalVeinPulsatility   { get; set; } = null;
 }

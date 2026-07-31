@@ -157,4 +157,23 @@ public class DatabaseService
         _visitRepository.LoadVisitCoByVisit(visit);
         Log.Information("[STOP] Loaded visit CO data for visit {VisitVisitCode}", visit.VisitCode);
     }
+    public void LoadVisitTerapiaFineVisitaByVisit(Visit visit) {
+        Log.Debug("[START] Loading visit TFV data for visit {VisitVisitCode}", visit.VisitCode);
+        _visitRepository.LoadVisitTfvByVisit(visit);
+        if (visit.VisitTfv is null)
+        {   
+            Log.Debug("VisitTfv is null, loading VisitTd data instead...");
+            _visitRepository.LoadVisitTdByVisit(visit);
+            if (visit.VisitTd is not null)
+            {
+                Log.Debug("VisitTd data are present, building VisitTfv data based on them");
+                visit.VisitTfv = new VisitTfv(visit.VisitTd, visit.VisitCode!);
+            }
+            else
+            {
+                Log.Debug("VisitTd data aren't present, building empty VisitTfv");
+            }
+        }
+        Log.Information("[STOP] Loaded visit TFV data for visit {VisitVisitCode}", visit.VisitCode);
+    }
 }

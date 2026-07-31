@@ -25,7 +25,9 @@ public partial class Visit: ObservableObject
     public partial VisitCga? VisitCga { get; set; }
     [ObservableProperty]
     public partial VisitCo? VisitCo { get; set; }
-    
+    [ObservableProperty]
+    public partial VisitTfv? VisitTfv { get; set; }
+
     [MaxLength(36)]
     public string? VisitCode { get; init; }
     public Patient? Patient { get; set; }

@@ -2,7 +2,7 @@
 
 namespace CardiogeriatriaHSG.Models.enums.terapiadomiciliare;
 
-public static class TdSynonyms
+public static class ThSynonyms
 {
     public static readonly List<string> BetaBlockerSynonyms = ["bisoprololo", "carvedilolo", "metoprololo", "nebivololo", "atenololo"];
     public static readonly List<string> MraSynonyms = ["spironolattone", "canrenone", "luvion", "potassio canrenoato", "eplerenone", "finrenone", "finerenone", "karendia"];

@@ -49,5 +49,9 @@
         <DependentUpon>ConclusioniUserControl.axaml</DependentUpon>
         <SubType>Code</SubType>
       </Compile>
+      <Compile Update="Views\VisitContent\TerapiaFineVisitaUserControl.axaml.cs">
+        <DependentUpon>TerapiaFineVisitaUserControl.axaml</DependentUpon>
+        <SubType>Code</SubType>
+      </Compile>
     </ItemGroup>
 </Project>

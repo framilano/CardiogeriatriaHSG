@@ -7,9 +7,9 @@ namespace CardiogeriatriaHSG.Models;
 
 public partial class Patient : ObservableObject
 {
-    [ObservableProperty] public partial string? Gender { get; set; }
+    [ObservableProperty] public partial string? Gender { get; set; } = "F";
 
-    [ObservableProperty] public partial DateTimeOffset? DateOfBirth { get; set; }
+    [ObservableProperty] public partial DateTimeOffset? DateOfBirth { get; set; } = DateTime.Now.Subtract(TimeSpan.FromDays(365 * 80));
     
     [ObservableProperty] public partial string? PatientManualText { get; set; } = "";
 
