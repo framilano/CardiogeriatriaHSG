@@ -192,7 +192,7 @@
                          <ScrollViewer VerticalScrollBarVisibility="Auto">
                              <TextBox
                                  MaxLength="{x:Static visitContent:TerapiaFineVisitaUserControlViewModel.MaxTextLength}"
-                                 Text="{Binding CurrentVisitTfv.TfvText}"
+                                 Text="{Binding CurrentVisitTfv.ThText}"
                                  Classes="ColumnBTextBox"
                                  Name="ColumnBDescription"
                              />

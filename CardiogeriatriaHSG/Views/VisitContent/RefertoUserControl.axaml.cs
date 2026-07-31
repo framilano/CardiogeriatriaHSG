@@ -50,7 +50,7 @@ public partial class RefertoUserControl : UserControl
                 AnamnesiPatologicaRemotaContent.Text = currentVisit.VisitApr!.AprText;
                 
                 //Terapia Domiciliare
-                TerapiaDomiciliareContent.Text = currentVisit.VisitTd!.TdText;
+                TerapiaDomiciliareContent.Text = currentVisit.VisitTd!.ThText;
                 
                 //Raccordo Clinico
                 RaccordoClinicoContent.Text = currentVisit.VisitRc!.RcManualText is null || currentVisit.VisitRc!.RcManualText.Trim().Length == 0 
@@ -74,6 +74,9 @@ public partial class RefertoUserControl : UserControl
                 
                 //Conclusioni
                 ConclusioniContent.Text = currentVisit.VisitCo!.CoText;
+                
+                //Terapia fine visita
+                TerapiaFineVisitaContent.Text = currentVisit.VisitTfv!.ThText;
             });
         };
     }

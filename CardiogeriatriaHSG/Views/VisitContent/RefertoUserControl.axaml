@@ -53,6 +53,10 @@
                 <LineBreak/>
                 <Run Name="ConclusioniContent"/>
                 <LineBreak/><LineBreak/>
+                <Run FontWeight="Bold" Text="Terapia fine visita" />
+                <LineBreak/>
+                <Run Name="TerapiaFineVisitaContent"/>
+                <LineBreak/><LineBreak/>
             </SelectableTextBlock>
         </ScrollViewer>
     </Border>

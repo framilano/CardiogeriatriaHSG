@@ -4,7 +4,15 @@ namespace CardiogeriatriaHSG.Models;
 
 public partial class VisitTh: ObservableObject
 {
-    //TD
+    
+    [ObservableProperty] public partial string? ThText { get; set; } = "";
+
+    partial void OnThTextChanged(string? value)
+    {
+        if (value == null) return;
+        ThText = value.Trim().Length == 0 ? null : value.Trim();
+    }
+    
     [ObservableProperty] public partial bool ProteinSupplementation { get; set; } = false;
     [ObservableProperty] public partial bool PhysicalExercise { get; set; }  = false;
     [ObservableProperty] public partial bool Furosemide { get; set; }  = false;
