@@ -29,10 +29,13 @@ public partial class RefertoUserControl : UserControl
             ecografiaToracicaUserControl.LoadEcografiaToracicaContent(currentVisit.VisitEco!);
             var valutazioneGeriatricaCompletaUserControl = new ValutazioneGeriatricaCompletaUserControl();
             valutazioneGeriatricaCompletaUserControl.LoadValutazioneGeriatricaCompletaContent(
+                currentVisit.Patient!,
+                currentVisit.Timestamp,
                 currentVisit.VisitAg!, 
                 currentVisit.VisitApr!, 
                 currentVisit.VisitTd!, 
                 currentVisit.VisitRc!, 
+                currentVisit.VisitEe!,
                 currentVisit.VisitEo!, 
                 currentVisit.VisitCga!
             );

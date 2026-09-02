@@ -116,16 +116,32 @@ public partial class VisitUserControlViewModel : ViewModelBase
                 if (CurrentVisit.VisitApr is null) _databaseService.LoadVisitAnamnesiPatologicaRemotaByVisit(CurrentVisit);
                 if (CurrentVisit.VisitTd is null) _databaseService.LoadVisitTerapiaDomiciliareByVisit(CurrentVisit);
                 if (CurrentVisit.VisitRc is null) _databaseService.LoadVisitRaccordoClinicoByVisit(CurrentVisit);
+                if (CurrentVisit.VisitEe is null) { _databaseService.LoadVisitEsamiEmaticiByVisit(CurrentVisit); }
                 if (CurrentVisit.VisitEo is null) _databaseService.LoadVisitEsamiObiettivoByVisit(CurrentVisit);
                 if (CurrentVisit.VisitCga is null) _databaseService.LoadVisitValutazioneGeriatricaCompletaByVisit(CurrentVisit);
-
+                
+                CurrentVisit.Patient ??= CreateNewPatient(CurrentVisit.PatientCode!);
                 CurrentVisit.VisitAg ??= CreateNewVisitAg(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitApr ??= CreateNewVisitApr(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitTd ??= CreateNewVisitTd(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitRc ??= CreateNewVisitRc(CurrentVisit.VisitCode!);
+                CurrentVisit.VisitEe ??= CreateNewVisitEe(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitEo ??= CreateNewVisitEo(CurrentVisit.VisitCode!);
                 CurrentVisit.VisitCga ??= CreateNewVisitCga(CurrentVisit.VisitCode!);
-                CurrentContent = new ValutazioneGeriatricaCompletaUserControl { DataContext = new ValutazioneGeriatricaCompletaUserControlViewModel(CurrentVisit.VisitAg, CurrentVisit.VisitApr, CurrentVisit.VisitTd, CurrentVisit.VisitRc, CurrentVisit.VisitEo, CurrentVisit.VisitCga) };
+                CurrentContent = new ValutazioneGeriatricaCompletaUserControl
+                {
+                    DataContext = new ValutazioneGeriatricaCompletaUserControlViewModel(
+                        CurrentVisit.Patient,
+                        CurrentVisit.Timestamp,
+                        CurrentVisit.VisitAg, 
+                        CurrentVisit.VisitApr, 
+                        CurrentVisit.VisitTd, 
+                        CurrentVisit.VisitRc, 
+                        CurrentVisit.VisitEe,
+                        CurrentVisit.VisitEo, 
+                        CurrentVisit.VisitCga
+                    )
+                };
                 break;
             case "Conclusioni":
                 if (CurrentVisit.VisitCo is null) _databaseService.LoadVisitConclusioniByVisit(CurrentVisit);

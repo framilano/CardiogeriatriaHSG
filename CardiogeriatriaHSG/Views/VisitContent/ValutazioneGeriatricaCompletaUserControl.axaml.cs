@@ -1,5 +1,4 @@
 using System;
-using System.Globalization;
 using System.Text;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -19,20 +18,36 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         DataContextChanged += (_, __) =>
         {
             if (DataContext is not ValutazioneGeriatricaCompletaUserControlViewModel viewModel) return;
+            _currentPatient = viewModel.CurrentPatient;
+            _currentVisitTimestamp = viewModel.CurrentVisitTimestamp;
             _currentVisitAg = viewModel.CurrentVisitAg;
             _currentVisitApr = viewModel.CurrentVisitApr;
             _currentVisitTd = viewModel.CurrentVisitTd;
             _currentVisitRc = viewModel.CurrentVisitRc;
+            _currentVisitEe = viewModel.CurrentVisitEe;
             _currentVisitEo = viewModel.CurrentVisitEo;
 
             _currentVisitCga = viewModel.CurrentVisitCga;
-            LoadValutazioneGeriatricaCompletaContent(_currentVisitAg, _currentVisitApr, _currentVisitTd, _currentVisitRc, _currentVisitEo, _currentVisitCga);
+            LoadValutazioneGeriatricaCompletaContent(
+                _currentPatient, 
+                _currentVisitTimestamp,
+                _currentVisitAg, 
+                _currentVisitApr, 
+                _currentVisitTd,
+                _currentVisitRc, 
+                _currentVisitEe,
+                _currentVisitEo, 
+                _currentVisitCga
+            );
         };
     }
+    private Patient? _currentPatient;
+    private DateTimeOffset _currentVisitTimestamp;
     private VisitAg? _currentVisitAg;
     private VisitApr? _currentVisitApr;
     private VisitTd? _currentVisitTd;
     private VisitRc? _currentVisitRc;
+    private VisitEe? _currentVisitEe;
     private VisitEo? _currentVisitEo;
     private VisitCga? _currentVisitCga;
 
@@ -49,7 +64,8 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
     private string? _eftSentence;
     private string? _cfsSentence;
     private string? _pcfiSentence;
-    private string? _necpaleSentence;
+    private string? _necpalSentence;
+    private string? _egfrSentence;
     
     private const decimal PcFiIncrementValue = 0.04m;
 
@@ -192,7 +208,7 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
                 UpdateKccqSentence();
                 break;
             case "EftNumber":
-                _currentVisitCga!.Eft = int.Parse(value!);
+                _currentVisitCga!.Eft = value is null ? null : int.Parse(value);
                 UpdateEftSentence();
                 break;
             case "CfsNumber":
@@ -410,6 +426,13 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
     private void UpdateEftSentence()
     {
         var eftSentenceBuilder = new StringBuilder();
+        
+        // Nullable EFT doesn't appear on right column
+        if (_currentVisitCga!.Eft is null)
+        {
+            _eftSentence = eftSentenceBuilder.ToString();
+            return;
+        }
 
         var tavrValue = 0;
         var savrValue = 0;
@@ -502,7 +525,37 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
     {
         var necpalSentenceBuilder = new StringBuilder();
         if (_currentVisitCga!.Necpal4 is not null && _currentVisitCga!.Necpal4 > 0) necpalSentenceBuilder.Append($"NECPAL POSITIVO\n");
-        _necpaleSentence = necpalSentenceBuilder.ToString();
+        _necpalSentence = necpalSentenceBuilder.ToString();
+    }
+    
+    private void UpdateEgfrSentence()
+    {
+        var egfrSentenceBuilder = new StringBuilder();
+
+        if (_currentVisitEe!.Creatinine is null)
+        {
+            //Creatinine missing from VisitEE, skipping sentence
+            _egfrSentence = egfrSentenceBuilder.ToString();
+            return;
+        }
+        
+        //CockroftGault
+        var age = _currentVisitTimestamp.Year - _currentPatient!.DateOfBirth!.Value.Year;
+        if (_currentPatient!.DateOfBirth > _currentVisitTimestamp.AddYears(-age)) age--;
+        var cockroftGaultValue = ((140 - age) * _currentVisitCga!.Weight) / (_currentVisitEe!.Creatinine * 72);
+        if (_currentPatient!.Gender!.Equals("F")) cockroftGaultValue *= 0.85f;
+        
+        //CKD-EPI
+        var k = _currentPatient!.Gender!.Equals("F") ? 0.7 : 0.9;
+        var alpha = _currentPatient!.Gender!.Equals("F") ? -0.241 : -0.302;
+        var ckdEpi = 142 
+            * Math.Pow(Math.Min((_currentVisitEe!.Creatinine / k).Value, 1d), alpha)
+            * Math.Pow(Math.Max((_currentVisitEe!.Creatinine / k).Value, 1d), -1.2)
+            * Math.Pow(0.9938, age);
+        if (_currentPatient!.Gender!.Equals("F")) ckdEpi *= 1.012f;
+        
+        egfrSentenceBuilder.Append($"eGFR:\n- Cockroft-Gault: {cockroftGaultValue:F2}mL/min\n- CKD-EPI: {ckdEpi:F2}mL/min/1.73 m²");
+        _egfrSentence = egfrSentenceBuilder.ToString();
     }
     
     private static double ComputeAdlSum(bool diet, bool continence, bool dressing, bool shower, bool posturalPassages, bool hygiene)
@@ -523,12 +576,25 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         return bmi;
     }
     
-    public void LoadValutazioneGeriatricaCompletaContent(VisitAg currentVisitAg, VisitApr currentVisitApr, VisitTd currentVisitTd, VisitRc currentVisitRc, VisitEo currentVisitEo, VisitCga currentVisitCga)
+    public void LoadValutazioneGeriatricaCompletaContent(
+        Patient currentPatient, 
+        DateTimeOffset currentVisitTimestamp, 
+        VisitAg currentVisitAg, 
+        VisitApr currentVisitApr, 
+        VisitTd currentVisitTd, 
+        VisitRc currentVisitRc, 
+        VisitEe currentVisitEe,
+        VisitEo currentVisitEo, 
+        VisitCga currentVisitCga
+    )
     {
+        _currentPatient = currentPatient;
+        _currentVisitTimestamp = currentVisitTimestamp;
         _currentVisitAg = currentVisitAg;
         _currentVisitApr = currentVisitApr;
         _currentVisitTd = currentVisitTd;
         _currentVisitRc = currentVisitRc;
+        _currentVisitEe = currentVisitEe;
         _currentVisitEo = currentVisitEo;
         _currentVisitCga = currentVisitCga;
         UpdateAdlSentence();
@@ -545,6 +611,7 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         UpdateCfsSentence();
         UpdatePcfiSentence();
         UpdateNecpalSentence();
+        UpdateEgfrSentence();
         UpdateColumnBDescription();
     }
 
@@ -564,7 +631,8 @@ public partial class ValutazioneGeriatricaCompletaUserControl : UserControl
         columnBDescriptionStringBuilder.Append(_eftSentence);
         columnBDescriptionStringBuilder.Append(_cfsSentence);
         columnBDescriptionStringBuilder.Append(_pcfiSentence);
-        columnBDescriptionStringBuilder.Append(_necpaleSentence);
+        columnBDescriptionStringBuilder.Append(_necpalSentence);
+        columnBDescriptionStringBuilder.Append(_egfrSentence);
 
         Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
     }

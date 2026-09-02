@@ -45,7 +45,7 @@ public partial class VisitCga(string visitCode): ObservableObject
     [ObservableProperty] public partial int? Handgrip { get; set; } = null;
     [ObservableProperty] public partial int Weight { get; set; } = 60;
     [ObservableProperty] public partial decimal Height { get; set; } = 1.80m;
-    [ObservableProperty] public partial int Eft { get; set; } = 0;
+    [ObservableProperty] public partial int? Eft { get; set; } = null;
     [ObservableProperty] public partial int Cfs { get; set; } = 1;
     [ObservableProperty] public partial bool OtherNeurologicalDiseases { get; set; } = false;
     [ObservableProperty] public partial bool SurpriseQuestion { get; set; } = true;
