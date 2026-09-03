@@ -118,7 +118,33 @@ public partial class AnagraficaUserControl : UserControl
     private void UpdateHeartFailureSentence()
     {
         var heartFailureSentenceBuilder = new StringBuilder();
-        heartFailureSentenceBuilder.Append("Paziente noto");
+        
+        if (_currentPatient!.HeartFailureStadium is null || _currentPatient.HeartFailurePercentage is null || _currentPatient.HeartFailureEjectionFraction is null)
+        {
+            _heartFailureSentence = heartFailureSentenceBuilder.ToString();
+            return;
+        }
+        
+        heartFailureSentenceBuilder.Append("Paziente noto per insufficienza cardiaca stadio ");
+        heartFailureSentenceBuilder.Append(_currentPatient.HeartFailureStadium);
+        heartFailureSentenceBuilder.Append($" a frazione di eiezione {_currentPatient.HeartFailureEjectionFraction.ToLower()} ({_currentPatient.HeartFailurePercentage}%)");
+        
+        var heartFailureSubSentenceBuilder = new StringBuilder();
+        if (_currentPatient!.HeartFailureEtiologyHypertensive) heartFailureSubSentenceBuilder.Append($"{HeartFailureEtiologyHypertensive.Text!.ToLower().Replace("    •", "")},");
+        if (_currentPatient!.HeartFailureEtiologyArrhythmic) heartFailureSubSentenceBuilder.Append($"{HeartFailureEtiologyArrhythmic.Text!.ToLower().Replace("    •", "")},");
+        if (_currentPatient!.HeartFailureEtiologyIschemic) heartFailureSubSentenceBuilder.Append($"{HeartFailureEtiologyIschemic.Text!.ToLower().Replace("    •", "")},");
+        if (_currentPatient!.HeartFailureEtiologyValvular) heartFailureSubSentenceBuilder.Append($"{HeartFailureEtiologyValvular.Text!.ToLower().Replace("    •", "")},");
+        if (_currentPatient!.HeartFailureEtiologyInfiltrative) heartFailureSubSentenceBuilder.Append($"{HeartFailureEtiologyInfiltrative.Text!.ToLower().Replace("    •", "")},");
+        var heartFailureSub = heartFailureSubSentenceBuilder.ToString();
+
+        if (heartFailureSub.Length == 0) heartFailureSentenceBuilder.Append(" a nessuna eziologia");
+        else
+        {
+            heartFailureSentenceBuilder.Append(" a eziologia ");
+            if (heartFailureSub.EndsWith(',')) heartFailureSub = heartFailureSub[..^1].Trim();
+            heartFailureSentenceBuilder.Append(heartFailureSub);
+        }
+        heartFailureSentenceBuilder.Append(".\n");
         _heartFailureSentence = heartFailureSentenceBuilder.ToString();
     }
 
