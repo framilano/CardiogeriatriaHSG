@@ -12,7 +12,9 @@ public class AnagraficaUserControlViewModel(Patient currentPatient, DateTimeOffs
     public DateTimeOffset CurrentVisitTimestamp { get; set; } = currentVisitTimestamp;
     
     public static IEnumerable<string> GenderTypesValues => StringChoices.GenderTypes;
-    
+    public static IEnumerable<string> HeartFailureStadiumTypesValues => StringChoices.HeartFailureStadiumTypes;
+    public static IEnumerable<string> HeartFailureEjectionFractionTypesValues => StringChoices.HeartFailureEjectionFractionTypes;
+
     public DateTimeOffset MaxAllowedDate { get; } = new(DateTime.Now);
     public static int MaxTextLength = 3000;
 }

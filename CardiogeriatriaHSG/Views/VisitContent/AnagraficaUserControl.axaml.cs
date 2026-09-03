@@ -26,12 +26,73 @@ public partial class AnagraficaUserControl : UserControl
     private DateTimeOffset _visitTimestamp;
 
     private string? _registrySentence;
+    private string? _heartFailureSentence;
 
     public void OnColumnAChanged(object? sender, RoutedEventArgs routedEventArgs)
     {
-        var gender = (ComboBox)sender!;
-        _currentPatient!.Gender = gender.SelectedValue!.ToString();
-        UpdateRegistrySentence();
+        var tag = "";
+        var value = "";
+        switch (sender)
+        {
+            case ComboBox box:
+                tag = (string)box.Tag!;
+                value = box.SelectedValue?.ToString();
+                break;
+            case CheckBox box:
+                tag = (string)box.Tag!;
+                value = box.IsChecked.ToString();
+                break;
+            case NumericUpDown box:
+                tag = (string)box.Tag!;
+                if (box.Value is null) value = null;
+                else {
+                    value = box.Value.ToString();
+                    if (value.IsWhiteSpace() || value!.Length == 0) value = null;
+                }
+                break;
+        }
+
+        switch (tag)
+        {
+            case "Gender":
+                _currentPatient!.Gender = value!;
+                UpdateRegistrySentence();
+                break;
+            case "HeartFailureStadium":
+                _currentPatient!.HeartFailureStadium = value!;
+                UpdateHeartFailureSentence();
+                break;
+            case "HeartFailurePercentage":
+                _currentPatient!.HeartFailurePercentage = value is null ? null : int.Parse(value);
+                UpdateHeartFailureSentence();
+                break;
+            case "HeartFailureEjectionFraction":
+                _currentPatient!.HeartFailureEjectionFraction = value!;
+                UpdateHeartFailureSentence();
+                break;
+            case "HeartFailureEtiologyHypertensive":
+                _currentPatient!.HeartFailureEtiologyHypertensive  = value == "True";
+                UpdateHeartFailureSentence();
+                break;
+            case "HeartFailureEtiologyArrhythmic":
+                _currentPatient!.HeartFailureEtiologyArrhythmic  = value == "True";
+                UpdateHeartFailureSentence();
+                break;
+            case "HeartFailureEtiologyIschemic":
+                _currentPatient!.HeartFailureEtiologyIschemic  = value == "True";
+                UpdateHeartFailureSentence();
+                break;
+            case "HeartFailureEtiologyValvular":
+                _currentPatient!.HeartFailureEtiologyValvular  = value == "True";
+                UpdateHeartFailureSentence();
+                break;
+            case "HeartFailureEtiologyInfiltrative":
+                _currentPatient!.HeartFailureEtiologyInfiltrative  = value == "True";
+                UpdateHeartFailureSentence();
+                break;
+        }
+
+        UpdateColumnBDescription();
     }
     
     private void OnColumnADatePickerChanged(object? sender, DatePickerSelectedValueChangedEventArgs e)
@@ -50,11 +111,15 @@ public partial class AnagraficaUserControl : UserControl
         registrySentenceBuilder.Append(_currentPatient!.Gender == "M" ? "Uomo di " : "Donna di ");
         var age = visitDate.Year - _currentPatient!.DateOfBirth!.Value.Year;
         if (_currentPatient!.DateOfBirth > visitDate.AddYears(-age)) age--;
-        registrySentenceBuilder.Append(age + " anni al momento della visita");
-        
-        registrySentenceBuilder.Append('.');
+        registrySentenceBuilder.Append(age + " anni al momento della visita.\n");
         _registrySentence = registrySentenceBuilder.ToString();
-        UpdateColumnBDescription();
+    }
+    
+    private void UpdateHeartFailureSentence()
+    {
+        var heartFailureSentenceBuilder = new StringBuilder();
+        heartFailureSentenceBuilder.Append("Paziente noto");
+        _heartFailureSentence = heartFailureSentenceBuilder.ToString();
     }
 
     public void LoadAnagraficaContent(Patient currentPatient, DateTimeOffset visitTimestamp)
@@ -62,12 +127,15 @@ public partial class AnagraficaUserControl : UserControl
         _currentPatient = currentPatient;
         _visitTimestamp = visitTimestamp;
         UpdateRegistrySentence();
+        UpdateHeartFailureSentence();
+        UpdateColumnBDescription();
     }
 
     private void UpdateColumnBDescription()
     {
         var columnBDescriptionStringBuilder = new StringBuilder();
         columnBDescriptionStringBuilder.Append(_registrySentence);
+        columnBDescriptionStringBuilder.Append(_heartFailureSentence);
         Dispatcher.UIThread.Post(() => { AutomaticColumnB!.Text = columnBDescriptionStringBuilder.ToString(); });
     }
 

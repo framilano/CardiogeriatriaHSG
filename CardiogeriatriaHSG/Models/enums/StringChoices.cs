@@ -9,6 +9,8 @@ public class StringChoices
     public static readonly List<string> VisitTypes = ["Cardiogeriatrica", "Cardiologica"];
     //Anagrafica
     public static readonly List<string> GenderTypes = ["M", "F"];
+    public static readonly List<string> HeartFailureStadiumTypes = ["A", "B", "C", "D"];
+    public static readonly List<string> HeartFailureEjectionFractionTypes = ["Preservata (HFpEF)", "Ridotta (HFrEF)", "Migliorata (di almeno il 10%, HFimpEF)"];
     //Anamnesi Geriatrica
     public static readonly List<string> Appetites = [ "Ridotto", "Lievemente ridotto", "Conservato"];
     public static readonly List<string> CognitiveDeficits = ["Noti", "Iniziali", "Nessuno"];

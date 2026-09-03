@@ -3,6 +3,7 @@ using System;
 using CardiogeriatriaHSG.Services.database;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CardiogeriatriaHSG.Migrations
 {
     [DbContext(typeof(AppDb))]
-    partial class AppDbModelSnapshot : ModelSnapshot
+    [Migration("20260903132536_CGA18")]
+    partial class CGA18
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "10.0.11");
@@ -32,19 +35,19 @@ namespace CardiogeriatriaHSG.Migrations
                     b.Property<string>("HeartFailureEjectionFraction")
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("HeartFailureEtiologyArrhythmic")
+                    b.Property<bool?>("HeartFailureEtiologyArrhythmic")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("HeartFailureEtiologyHypertensive")
+                    b.Property<bool?>("HeartFailureEtiologyHypertensive")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("HeartFailureEtiologyInfiltrative")
+                    b.Property<bool?>("HeartFailureEtiologyInfiltrative")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("HeartFailureEtiologyIschemic")
+                    b.Property<bool?>("HeartFailureEtiologyIschemic")
                         .HasColumnType("INTEGER");
 
-                    b.Property<bool>("HeartFailureEtiologyValvular")
+                    b.Property<bool?>("HeartFailureEtiologyValvular")
                         .HasColumnType("INTEGER");
 
                     b.Property<int?>("HeartFailurePercentage")

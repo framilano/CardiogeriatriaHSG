@@ -15,14 +15,32 @@
     <Grid ColumnDefinitions="*, *" RowDefinitions="*, *">
         <Border Classes="ColumnBorder" Grid.Column="0" Grid.RowSpan="2">
             <WrapPanel Classes="ColumnAWrapPanel">
-                <WrapPanel Orientation="Horizontal">
-                    <TextBlock Classes="GenericFieldLabel" Text="Data di nascita "/>
-                    <DatePicker MaxYear="{Binding MaxAllowedDate}" Tag="DateOfBirth" SelectedDateChanged="OnColumnADatePickerChanged" SelectedDate="{Binding CurrentPatient.DateOfBirth}"></DatePicker>
-                </WrapPanel>
-                <WrapPanel Orientation="Horizontal">
-                    <TextBlock Classes="GenericFieldLabel" Text="Genere "/>
-                    <ComboBox Tag="Gender" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding GenderTypesValues}" SelectedItem="{Binding CurrentPatient.Gender}"/>
-                </WrapPanel>
+                <Grid RowDefinitions="*, *, *, *, *, *, *, *, *, *, *, *" ColumnDefinitions="*, *">
+                    <TextBlock Grid.Row="0" Grid.Column="0" Classes="GenericFieldLabel" Text="Data di nascita "/>
+                    <DatePicker Grid.Row="0" Grid.Column="1" MaxYear="{Binding MaxAllowedDate}" Tag="DateOfBirth" SelectedDateChanged="OnColumnADatePickerChanged" SelectedDate="{Binding CurrentPatient.DateOfBirth}"></DatePicker>
+                    <TextBlock  Grid.Row="1" Grid.Column="0" Classes="GenericFieldLabel" Text="Genere "/>
+                    <ComboBox  Grid.Row="1" Grid.Column="1" Tag="Gender" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding GenderTypesValues}" SelectedItem="{Binding CurrentPatient.Gender}"/>
+                    <TextBlock  Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" Classes="GenericFieldLabel" Text="Insufficienza Cardiaca:"/>
+                    <TextBlock  Grid.Row="3" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Stadio "/>
+                    <ComboBox  Grid.Row="3" Grid.Column="1" Tag="HeartFailureStadium" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding HeartFailureStadiumTypesValues}" SelectedItem="{Binding CurrentPatient.HeartFailureStadium}"/>
+                    <TextBlock Grid.Row="4" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ Percentuale" />
+                    <NumericUpDown Grid.Row="4" Grid.Column="1" Minimum="0" Maximum="100"  Classes="CustomNumericUpDown" FormatString="0" Increment="1" Tag="HeartFailurePercentage" ValueChanged="OnColumnAChanged" Value="{Binding CurrentPatient.HeartFailurePercentage}">                           
+                        <NumericUpDown.InnerRightContent><TextBlock Text="%" Classes="UnitOfMeasure"/></NumericUpDown.InnerRightContent>
+                    </NumericUpDown>
+                    <TextBlock  Grid.Row="5" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ A frazione di eiezione"/>
+                    <ComboBox  Grid.Row="5" Grid.Column="1" Tag="HeartFailureEjectionFraction" SelectionChanged="OnColumnAChanged" ItemsSource="{Binding HeartFailureEjectionFractionTypesValues}" SelectedItem="{Binding CurrentPatient.HeartFailureEjectionFraction}"/>
+                    <TextBlock  Grid.Row="6" Grid.Column="0" Classes="GenericSubFieldLabel" Text="‣ A eziologia"/>
+                    <TextBlock  Grid.Row="7" Grid.Column="0" Classes="GenericSubFieldLabel" Text="    • Ipertensiva"/>
+                    <CheckBox Grid.Row="7" Grid.Column="1" Tag="HeartFailureEtiologyHypertensive" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentPatient.HeartFailureEtiologyHypertensive}"/>
+                    <TextBlock  Grid.Row="8" Grid.Column="0" Classes="GenericSubFieldLabel" Text="    • Aritmica"/>
+                    <CheckBox Grid.Row="8" Grid.Column="1" Tag="HeartFailureEtiologyArrhythmic" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentPatient.HeartFailureEtiologyArrhythmic}"/>
+                    <TextBlock  Grid.Row="9" Grid.Column="0" Classes="GenericSubFieldLabel" Text="    • Ischemica"/>
+                    <CheckBox Grid.Row="9" Grid.Column="1" Tag="HeartFailureEtiologyIschemic" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentPatient.HeartFailureEtiologyIschemic}"/>
+                    <TextBlock  Grid.Row="10" Grid.Column="0" Classes="GenericSubFieldLabel" Text="    • Valvolare"/>
+                    <CheckBox Grid.Row="10" Grid.Column="1" Tag="HeartFailureEtiologyValvular" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentPatient.HeartFailureEtiologyValvular}"/>
+                    <TextBlock  Grid.Row="11" Grid.Column="0" Classes="GenericSubFieldLabel" Text="    • Infiltrativa"/>
+                    <CheckBox Grid.Row="11" Grid.Column="1" Tag="HeartFailureEtiologyInfiltrative" IsCheckedChanged="OnColumnAChanged" IsChecked="{Binding CurrentPatient.HeartFailureEtiologyInfiltrative}"/>
+                </Grid>
             </WrapPanel>
         </Border>
         <Border Classes="ColumnBorder" Grid.Column="1" Grid.Row="0">
